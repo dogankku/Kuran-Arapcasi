@@ -6,3 +6,30 @@ export type ProgressMap = Record<number, WordProgress>;
 export type GrammarTopic = { id:number; level:Level; title:string; description:string; example_arabic:string; example_turkish:string; memory_hint:string; };
 export type SentenceToken = { arabic:string; meaning:string; role:string; note:string; };
 export type SentenceAnalysis = { id:number; level:Level; title:string; arabic:string; turkish:string; pattern:string; explanation:string; tokens:SentenceToken[]; };
+
+export type SurahWord = {
+  arabic: string;
+  transliteration: string;
+  meaning: string;
+  role: string;
+  root: string | null;
+  note?: string;
+};
+
+export type SurahVerse = {
+  number: number;
+  arabic: string;
+  turkish: string;
+  words: SurahWord[];
+};
+
+export type Surah = {
+  id: number;
+  name: string;
+  arabicName: string;
+  turkishName: string;
+  level: 1 | 2 | 3;
+  theme: string;
+  totalVerses: number;
+  verses: SurahVerse[];
+};
