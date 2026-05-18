@@ -1,9 +1,62 @@
 import type { Level, ProgressMap, QuizMode, StreakData, Word, WordProgress } from "@/data/types";
 export const STORAGE_KEY = "ayet-hafizasi-clean-v1";
 export function speakArabic(text:string){ if(typeof window==="undefined")return; window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang="ar-SA"; u.rate=.75; u.pitch=1; window.speechSynthesis.speak(u); }
-export function emptyProgress():WordProgress{ return {known:false,hard:false,correctCount:0,hardCount:0,wrongCount:0,lastAnswer:null,lastStudiedAt:null,nextReviewAt:null}; }
-export function updateProgress(old:WordProgress,type:"known"|"hard"|"wrong"):WordProgress{ const correctCount=type==="known"?old.correctCount+1:old.correctCount; const hardCount=type==="hard"?old.hardCount+1:old.hardCount; const wrongCount=type==="wrong"?old.wrongCount+1:old.wrongCount; return {...old,known:type==="known"?correctCount>=2:old.known,hard:type==="hard"||type==="wrong"?true:(correctCount>=2?false:old.hard),correctCount,hardCount,wrongCount,lastAnswer:type,lastStudiedAt:new Date().toISOString(),nextReviewAt:new Date(Date.now()+86400000).toISOString()}; }
-export function getReviewWords(words:Word[],progress:ProgressMap){ return words.filter(w=>{const item=progress[w.id]; return item ? item.hard||item.wrongCount>0 : false;}); }
+export function emptyProgress(): WordProgress {
+  return {
+    known: false, hard: false,
+    correctCount: 0, hardCount: 0, wrongCount: 0,
+    lastAnswer: null, lastStudiedAt: null, nextReviewAt: null,
+    interval: 1, easeFactor: 2.5, repetitions: 0,
+  };
+}
+export function updateProgress(old: WordProgress, type: "known" | "hard" | "wrong"): WordProgress {
+  const prev = { interval: 1, easeFactor: 2.5, repetitions: 0, ...old };
+  let { interval, easeFactor, repetitions } = prev;
+  const correctCount = type === "known" ? old.correctCount + 1 : old.correctCount;
+  const hardCount = type === "hard" ? old.hardCount + 1 : old.hardCount;
+  const wrongCount = type === "wrong" ? old.wrongCount + 1 : old.wrongCount;
+
+  if (type === "known") {
+    if (repetitions === 0) interval = 1;
+    else if (repetitions === 1) interval = 6;
+    else interval = Math.round(interval * easeFactor);
+    repetitions += 1;
+    easeFactor = Math.max(1.3, easeFactor + 0.1);
+  } else if (type === "hard") {
+    interval = Math.max(1, Math.round(interval * 1.2));
+    easeFactor = Math.max(1.3, easeFactor - 0.15);
+    repetitions = Math.max(0, repetitions - 1);
+  } else {
+    interval = 1;
+    repetitions = 0;
+    easeFactor = Math.max(1.3, easeFactor - 0.2);
+  }
+
+  const nextReviewAt = new Date(Date.now() + interval * 86400000).toISOString();
+  const known = type === "known" ? correctCount >= 2 : (type === "hard" || type === "wrong") ? false : old.known;
+  const hard = type === "wrong" || type === "hard" ? true : correctCount >= 3 ? false : old.hard;
+
+  return {
+    ...old, known, hard, correctCount, hardCount, wrongCount,
+    lastAnswer: type, lastStudiedAt: new Date().toISOString(),
+    nextReviewAt, interval, easeFactor, repetitions,
+  };
+}
+export function getReviewWords(words: Word[], progress: ProgressMap): Word[] {
+  const now = Date.now();
+  return words.filter(w => {
+    const item = progress[w.id];
+    if (!item) return false;
+    if (item.nextReviewAt && new Date(item.nextReviewAt).getTime() <= now) return true;
+    return item.hard || item.wrongCount > 0;
+  }).sort((a, b) => {
+    const ra = progress[a.id]?.nextReviewAt;
+    const rb = progress[b.id]?.nextReviewAt;
+    if (!ra) return 1;
+    if (!rb) return -1;
+    return new Date(ra).getTime() - new Date(rb).getTime();
+  });
+}
 export function getLevelTitle(level:Level){ if(level===1)return "Edatlar ve Bağlaçlar"; if(level===2)return "İsimler ve Anlamlar"; return "Fiiller"; }
 export function getLevelShort(level:Level){ return `Kademe ${level}`; }
 export function getLevelDescription(level:Level){ if(level===1)return "Kısa ama çok sık geçen bağlantı kelimeleri."; if(level===2)return "Kur’an’da sık geçen isim ve kavramlar."; return "Fiiller ve cümle hareketleri."; }
@@ -80,6 +133,14 @@ export function getStreak(): StreakData {
     if (saved) return JSON.parse(saved);
   } catch {}
   return { currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 };
+}
+
+export function getNextReviewInfo(p: WordProgress): string {
+  if (!p.nextReviewAt) return "Bugün";
+  const diff = Math.ceil((new Date(p.nextReviewAt).getTime() - Date.now()) / 86400000);
+  if (diff <= 0) return "Bugün tekrar!";
+  if (diff === 1) return "Yarın";
+  return `${diff} gün sonra`;
 }
 
 export function updateStreak(streak: StreakData): StreakData {

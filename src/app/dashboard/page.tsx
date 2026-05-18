@@ -10,7 +10,7 @@ import { words } from "@/data/words";
 import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
-  getLevelShort, getLevelTitle, getMilestone, getQuizPrompt,
+  getLevelShort, getLevelTitle, getMilestone, getNextReviewInfo, getQuizPrompt,
   getQuranCoverage, getReviewWords, getStreak, searchWords,
   speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
@@ -125,11 +125,38 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
+            <div className="relative mt-5">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={e => { setSearchQuery(e.target.value); setSearchOpen(true); }}
+                onFocus={() => setSearchOpen(true)}
+                placeholder="Kelime ara... (Arapça, Türkçe veya transliterasyon)"
+                className="w-full bg-stone-900/60 border border-stone-700 rounded-2xl px-5 py-3 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500/50"
+              />
+              {searchQuery && (
+                <button onClick={() => { setSearchQuery(""); setSearchOpen(false); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-white">✕</button>
+              )}
+              {searchOpen && searchResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-stone-900 border border-stone-700 rounded-2xl overflow-hidden z-50 shadow-2xl">
+                  {searchResults.map(w => (
+                    <button key={w.id} onClick={() => { openWord(w); setSearchQuery(""); setSearchOpen(false); }}
+                      className="w-full flex items-center gap-4 px-5 py-3 hover:bg-stone-800 transition text-left border-b border-stone-800 last:border-0">
+                      <span className="arabic-text text-2xl min-w-[48px] text-right">{w.arabic}</span>
+                      <span className="text-emerald-300 flex-1">{w.turkish_meaning}</span>
+                      <span className="text-stone-500 text-xs">{w.part_of_speech}</span>
+                      {w.root && <span className="text-amber-400/60 text-xs">{w.root}</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
             <MiniMetric label="Toplam kelime" value={words.length} icon="📚" />
             <MiniMetric label="Öğrenilen" value={learned} icon="✓" />
-            <MiniMetric label="Görsel kart" value={visualWords.length} icon="🖼" />
-            <MiniMetric label="Tekrar bekleyen" value={reviewWords.length} icon="🔄" />
+            <MiniMetric label="Günlük seri" value={streak.currentStreak} icon="🔥" suffix="gün" />
+            <MiniMetric label="Bugün çalışıldı" value={streak.todayCount} icon="⚡" suffix="kez" />
           </div>
         </header>
 
@@ -561,17 +588,57 @@ export default function DashboardPage() {
         {/* TEKRAR */}
         {panel === "tekrar" && (
           <section className="glass-card rounded-[2rem] p-6">
-            <h2 className="text-2xl font-bold mb-2">Akıllı Tekrar</h2>
-            <p className="text-stone-400 text-sm mb-5">Zorlandığın veya yanlış yaptığın kelimeler burada birikir.</p>
+            <h2 className="text-2xl font-bold mb-1">Akıllı Tekrar</h2>
+            <p className="text-stone-400 text-sm mb-5">
+              SM-2 algoritması — doğru yaptıkça aralık uzar, yanlışta sıfırlanır.
+            </p>
             {reviewWords.length === 0
               ? <div className="soft-card rounded-2xl p-10 text-center">
-                <div className="text-4xl mb-3">🎉</div>
-                <div className="text-stone-300">Şu an tekrar bekleyen kelime yok.</div>
-                <div className="text-stone-500 text-sm mt-2">Kelime derslerinde "Zorlandım" veya "Bilemedim" dersen buraya düşer.</div>
-              </div>
-              : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {reviewWords.map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} />)}
-              </div>}
+                  <div className="text-4xl mb-3">🎉</div>
+                  <div className="text-stone-300 font-medium">Şu an tekrar bekleyen kelime yok.</div>
+                  <div className="text-stone-500 text-sm mt-2">
+                    Kelime derslerinde "Zorlandım" veya "Bilemedim" dersen buraya düşer.
+                  </div>
+                </div>
+              : <>
+                  <div className="grid grid-cols-3 gap-3 mb-5">
+                    <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4 text-center">
+                      <div className="text-2xl font-bold text-amber-300">{reviewWords.length}</div>
+                      <div className="text-stone-400 text-xs mt-1">Bekleyen</div>
+                    </div>
+                    <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4 text-center">
+                      <div className="text-2xl font-bold text-red-400">
+                        {Object.values(progress).filter(p => p.wrongCount > 0).length}
+                      </div>
+                      <div className="text-stone-400 text-xs mt-1">Yanlış yapılan</div>
+                    </div>
+                    <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4 text-center">
+                      <div className="text-2xl font-bold text-green-400">{learned}</div>
+                      <div className="text-stone-400 text-xs mt-1">Öğrenildi</div>
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {reviewWords.map((w) => {
+                      const p = progress[w.id];
+                      return (
+                        <button key={w.id} onClick={() => openWord(w)}
+                          className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
+                          <div className="arabic-text text-4xl text-right mb-2">{w.arabic}</div>
+                          <div className="text-emerald-300 font-medium">{w.turkish_meaning}</div>
+                          <div className="text-stone-400 text-xs mt-1">{w.part_of_speech}</div>
+                          {p && (
+                            <div className="flex gap-2 mt-3 flex-wrap">
+                              <span className="bg-red-900/30 text-red-300 text-xs rounded-full px-2 py-0.5">{p.wrongCount} yanlış</span>
+                              <span className="bg-amber-900/30 text-amber-300 text-xs rounded-full px-2 py-0.5">{p.hardCount} zorlandım</span>
+                              <span className="bg-stone-800 text-stone-400 text-xs rounded-full px-2 py-0.5">{getNextReviewInfo(p)}</span>
+                            </div>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </>
+            }
           </section>
         )}
 
@@ -613,14 +680,14 @@ function Tab({ active, onClick, label }: { active: boolean; onClick: () => void;
     </button>
   );
 }
-function MiniMetric({ label, value, icon }: { label: string; value: number; icon: string }) {
+function MiniMetric({ label, value, icon, suffix }: { label: string; value: number; icon: string; suffix?: string }) {
   return (
     <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4">
       <div className="flex items-center gap-2 mb-1">
         <span>{icon}</span>
         <span className="text-stone-400 text-xs">{label}</span>
       </div>
-      <div className="text-2xl font-bold">{value}</div>
+      <div className="text-2xl font-bold">{value}{suffix && <span className="text-sm text-stone-400 ml-1">{suffix}</span>}</div>
     </div>
   );
 }
