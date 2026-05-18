@@ -331,4 +331,246 @@ export const surahs: Surah[] = [
       }
     ]
   }
+  ,{
+    id: 103,
+    name: "El-Asr",
+    arabicName: "الْعَصْر",
+    turkishName: "Asır / Zaman",
+    level: 1,
+    theme: "İnsanın hüsranda olduğunu ve kurtuluşun iman, amel, hak ve sabırla olduğunu anlatan 3 ayetlik sure.",
+    totalVerses: 3,
+    verses: [
+      {
+        number: 1,
+        arabic: "وَالْعَصْرِ",
+        turkish: "Asra yemin olsun.",
+        words: [
+          { arabic: "وَ", transliteration: "ve", meaning: "yemin vavı", role: "yemin edatı", root: null, note: "Kasem (yemin) anlamında" },
+          { arabic: "الْعَصْرِ", transliteration: "el-asri", meaning: "asra / zamana", role: "mecrur (yemin edilen)", root: "ع-ص-ر", note: "İkindi vakti veya genel zaman anlamında" }
+        ]
+      },
+      {
+        number: 2,
+        arabic: "إِنَّ الْإِنسَانَ لَفِي خُسْرٍ",
+        turkish: "Şüphesiz insan gerçekten ziyan içindedir.",
+        words: [
+          { arabic: "إِنَّ", transliteration: "inne", meaning: "şüphesiz", role: "vurgu edatı", root: null, note: "Cümleyi güçlendirir" },
+          { arabic: "الْإِنسَانَ", transliteration: "el-insâne", meaning: "insanı", role: "إِنَّ'nin ismi (mansub)", root: "أ-ن-س", note: "Belirli: tüm insanlık" },
+          { arabic: "لَفِي", transliteration: "le-fî", meaning: "gerçekten içindedir", role: "haber başlangıcı", root: null, note: "لَ vurgu edatı + فِي" },
+          { arabic: "خُسْرٍ", transliteration: "husrin", meaning: "ziyan / kayıp içinde", role: "mecrur", root: "خ-س-ر", note: "Belirsiz: her türlü ziyan" }
+        ]
+      },
+      {
+        number: 3,
+        arabic: "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ",
+        turkish: "Ancak iman edip salih amel işleyenler, birbirlerine hakkı ve sabrı tavsiye edenler bunun dışındadır.",
+        words: [
+          { arabic: "إِلَّا", transliteration: "illâ", meaning: "ancak / hariç", role: "istisna edatı", root: null, note: "Hüsrandan kurtulanları belirler" },
+          { arabic: "الَّذِينَ", transliteration: "ellezîne", meaning: "onlar ki", role: "ism-i mevsûl", root: null, note: "" },
+          { arabic: "آمَنُوا", transliteration: "âmenû", meaning: "iman ettiler", role: "mazi fiil", root: "أ-م-ن", note: "Çoğul mazi: onlar iman etti" },
+          { arabic: "وَعَمِلُوا", transliteration: "ve amilû", meaning: "ve işlediler", role: "mazi fiil", root: "ع-م-ل", note: "" },
+          { arabic: "الصَّالِحَاتِ", transliteration: "es-sâlihâti", meaning: "salih amelleri", role: "mef'ûl (nesne)", root: "ص-ل-ح", note: "Dişil çoğul: iyi, yararlı işler" },
+          { arabic: "وَتَوَاصَوْا", transliteration: "ve tevâsav", meaning: "ve tavsiye ettiler", role: "mazi fiil", root: "و-ص-ي", note: "Tefa'ul kalıbı: karşılıklı tavsiye" },
+          { arabic: "بِالْحَقِّ", transliteration: "bil-hakki", meaning: "hakkı", role: "cer-mecrur", root: "ح-ق-ق", note: "Doğru, gerçek, adalet" },
+          { arabic: "وَتَوَاصَوْا", transliteration: "ve tevâsav", meaning: "ve tavsiye ettiler", role: "mazi fiil", root: "و-ص-ي", note: "" },
+          { arabic: "بِالصَّبْرِ", transliteration: "bis-sabri", meaning: "sabrı", role: "cer-mecrur", root: "ص-ب-ر", note: "Sabır, dayanma, tahammül" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 109,
+    name: "El-Kâfirûn",
+    arabicName: "الْكَافِرُون",
+    turkishName: "Kâfirler",
+    level: 2,
+    theme: "Dini ayrılığı netleyen sure. İslam'ın tevhid inancı ile şirk arasındaki kesin sınırı çizer.",
+    totalVerses: 6,
+    verses: [
+      {
+        number: 1,
+        arabic: "قُلْ يَا أَيُّهَا الْكَافِرُونَ",
+        turkish: "De ki: Ey kâfirler!",
+        words: [
+          { arabic: "قُلْ", transliteration: "kul", meaning: "de!", role: "emir fiil", root: "ق-و-ل", note: "" },
+          { arabic: "يَا", transliteration: "yâ", meaning: "ey!", role: "nida (seslenme) edatı", root: null, note: "Seslenme için kullanılır" },
+          { arabic: "أَيُّهَا", transliteration: "eyyühâ", meaning: "ey (o kişiler)", role: "nida tamamlayıcısı", root: null, note: "يَا ile birlikte kullanılır" },
+          { arabic: "الْكَافِرُونَ", transliteration: "el-kâfirûne", meaning: "kâfirler", role: "münâdâ (seslenilen)", root: "ك-ف-ر", note: "İsm-i fâil çoğul: örtücüler, inkârcılar" }
+        ]
+      },
+      {
+        number: 2,
+        arabic: "لَا أَعْبُدُ مَا تَعْبُدُونَ",
+        turkish: "Ben sizin taptıklarınıza tapmam.",
+        words: [
+          { arabic: "لَا", transliteration: "lâ", meaning: "tapmam", role: "olumsuzluk edatı", root: null, note: "Muzari ile geniş zaman olumsuzluğu" },
+          { arabic: "أَعْبُدُ", transliteration: "a'budu", meaning: "ibadet ederim", role: "muzari fiil (1. tekil)", root: "ع-ب-د", note: "" },
+          { arabic: "مَا", transliteration: "mâ", meaning: "şeye / olana", role: "ism-i mevsûl (nesne)", root: null, note: "" },
+          { arabic: "تَعْبُدُونَ", transliteration: "ta'budûne", meaning: "tapıyorsunuz", role: "muzari fiil (2. çoğul)", root: "ع-ب-د", note: "Kök tekrarı: anlamı güçlendirir" }
+        ]
+      },
+      {
+        number: 3,
+        arabic: "وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ",
+        turkish: "Siz de benim taptığıma tapmazsınız.",
+        words: [
+          { arabic: "وَلَا", transliteration: "ve lâ", meaning: "ve … değil", role: "bağlaç + olumsuzluk", root: null, note: "" },
+          { arabic: "أَنتُمْ", transliteration: "entüm", meaning: "siz", role: "özne zamiri", root: null, note: "Eril çoğul" },
+          { arabic: "عَابِدُونَ", transliteration: "âbidûne", meaning: "tapanlar / ibadet edenler", role: "haber (ism-i fâil çoğul)", root: "ع-ب-د", note: "فَاعِل kalıbı çoğulu" },
+          { arabic: "مَا", transliteration: "mâ", meaning: "şeye", role: "ism-i mevsûl", root: null, note: "" },
+          { arabic: "أَعْبُدُ", transliteration: "a'budu", meaning: "ibadet ederim", role: "fiil (sıla)", root: "ع-ب-د", note: "" }
+        ]
+      },
+      {
+        number: 4,
+        arabic: "وَلَا أَنَا عَابِدٌ مَا عَبَدتُّمْ",
+        turkish: "Ben de sizin taptıklarınıza tapacak değilim.",
+        words: [
+          { arabic: "وَلَا", transliteration: "ve lâ", meaning: "ve değil", role: "bağlaç + olumsuzluk", root: null, note: "" },
+          { arabic: "أَنَا", transliteration: "ene", meaning: "ben", role: "özne zamiri", root: null, note: "" },
+          { arabic: "عَابِدٌ", transliteration: "âbidun", meaning: "tapacak değilim", role: "haber (ism-i fâil)", root: "ع-ب-د", note: "Belirsiz: kesin red" },
+          { arabic: "مَا", transliteration: "mâ", meaning: "şeyi", role: "ism-i mevsûl", root: null, note: "" },
+          { arabic: "عَبَدتُّمْ", transliteration: "abedtüm", meaning: "taptınız", role: "mazi fiil (2. çoğul)", root: "ع-ب-د", note: "" }
+        ]
+      },
+      {
+        number: 5,
+        arabic: "وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ",
+        turkish: "Siz de benim taptığıma tapmazsınız.",
+        words: [
+          { arabic: "وَلَا", transliteration: "ve lâ", meaning: "ve değil", role: "bağlaç + olumsuzluk", root: null, note: "3. ayet tekrar edilir — vurgu için" },
+          { arabic: "أَنتُمْ", transliteration: "entüm", meaning: "siz", role: "özne zamiri", root: null, note: "" },
+          { arabic: "عَابِدُونَ", transliteration: "âbidûne", meaning: "tapanlar", role: "haber", root: "ع-ب-د", note: "" },
+          { arabic: "مَا", transliteration: "mâ", meaning: "şeye", role: "ism-i mevsûl", root: null, note: "" },
+          { arabic: "أَعْبُدُ", transliteration: "a'budu", meaning: "ibadet ederim", role: "fiil", root: "ع-ب-د", note: "" }
+        ]
+      },
+      {
+        number: 6,
+        arabic: "لَكُمْ دِينُكُمْ وَلِيَ دِينِ",
+        turkish: "Sizin dininiz size, benim dinim bana.",
+        words: [
+          { arabic: "لَكُمْ", transliteration: "lekum", meaning: "size ait", role: "cer-mecrur (haber)", root: null, note: "لِ + كُمْ" },
+          { arabic: "دِينُكُمْ", transliteration: "dînukum", meaning: "dininiz", role: "mubtedâ", root: "د-ي-ن", note: "دِين + كُمْ eki" },
+          { arabic: "وَ", transliteration: "ve", meaning: "ve", role: "bağlaç", root: null, note: "" },
+          { arabic: "لِيَ", transliteration: "liye", meaning: "bana ait", role: "cer-mecrur", root: null, note: "لِ + يَ (benim)" },
+          { arabic: "دِينِ", transliteration: "dîni", meaning: "dinim", role: "mubtedâ", root: "د-ي-ن", note: "Yâ eki düşmüş: لِيَ دِينِي aslında" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 110,
+    name: "En-Nasr",
+    arabicName: "النَّصْر",
+    turkishName: "Yardım / Zafer",
+    level: 1,
+    theme: "Allah'ın yardımı ve fethin gelmesini, insanların dine girmesini ve tesbih etmeyi anlatan sure.",
+    totalVerses: 3,
+    verses: [
+      {
+        number: 1,
+        arabic: "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+        turkish: "Allah'ın yardımı ve fetih geldiğinde,",
+        words: [
+          { arabic: "إِذَا", transliteration: "izâ", meaning: "geldiğinde", role: "zaman zarfı (şart)", root: null, note: "Gerçekleşecek olay için" },
+          { arabic: "جَاءَ", transliteration: "câe", meaning: "geldi", role: "mazi fiil (sıla)", root: "ج-ي-أ", note: "" },
+          { arabic: "نَصْرُ", transliteration: "nasru", meaning: "yardımı", role: "özne (fâil)", root: "ن-ص-ر", note: "İzafet: Allah'ın yardımı" },
+          { arabic: "اللَّهِ", transliteration: "allâhi", meaning: "Allah'ın", role: "tamlayan", root: null, note: "" },
+          { arabic: "وَالْفَتْحُ", transliteration: "vel-fethu", meaning: "ve fetih", role: "atıf (özne)", root: "ف-ت-ح", note: "Mekke'nin fethi veya genel zafer" }
+        ]
+      },
+      {
+        number: 2,
+        arabic: "وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا",
+        turkish: "Ve insanların Allah'ın dinine bölük bölük girdiklerini gördüğünde,",
+        words: [
+          { arabic: "وَرَأَيْتَ", transliteration: "ve raeyte", meaning: "ve gördüğünde", role: "mazi fiil (2. tekil)", root: "ر-أ-ي", note: "" },
+          { arabic: "النَّاسَ", transliteration: "en-nâse", meaning: "insanları", role: "mef'ûl 1 (nesne)", root: "أ-ن-س", note: "" },
+          { arabic: "يَدْخُلُونَ", transliteration: "yedhulûne", meaning: "giriyorlar", role: "muzari fiil (hal cümlesi)", root: "د-خ-ل", note: "" },
+          { arabic: "فِي دِينِ اللَّهِ", transliteration: "fî dînillâh", meaning: "Allah'ın dinine", role: "cer-mecrur", root: "د-ي-ن", note: "İzafet: Allah'ın dini" },
+          { arabic: "أَفْوَاجًا", transliteration: "efvâcen", meaning: "bölük bölük / kalabalıklar halinde", role: "hal (zarf)", root: "ف-و-ج", note: "فَوْج çoğulu: gruplar" }
+        ]
+      },
+      {
+        number: 3,
+        arabic: "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ إِنَّهُ كَانَ تَوَّابًا",
+        turkish: "Rabbini hamd ile tesbih et ve O'ndan bağışlanma dile. Şüphesiz O, tövbeleri çok kabul edendir.",
+        words: [
+          { arabic: "فَسَبِّحْ", transliteration: "fe-sebbih", meaning: "öyleyse tesbih et!", role: "emir fiil (sonuç)", root: "س-ب-ح", note: "Tef'il kalıbı emri: sübhânallah de" },
+          { arabic: "بِحَمْدِ", transliteration: "bi-hamdi", meaning: "hamdıyla", role: "cer-mecrur (hal)", root: "ح-م-د", note: "" },
+          { arabic: "رَبِّكَ", transliteration: "rabbike", meaning: "Rabbinin", role: "tamlayan", root: "ر-ب-ب", note: "" },
+          { arabic: "وَاسْتَغْفِرْهُ", transliteration: "vestağfirhu", meaning: "ve O'ndan bağışlanma dile", role: "emir fiil + ek zamir", root: "غ-ف-ر", note: "İstiğfar: Allah'tan af dilemek" },
+          { arabic: "إِنَّهُ", transliteration: "innehû", meaning: "şüphesiz O", role: "vurgu edatı + zamir", root: null, note: "" },
+          { arabic: "كَانَ", transliteration: "kâne", meaning: "idi / hep öyledir", role: "nakıs fiil", root: "ك-و-ن", note: "Devamlılık ifade eder" },
+          { arabic: "تَوَّابًا", transliteration: "tevvâben", meaning: "tövbeleri çok kabul eden", role: "haber (kâne'nin)", root: "ت-و-ب", note: "فَعَّال kalıbı: çok yapan; tövbeleri en çok kabul eden" }
+        ]
+      }
+    ]
+  },
+  {
+    id: 111,
+    name: "El-Mesed",
+    arabicName: "الْمَسَد",
+    turkishName: "Hurma Lifi",
+    level: 2,
+    theme: "Hz. Peygamber'in amcası Ebu Leheb ve karısının akıbetini anlatan sure.",
+    totalVerses: 5,
+    verses: [
+      {
+        number: 1,
+        arabic: "تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ",
+        turkish: "Ebu Leheb'in iki eli kurusun! Kurudu da zaten.",
+        words: [
+          { arabic: "تَبَّتْ", transliteration: "tebbet", meaning: "kurusun / helak olsun", role: "mazi fiil (beddua)", root: "ت-ب-ب", note: "Hem beddua hem de fiili gerçekleşmiş haber" },
+          { arabic: "يَدَا", transliteration: "yedâ", meaning: "iki eli", role: "fâil (özne)", root: "ي-د-ي", note: "Tesniye (ikil): iki el" },
+          { arabic: "أَبِي لَهَبٍ", transliteration: "ebî lehebin", meaning: "Ebu Leheb'in", role: "tamlayan (özel isim)", root: null, note: "Lakap: alev babası — ateş yüzlü" },
+          { arabic: "وَتَبَّ", transliteration: "ve tebbe", meaning: "ve helak oldu", role: "mazi fiil", root: "ت-ب-ب", note: "Kesinleşmiş gerçek: oldu" }
+        ]
+      },
+      {
+        number: 2,
+        arabic: "مَا أَغْنَى عَنْهُ مَالُهُ وَمَا كَسَبَ",
+        turkish: "Malı ve kazandıkları ona hiçbir fayda sağlamadı.",
+        words: [
+          { arabic: "مَا", transliteration: "mâ", meaning: "hiç fayda sağlamadı", role: "olumsuzluk edatı", root: null, note: "" },
+          { arabic: "أَغْنَى", transliteration: "ağnâ", meaning: "fayda sağladı / yetti", role: "mazi fiil", root: "غ-ن-ي", note: "" },
+          { arabic: "عَنْهُ", transliteration: "anhu", meaning: "ondan / ona", role: "cer-mecrur", root: null, note: "عَنْ + هُ" },
+          { arabic: "مَالُهُ", transliteration: "mâluhu", meaning: "malı", role: "fâil (özne)", root: "م-و-ل", note: "مَال + هُ" },
+          { arabic: "وَمَا كَسَبَ", transliteration: "ve mâ kesebe", meaning: "ve kazandıkları", role: "atıf", root: "ك-س-ب", note: "Serveti ve ameli birlikte reddeder" }
+        ]
+      },
+      {
+        number: 3,
+        arabic: "سَيَصْلَى نَارًا ذَاتَ لَهَبٍ",
+        turkish: "Alevli bir ateşe girecek.",
+        words: [
+          { arabic: "سَيَصْلَى", transliteration: "se-yasle", meaning: "girecek / yanacak", role: "muzari fiil (gelecek)", root: "ص-ل-ي", note: "سَ gelecek zaman eki" },
+          { arabic: "نَارًا", transliteration: "nâren", meaning: "ateşe", role: "mef'ûl (nesne)", root: "ن-و-ر", note: "Belirsiz: korkunç bir ateş" },
+          { arabic: "ذَاتَ", transliteration: "zâte", meaning: "sahibi olan / içeren", role: "sıfat", root: "ذ-و-ت", note: "Dişil ism-i mevsûf" },
+          { arabic: "لَهَبٍ", transliteration: "lehebin", meaning: "alev", role: "tamlayan", root: "ل-ه-ب", note: "Sure adı ile aynı kök" }
+        ]
+      },
+      {
+        number: 4,
+        arabic: "وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ",
+        turkish: "Karısı da odun taşıyıcı olarak.",
+        words: [
+          { arabic: "وَامْرَأَتُهُ", transliteration: "vemraetühu", meaning: "ve karısı", role: "atıf özne", root: "م-ر-أ", note: "امْرَأَة + هُ eki" },
+          { arabic: "حَمَّالَةَ", transliteration: "hammâlete", meaning: "taşıyıcı", role: "hal (hâl cümlesi)", root: "ح-م-ل", note: "فَعَّالَة kalıbı: çok taşıyan, meslek bildiren" },
+          { arabic: "الْحَطَبِ", transliteration: "el-hatabi", meaning: "odunun", role: "tamlayan", root: "ح-ط-ب", note: "Dedikodu/fitne için mecazi kullanım da var" }
+        ]
+      },
+      {
+        number: 5,
+        arabic: "فِي جِيدِهَا حَبْلٌ مِنْ مَسَدٍ",
+        turkish: "Boynunda hurma lifinden bir ip var.",
+        words: [
+          { arabic: "فِي جِيدِهَا", transliteration: "fî cîdihâ", meaning: "boynunda", role: "cer-mecrur", root: "ج-ي-د", note: "جِيد: boyun, gerdanlık bölgesi" },
+          { arabic: "حَبْلٌ", transliteration: "hablün", meaning: "ip", role: "mubtedâ", root: "ح-ب-ل", note: "Belirsiz: adi bir ip" },
+          { arabic: "مِنْ مَسَدٍ", transliteration: "min mesedin", meaning: "hurma lifinden", role: "cer-mecrur (sıfat)", root: "م-س-د", note: "Suredeki en küçük detay — aşağılamayı vurgular" }
+        ]
+      }
+    ]
+  }
 ];

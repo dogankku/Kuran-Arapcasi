@@ -52,3 +52,12 @@ export type StreakData = {
   lastStudyDate: string | null;
   todayCount: number;
 };
+
+export type MorphPattern = {
+  id: number;
+  pattern: string;
+  patternArabic: string;
+  name: string;
+  description: string;
+  examples: { arabic: string; transliteration: string; meaning: string; root: string }[];
+};
