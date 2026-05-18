@@ -12,7 +12,8 @@ export const words: Word[] = [
     "memory_hint": "Kur’an’daki en merkezi isimdir.",
     "example_arabic": "الْحَمْدُ لِلَّهِ",
     "example_turkish": "Hamd Allah’a mahsustur.",
-    "grammar_note": "اللَّه kelimesi ayet içinde 'Allah' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "grammar_note": "اللَّه kelimesi ayet içinde 'Allah' anlam alanıyla kullanılır. Kelime türü: özel isim.",
+    "frequency": 2699
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@ export const words: Word[] = [
     "memory_hint": "Nas suresini hatırla.",
     "example_arabic": "رَبِّ النَّاسِ",
     "example_turkish": "İnsanların Rabbi.",
-    "grammar_note": "النَّاس kelimesi ayet içinde 'insanlar' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "النَّاس kelimesi ayet içinde 'insanlar' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 241
   },
   {
     "id": 3,
@@ -38,7 +40,8 @@ export const words: Word[] = [
     "memory_hint": "Yaratılış sahnesini düşün.",
     "example_arabic": "خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökleri ve yeri yarattı.",
-    "grammar_note": "خَلَقَ kelimesi ayet içinde 'yarattı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "خَلَقَ kelimesi ayet içinde 'yarattı' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 254
   },
   {
     "id": 4,
@@ -51,7 +54,8 @@ export const words: Word[] = [
     "memory_hint": "Söz söylemeyi düşün.",
     "example_arabic": "قَالَ رَبِّي",
     "example_turkish": "Rabbim dedi.",
-    "grammar_note": "قَالَ kelimesi ayet içinde 'dedi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "قَالَ kelimesi ayet içinde 'dedi' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 1625
   },
   {
     "id": 5,
@@ -64,7 +68,8 @@ export const words: Word[] = [
     "memory_hint": "İlim kelimesinden bağ kur.",
     "example_arabic": "وَاللَّهُ يَعْلَمُ",
     "example_turkish": "Allah bilir.",
-    "grammar_note": "يَعْلَمُ kelimesi ayet içinde 'bilir' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "يَعْلَمُ kelimesi ayet içinde 'bilir' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 382
   },
   {
     "id": 6,
@@ -77,7 +82,8 @@ export const words: Word[] = [
     "memory_hint": "İman ve güven bağlantısı kur.",
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
-    "grammar_note": "آمَنُوا kelimesi ayet içinde 'iman ettiler' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "آمَنُوا kelimesi ayet içinde 'iman ettiler' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 258
   },
   {
     "id": 7,
@@ -90,7 +96,8 @@ export const words: Word[] = [
     "memory_hint": "Yeryüzünü düşün.",
     "example_arabic": "وَالْأَرْضَ",
     "example_turkish": "Ve yeri.",
-    "grammar_note": "الْأَرْضَ kelimesi ayet içinde 'yer / yeryüzü' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "الْأَرْضَ kelimesi ayet içinde 'yer / yeryüzü' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 461
   },
   {
     "id": 8,
@@ -103,7 +110,8 @@ export const words: Word[] = [
     "memory_hint": "Yukarıdaki geniş göğü düşün.",
     "example_arabic": "السَّمَاءِ",
     "example_turkish": "Göğün.",
-    "grammar_note": "السَّمَاء kelimesi ayet içinde 'gök / sema' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "السَّمَاء kelimesi ayet içinde 'gök / sema' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 120
   },
   {
     "id": 9,
@@ -116,7 +124,8 @@ export const words: Word[] = [
     "memory_hint": "Karanlığı aydınlatan ışığı düşün.",
     "example_arabic": "اللَّهُ نُورُ السَّمَاوَاتِ",
     "example_turkish": "Allah göklerin nurudur.",
-    "grammar_note": "نُور belirsiz haldedir: 'bir ışık/nur'. Kök: ن-و-ر (aydınlatmak). النُّور (belirli) ile farkı: belirsiz formda genel ışık kavramını ifade eder."
+    "grammar_note": "نُور belirsiz haldedir: 'bir ışık/nur'. Kök: ن-و-ر (aydınlatmak). النُّور (belirli) ile farkı: belirsiz formda genel ışık kavramını ifade eder.",
+    "frequency": 49
   },
   {
     "id": 10,
@@ -129,7 +138,8 @@ export const words: Word[] = [
     "memory_hint": "Bilgi ve öğrenme çağrışımı kur.",
     "example_arabic": "عِلْمًا",
     "example_turkish": "Bir bilgi olarak.",
-    "grammar_note": "عِلْم kelimesi ayet içinde 'ilim / bilgi' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "عِلْم kelimesi ayet içinde 'ilim / bilgi' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 105
   },
   {
     "id": 11,
@@ -142,7 +152,8 @@ export const words: Word[] = [
     "memory_hint": "Şükür ve övgü duygusunu düşün.",
     "example_arabic": "الْحَمْدُ لِلَّهِ",
     "example_turkish": "Hamd Allah’a mahsustur.",
-    "grammar_note": "الْحَمْدُ kelimesi ayet içinde 'hamd / övgü / şükür' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "الْحَمْدُ kelimesi ayet içinde 'hamd / övgü / şükür' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 38
   },
   {
     "id": 12,
@@ -155,7 +166,8 @@ export const words: Word[] = [
     "memory_hint": "Yetiştiren ve terbiye eden anlamıyla bağ kur.",
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
-    "grammar_note": "رَبِّ kelimesi ayet içinde 'Rab / terbiye eden' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "رَبِّ kelimesi ayet içinde 'Rab / terbiye eden' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 975
   },
   {
     "id": 13,
@@ -168,7 +180,8 @@ export const words: Word[] = [
     "memory_hint": "Birçok âlemi düşün.",
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
-    "grammar_note": "الْعَالَمِينَ kelimesi ayet içinde 'âlemler' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "الْعَالَمِينَ kelimesi ayet içinde 'âlemler' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 73
   },
   {
     "id": 14,
@@ -181,7 +194,8 @@ export const words: Word[] = [
     "memory_hint": "Hesap ve sorumluluk çağrışımı kur.",
     "example_arabic": "يَوْمِ الدِّينِ",
     "example_turkish": "Din günü.",
-    "grammar_note": "الدِّينِ kelimesi ayet içinde 'din / hesap / karşılık' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "الدِّينِ kelimesi ayet içinde 'din / hesap / karşılık' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 92
   },
   {
     "id": 15,
@@ -194,7 +208,8 @@ export const words: Word[] = [
     "memory_hint": "Öne doğru uzanan aydınlık yolu düşün.",
     "example_arabic": "صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol.",
-    "grammar_note": "صِرَاطٍ kelimesi ayet içinde 'yol' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "صِرَاطٍ kelimesi ayet içinde 'yol' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 45
   },
   {
     "id": 16,
@@ -207,7 +222,8 @@ export const words: Word[] = [
     "memory_hint": "Düz çizgi gibi istikametli düşün.",
     "example_arabic": "صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol.",
-    "grammar_note": "مُسْتَقِيمٍ kelimesi ayet içinde 'dosdoğru' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "grammar_note": "مُسْتَقِيمٍ kelimesi ayet içinde 'dosdoğru' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "frequency": 34
   },
   {
     "id": 17,
@@ -220,7 +236,8 @@ export const words: Word[] = [
     "memory_hint": "Kat kat gökleri düşün.",
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
-    "grammar_note": "السَّمَاوَاتِ kelimesi ayet içinde 'gökler' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "السَّمَاوَاتِ kelimesi ayet içinde 'gökler' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 190
   },
   {
     "id": 18,
@@ -233,7 +250,8 @@ export const words: Word[] = [
     "memory_hint": "Bir insan grubunu işaret ettiğini düşün.",
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
-    "grammar_note": "الَّذِينَ kelimesi eril çoğul ism-i mevsûldür (ilgi zamiri). 'Kim ki / onlar ki' anlamında kullanılır. Dişil çoğul karşılığı اللَّاتِي'dir."
+    "grammar_note": "الَّذِينَ kelimesi eril çoğul ism-i mevsûldür (ilgi zamiri). 'Kim ki / onlar ki' anlamında kullanılır. Dişil çoğul karşılığı اللَّاتِي'dir.",
+    "frequency": 980
   },
   {
     "id": 19,
@@ -246,7 +264,8 @@ export const words: Word[] = [
     "memory_hint": "Nuru ve aydınlanmayı düşün.",
     "example_arabic": "اللَّهُ نُورُ السَّمَاوَاتِ",
     "example_turkish": "Allah göklerin nurudur.",
-    "grammar_note": "النُّور belirli artıcı (ال) ile kullanılmıştır: 'o nur/ışık'. Allah'ın sıfatlarından biridir: النُّور = Nur (el-İsrâ suresi gibi surelerde). Kök: ن-و-ر. Belirsiz hali نُورٌ'dur."
+    "grammar_note": "النُّور belirli artıcı (ال) ile kullanılmıştır: 'o nur/ışık'. Allah'ın sıfatlarından biridir: النُّور = Nur (el-İsrâ suresi gibi surelerde). Kök: ن-و-ر. Belirsiz hali نُورٌ'dur.",
+    "frequency": 43
   },
   {
     "id": 20,
@@ -259,7 +278,8 @@ export const words: Word[] = [
     "memory_hint": "Yol gösteren ışığı düşün.",
     "example_arabic": "هُدًى لِلْمُتَّقِينَ",
     "example_turkish": "Takva sahipleri için hidayet.",
-    "grammar_note": "هُدًى kelimesi ayet içinde 'hidayet / doğru yol gösterme' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "هُدًى kelimesi ayet içinde 'hidayet / doğru yol gösterme' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 98
   },
   {
     "id": 21,
@@ -272,7 +292,8 @@ export const words: Word[] = [
     "memory_hint": "Kuşatan merhamet duygusu kur.",
     "example_arabic": "رَحْمَةً",
     "example_turkish": "Bir rahmet olarak.",
-    "grammar_note": "رَحْمَة kelimesi ayet içinde 'rahmet / merhamet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "رَحْمَة kelimesi ayet içinde 'rahmet / merhamet' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 79
   },
   {
     "id": 22,
@@ -285,7 +306,8 @@ export const words: Word[] = [
     "memory_hint": "Yeşil, huzurlu bahçeyi düşün.",
     "example_arabic": "فِي جَنَّةٍ",
     "example_turkish": "Bir cennette.",
-    "grammar_note": "جَنَّة kelimesi ayet içinde 'cennet / bahçe' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "جَنَّة kelimesi ayet içinde 'cennet / bahçe' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 147
   },
   {
     "id": 23,
@@ -298,7 +320,8 @@ export const words: Word[] = [
     "memory_hint": "Alev çağrışımı kur.",
     "example_arabic": "النَّارِ",
     "example_turkish": "Ateşin.",
-    "grammar_note": "نَار kelimesi ayet içinde 'ateş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "نَار kelimesi ayet içinde 'ateş' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 145
   },
   {
     "id": 24,
@@ -311,7 +334,8 @@ export const words: Word[] = [
     "memory_hint": "Ses dalgalarını düşün.",
     "example_arabic": "إِنَّهُ هُوَ السَّمِيعُ",
     "example_turkish": "Şüphesiz O işitendir.",
-    "grammar_note": "سَمِيع kelimesi ayet içinde 'işiten' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "grammar_note": "سَمِيع kelimesi ayet içinde 'işiten' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "frequency": 46
   },
   {
     "id": 25,
@@ -324,7 +348,8 @@ export const words: Word[] = [
     "memory_hint": "Görme ve ışık çağrışımı kur.",
     "example_arabic": "بَصِيرٌ",
     "example_turkish": "Görendir.",
-    "grammar_note": "بَصِير kelimesi ayet içinde 'gören' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "grammar_note": "بَصِير kelimesi ayet içinde 'gören' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "frequency": 42
   },
   {
     "id": 26,
@@ -337,7 +362,8 @@ export const words: Word[] = [
     "memory_hint": "Hakikat terazisini düşün.",
     "example_arabic": "الْحَقُّ",
     "example_turkish": "Hak / gerçek.",
-    "grammar_note": "حَقّ kelimesi ayet içinde 'hak / gerçek / doğru' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "حَقّ kelimesi ayet içinde 'hak / gerçek / doğru' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 247
   },
   {
     "id": 27,
@@ -350,7 +376,8 @@ export const words: Word[] = [
     "memory_hint": "Anlam taşıyan işareti düşün.",
     "example_arabic": "آيَةٌ",
     "example_turkish": "Bir ayet / işaret.",
-    "grammar_note": "آيَة kelimesi ayet içinde 'ayet / işaret / delil' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "آيَة kelimesi ayet içinde 'ayet / işaret / delil' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 382
   },
   {
     "id": 28,
@@ -363,7 +390,8 @@ export const words: Word[] = [
     "memory_hint": "Hatırlama ve tesbih çağrışımı kur.",
     "example_arabic": "ذِكْرُ اللَّهِ",
     "example_turkish": "Allah’ı anmak.",
-    "grammar_note": "ذِكْر kelimesi ayet içinde 'zikir / anma / hatırlama' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "ذِكْر kelimesi ayet içinde 'zikir / anma / hatırlama' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 292
   },
   {
     "id": 29,
@@ -376,7 +404,8 @@ export const words: Word[] = [
     "memory_hint": "Rüzgâra dayanan ağacı düşün.",
     "example_arabic": "وَاصْبِرْ",
     "example_turkish": "Sabret.",
-    "grammar_note": "صَبْر kelimesi ayet içinde 'sabır / dayanıklılık' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "صَبْر kelimesi ayet içinde 'sabır / dayanıklılık' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 90
   },
   {
     "id": 30,
@@ -389,7 +418,8 @@ export const words: Word[] = [
     "memory_hint": "Bir yerden çıkışı düşün.",
     "example_arabic": "مِنَ الْجِنَّةِ وَالنَّاسِ",
     "example_turkish": "Cinlerden ve insanlardan.",
-    "grammar_note": "مِنْ kelimesi ayet içinde '-den / -dan' anlam alanıyla kullanılır. Kelime türü: harf-i cer."
+    "grammar_note": "مِنْ kelimesi ayet içinde '-den / -dan' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "frequency": 3225
   },
   {
     "id": 31,
@@ -402,7 +432,8 @@ export const words: Word[] = [
     "memory_hint": "Bir şeyin içinde durduğunu hayal et.",
     "example_arabic": "فِي قُلُوبِهِمْ",
     "example_turkish": "Onların kalplerinde.",
-    "grammar_note": "فِي kelimesi ayet içinde 'içinde / -de / -da' anlam alanıyla kullanılır. Kelime türü: harf-i cer."
+    "grammar_note": "فِي kelimesi ayet içinde 'içinde / -de / -da' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "frequency": 1704
   },
   {
     "id": 32,
@@ -415,7 +446,8 @@ export const words: Word[] = [
     "memory_hint": "Hedefe giden oku düşün.",
     "example_arabic": "إِلَى رَبِّكَ",
     "example_turkish": "Rabbine doğru.",
-    "grammar_note": "إِلَى kelimesi ayet içinde '-e / -a / doğru' anlam alanıyla kullanılır. Kelime türü: harf-i cer."
+    "grammar_note": "إِلَى kelimesi ayet içinde '-e / -a / doğru' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "frequency": 742
   },
   {
     "id": 33,
@@ -428,7 +460,8 @@ export const words: Word[] = [
     "memory_hint": "Bir şeyin üstünde durduğunu düşün.",
     "example_arabic": "عَلَى صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol üzerinde.",
-    "grammar_note": "عَلَى kelimesi ayet içinde 'üzerinde / üzerine' anlam alanıyla kullanılır. Kelime türü: harf-i cer."
+    "grammar_note": "عَلَى kelimesi ayet içinde 'üzerinde / üzerine' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "frequency": 1432
   },
   {
     "id": 34,
@@ -441,7 +474,8 @@ export const words: Word[] = [
     "memory_hint": "İki şeyi bağlayan köprü gibi düşün.",
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
-    "grammar_note": "وَ kelimesi ayet içinde 've' anlam alanıyla kullanılır. Kelime türü: bağlaç."
+    "grammar_note": "وَ kelimesi ayet içinde 've' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
+    "frequency": 40000
   },
   {
     "id": 35,
@@ -454,7 +488,8 @@ export const words: Word[] = [
     "memory_hint": "Olumsuzluk işareti gibi düşün.",
     "example_arabic": "لَا رَيْبَ فِيهِ",
     "example_turkish": "Onda şüphe yoktur.",
-    "grammar_note": "لَا kelimesi ayet içinde 'hayır / yok / değil' anlam alanıyla kullanılır. Kelime türü: olumsuzluk edatı."
+    "grammar_note": "لَا kelimesi ayet içinde 'hayır / yok / değil' anlam alanıyla kullanılır. Kelime türü: olumsuzluk edatı.",
+    "frequency": 2243
   },
   {
     "id": 36,
@@ -467,7 +502,8 @@ export const words: Word[] = [
     "memory_hint": "ne / şey / değil anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "مَا",
     "example_turkish": "ne / şey / değil",
-    "grammar_note": "مَا kelimesi ayet içinde 'ne / şey / değil' anlam alanıyla kullanılır. Kelime türü: edat/zamir."
+    "grammar_note": "مَا kelimesi ayet içinde 'ne / şey / değil' anlam alanıyla kullanılır. Kelime türü: edat/zamir.",
+    "frequency": 2226
   },
   {
     "id": 37,
@@ -480,7 +516,8 @@ export const words: Word[] = [
     "memory_hint": "o anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "هُوَ",
     "example_turkish": "o",
-    "grammar_note": "هُوَ kelimesi eril (müzekker) tekil şahıs zamiridir. 'O' (erkek veya cinsiyetsiz varlıklar için) anlamında kullanılır. Dişil karşılığı هِيَ'dir."
+    "grammar_note": "هُوَ kelimesi eril (müzekker) tekil şahıs zamiridir. 'O' (erkek veya cinsiyetsiz varlıklar için) anlamında kullanılır. Dişil karşılığı هِيَ'dir.",
+    "frequency": 706
   },
   {
     "id": 38,
@@ -493,7 +530,8 @@ export const words: Word[] = [
     "memory_hint": "o anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "هِيَ",
     "example_turkish": "o",
-    "grammar_note": "هِيَ kelimesi dişil (müennes) tekil şahıs zamiridir. 'O' (kadın veya dişil sayılan varlıklar için) anlamında kullanılır. Eril karşılığı هُوَ'dir."
+    "grammar_note": "هِيَ kelimesi dişil (müennes) tekil şahıs zamiridir. 'O' (kadın veya dişil sayılan varlıklar için) anlamında kullanılır. Eril karşılığı هُوَ'dir.",
+    "frequency": 170
   },
   {
     "id": 39,
@@ -506,7 +544,8 @@ export const words: Word[] = [
     "memory_hint": "onlar anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "هُمْ",
     "example_turkish": "onlar",
-    "grammar_note": "هُمْ kelimesi eril (müzekker) çoğul şahıs zamiridir. 'Onlar' anlamında kullanılır. Karma ya da erkeklerden oluşan gruplar için kullanılır. Dişil çoğul karşılığı هُنَّ'dir."
+    "grammar_note": "هُمْ kelimesi eril (müzekker) çoğul şahıs zamiridir. 'Onlar' anlamında kullanılır. Karma ya da erkeklerden oluşan gruplar için kullanılır. Dişil çoğul karşılığı هُنَّ'dir.",
+    "frequency": 1088
   },
   {
     "id": 40,
@@ -519,7 +558,8 @@ export const words: Word[] = [
     "memory_hint": "sen anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَنْتَ",
     "example_turkish": "sen",
-    "grammar_note": "أَنْتَ kelimesi ayet içinde 'sen' anlam alanıyla kullanılır. Kelime türü: zamir."
+    "grammar_note": "أَنْتَ kelimesi ayet içinde 'sen' anlam alanıyla kullanılır. Kelime türü: zamir.",
+    "frequency": 176
   },
   {
     "id": 41,
@@ -532,7 +572,8 @@ export const words: Word[] = [
     "memory_hint": "biz anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "نَحْنُ",
     "example_turkish": "biz",
-    "grammar_note": "نَحْنُ kelimesi ayet içinde 'biz' anlam alanıyla kullanılır. Kelime türü: zamir."
+    "grammar_note": "نَحْنُ kelimesi ayet içinde 'biz' anlam alanıyla kullanılır. Kelime türü: zamir.",
+    "frequency": 88
   },
   {
     "id": 42,
@@ -545,7 +586,8 @@ export const words: Word[] = [
     "memory_hint": "her / bütün anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "كُلّ",
     "example_turkish": "her / bütün",
-    "grammar_note": "كُلّ kelimesi ayet içinde 'her / bütün' anlam alanıyla kullanılır. Kelime türü: isim."
+    "grammar_note": "كُلّ kelimesi ayet içinde 'her / bütün' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "frequency": 384
   },
   {
     "id": 43,
@@ -558,7 +600,8 @@ export const words: Word[] = [
     "memory_hint": "sonra anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "بَعْدَ",
     "example_turkish": "sonra",
-    "grammar_note": "بَعْدَ zaman zarfıdır ve 'sonra, -den sonra' anlamını taşır. Bir isimle veya zamirle tamlaması olur: بَعْدَ الصَّلَاةِ (namazdan sonra). ثُمَّ'den farkı: zaman zarfıdır, bağlaç değil."
+    "grammar_note": "بَعْدَ zaman zarfıdır ve 'sonra, -den sonra' anlamını taşır. Bir isimle veya zamirle tamlaması olur: بَعْدَ الصَّلَاةِ (namazdan sonra). ثُمَّ'den farkı: zaman zarfıdır, bağlaç değil.",
+    "frequency": 176
   },
   {
     "id": 44,
@@ -571,7 +614,8 @@ export const words: Word[] = [
     "memory_hint": "önce anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "قَبْلَ",
     "example_turkish": "önce",
-    "grammar_note": "قَبْلَ kelimesi ayet içinde 'önce' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "قَبْلَ kelimesi ayet içinde 'önce' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 149
   },
   {
     "id": 45,
@@ -584,7 +628,8 @@ export const words: Word[] = [
     "memory_hint": "yanında / katında anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "عِنْدَ",
     "example_turkish": "yanında / katında",
-    "grammar_note": "عِنْدَ kelimesi ayet içinde 'yanında / katında' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "عِنْدَ kelimesi ayet içinde 'yanında / katında' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 248
   },
   {
     "id": 46,
@@ -597,7 +642,8 @@ export const words: Word[] = [
     "memory_hint": "ile / beraber anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "مَعَ",
     "example_turkish": "ile / beraber",
-    "grammar_note": "مَعَ kelimesi ayet içinde 'ile / beraber' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "مَعَ kelimesi ayet içinde 'ile / beraber' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 179
   },
   {
     "id": 47,
@@ -610,7 +656,8 @@ export const words: Word[] = [
     "memory_hint": "arasında anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "بَيْنَ",
     "example_turkish": "arasında",
-    "grammar_note": "بَيْنَ kelimesi ayet içinde 'arasında' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "بَيْنَ kelimesi ayet içinde 'arasında' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 183
   },
   {
     "id": 48,
@@ -623,7 +670,8 @@ export const words: Word[] = [
     "memory_hint": "altında anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "تَحْتَ",
     "example_turkish": "altında",
-    "grammar_note": "تَحْتَ kelimesi ayet içinde 'altında' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "تَحْتَ kelimesi ayet içinde 'altında' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 34
   },
   {
     "id": 49,
@@ -636,7 +684,8 @@ export const words: Word[] = [
     "memory_hint": "üstünde anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "فَوْقَ",
     "example_turkish": "üstünde",
-    "grammar_note": "فَوْقَ kelimesi ayet içinde 'üstünde' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "فَوْقَ kelimesi ayet içinde 'üstünde' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 23
   },
   {
     "id": 50,
@@ -649,7 +698,8 @@ export const words: Word[] = [
     "memory_hint": "önünde anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَمَامَ",
     "example_turkish": "önünde",
-    "grammar_note": "أَمَامَ kelimesi ayet içinde 'önünde' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "أَمَامَ kelimesi ayet içinde 'önünde' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 5
   },
   {
     "id": 51,
@@ -662,7 +712,8 @@ export const words: Word[] = [
     "memory_hint": "arkasında anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "خَلْفَ",
     "example_turkish": "arkasında",
-    "grammar_note": "خَلْفَ kelimesi ayet içinde 'arkasında' anlam alanıyla kullanılır. Kelime türü: zarf."
+    "grammar_note": "خَلْفَ kelimesi ayet içinde 'arkasında' anlam alanıyla kullanılır. Kelime türü: zarf.",
+    "frequency": 9
   },
   {
     "id": 52,
@@ -675,7 +726,8 @@ export const words: Word[] = [
     "memory_hint": "-e kadar / hatta anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "حَتَّى",
     "example_turkish": "-e kadar / hatta",
-    "grammar_note": "حَتَّى kelimesi ayet içinde '-e kadar / hatta' anlam alanıyla kullanılır. Kelime türü: edat."
+    "grammar_note": "حَتَّى kelimesi ayet içinde '-e kadar / hatta' anlam alanıyla kullanılır. Kelime türü: edat.",
+    "frequency": 244
   },
   {
     "id": 53,
@@ -688,7 +740,8 @@ export const words: Word[] = [
     "memory_hint": "sonra anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "ثُمَّ",
     "example_turkish": "sonra",
-    "grammar_note": "ثُمَّ sıralama bağlacıdır ve eylemler arasındaki gecikme veya sıralı akışı anlatır. بَعْدَ'den farkı: iki cümleyi/fiili bağlar ve bir süreç sırasını/gecikmesini vurgular."
+    "grammar_note": "ثُمَّ sıralama bağlacıdır ve eylemler arasındaki gecikme veya sıralı akışı anlatır. بَعْدَ'den farkı: iki cümleyi/fiili bağlar ve bir süreç sırasını/gecikmesini vurgular.",
+    "frequency": 337
   },
   {
     "id": 54,
@@ -701,7 +754,8 @@ export const words: Word[] = [
     "memory_hint": "veya anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَوْ",
     "example_turkish": "veya",
-    "grammar_note": "أَوْ kelimesi ayet içinde 'veya' anlam alanıyla kullanılır. Kelime türü: bağlaç."
+    "grammar_note": "أَوْ kelimesi ayet içinde 'veya' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
+    "frequency": 303
   },
   {
     "id": 55,
@@ -714,7 +768,8 @@ export const words: Word[] = [
     "memory_hint": "bilakis / aksine anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "بَلْ",
     "example_turkish": "bilakis / aksine",
-    "grammar_note": "بَلْ kelimesi ayet içinde 'bilakis / aksine' anlam alanıyla kullanılır. Kelime türü: bağlaç."
+    "grammar_note": "بَلْ kelimesi ayet içinde 'bilakis / aksine' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
+    "frequency": 113
   },
   {
     "id": 56,
@@ -727,7 +782,8 @@ export const words: Word[] = [
     "memory_hint": "şüphesiz anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "إِنَّ",
     "example_turkish": "şüphesiz",
-    "grammar_note": "إِنَّ cümle başında bağımsız bir cümleyi güçlendirir ve 'şüphesiz, gerçekten' anlamı katar. إِنَّ اللَّهَ غَفُورٌ → Şüphesiz Allah çok bağışlayandır. أَنَّ'den farkı: bağımsız cümlede kullanılır."
+    "grammar_note": "إِنَّ cümle başında bağımsız bir cümleyi güçlendirir ve 'şüphesiz, gerçekten' anlamı katar. إِنَّ اللَّهَ غَفُورٌ → Şüphesiz Allah çok bağışlayandır. أَنَّ'den farkı: bağımsız cümlede kullanılır.",
+    "frequency": 1729
   },
   {
     "id": 57,
@@ -740,7 +796,8 @@ export const words: Word[] = [
     "memory_hint": "ki / şüphesiz anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَنَّ",
     "example_turkish": "ki / şüphesiz",
-    "grammar_note": "أَنَّ bir fiil veya ismin yönetimi altındaki bağımlı cümlelerde 'ki, -dığını' anlamı verir. عَلِمَ أَنَّ → '...olduğunu bildi' yapısındaki gibi. إِنَّ'den farkı: bağımlı/nesne cümlesinde kullanılır."
+    "grammar_note": "أَنَّ bir fiil veya ismin yönetimi altındaki bağımlı cümlelerde 'ki, -dığını' anlamı verir. عَلِمَ أَنَّ → '...olduğunu bildi' yapısındaki gibi. إِنَّ'den farkı: bağımlı/nesne cümlesinde kullanılır.",
+    "frequency": 411
   },
   {
     "id": 58,
@@ -753,7 +810,8 @@ export const words: Word[] = [
     "memory_hint": "sanki anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "كَأَنَّ",
     "example_turkish": "sanki",
-    "grammar_note": "كَأَنَّ kelimesi ayet içinde 'sanki' anlam alanıyla kullanılır. Kelime türü: edat."
+    "grammar_note": "كَأَنَّ kelimesi ayet içinde 'sanki' anlam alanıyla kullanılır. Kelime türü: edat.",
+    "frequency": 15
   },
   {
     "id": 59,
@@ -766,7 +824,8 @@ export const words: Word[] = [
     "memory_hint": "fakat anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لَكِنَّ",
     "example_turkish": "fakat",
-    "grammar_note": "لَكِنَّ kelimesi ayet içinde 'fakat' anlam alanıyla kullanılır. Kelime türü: edat."
+    "grammar_note": "لَكِنَّ kelimesi ayet içinde 'fakat' anlam alanıyla kullanılır. Kelime türü: edat.",
+    "frequency": 30
   },
   {
     "id": 60,
@@ -779,7 +838,8 @@ export const words: Word[] = [
     "memory_hint": "değildir anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لَيْسَ",
     "example_turkish": "değildir",
-    "grammar_note": "لَيْسَ kelimesi ayet içinde 'değildir' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "لَيْسَ kelimesi ayet içinde 'değildir' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 71
   },
   {
     "id": 61,
@@ -792,7 +852,8 @@ export const words: Word[] = [
     "memory_hint": "idi / oldu anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "كَانَ",
     "example_turkish": "idi / oldu",
-    "grammar_note": "كَانَ kelimesi ayet içinde 'idi / oldu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "كَانَ kelimesi ayet içinde 'idi / oldu' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 1358
   },
   {
     "id": 62,
@@ -805,7 +866,8 @@ export const words: Word[] = [
     "memory_hint": "olur / olmaktadır anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "يَكُونُ",
     "example_turkish": "olur / olmaktadır",
-    "grammar_note": "يَكُونُ kelimesi ayet içinde 'olur / olmaktadır' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "grammar_note": "يَكُونُ kelimesi ayet içinde 'olur / olmaktadır' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "frequency": 280
   },
   {
     "id": 63,
@@ -818,7 +880,8 @@ export const words: Word[] = [
     "memory_hint": "elbette / -miş olabilir anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "قَدْ",
     "example_turkish": "elbette / -miş olabilir",
-    "grammar_note": "قَدْ mazi fiil (geçmiş) ile kullanıldığında kesinlik (elbette yapmıştır) anlamı verir; muzari fiil (geniş/şimdiki) ile kullanıldığında ihtimal (belki yapar/-miş olabilir) anlamı katar. Kullanım bağlamı anlam farkını belirler."
+    "grammar_note": "قَدْ mazi fiil (geçmiş) ile kullanıldığında kesinlik (elbette yapmıştır) anlamı verir; muzari fiil (geniş/şimdiki) ile kullanıldığında ihtimal (belki yapar/-miş olabilir) anlamı katar. Kullanım bağlamı anlam farkını belirler.",
+    "frequency": 408
   },
   {
     "id": 64,
@@ -831,7 +894,8 @@ export const words: Word[] = [
     "memory_hint": "-ecek / -acak anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "سَوْفَ",
     "example_turkish": "-ecek / -acak",
-    "grammar_note": "سَوْفَ kelimesi ayet içinde '-ecek / -acak' anlam alanıyla kullanılır. Kelime türü: edat."
+    "grammar_note": "سَوْفَ kelimesi ayet içinde '-ecek / -acak' anlam alanıyla kullanılır. Kelime türü: edat.",
+    "frequency": 74
   },
   {
     "id": 65,
@@ -844,7 +908,8 @@ export const words: Word[] = [
     "memory_hint": "-medi / -madı anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لَمْ",
     "example_turkish": "-medi / -madı",
-    "grammar_note": "لَمْ kelimesi ayet içinde '-medi / -madı' anlam alanıyla kullanılır. Kelime türü: olumsuzluk."
+    "grammar_note": "لَمْ kelimesi ayet içinde '-medi / -madı' anlam alanıyla kullanılır. Kelime türü: olumsuzluk.",
+    "frequency": 634
   },
   {
     "id": 66,
@@ -857,7 +922,8 @@ export const words: Word[] = [
     "memory_hint": "asla -meyecek anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لَنْ",
     "example_turkish": "asla -meyecek",
-    "grammar_note": "لَنْ kelimesi ayet içinde 'asla -meyecek' anlam alanıyla kullanılır. Kelime türü: olumsuzluk."
+    "grammar_note": "لَنْ kelimesi ayet içinde 'asla -meyecek' anlam alanıyla kullanılır. Kelime türü: olumsuzluk.",
+    "frequency": 77
   },
   {
     "id": 67,
@@ -870,7 +936,8 @@ export const words: Word[] = [
     "memory_hint": "eğer / şayet anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لَوْ",
     "example_turkish": "eğer / şayet",
-    "grammar_note": "لَوْ gerçekleşmeyecek/imkânsız şart cümlelerinde kullanılır ('keşke olsaydı / eğer olsaydı' gibi). Ardından gelen fiil genellikle mazi kalıbındadır. إِنْ'den farkı: imkânsız/varsayımsal koşul bildirir."
+    "grammar_note": "لَوْ gerçekleşmeyecek/imkânsız şart cümlelerinde kullanılır ('keşke olsaydı / eğer olsaydı' gibi). Ardından gelen fiil genellikle mazi kalıbındadır. إِنْ'den farkı: imkânsız/varsayımsal koşul bildirir.",
+    "frequency": 114
   },
   {
     "id": 68,
@@ -883,7 +950,8 @@ export const words: Word[] = [
     "memory_hint": "eğer anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "إِنْ",
     "example_turkish": "eğer",
-    "grammar_note": "إِنْ gerçekleşmesi mümkün şart cümlelerinde kullanılır ('eğer yaparsa' gibi). Ardından gelen fiil genellikle meczum kalıbındadır. لَوْ'dan farkı: gerçekleşebilir koşul bildirir."
+    "grammar_note": "إِنْ gerçekleşmesi mümkün şart cümlelerinde kullanılır ('eğer yaparsa' gibi). Ardından gelen fiil genellikle meczum kalıbındadır. لَوْ'dan farkı: gerçekleşebilir koşul bildirir.",
+    "frequency": 667
   },
   {
     "id": 69,
@@ -896,7 +964,8 @@ export const words: Word[] = [
     "memory_hint": "kim / kimse anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "مَنْ",
     "example_turkish": "kim / kimse",
-    "grammar_note": "مَنْ kelimesi ayet içinde 'kim / kimse' anlam alanıyla kullanılır. Kelime türü: soru/zamir."
+    "grammar_note": "مَنْ kelimesi ayet içinde 'kim / kimse' anlam alanıyla kullanılır. Kelime türü: soru/zamir.",
+    "frequency": 710
   },
   {
     "id": 70,
@@ -909,7 +978,8 @@ export const words: Word[] = [
     "memory_hint": "ne zaman anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "مَتَى",
     "example_turkish": "ne zaman",
-    "grammar_note": "مَتَى kelimesi ayet içinde 'ne zaman' anlam alanıyla kullanılır. Kelime türü: soru."
+    "grammar_note": "مَتَى kelimesi ayet içinde 'ne zaman' anlam alanıyla kullanılır. Kelime türü: soru.",
+    "frequency": 17
   },
   {
     "id": 71,
@@ -922,7 +992,8 @@ export const words: Word[] = [
     "memory_hint": "nerede anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَيْنَ",
     "example_turkish": "nerede",
-    "grammar_note": "أَيْنَ kelimesi ayet içinde 'nerede' anlam alanıyla kullanılır. Kelime türü: soru."
+    "grammar_note": "أَيْنَ kelimesi ayet içinde 'nerede' anlam alanıyla kullanılır. Kelime türü: soru.",
+    "frequency": 26
   },
   {
     "id": 72,
@@ -935,7 +1006,8 @@ export const words: Word[] = [
     "memory_hint": "nasıl anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "كَيْفَ",
     "example_turkish": "nasıl",
-    "grammar_note": "كَيْفَ kelimesi ayet içinde 'nasıl' anlam alanıyla kullanılır. Kelime türü: soru."
+    "grammar_note": "كَيْفَ kelimesi ayet içinde 'nasıl' anlam alanıyla kullanılır. Kelime türü: soru.",
+    "frequency": 95
   },
   {
     "id": 73,
@@ -948,7 +1020,8 @@ export const words: Word[] = [
     "memory_hint": "niçin anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "لِمَاذَا",
     "example_turkish": "niçin",
-    "grammar_note": "لِمَاذَا kelimesi ayet içinde 'niçin' anlam alanıyla kullanılır. Kelime türü: soru."
+    "grammar_note": "لِمَاذَا kelimesi ayet içinde 'niçin' anlam alanıyla kullanılır. Kelime türü: soru.",
+    "frequency": 4
   },
   {
     "id": 74,
@@ -961,7 +1034,8 @@ export const words: Word[] = [
     "memory_hint": "mi / mı anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "هَلْ",
     "example_turkish": "mi / mı",
-    "grammar_note": "هَلْ kelimesi ayet içinde 'mi / mı' anlam alanıyla kullanılır. Kelime türü: soru edatı."
+    "grammar_note": "هَلْ kelimesi ayet içinde 'mi / mı' anlam alanıyla kullanılır. Kelime türü: soru edatı.",
+    "frequency": 222
   },
   {
     "id": 75,
@@ -974,7 +1048,8 @@ export const words: Word[] = [
     "memory_hint": "hangi anlamını güçlü bir görsel çağrışımla bağla.",
     "example_arabic": "أَيّ",
     "example_turkish": "hangi",
-    "grammar_note": "أَيّ kelimesi ayet içinde 'hangi' anlam alanıyla kullanılır. Kelime türü: soru."
+    "grammar_note": "أَيّ kelimesi ayet içinde 'hangi' anlam alanıyla kullanılır. Kelime türü: soru.",
+    "frequency": 88
   },
   {
     "id": 76,
