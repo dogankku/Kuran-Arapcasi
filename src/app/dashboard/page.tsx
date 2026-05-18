@@ -6,6 +6,7 @@ import { memoryImagesByArabic } from "@/data/memoryImages";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
+import { morphPatterns } from "@/data/morphology";
 import { words } from "@/data/words";
 import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
@@ -15,7 +16,7 @@ import {
   speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
 
-type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "quiz" | "tekrar" | "gorseller";
+type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller";
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
@@ -29,6 +30,7 @@ export default function DashboardPage() {
   const [grammarIndex, setGrammarIndex] = useState(0);
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [activeSurah, setActiveSurah] = useState(0);
+  const [morphIndex, setMorphIndex] = useState(0);
   const [activeSurahVerse, setActiveSurahVerse] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -169,6 +171,7 @@ export default function DashboardPage() {
             ["gramer", "Gramer"],
             ["ayet", "Ayet Analizi"],
             ["sure", "Sure Modu"],
+            ["morfo", "Kalıplar"],
             ["quiz", "Test"],
             ["tekrar", `Tekrar (${reviewWords.length})`],
             ["gorseller", `Görseller`],
@@ -542,6 +545,53 @@ export default function DashboardPage() {
                   );
                 })()}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* MORFOLOJİ */}
+        {panel === "morfo" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-2">Arapça Kelime Kalıpları</h2>
+            <p className="text-stone-400 text-sm mb-6">
+              Arapçada kelimeler belirli kalıplardan türer. Bir kalıbı tanıyınca yüzlerce kelimeyi anlayabilirsin.
+            </p>
+            <div className="grid md:grid-cols-[260px_1fr] gap-6">
+              <div className="space-y-2">
+                {morphPatterns.map((mp, i) => (
+                  <button key={mp.id} onClick={() => setMorphIndex(i)}
+                    className={`w-full text-left rounded-2xl p-4 border transition ${morphIndex === i ? "bg-emerald-800/60 border-emerald-400/40" : "bg-black/20 border-stone-700/30 hover:border-emerald-400/20"}`}>
+                    <div className="arabic-text text-2xl text-amber-200 mb-1">{mp.patternArabic}</div>
+                    <div className="font-medium text-sm">{mp.name}</div>
+                  </button>
+                ))}
+              </div>
+              {morphPatterns[morphIndex] && (() => {
+                const mp = morphPatterns[morphIndex];
+                return (
+                  <div className="soft-card rounded-[1.7rem] p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <button onClick={() => speakArabic(mp.patternArabic)} className="arabic-text text-6xl bg-transparent text-amber-200">{mp.patternArabic}</button>
+                      <div>
+                        <div className="text-xl font-bold">{mp.name}</div>
+                        <div className="text-stone-400 text-sm font-mono">{mp.pattern}</div>
+                      </div>
+                    </div>
+                    <p className="text-stone-300 leading-relaxed mb-6">{mp.description}</p>
+                    <div className="mb-2 text-stone-400 text-sm font-medium">Bu kalıptan örnekler:</div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {mp.examples.map((ex, i) => (
+                        <div key={i} className="rounded-2xl border border-stone-700/50 bg-black/20 p-4 text-center">
+                          <button onClick={() => speakArabic(ex.arabic)} className="arabic-text text-3xl bg-transparent w-full mb-2">{ex.arabic}</button>
+                          <div className="text-stone-400 text-xs mb-1">{ex.transliteration}</div>
+                          <div className="text-emerald-300 text-sm font-medium">{ex.meaning}</div>
+                          <div className="text-amber-400/60 text-xs mt-1">Kök: {ex.root}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </section>
         )}
