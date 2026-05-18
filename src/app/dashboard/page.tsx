@@ -5,6 +5,7 @@ import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, Word } from "@/data/types";
+import { surahs } from "@/data/surahs";
 import { words } from "@/data/words";
 import {
   STORAGE_KEY, buildQuizOptions, emptyProgress,
@@ -13,7 +14,7 @@ import {
   getQuranCoverage, getReviewWords, speakArabic, updateProgress,
 } from "@/lib/learning";
 
-type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "quiz" | "tekrar" | "gorseller";
+type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "quiz" | "tekrar" | "gorseller";
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
@@ -26,6 +27,8 @@ export default function DashboardPage() {
   const [activeRootFilter, setActiveRootFilter] = useState<string | null>(null);
   const [grammarIndex, setGrammarIndex] = useState(0);
   const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [activeSurah, setActiveSurah] = useState(0);
+  const [activeSurahVerse, setActiveSurahVerse] = useState<number | null>(null);
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -127,6 +130,7 @@ export default function DashboardPage() {
             ["kokler", "Kök Ailesi"],
             ["gramer", "Gramer"],
             ["ayet", "Ayet Analizi"],
+            ["sure", "Sure Modu"],
             ["quiz", "Test"],
             ["tekrar", `Tekrar (${reviewWords.length})`],
             ["gorseller", `Görseller`],
@@ -412,6 +416,94 @@ export default function DashboardPage() {
                   </div>
                 );
               })()}
+            </div>
+          </section>
+        )}
+
+        {/* SURE MODU */}
+        {panel === "sure" && (
+          <section className="space-y-4">
+            <div className="grid md:grid-cols-[280px_1fr] gap-6">
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold px-1">Sureler</h2>
+                {surahs.map((surah, i) => {
+                  const totalWords = surah.verses.reduce((acc, v) => acc + v.words.length, 0);
+                  const knownWords = surah.verses.reduce((acc, v) =>
+                    acc + v.words.filter(w => {
+                      const match = words.find(wd => wd.arabic === w.arabic || wd.transliteration === w.transliteration);
+                      return match && progress[match.id]?.known;
+                    }).length, 0);
+                  return (
+                    <button key={surah.id} onClick={() => { setActiveSurah(i); setActiveSurahVerse(null); }}
+                      className={`w-full text-left rounded-2xl p-4 border transition ${activeSurah === i ? "bg-emerald-800/60 border-emerald-400/40" : "glass-card hover:border-emerald-400/20"}`}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-bold">{surah.name}</span>
+                        <span className="arabic-text text-xl text-amber-200">{surah.arabicName}</span>
+                      </div>
+                      <div className="text-stone-400 text-xs mb-2">{surah.turkishName} · {surah.totalVerses} ayet</div>
+                      <div className="h-1.5 bg-stone-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-emerald-500 rounded-full transition-all"
+                          style={{ width: totalWords > 0 ? `${Math.round((knownWords / totalWords) * 100)}%` : "0%" }} />
+                      </div>
+                      <div className={`text-xs mt-1 ${surah.level === 1 ? "text-blue-400" : surah.level === 2 ? "text-amber-400" : "text-purple-400"}`}>
+                        {surah.level === 1 ? "Temel" : surah.level === 2 ? "Orta" : "İleri"}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="glass-card rounded-[2rem] p-6">
+                {surahs[activeSurah] && (() => {
+                  const surah = surahs[activeSurah];
+                  return (
+                    <div>
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h2 className="text-2xl font-bold">{surah.name}</h2>
+                          <p className="text-stone-400 text-sm mt-1 max-w-lg">{surah.theme}</p>
+                        </div>
+                        <button onClick={() => speakArabic(surah.verses.map(v => v.arabic).join(' '))}
+                          className="bg-emerald-700/60 hover:bg-emerald-700 rounded-xl px-4 py-2 text-sm transition">▶ Tümünü Dinle</button>
+                      </div>
+
+                      <div className="space-y-4">
+                        {surah.verses.map((verse, vi) => (
+                          <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/30 border-emerald-400/30" : "bg-black/20 border-stone-700/30"}`}>
+                            <button onClick={() => setActiveSurahVerse(activeSurahVerse === vi ? null : vi)}
+                              className="w-full text-left p-5">
+                              <div className="flex items-center gap-3 mb-2">
+                                <span className="w-7 h-7 rounded-full bg-emerald-800/60 text-emerald-300 text-xs flex items-center justify-center font-bold shrink-0">{verse.number}</span>
+                                <button onClick={(e) => { e.stopPropagation(); speakArabic(verse.arabic); }}
+                                  className="arabic-text text-2xl md:text-3xl text-right flex-1 bg-transparent leading-loose">{verse.arabic}</button>
+                              </div>
+                              <div className="text-stone-400 text-sm pl-10">{verse.turkish}</div>
+                            </button>
+
+                            {activeSurahVerse === vi && (
+                              <div className="px-5 pb-5 pt-1 border-t border-stone-700/30">
+                                <div className="text-stone-500 text-xs mb-3">Kelime Kelime Analiz:</div>
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                  {verse.words.map((w, wi) => (
+                                    <div key={wi} className="rounded-xl border border-stone-700/50 bg-stone-900/40 p-3">
+                                      <button onClick={() => speakArabic(w.arabic)} className="arabic-text text-2xl bg-transparent w-full text-right mb-2">{w.arabic}</button>
+                                      <div className="text-stone-400 text-xs mb-1">{w.transliteration}</div>
+                                      <div className="text-emerald-300 text-sm font-medium">{w.meaning}</div>
+                                      <div className="text-stone-500 text-xs mt-1">{w.role}</div>
+                                      {w.root && <div className="text-amber-400/60 text-xs mt-1">Kök: {w.root}</div>}
+                                      {w.note && <div className="text-stone-600 text-xs mt-1 italic">{w.note}</div>}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
             </div>
           </section>
         )}
