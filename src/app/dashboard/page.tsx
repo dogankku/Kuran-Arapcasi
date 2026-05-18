@@ -1,63 +1,80 @@
 'use client';
 
 import { useEffect, useMemo, useState } from "react";
+import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, Word } from "@/data/types";
 import { words } from "@/data/words";
-import { STORAGE_KEY, buildQuizOptions, emptyProgress, getLevelDescription, getLevelIcon, getLevelShort, getLevelTitle, getQuizPrompt, getReviewWords, speakArabic, updateProgress } from "@/lib/learning";
+import {
+  STORAGE_KEY, buildQuizOptions, emptyProgress,
+  getDailyWords, getLevelDescription, getLevelIcon,
+  getLevelShort, getLevelTitle, getMilestone, getQuizPrompt,
+  getQuranCoverage, getReviewWords, speakArabic, updateProgress,
+} from "@/lib/learning";
 
-type Panel = "daily" | "lesson" | "quiz" | "analysis" | "review" | "visuals";
+type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "quiz" | "tekrar" | "gorseller";
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
-  const [panel, setPanel] = useState<Panel>("daily");
+  const [panel, setPanel] = useState<Panel>("yol");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [progress, setProgress] = useState<ProgressMap>({});
   const [quizMode, setQuizMode] = useState<QuizMode>("meaning");
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [activeRootFilter, setActiveRootFilter] = useState<string | null>(null);
+  const [grammarIndex, setGrammarIndex] = useState(0);
+  const [sentenceIndex, setSentenceIndex] = useState(0);
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
   const activeImage = memoryImagesByArabic[activeWord.arabic] || null;
   const visualWords = useMemo(() => words.filter((w) => memoryImagesByArabic[w.arabic]), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
-  const sentence = sentenceAnalyses.find((s) => s.level === level) || sentenceAnalyses[0];
-  const quizPrompt = useMemo(() => getQuizPrompt(activeWord, quizMode), [activeWord, quizMode]);
-  const quizOptions = useMemo(() => buildQuizOptions(words, activeWord, quizMode), [activeWord, quizMode]);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try { setProgress(JSON.parse(saved)); } catch { setProgress({}); }
-    }
+    if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
   }, []);
-
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
 
   const learned = Object.values(progress).filter((p) => p.known).length;
+  const coverage = getQuranCoverage(learned);
+  const milestone = getMilestone(learned);
   const activeProgress = progress[activeWord.id] || emptyProgress();
+  const dailyWords = useMemo(() => getDailyWords(words, progress, 5), [progress]);
+
+  const quizPrompt = useMemo(() => getQuizPrompt(activeWord, quizMode), [activeWord, quizMode]);
+  const quizOptions = useMemo(() => buildQuizOptions(words, activeWord, quizMode), [activeWord, quizMode]);
+
+  // Kök ailesi verileri
+  const rootFamilies = useMemo(() => {
+    const map = new Map<string, Word[]>();
+    words.forEach(w => {
+      if (w.root) {
+        if (!map.has(w.root)) map.set(w.root, []);
+        map.get(w.root)!.push(w);
+      }
+    });
+    return Array.from(map.entries())
+      .filter(([, ws]) => ws.length >= 2)
+      .sort((a, b) => b[1].length - a[1].length);
+  }, []);
 
   function save(word: Word, type: "known" | "hard" | "wrong") {
     setProgress((cur) => ({ ...cur, [word.id]: updateProgress(cur[word.id] || emptyProgress(), type) }));
   }
-
   function next() {
-    setSelectedAnswer(null);
-    setShowAnswer(false);
+    setSelectedAnswer(null); setShowAnswer(false);
     setIndex((i) => (i + 1 >= levelWords.length ? 0 : i + 1));
   }
-
   function openWord(word: Word) {
     const list = words.filter((w) => w.level === word.level);
     setLevel(word.level);
     setIndex(Math.max(0, list.findIndex((w) => w.id === word.id)));
-    setShowAnswer(true);
-    setSelectedAnswer(null);
-    setPanel("lesson");
+    setShowAnswer(true); setSelectedAnswer(null); setPanel("kelime");
   }
-
   function answerQuiz(answer: string) {
     if (selectedAnswer) return;
     setSelectedAnswer(answer);
@@ -67,117 +84,448 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen text-white">
       <div className="max-w-7xl mx-auto px-4 py-6">
+
+        {/* HEADER - İlerleme */}
         <header className="glass-card rounded-[2rem] p-6 mb-6">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm mb-5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />Temiz Sürüm · Supabase Yok
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm mb-4">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Ayet Hafızası · Kur&apos;an Öğrenme Sistemi
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
+              <p className="text-stone-300 mt-2 text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
+            </div>
+            <div className="md:w-64">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
+                <span className="text-emerald-300 font-bold">%{coverage}</span>
+              </div>
+              <div className="h-4 bg-stone-800 rounded-full overflow-hidden mb-2">
+                <div className="h-full bg-gradient-to-r from-emerald-500 to-amber-300 rounded-full transition-all duration-700"
+                  style={{ width: `${coverage}%` }} />
+              </div>
+              <div className="flex justify-between text-xs text-stone-500">
+                <span>{learned} kelime öğrenildi</span>
+                <span>Sonraki hedef: {milestone.next} kelime → {milestone.label}</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold">Ayet Hafızası</h1>
-          <p className="text-stone-300 mt-3">Görsel hafıza, kelime kartı, test ve akıllı tekrar.</p>
-          <div className="grid md:grid-cols-3 gap-3 mt-6">
-            <MiniMetric label="Toplam kelime" value={words.length} />
-            <MiniMetric label="Görsel kart" value={visualWords.length} />
-            <MiniMetric label="Öğrenilen" value={learned} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+            <MiniMetric label="Toplam kelime" value={words.length} icon="📚" />
+            <MiniMetric label="Öğrenilen" value={learned} icon="✓" />
+            <MiniMetric label="Görsel kart" value={visualWords.length} icon="🖼" />
+            <MiniMetric label="Tekrar bekleyen" value={reviewWords.length} icon="🔄" />
           </div>
         </header>
 
-        <section className="grid md:grid-cols-3 gap-4 mb-6">
-          {[1,2,3].map((x) => {
-            const l = x as Level;
-            const count = words.filter((w) => w.level === l).length;
-            return <button key={l} onClick={() => { setLevel(l); setIndex(0); setPanel("daily"); }} className={`text-left rounded-[1.5rem] p-5 border ${level===l ? "bg-emerald-700/80 border-emerald-300" : "glass-card"}`}>
-              <div className="flex justify-between"><div><div className="text-sm text-stone-300">{getLevelShort(l)}</div><div className="font-bold text-xl">{getLevelTitle(l)}</div></div><div className="text-3xl text-amber-200">{getLevelIcon(l)}</div></div>
-              <p className="text-stone-300 text-sm mt-3">{getLevelDescription(l)}</p>
-              <div className="text-xs text-emerald-200 mt-4">{count} kelime</div>
-            </button>;
-          })}
-        </section>
-
-        <nav className="glass-card rounded-[1.4rem] p-2 mb-6 flex gap-2 overflow-x-auto no-scrollbar">
-          <Tab active={panel==="daily"} onClick={() => setPanel("daily")} label="Günlük Ders" />
-          <Tab active={panel==="lesson"} onClick={() => setPanel("lesson")} label="Kelime Dersi" />
-          <Tab active={panel==="quiz"} onClick={() => setPanel("quiz")} label="Test" />
-          <Tab active={panel==="analysis"} onClick={() => setPanel("analysis")} label="Ayet Çözümleme" />
-          <Tab active={panel==="review"} onClick={() => setPanel("review")} label={`Tekrar ${reviewWords.length}`} />
-          <Tab active={panel==="visuals"} onClick={() => setPanel("visuals")} label={`Görsel Hafıza ${visualWords.length}`} />
+        {/* NAVİGASYON */}
+        <nav className="glass-card rounded-[1.4rem] p-2 mb-6 flex gap-1 overflow-x-auto no-scrollbar">
+          {([
+            ["yol", "Öğrenme Yolu"],
+            ["kelime", "Kelimeler"],
+            ["kokler", "Kök Ailesi"],
+            ["gramer", "Gramer"],
+            ["ayet", "Ayet Analizi"],
+            ["quiz", "Test"],
+            ["tekrar", `Tekrar (${reviewWords.length})`],
+            ["gorseller", `Görseller`],
+          ] as [Panel, string][]).map(([p, label]) => (
+            <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} />
+          ))}
         </nav>
 
-        {panel==="daily" && <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {levelWords.slice(0, 9).map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} />)}
-        </section>}
+        {/* ÖĞRENME YOLU */}
+        {panel === "yol" && (
+          <div className="space-y-6">
+            <section className="glass-card rounded-[2rem] p-6">
+              <h2 className="text-2xl font-bold mb-1">Bugünün Dersi</h2>
+              <p className="text-stone-400 text-sm mb-5">Kur&apos;an&apos;da en sık geçen, henüz öğrenmediğin kelimeler:</p>
+              <div className="grid md:grid-cols-5 gap-3">
+                {dailyWords.map((w) => (
+                  <button key={w.id} onClick={() => openWord(w)}
+                    className="soft-card rounded-[1.5rem] p-4 text-center hover:border-emerald-400/50 transition">
+                    <div className="arabic-text text-4xl mb-2">{w.arabic}</div>
+                    <div className="text-emerald-300 text-sm font-medium">{w.turkish_meaning}</div>
+                    <div className="text-stone-500 text-xs mt-1">{w.part_of_speech}</div>
+                    {(w as any).frequency && (
+                      <div className="text-amber-400/70 text-xs mt-1">{(w as any).frequency.toLocaleString()}× Kur&apos;an&apos;da</div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </section>
 
-        {panel==="lesson" && <section className="grid lg:grid-cols-[1.1fr_.9fr] gap-6">
-          <div className="glass-card rounded-[2rem] p-6">
+            <section className="grid md:grid-cols-3 gap-4">
+              {([1, 2, 3] as Level[]).map((l) => {
+                const count = words.filter((w) => w.level === l).length;
+                const learnedInLevel = words.filter(w => w.level === l && progress[w.id]?.known).length;
+                return (
+                  <button key={l} onClick={() => { setLevel(l); setIndex(0); setPanel("kelime"); }}
+                    className={`text-left rounded-[1.5rem] p-5 border transition ${level === l ? "bg-emerald-700/80 border-emerald-300" : "glass-card hover:border-emerald-400/30"}`}>
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <div className="text-xs text-stone-400">{getLevelShort(l)}</div>
+                        <div className="font-bold text-lg">{getLevelTitle(l)}</div>
+                      </div>
+                      <div className="text-3xl text-amber-200">{getLevelIcon(l)}</div>
+                    </div>
+                    <p className="text-stone-300 text-xs mb-3">{getLevelDescription(l)}</p>
+                    <div className="h-2 bg-stone-800 rounded-full overflow-hidden mb-1">
+                      <div className="h-full bg-emerald-500 rounded-full transition-all"
+                        style={{ width: count > 0 ? `${(learnedInLevel / count) * 100}%` : "0%" }} />
+                    </div>
+                    <div className="text-xs text-stone-500">{learnedInLevel}/{count} öğrenildi</div>
+                  </button>
+                );
+              })}
+            </section>
+
+            <section className="glass-card rounded-[2rem] p-6">
+              <h2 className="text-xl font-bold mb-4">Öğrenme Yol Haritası</h2>
+              <div className="space-y-3">
+                {[
+                  { threshold: 10, label: "Temel Başlangıç", desc: "10 kelime → Kur'an'ın %25'i", icon: "◇" },
+                  { threshold: 30, label: "İlk Adım", desc: "30 kelime → Kur'an'ın %50'si", icon: "◈" },
+                  { threshold: 75, label: "Orta Yol", desc: "75 kelime → Kur'an'ın %70'i", icon: "◆" },
+                  { threshold: 150, label: "İleri Seviye", desc: "150 kelime → Kur'an'ın %80'i", icon: "★" },
+                  { threshold: 300, label: "Hedef", desc: "300 kelime → Kur'an'ın %90'ı", icon: "🎯" },
+                ].map(({ threshold, label, desc, icon }) => (
+                  <div key={threshold} className={`flex items-center gap-4 p-4 rounded-2xl border transition ${learned >= threshold ? "bg-emerald-900/40 border-emerald-400/40" : "bg-black/20 border-stone-700/50"}`}>
+                    <div className={`text-2xl ${learned >= threshold ? "text-emerald-300" : "text-stone-600"}`}>{icon}</div>
+                    <div className="flex-1">
+                      <div className={`font-semibold ${learned >= threshold ? "text-emerald-200" : "text-stone-300"}`}>{label}</div>
+                      <div className="text-stone-400 text-sm">{desc}</div>
+                    </div>
+                    {learned >= threshold && <div className="text-emerald-400 text-sm font-bold">✓ Tamamlandı</div>}
+                    {learned < threshold && <div className="text-stone-500 text-sm">{threshold - learned} kelime kaldı</div>}
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* KELİME DERSİ */}
+        {panel === "kelime" && (
+          <section className="space-y-4">
+            <div className="grid md:grid-cols-3 gap-3 mb-4">
+              {([1, 2, 3] as Level[]).map((l) => (
+                <button key={l} onClick={() => { setLevel(l); setIndex(0); }}
+                  className={`rounded-2xl p-3 text-sm font-semibold border ${level === l ? "bg-emerald-700 border-emerald-300" : "glass-card"}`}>
+                  {getLevelShort(l)}: {getLevelTitle(l)}
+                </button>
+              ))}
+            </div>
+            <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-6">
+              <div className="glass-card rounded-[2rem] p-6">
+                <div className="soft-card rounded-[1.7rem] p-6 text-center">
+                  <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
+                  {activeImage
+                    ? <img src={activeImage} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
+                    : <div className="my-5 rounded-3xl border border-dashed border-stone-700 bg-black/20 p-6 text-stone-500 text-sm">Bu kelime için görsel yok.</div>}
+                  <div className="text-stone-400 mt-4 text-sm">Okunuş: {activeWord.transliteration}</div>
+                  {activeWord.root && (
+                    <div className="mt-2 text-amber-300/80 text-sm">Kök: {activeWord.root}</div>
+                  )}
+                  <div className="mt-2 inline-flex bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 px-4 py-2 rounded-full text-sm">{activeWord.part_of_speech}</div>
+                  {(activeWord as any).frequency && (
+                    <div className="text-amber-400/60 text-xs mt-2">Kur&apos;an&apos;da {(activeWord as any).frequency.toLocaleString()} kez geçer</div>
+                  )}
+                  <div className="text-xs text-stone-500 mt-2">
+                    {activeProgress.known ? "✓ Öğrenildi" : activeProgress.hard ? "⟳ Tekrar gerekli" : "◌ Yeni"}
+                  </div>
+                </div>
+
+                {showAnswer && (
+                  <div className="mt-5 grid gap-4">
+                    <Info title="Anlam" value={activeWord.turkish_meaning} />
+                    <Info title="Hafıza Tekniği" value={activeWord.memory_hint} />
+                    <div className="soft-card rounded-2xl p-5">
+                      <div className="text-stone-400 text-sm mb-2">Ayet Örneği</div>
+                      <button onClick={() => speakArabic(activeWord.example_arabic)} className="arabic-text arabic-clickable text-3xl my-2 bg-transparent w-full text-right">{activeWord.example_arabic}</button>
+                      <div className="text-stone-300 text-sm">{activeWord.example_turkish}</div>
+                    </div>
+                    <Info title="Gramer Notu" value={activeWord.grammar_note} />
+                  </div>
+                )}
+
+                <div className="flex flex-col md:flex-row gap-3 mt-5">
+                  <button onClick={() => setShowAnswer(!showAnswer)} className="flex-1 bg-emerald-600 rounded-2xl py-3 font-semibold text-sm">
+                    {showAnswer ? "Cevabı Gizle" : "Cevabı Göster"}
+                  </button>
+                  <button onClick={next} className="flex-1 bg-stone-800 border border-stone-700 rounded-2xl py-3 font-semibold text-sm">Sonraki →</button>
+                </div>
+                <div className="grid grid-cols-3 gap-3 mt-3">
+                  <button onClick={() => { save(activeWord, "known"); next(); }} className="bg-green-700/80 hover:bg-green-700 rounded-2xl py-3 font-semibold text-sm transition">✓ Bildim</button>
+                  <button onClick={() => { save(activeWord, "hard"); next(); }} className="bg-yellow-700/80 hover:bg-yellow-700 rounded-2xl py-3 font-semibold text-sm transition">~ Zorlandım</button>
+                  <button onClick={() => { save(activeWord, "wrong"); next(); }} className="bg-red-700/80 hover:bg-red-700 rounded-2xl py-3 font-semibold text-sm transition">✗ Bilemedim</button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="glass-card rounded-[2rem] p-5">
+                  <h2 className="font-bold mb-2">Kademe Notu</h2>
+                  <p className="text-stone-300 text-sm">{getLevelDescription(level)}</p>
+                </div>
+                <div className="glass-card rounded-[2rem] p-5">
+                  <h2 className="font-bold mb-3">Bu Kademeden Kelimeler</h2>
+                  <div className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto">
+                    {levelWords.map((w, i) => (
+                      <button key={w.id} onClick={() => { setIndex(i); setShowAnswer(false); setSelectedAnswer(null); }}
+                        className={`text-left rounded-xl p-2 text-xs border transition ${i === index ? "bg-emerald-700/60 border-emerald-400/50" : progress[w.id]?.known ? "bg-green-900/20 border-green-700/30" : "bg-black/20 border-stone-700/30"}`}>
+                        <div className="arabic-text text-xl">{w.arabic}</div>
+                        <div className="text-stone-400 truncate">{w.turkish_meaning}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* KÖK AİLESİ */}
+        {panel === "kokler" && (
+          <section className="space-y-4">
+            <div className="glass-card rounded-[2rem] p-6">
+              <h2 className="text-2xl font-bold mb-2">Kök Ailesi Öğrenimi</h2>
+              <p className="text-stone-400 text-sm mb-5">Aynı kökten gelen kelimeleri birlikte öğren. Bir kök öğrenmek birçok kelimeyi kapılar.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {rootFamilies.map(([root, fam]) => (
+                  <button key={root}
+                    onClick={() => setActiveRootFilter(activeRootFilter === root ? null : root)}
+                    className={`text-left rounded-2xl p-5 border transition ${activeRootFilter === root ? "bg-emerald-800/60 border-emerald-400/50" : "bg-black/20 border-stone-700/40 hover:border-emerald-400/30"}`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="arabic-text text-2xl text-amber-300">{root}</div>
+                      <div className="text-xs text-stone-400 bg-stone-800 rounded-full px-2 py-1">{fam.length} kelime</div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {fam.map(w => (
+                        <span key={w.id} className="bg-emerald-900/30 border border-emerald-700/30 rounded-xl px-3 py-1 text-sm">
+                          <span className="arabic-text text-base mr-1">{w.arabic}</span>
+                          <span className="text-stone-400 text-xs">{w.turkish_meaning}</span>
+                        </span>
+                      ))}
+                    </div>
+                    {activeRootFilter === root && (
+                      <div className="mt-4 pt-4 border-t border-stone-700/30">
+                        {fam.map(w => (
+                          <div key={w.id} className="flex items-center gap-3 py-2 border-b border-stone-800/50 last:border-0">
+                            <button onClick={(e) => { e.stopPropagation(); speakArabic(w.arabic); }} className="arabic-text text-3xl bg-transparent text-right min-w-[60px]">{w.arabic}</button>
+                            <div className="flex-1">
+                              <div className="text-emerald-300 font-medium text-sm">{w.turkish_meaning}</div>
+                              <div className="text-stone-500 text-xs">{w.part_of_speech} · {w.transliteration}</div>
+                            </div>
+                            <button onClick={(e) => { e.stopPropagation(); openWord(w); }} className="text-xs bg-stone-700 hover:bg-stone-600 rounded-xl px-3 py-1 transition">Öğren</button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* GRAMER */}
+        {panel === "gramer" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-5">Gramer Dersleri</h2>
+            <div className="grid md:grid-cols-[1fr_2fr] gap-6">
+              <div className="space-y-2">
+                {grammarTopics.map((g, i) => (
+                  <button key={g.id} onClick={() => setGrammarIndex(i)}
+                    className={`w-full text-left rounded-2xl p-4 border transition ${grammarIndex === i ? "bg-emerald-700/60 border-emerald-400/40" : "bg-black/20 border-stone-700/30 hover:border-emerald-400/20"}`}>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs rounded-full px-2 py-0.5 ${g.level === 1 ? "bg-blue-900/50 text-blue-300" : g.level === 2 ? "bg-amber-900/50 text-amber-300" : "bg-purple-900/50 text-purple-300"}`}>
+                        {g.level === 1 ? "Temel" : g.level === 2 ? "Orta" : "İleri"}
+                      </span>
+                      <span className="font-medium text-sm">{g.title}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {grammarTopics[grammarIndex] && (
+                <div className="soft-card rounded-[1.7rem] p-6">
+                  <div className={`inline-block text-xs rounded-full px-3 py-1 mb-3 ${grammarTopics[grammarIndex].level === 1 ? "bg-blue-900/50 text-blue-300" : grammarTopics[grammarIndex].level === 2 ? "bg-amber-900/50 text-amber-300" : "bg-purple-900/50 text-purple-300"}`}>
+                    {grammarTopics[grammarIndex].level === 1 ? "Temel" : grammarTopics[grammarIndex].level === 2 ? "Orta" : "İleri"}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{grammarTopics[grammarIndex].title}</h3>
+                  <p className="text-stone-300 leading-relaxed mb-5">{grammarTopics[grammarIndex].description}</p>
+                  <div className="bg-black/25 border border-stone-700 rounded-2xl p-5 mb-4">
+                    <button onClick={() => speakArabic(grammarTopics[grammarIndex].example_arabic)} className="arabic-text arabic-clickable text-4xl mb-3 bg-transparent w-full text-right">{grammarTopics[grammarIndex].example_arabic}</button>
+                    <div className="text-stone-300">{grammarTopics[grammarIndex].example_turkish}</div>
+                  </div>
+                  <div className="bg-amber-900/20 border border-amber-400/20 rounded-2xl p-4">
+                    <div className="text-amber-200 text-xs font-medium mb-1">Hafıza Tekniği</div>
+                    <div className="text-stone-300 text-sm">{grammarTopics[grammarIndex].memory_hint}</div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* AYET ANALİZİ */}
+        {panel === "ayet" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-5">Ayet Analizi</h2>
+            <div className="grid md:grid-cols-[1fr_2fr] gap-6">
+              <div className="space-y-2">
+                {sentenceAnalyses.map((s, i) => (
+                  <button key={s.id} onClick={() => setSentenceIndex(i)}
+                    className={`w-full text-left rounded-2xl p-4 border transition ${sentenceIndex === i ? "bg-emerald-700/60 border-emerald-400/40" : "bg-black/20 border-stone-700/30 hover:border-emerald-400/20"}`}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`text-xs rounded-full px-2 py-0.5 ${s.level === 1 ? "bg-blue-900/50 text-blue-300" : s.level === 2 ? "bg-amber-900/50 text-amber-300" : "bg-purple-900/50 text-purple-300"}`}>
+                        {s.level === 1 ? "Temel" : s.level === 2 ? "Orta" : "İleri"}
+                      </span>
+                      <span className="font-medium text-sm truncate">{s.title}</span>
+                    </div>
+                    <div className="arabic-text text-right text-sm text-stone-400 truncate">{s.arabic}</div>
+                  </button>
+                ))}
+              </div>
+              {sentenceAnalyses[sentenceIndex] && (() => {
+                const s = sentenceAnalyses[sentenceIndex];
+                return (
+                  <div className="soft-card rounded-[1.7rem] p-6">
+                    <h3 className="text-xl font-bold mb-4">{s.title}</h3>
+                    <button onClick={() => speakArabic(s.arabic)} className="arabic-text arabic-clickable text-4xl md:text-5xl mb-3 bg-transparent w-full text-right">{s.arabic}</button>
+                    <div className="text-stone-300 mb-4">{s.turkish}</div>
+                    <div className="bg-black/25 border border-stone-700 rounded-2xl p-4 mb-5">
+                      <div className="text-stone-400 text-xs mb-1">Kalıp</div>
+                      <div className="font-semibold text-amber-200">{s.pattern}</div>
+                      <p className="text-stone-300 text-sm mt-2">{s.explanation}</p>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {s.tokens.map((t, i) => (
+                        <div key={i} className="rounded-2xl border border-stone-700 p-4 bg-black/20">
+                          <button onClick={() => speakArabic(t.arabic)} className="arabic-text text-3xl bg-transparent w-full text-right mb-2">{t.arabic}</button>
+                          <div className="text-emerald-300 text-sm font-medium">{t.meaning}</div>
+                          <div className="text-stone-400 text-xs mt-1">{t.role}</div>
+                          {t.note && <div className="text-stone-500 text-xs mt-1 italic">{t.note}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          </section>
+        )}
+
+        {/* TEST */}
+        {panel === "quiz" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-4">Kelime Testi</h2>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {(["meaning", "reverse", "role", "root"] as QuizMode[]).map((m) => (
+                <button key={m} onClick={() => { setQuizMode(m); setSelectedAnswer(null); }}
+                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${quizMode === m ? "bg-emerald-600" : "bg-stone-800 hover:bg-stone-700"}`}>
+                  {m === "meaning" ? "Anlam" : m === "reverse" ? "Arapça" : m === "role" ? "Görev" : "Kök"}
+                </button>
+              ))}
+            </div>
             <div className="soft-card rounded-[1.7rem] p-6 text-center">
-              <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
-              {activeImage ? <img src={activeImage} alt={activeWord.turkish_meaning} className="w-full max-w-[340px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" /> : <div className="my-5 rounded-3xl border border-dashed border-stone-700 bg-black/20 p-6 text-stone-500">Bu kelime için görsel yok.</div>}
-              <div className="text-stone-400 mt-4">Okunuş: {activeWord.transliteration}</div>
-              <div className="mt-3 inline-flex bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 px-4 py-2 rounded-full text-sm">{activeWord.part_of_speech}</div>
-              <div className="text-xs text-stone-500 mt-3">Durum: {activeProgress.known ? "Öğrenildi" : activeProgress.hard ? "Tekrar gerekli" : "Yeni"}</div>
+              {activeImage && <img src={activeImage} alt="" className="w-full max-w-[200px] mx-auto mb-5 rounded-3xl border border-emerald-400/20" />}
+              <button onClick={() => quizPrompt.questionIsArabic && speakArabic(quizPrompt.question)}
+                className={`${quizPrompt.questionIsArabic ? "arabic-text text-6xl" : "text-2xl font-bold"} bg-transparent w-full mb-6`}>
+                {quizPrompt.question}
+              </button>
+              <div className="grid md:grid-cols-2 gap-3">
+                {quizOptions.map((o) => (
+                  <button key={o} onClick={() => answerQuiz(o)}
+                    className={`rounded-2xl p-5 text-left border transition ${selectedAnswer
+                      ? o === quizPrompt.answer ? "bg-green-800 border-green-400"
+                        : selectedAnswer === o ? "bg-red-800 border-red-400"
+                          : "bg-stone-950/60 border-stone-700 opacity-50"
+                      : "bg-stone-950/70 border-stone-700 hover:border-emerald-400/40"}`}>
+                    {o}
+                  </button>
+                ))}
+              </div>
+              {selectedAnswer && (
+                <button onClick={next} className="mt-5 bg-emerald-600 hover:bg-emerald-500 rounded-xl px-6 py-3 font-semibold transition">
+                  Sonraki Soru →
+                </button>
+              )}
             </div>
+          </section>
+        )}
 
-            {showAnswer && <div className="mt-5 grid gap-4">
-              <Info title="Anlam" value={activeWord.turkish_meaning} />
-              <Info title="Hafıza Tekniği" value={activeWord.memory_hint} />
-              <div className="soft-card rounded-2xl p-5"><div className="text-stone-400 text-sm">Ayet Örneği</div><button onClick={() => speakArabic(activeWord.example_arabic)} className="arabic-text arabic-clickable text-3xl my-3 bg-transparent w-full text-right">{activeWord.example_arabic}</button><div>{activeWord.example_turkish}</div></div>
-              <Info title="Cümlede Görevi" value={activeWord.grammar_note} />
-            </div>}
+        {/* TEKRAR */}
+        {panel === "tekrar" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-2">Akıllı Tekrar</h2>
+            <p className="text-stone-400 text-sm mb-5">Zorlandığın veya yanlış yaptığın kelimeler burada birikir.</p>
+            {reviewWords.length === 0
+              ? <div className="soft-card rounded-2xl p-10 text-center">
+                <div className="text-4xl mb-3">🎉</div>
+                <div className="text-stone-300">Şu an tekrar bekleyen kelime yok.</div>
+                <div className="text-stone-500 text-sm mt-2">Kelime derslerinde "Zorlandım" veya "Bilemedim" dersen buraya düşer.</div>
+              </div>
+              : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {reviewWords.map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} />)}
+              </div>}
+          </section>
+        )}
 
-            <div className="flex flex-col md:flex-row gap-3 mt-5">
-              <button onClick={() => setShowAnswer(!showAnswer)} className="flex-1 bg-emerald-600 rounded-2xl py-3 font-semibold">{showAnswer ? "Cevabı Gizle" : "Cevabı Göster"}</button>
-              <button onClick={next} className="flex-1 bg-stone-800 border border-stone-700 rounded-2xl py-3 font-semibold">Sonraki</button>
+        {/* GÖRSELLER */}
+        {panel === "gorseller" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <h2 className="text-2xl font-bold mb-2">Görsel Hafıza Kartları</h2>
+            <p className="text-stone-400 text-sm mb-6">Her görsele tıkla, sesini duy ve anlam bağlantısını güçlendir.</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {visualWords.map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}
             </div>
-            <div className="grid md:grid-cols-3 gap-3 mt-4">
-              <button onClick={() => {save(activeWord,"known"); next();}} className="bg-green-700 rounded-2xl py-3 font-semibold">Bildim</button>
-              <button onClick={() => {save(activeWord,"hard"); next();}} className="bg-yellow-700 rounded-2xl py-3 font-semibold">Zorlandım</button>
-              <button onClick={() => {save(activeWord,"wrong"); next();}} className="bg-red-700 rounded-2xl py-3 font-semibold">Bilemedim</button>
-            </div>
-          </div>
-          <div className="glass-card rounded-[2rem] p-6"><h2 className="text-2xl font-bold">Kademe Notu</h2><p className="text-stone-300 mt-3">{getLevelDescription(level)}</p></div>
-        </section>}
+          </section>
+        )}
 
-        {panel==="quiz" && <section className="glass-card rounded-[2rem] p-6">
-          <div className="flex flex-wrap gap-2 mb-5">{(["meaning","reverse","role","root"] as QuizMode[]).map((m) => <button key={m} onClick={() => {setQuizMode(m); setSelectedAnswer(null);}} className={`rounded-xl px-3 py-2 text-sm ${quizMode===m ? "bg-emerald-600" : "bg-stone-800"}`}>{m}</button>)}</div>
-          <div className="soft-card rounded-[1.7rem] p-6 text-center">
-            {activeImage && <img src={activeImage} alt="" className="w-full max-w-[240px] mx-auto mb-5 rounded-3xl border border-emerald-400/20" />}
-            <button onClick={() => quizPrompt.questionIsArabic && speakArabic(quizPrompt.question)} className={`${quizPrompt.questionIsArabic ? "arabic-text text-7xl" : "text-3xl font-bold"} bg-transparent w-full mb-6`}>{quizPrompt.question}</button>
-            <div className="grid md:grid-cols-2 gap-3">{quizOptions.map((o) => <button key={o} onClick={() => answerQuiz(o)} className={`rounded-2xl p-5 text-left border ${selectedAnswer ? (o===quizPrompt.answer ? "bg-green-800 border-green-400" : selectedAnswer===o ? "bg-red-800 border-red-400" : "bg-stone-950/60 border-stone-700 opacity-50") : "bg-stone-950/70 border-stone-700"}`}>{o}</button>)}</div>
-            {selectedAnswer && <button onClick={next} className="mt-5 bg-emerald-600 rounded-xl px-5 py-3 font-semibold">Sonraki Soru</button>}
-          </div>
-        </section>}
-
-        {panel==="analysis" && <section className="glass-card rounded-[2rem] p-6">
-          <h2 className="text-2xl font-bold">Ayet / Cümle Çözümleme</h2>
-          <div className="soft-card rounded-[1.7rem] p-6 mt-5"><button onClick={() => speakArabic(sentence.arabic)} className="arabic-text arabic-clickable text-4xl md:text-5xl mb-4 bg-transparent w-full text-right">{sentence.arabic}</button><div>{sentence.turkish}</div><div className="bg-black/25 border border-stone-700 rounded-2xl p-5 my-5"><div className="text-stone-400 text-sm">Kalıp</div><div className="text-lg font-semibold">{sentence.pattern}</div><p className="text-stone-300 mt-3">{sentence.explanation}</p></div><div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">{sentence.tokens.map((t,i)=><div key={i} className="rounded-2xl border border-stone-700 p-5 bg-black/20"><button onClick={() => speakArabic(t.arabic)} className="arabic-text text-4xl bg-transparent w-full text-right">{t.arabic}</button><div className="text-emerald-300 mt-3">{t.meaning}</div><div className="text-stone-400 text-sm">{t.role}</div></div>)}</div></div>
-        </section>}
-
-        {panel==="review" && <section className="glass-card rounded-[2rem] p-6">
-          <h2 className="text-2xl font-bold">Akıllı Tekrar</h2>
-          {reviewWords.length===0 ? <div className="soft-card rounded-2xl p-8 mt-6">Şu an tekrar yok.</div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">{reviewWords.map((w)=><WordCard key={w.id} word={w} onClick={() => openWord(w)} />)}</div>}
-        </section>}
-
-        {panel==="visuals" && <section className="glass-card rounded-[2rem] p-6">
-          <h2 className="text-2xl font-bold">Görsel Hafıza Kartları</h2>
-          <p className="text-stone-400 mt-2 mb-6">Bu sürümde görseller paketin içinde hazır gelir.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">{visualWords.map((w)=><WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}</div>
-        </section>}
-
-        <footer className="text-center text-stone-500 text-sm py-8">Ayet Hafızası · Temiz yeni repo sürümü</footer>
+        <footer className="text-center text-stone-500 text-xs py-8 mt-4">
+          Ayet Hafızası · {words.length} kelime · {visualWords.length} görsel kart
+        </footer>
       </div>
     </main>
   );
 }
 
-function WordCard({ word, onClick, large=false }: { word: Word; onClick: () => void; large?: boolean }) {
+function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const image = memoryImagesByArabic[word.arabic] || null;
-  return <button onClick={onClick} className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
-    {image && <img src={image} alt={word.turkish_meaning} className={`w-full ${large ? "h-64" : "h-40"} object-cover rounded-2xl border border-emerald-400/20 mb-4`} />}
-    <div className="arabic-text text-4xl text-right">{word.arabic}</div>
-    <div className="text-emerald-300 mt-2">{word.turkish_meaning}</div>
-    <div className="text-stone-400 text-sm mt-1">{word.part_of_speech}</div>
-  </button>;
+  return (
+    <button onClick={onClick} className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
+      {image && <img src={image} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />}
+      <div className="arabic-text text-4xl text-right">{word.arabic}</div>
+      <div className="text-emerald-300 mt-2 font-medium">{word.turkish_meaning}</div>
+      <div className="text-stone-400 text-xs mt-1">{word.part_of_speech}</div>
+      {word.root && <div className="text-amber-400/60 text-xs mt-1">Kök: {word.root}</div>}
+    </button>
+  );
 }
-function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) { return <button onClick={onClick} className={`whitespace-nowrap rounded-2xl px-5 py-3 font-semibold ${active ? "bg-emerald-600 text-white" : "text-stone-300 hover:bg-stone-800"}`}>{label}</button>; }
-function ProgressBar({ value }: { value: number }) { return <div className="h-3 bg-stone-800 rounded-full overflow-hidden"><div className="h-full bg-gradient-to-r from-emerald-500 to-amber-300 rounded-full" style={{ width: `${Math.max(0, Math.min(100, value))}%` }} /></div>; }
-function MiniMetric({ label, value }: { label: string; value: number }) { return <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4"><div className="text-stone-400 text-xs">{label}</div><div className="text-2xl font-bold mt-1">{value}</div></div>; }
-function StatCard({ title, value, hint }: { title: string; value: string; hint: string }) { return <div className="glass-card rounded-[1.5rem] p-5"><div className="text-stone-400 text-sm">{title}</div><div className="text-3xl font-bold mt-2">{value}</div><div className="text-stone-500 text-xs mt-2">{hint}</div></div>; }
-function Info({ title, value }: { title: string; value: string }) { return <div className="soft-card rounded-2xl p-5"><div className="text-stone-400 text-sm">{title}</div><div className="text-lg text-stone-100 mt-2 leading-relaxed">{value}</div></div>; }
+function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
+  return (
+    <button onClick={onClick} className={`whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${active ? "bg-emerald-600 text-white" : "text-stone-300 hover:bg-stone-800"}`}>
+      {label}
+    </button>
+  );
+}
+function MiniMetric({ label, value, icon }: { label: string; value: number; icon: string }) {
+  return (
+    <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4">
+      <div className="flex items-center gap-2 mb-1">
+        <span>{icon}</span>
+        <span className="text-stone-400 text-xs">{label}</span>
+      </div>
+      <div className="text-2xl font-bold">{value}</div>
+    </div>
+  );
+}
+function Info({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="soft-card rounded-2xl p-5">
+      <div className="text-stone-400 text-sm mb-1">{title}</div>
+      <div className="text-stone-100 leading-relaxed">{value}</div>
+    </div>
+  );
+}
