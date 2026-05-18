@@ -4,14 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { sentenceAnalyses } from "@/data/sentences";
-import type { Level, ProgressMap, QuizMode, Word } from "@/data/types";
+import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
 import { words } from "@/data/words";
 import {
-  STORAGE_KEY, buildQuizOptions, emptyProgress,
+  STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
   getLevelShort, getLevelTitle, getMilestone, getQuizPrompt,
-  getQuranCoverage, getReviewWords, speakArabic, updateProgress,
+  getQuranCoverage, getReviewWords, getStreak, searchWords,
+  speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
 
 type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "quiz" | "tekrar" | "gorseller";
@@ -29,6 +30,9 @@ export default function DashboardPage() {
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [activeSurah, setActiveSurah] = useState(0);
   const [activeSurahVerse, setActiveSurahVerse] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -41,6 +45,7 @@ export default function DashboardPage() {
     if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
   }, []);
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
+  useEffect(() => { setStreak(getStreak()); }, []);
 
   const learned = Object.values(progress).filter((p) => p.known).length;
   const coverage = getQuranCoverage(learned);
@@ -50,6 +55,7 @@ export default function DashboardPage() {
 
   const quizPrompt = useMemo(() => getQuizPrompt(activeWord, quizMode), [activeWord, quizMode]);
   const quizOptions = useMemo(() => buildQuizOptions(words, activeWord, quizMode), [activeWord, quizMode]);
+  const searchResults = useMemo(() => searchWords(words, searchQuery), [searchQuery]);
 
   // Kök ailesi verileri
   const rootFamilies = useMemo(() => {
@@ -67,6 +73,11 @@ export default function DashboardPage() {
 
   function save(word: Word, type: "known" | "hard" | "wrong") {
     setProgress((cur) => ({ ...cur, [word.id]: updateProgress(cur[word.id] || emptyProgress(), type) }));
+    setStreak(cur => {
+      const updated = updateStreak(cur);
+      localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
+      return updated;
+    });
   }
   function next() {
     setSelectedAnswer(null); setShowAnswer(false);

@@ -1,4 +1,4 @@
-import type { Level, ProgressMap, QuizMode, Word, WordProgress } from "@/data/types";
+import type { Level, ProgressMap, QuizMode, StreakData, Word, WordProgress } from "@/data/types";
 export const STORAGE_KEY = "ayet-hafizasi-clean-v1";
 export function speakArabic(text:string){ if(typeof window==="undefined")return; window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang="ar-SA"; u.rate=.75; u.pitch=1; window.speechSynthesis.speak(u); }
 export function emptyProgress():WordProgress{ return {known:false,hard:false,correctCount:0,hardCount:0,wrongCount:0,lastAnswer:null,lastStudiedAt:null,nextReviewAt:null}; }
@@ -58,4 +58,48 @@ export function getDailyWords(words: Word[], progress: ProgressMap, count = 5): 
     return fb - fa;
   });
   return sorted.slice(0, count);
+}
+
+export function searchWords(words: Word[], query: string): Word[] {
+  if (!query.trim()) return [];
+  const q = query.trim().toLowerCase();
+  return words.filter(w =>
+    w.arabic.includes(query.trim()) ||
+    w.transliteration.toLowerCase().includes(q) ||
+    w.turkish_meaning.toLowerCase().includes(q) ||
+    (w.root && w.root.includes(query.trim()))
+  ).slice(0, 20);
+}
+
+export const STREAK_KEY = "ayet-streak-v1";
+
+export function getStreak(): StreakData {
+  if (typeof window === "undefined") return { currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 };
+  try {
+    const saved = localStorage.getItem(STREAK_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch {}
+  return { currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 };
+}
+
+export function updateStreak(streak: StreakData): StreakData {
+  const today = new Date().toISOString().split("T")[0];
+  const last = streak.lastStudyDate;
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+  let currentStreak = streak.currentStreak;
+  if (last === today) {
+    return { ...streak, todayCount: streak.todayCount + 1 };
+  } else if (last === yesterday) {
+    currentStreak = streak.currentStreak + 1;
+  } else if (last !== today) {
+    currentStreak = 1;
+  }
+  const updated = {
+    currentStreak,
+    longestStreak: Math.max(currentStreak, streak.longestStreak),
+    lastStudyDate: today,
+    todayCount: streak.todayCount + 1,
+  };
+  if (typeof window !== "undefined") localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
+  return updated;
 }
