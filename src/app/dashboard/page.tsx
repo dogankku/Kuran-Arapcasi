@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
+import { imgSrc } from "@/lib/asset";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
@@ -313,7 +314,7 @@ export default function DashboardPage() {
                     <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
                   </div>
                   {activeImage
-                    ? <img src={activeImage} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
+                    ? <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
                     : <div className="my-5 rounded-3xl border border-dashed border-stone-700 bg-black/20 p-6 text-stone-500 text-sm">Bu kelime için görsel yok.</div>}
                   <div className="text-stone-400 mt-4 text-sm">
                     Türkçe okunuş: <span className="text-stone-200">{activeWord.transliteration}</span>
@@ -657,7 +658,7 @@ export default function DashboardPage() {
               ))}
             </div>
             <div className="soft-card rounded-[1.7rem] p-6 text-center">
-              {activeImage && <img src={activeImage} alt="" className="w-full max-w-[200px] mx-auto mb-5 rounded-3xl border border-emerald-400/20" />}
+              {activeImage && <img src={imgSrc(activeImage)} alt="" className="w-full max-w-[200px] mx-auto mb-5 rounded-3xl border border-emerald-400/20" />}
               <div className="mb-6">
                 <button onClick={() => quizPrompt.questionIsArabic && speakArabic(quizPrompt.question)}
                   className={`${quizPrompt.questionIsArabic ? "arabic-text text-6xl" : "text-2xl font-bold"} bg-transparent w-full`}>
@@ -796,7 +797,7 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
   return (
     <button onClick={onClick} className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
       {image ? (
-        <img src={image} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />
+        <img src={imgSrc(image)} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />
       ) : (
         <div className={`w-full ${large ? "h-56" : "h-36"} rounded-2xl mb-3 bg-gradient-to-br ${bgGrad} border border-white/5 flex flex-col items-center justify-center gap-2`}>
           <div className="arabic-text text-5xl text-white/90">{word.arabic}</div>
