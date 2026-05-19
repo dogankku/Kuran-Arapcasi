@@ -10,8 +10,9 @@ export function emptyProgress(): WordProgress {
   };
 }
 export function updateProgress(old: WordProgress, type: "known" | "hard" | "wrong"): WordProgress {
-  const prev = { interval: 1, easeFactor: 2.5, repetitions: 0, ...old };
-  let { interval, easeFactor, repetitions } = prev;
+  let interval = old.interval ?? 1;
+  let easeFactor = old.easeFactor ?? 2.5;
+  let repetitions = old.repetitions ?? 0;
   const correctCount = type === "known" ? old.correctCount + 1 : old.correctCount;
   const hardCount = type === "hard" ? old.hardCount + 1 : old.hardCount;
   const wrongCount = type === "wrong" ? old.wrongCount + 1 : old.wrongCount;
