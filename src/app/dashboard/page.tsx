@@ -37,6 +37,7 @@ export default function DashboardPage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
   const [changelogOpen, setChangelogOpen] = useState(false);
+  const [visualFilter, setVisualFilter] = useState("tümü");
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -309,11 +310,17 @@ export default function DashboardPage() {
             <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-6">
               <div className="glass-card rounded-[2rem] p-6">
                 <div className="soft-card rounded-[1.7rem] p-6 text-center">
-                  <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
+                  <div className="relative">
+                    <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
+                    <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
+                  </div>
                   {activeImage
                     ? <img src={activeImage} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
                     : <div className="my-5 rounded-3xl border border-dashed border-stone-700 bg-black/20 p-6 text-stone-500 text-sm">Bu kelime için görsel yok.</div>}
-                  <div className="text-stone-400 mt-4 text-sm">Okunuş: {activeWord.transliteration}</div>
+                  <div className="text-stone-400 mt-4 text-sm">
+                    Türkçe okunuş: <span className="text-stone-200">{activeWord.transliteration}</span>
+                    <span className="text-stone-600 text-xs ml-2">(ses butonu gerçek Arapça telaffuzu oynatır)</span>
+                  </div>
                   {activeWord.root && (
                     <div className="mt-2 text-amber-300/80 text-sm">Kök: {activeWord.root}</div>
                   )}
@@ -654,10 +661,13 @@ export default function DashboardPage() {
             </div>
             <div className="soft-card rounded-[1.7rem] p-6 text-center">
               {activeImage && <img src={activeImage} alt="" className="w-full max-w-[200px] mx-auto mb-5 rounded-3xl border border-emerald-400/20" />}
-              <button onClick={() => quizPrompt.questionIsArabic && speakArabic(quizPrompt.question)}
-                className={`${quizPrompt.questionIsArabic ? "arabic-text text-6xl" : "text-2xl font-bold"} bg-transparent w-full mb-6`}>
-                {quizPrompt.question}
-              </button>
+              <div className="mb-6">
+                <button onClick={() => quizPrompt.questionIsArabic && speakArabic(quizPrompt.question)}
+                  className={`${quizPrompt.questionIsArabic ? "arabic-text text-6xl" : "text-2xl font-bold"} bg-transparent w-full`}>
+                  {quizPrompt.question}
+                </button>
+                {quizPrompt.questionIsArabic && <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>}
+              </div>
               <div className="grid md:grid-cols-2 gap-3">
                 {quizOptions.map((o) => (
                   <button key={o} onClick={() => answerQuiz(o)}
@@ -741,9 +751,20 @@ export default function DashboardPage() {
           <section className="glass-card rounded-[2rem] p-6">
             <h2 className="text-2xl font-bold mb-2">Görsel Hafıza Kartları</h2>
             <p className="text-stone-400 text-sm mb-6">Her görsele tıkla, sesini duy ve anlam bağlantısını güçlendir.</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {visualWords.map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}
-            </div>
+              <div className="flex gap-2 mb-4 flex-wrap">
+                {["tümü", "görselli", "isim", "fiil", "edat"].map(f => (
+                  <button key={f} onClick={() => setVisualFilter(f)}
+                    className={`rounded-full px-4 py-1.5 text-sm transition ${visualFilter === f ? "bg-emerald-600 text-white" : "bg-stone-800 text-stone-400 hover:bg-stone-700"}`}>
+                    {f === "tümü" ? `Tümü (${words.length})` : f === "görselli" ? `Görselli (${visualWords.length})` : f}
+                  </button>
+                ))}
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {(visualFilter === "görselli" ? visualWords
+                  : visualFilter === "tümü" ? [...visualWords, ...words.filter(w => !memoryImagesByArabic[w.arabic])]
+                  : words.filter(w => w.part_of_speech.includes(visualFilter === "isim" ? "isim" : visualFilter === "fiil" ? "fiil" : "harf") || (visualFilter === "edat" && (w.part_of_speech.includes("edat") || w.part_of_speech.includes("bağlaç") || w.part_of_speech.includes("olumsuzluk"))))
+                ).map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}
+              </div>
           </section>
         )}
 
@@ -758,13 +779,38 @@ export default function DashboardPage() {
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const image = memoryImagesByArabic[word.arabic] || null;
+  const bgColors: Record<string, string> = {
+    "isim": "from-blue-900/60 to-blue-800/30",
+    "fiil": "from-purple-900/60 to-purple-800/30",
+    "sıfat": "from-amber-900/60 to-amber-800/30",
+    "harf-i cer": "from-teal-900/60 to-teal-800/30",
+    "bağlaç": "from-rose-900/60 to-rose-800/30",
+    "zamir": "from-indigo-900/60 to-indigo-800/30",
+    "edat": "from-emerald-900/60 to-emerald-800/30",
+    "zarf": "from-orange-900/60 to-orange-800/30",
+    "özel isim": "from-yellow-900/60 to-yellow-800/30",
+    "olumsuzluk": "from-red-900/60 to-red-800/30",
+    "soru": "from-cyan-900/60 to-cyan-800/30",
+    "ism-i mevsûl": "from-violet-900/60 to-violet-800/30",
+  };
+  const partKey = Object.keys(bgColors).find(k => word.part_of_speech.includes(k)) || "isim";
+  const bgGrad = bgColors[partKey];
+
   return (
     <button onClick={onClick} className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
-      {image && <img src={image} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />}
-      <div className="arabic-text text-4xl text-right">{word.arabic}</div>
+      {image ? (
+        <img src={image} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />
+      ) : (
+        <div className={`w-full ${large ? "h-56" : "h-36"} rounded-2xl mb-3 bg-gradient-to-br ${bgGrad} border border-white/5 flex flex-col items-center justify-center gap-2`}>
+          <div className="arabic-text text-5xl text-white/90">{word.arabic}</div>
+          {word.root && <div className="text-xs text-white/40 font-mono">{word.root}</div>}
+        </div>
+      )}
+      <div className="arabic-text text-3xl text-right">{word.arabic}</div>
       <div className="text-emerald-300 mt-2 font-medium">{word.turkish_meaning}</div>
       <div className="text-stone-400 text-xs mt-1">{word.part_of_speech}</div>
       {word.root && <div className="text-amber-400/60 text-xs mt-1">Kök: {word.root}</div>}
+      {(word as any).frequency && <div className="text-stone-600 text-xs mt-0.5">{(word as any).frequency.toLocaleString()}× Kur&apos;an&apos;da</div>}
     </button>
   );
 }
