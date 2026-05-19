@@ -102,11 +102,11 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen text-white" style={{background:"var(--duo-bg)"}}>
       <div className="max-w-7xl mx-auto px-4 py-6">
 
         {/* HEADER - İlerleme */}
-        <header className="glass-card rounded-[2rem] p-6 mb-6">
+        <header className="glass-card rounded-[2rem] p-6 mb-8">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4 flex-wrap">
@@ -144,9 +144,8 @@ export default function DashboardPage() {
                 <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
                 <span className="text-emerald-300 font-bold">%{coverage}</span>
               </div>
-              <div className="h-4 bg-stone-800 rounded-full overflow-hidden mb-2">
-                <div className="h-full bg-gradient-to-r from-emerald-500 to-amber-300 rounded-full transition-all duration-700"
-                  style={{ width: `${coverage}%` }} />
+              <div className="duo-progress-track mb-2">
+                <div className="duo-progress-fill" style={{ width: `${coverage}%` }} />
               </div>
               <div className="flex justify-between text-xs text-stone-500">
                 <span>{learned} kelime öğrenildi</span>
@@ -182,15 +181,15 @@ export default function DashboardPage() {
               )}
             </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
-            <MiniMetric label="Toplam kelime" value={words.length} icon="📚" />
-            <MiniMetric label="Öğrenilen" value={learned} icon="✓" />
-            <MiniMetric label="Günlük seri" value={streak.currentStreak} icon="🔥" suffix="gün" />
+            <MiniMetric label="Toplam kelime" value={words.length} icon="📚" highlight="blue" />
+            <MiniMetric label="Öğrenilen" value={learned} icon="✅" highlight="green" />
+            <MiniMetric label="Günlük seri" value={streak.currentStreak} icon="🔥" suffix="gün" highlight="orange" />
             <MiniMetric label="Bugün çalışıldı" value={streak.todayCount} icon="⚡" suffix="kez" />
           </div>
         </header>
 
         {/* NAVİGASYON */}
-        <nav className="glass-card rounded-[1.4rem] p-2 mb-6 flex gap-1 overflow-x-auto no-scrollbar">
+        <nav className="duo-card p-2 mb-8 flex gap-1 overflow-x-auto no-scrollbar" style={{borderRadius:"1.4rem"}}>
           {([
             ["yol", "Öğrenme Yolu"],
             ["kelime", "Kelimeler"],
@@ -242,9 +241,8 @@ export default function DashboardPage() {
                       <div className="text-3xl">{!stage.unlocked ? "🔒" : getLevelIcon(l)}</div>
                     </div>
                     <p className="text-stone-300 text-xs mb-3">{getLevelDescription(l)}</p>
-                    <div className="h-2 bg-stone-800 rounded-full overflow-hidden mb-1">
-                      <div className="h-full bg-emerald-500 rounded-full transition-all"
-                        style={{ width: `${stage.pct}%` }} />
+                    <div className="duo-progress-track mb-1" style={{height:"0.875rem"}}>
+                      <div className="duo-progress-fill" style={{ width: `${stage.pct}%` }} />
                     </div>
                     <div className="flex justify-between text-xs mt-1">
                       <span className="text-stone-500">{stage.learned}/{stage.total} öğrenildi</span>
@@ -347,15 +345,15 @@ export default function DashboardPage() {
                 )}
 
                 <div className="flex flex-col md:flex-row gap-3 mt-5">
-                  <button onClick={() => setShowAnswer(!showAnswer)} className="flex-1 bg-emerald-600 rounded-2xl py-3 font-semibold text-sm">
+                  <button onClick={() => setShowAnswer(!showAnswer)} className="duo-btn duo-btn-blue flex-1">
                     {showAnswer ? "Cevabı Gizle" : "Cevabı Göster"}
                   </button>
-                  <button onClick={next} className="flex-1 bg-stone-800 border border-stone-700 rounded-2xl py-3 font-semibold text-sm">Sonraki →</button>
+                  <button onClick={next} className="duo-btn duo-btn-outline flex-1">Sonraki →</button>
                 </div>
                 <div className="grid grid-cols-3 gap-3 mt-3">
-                  <button onClick={() => { save(activeWord, "known"); next(); }} className="bg-green-700/80 hover:bg-green-700 rounded-2xl py-3 font-semibold text-sm transition">✓ Bildim</button>
-                  <button onClick={() => { save(activeWord, "hard"); next(); }} className="bg-yellow-700/80 hover:bg-yellow-700 rounded-2xl py-3 font-semibold text-sm transition">~ Zorlandım</button>
-                  <button onClick={() => { save(activeWord, "wrong"); next(); }} className="bg-red-700/80 hover:bg-red-700 rounded-2xl py-3 font-semibold text-sm transition">✗ Bilemedim</button>
+                  <button onClick={() => { save(activeWord, "known"); next(); }} className="duo-btn duo-btn-green">✓ Bildim</button>
+                  <button onClick={() => { save(activeWord, "hard"); next(); }} className="duo-btn duo-btn-yellow">~ Zorlandım</button>
+                  <button onClick={() => { save(activeWord, "wrong"); next(); }} className="duo-btn duo-btn-red">✗ Bilemedim</button>
                 </div>
               </div>
 
@@ -533,9 +531,8 @@ export default function DashboardPage() {
                         <span className="arabic-text text-xl text-amber-200">{surah.arabicName}</span>
                       </div>
                       <div className="text-stone-400 text-xs mb-2">{surah.turkishName} · {surah.totalVerses} ayet</div>
-                      <div className="h-1.5 bg-stone-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-emerald-500 rounded-full transition-all"
-                          style={{ width: totalWords > 0 ? `${Math.round((knownWords / totalWords) * 100)}%` : "0%" }} />
+                      <div className="duo-progress-track" style={{height:"0.625rem"}}>
+                        <div className="duo-progress-fill" style={{ width: totalWords > 0 ? `${Math.round((knownWords / totalWords) * 100)}%` : "0%" }} />
                       </div>
                       <div className={`text-xs mt-1 ${surah.level === 1 ? "text-blue-400" : surah.level === 2 ? "text-amber-400" : "text-purple-400"}`}>
                         {surah.level === 1 ? "Temel" : surah.level === 2 ? "Orta" : "İleri"}
@@ -556,7 +553,7 @@ export default function DashboardPage() {
                           <p className="text-stone-400 text-sm mt-1 max-w-lg">{surah.theme}</p>
                         </div>
                         <button onClick={() => speakArabic(surah.verses.map(v => v.arabic).join(' '))}
-                          className="bg-emerald-700/60 hover:bg-emerald-700 rounded-xl px-4 py-2 text-sm transition">▶ Tümünü Dinle</button>
+                          className="duo-btn duo-btn-blue text-sm">▶ Tümünü Dinle</button>
                       </div>
 
                       <div className="space-y-4">
@@ -654,7 +651,7 @@ export default function DashboardPage() {
             <div className="flex flex-wrap gap-2 mb-5">
               {(["meaning", "reverse", "role", "root"] as QuizMode[]).map((m) => (
                 <button key={m} onClick={() => { setQuizMode(m); setSelectedAnswer(null); }}
-                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${quizMode === m ? "bg-emerald-600" : "bg-stone-800 hover:bg-stone-700"}`}>
+                  className={`duo-tab${quizMode === m ? " active" : ""}`}>
                   {m === "meaning" ? "Anlam" : m === "reverse" ? "Arapça" : m === "role" ? "Görev" : "Kök"}
                 </button>
               ))}
@@ -671,17 +668,17 @@ export default function DashboardPage() {
               <div className="grid md:grid-cols-2 gap-3">
                 {quizOptions.map((o) => (
                   <button key={o} onClick={() => answerQuiz(o)}
-                    className={`rounded-2xl p-5 text-left border transition ${selectedAnswer
-                      ? o === quizPrompt.answer ? "bg-green-800 border-green-400"
-                        : selectedAnswer === o ? "bg-red-800 border-red-400"
-                          : "bg-stone-950/60 border-stone-700 opacity-50"
-                      : "bg-stone-950/70 border-stone-700 hover:border-emerald-400/40"}`}>
+                    className={`quiz-option ${selectedAnswer
+                      ? o === quizPrompt.answer ? "correct"
+                        : selectedAnswer === o ? "wrong"
+                          : "dimmed"
+                      : ""}`}>
                     {o}
                   </button>
                 ))}
               </div>
               {selectedAnswer && (
-                <button onClick={next} className="mt-5 bg-emerald-600 hover:bg-emerald-500 rounded-xl px-6 py-3 font-semibold transition">
+                <button onClick={next} className="duo-btn duo-btn-green mt-5 w-full">
                   Sonraki Soru →
                 </button>
               )}
@@ -754,7 +751,7 @@ export default function DashboardPage() {
               <div className="flex gap-2 mb-4 flex-wrap">
                 {["tümü", "görselli", "isim", "fiil", "edat"].map(f => (
                   <button key={f} onClick={() => setVisualFilter(f)}
-                    className={`rounded-full px-4 py-1.5 text-sm transition ${visualFilter === f ? "bg-emerald-600 text-white" : "bg-stone-800 text-stone-400 hover:bg-stone-700"}`}>
+                    className={`duo-tab${visualFilter === f ? " active" : ""}`}>
                     {f === "tümü" ? `Tümü (${words.length})` : f === "görselli" ? `Görselli (${visualWords.length})` : f}
                   </button>
                 ))}
@@ -816,19 +813,19 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
 }
 function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
   return (
-    <button onClick={onClick} className={`whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${active ? "bg-emerald-600 text-white" : "text-stone-300 hover:bg-stone-800"}`}>
+    <button onClick={onClick} className={`duo-tab${active ? " active" : ""}`}>
       {label}
     </button>
   );
 }
-function MiniMetric({ label, value, icon, suffix }: { label: string; value: number; icon: string; suffix?: string }) {
+function MiniMetric({ label, value, icon, suffix, highlight }: { label: string; value: number; icon: string; suffix?: string; highlight?: "green"|"orange"|"blue"|"red" }) {
+  const colors: Record<string, string> = { green:"#58CC02", orange:"#FF9600", blue:"#1CB0F6", red:"#FF4B4B" };
+  const c = highlight ? colors[highlight] : "#FFFEF9";
   return (
-    <div className="bg-black/20 border border-stone-700/60 rounded-2xl p-4">
-      <div className="flex items-center gap-2 mb-1">
-        <span>{icon}</span>
-        <span className="text-stone-400 text-xs">{label}</span>
-      </div>
-      <div className="text-2xl font-bold">{value}{suffix && <span className="text-sm text-stone-400 ml-1">{suffix}</span>}</div>
+    <div className="duo-card p-4 text-center">
+      <div className={`text-2xl mb-1 ${highlight === "orange" ? "streak-glow" : ""}`}>{icon}</div>
+      <div className="text-2xl font-bold" style={{color: c}}>{value}{suffix ? ` ${suffix}` : ""}</div>
+      <div className="text-xs mt-1" style={{color:"var(--duo-muted)"}}>{label}</div>
     </div>
   );
 }

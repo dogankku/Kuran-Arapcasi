@@ -1,2 +1,185 @@
 @import "tailwindcss";
-:root{background:#070707;color:#fff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(16,185,129,.14),transparent 34%),radial-gradient(circle at top right,rgba(245,158,11,.09),transparent 30%),#070707;color:#fff}.arabic-text{font-family:"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",sans-serif;font-weight:700;line-height:1.9;direction:rtl}.arabic-clickable{cursor:pointer;transition:transform .2s ease,color .2s ease,text-shadow .2s ease}.arabic-clickable:hover{color:#6ee7b7;transform:scale(1.025);text-shadow:0 0 22px rgba(110,231,183,.22)}.glass-card{background:rgba(28,25,23,.76);border:1px solid rgba(120,113,108,.24);box-shadow:0 24px 80px rgba(0,0,0,.28);backdrop-filter:blur(18px)}.soft-card{background:linear-gradient(180deg,rgba(41,37,36,.92),rgba(28,25,23,.92));border:1px solid rgba(120,113,108,.22)}.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+
+:root {
+  --duo-bg: #0F1923;
+  --duo-card: #1F2F38;
+  --duo-card-border: #2A4050;
+  --duo-card-shadow: #17252F;
+  --duo-green: #58CC02;
+  --duo-green-dark: #46A302;
+  --duo-yellow: #FFC800;
+  --duo-yellow-dark: #CFA100;
+  --duo-blue: #1CB0F6;
+  --duo-blue-dark: #0984B5;
+  --duo-red: #FF4B4B;
+  --duo-red-dark: #CC0000;
+  --duo-orange: #FF9600;
+  --duo-text: #FFFEF9;
+  --duo-muted: #8FA8B4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--duo-bg);
+  color: var(--duo-text);
+}
+
+.arabic-text {
+  font-family: "Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",sans-serif;
+  font-weight: 700;
+  line-height: 1.9;
+  direction: rtl;
+}
+
+.arabic-clickable {
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease, text-shadow .2s ease;
+}
+.arabic-clickable:hover {
+  color: #58CC02;
+  transform: scale(1.025);
+  text-shadow: 0 0 22px rgba(88,204,2,.25);
+}
+
+/* Duolingo card — solid with 3D bottom border */
+.duo-card {
+  background: var(--duo-card);
+  border: 2px solid var(--duo-card-border);
+  border-bottom: 4px solid var(--duo-card-shadow);
+  border-radius: 1.25rem;
+}
+
+/* Legacy aliases — keep using these in JSX */
+.glass-card {
+  background: var(--duo-card);
+  border: 2px solid var(--duo-card-border);
+  border-bottom: 4px solid var(--duo-card-shadow);
+  border-radius: 1.25rem;
+}
+.soft-card {
+  background: rgba(15,25,35,0.9);
+  border: 2px solid var(--duo-card-border);
+  border-radius: 1.25rem;
+}
+
+/* Duolingo 3D buttons */
+.duo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.875rem;
+  padding: 0.875rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: filter 0.1s, transform 0.1s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.duo-btn-green {
+  background: var(--duo-green);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--duo-green-dark);
+}
+.duo-btn-green:hover { filter: brightness(1.08); }
+.duo-btn-green:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--duo-green-dark); }
+
+.duo-btn-yellow {
+  background: var(--duo-yellow);
+  color: #3c2a00;
+  box-shadow: 0 4px 0 var(--duo-yellow-dark);
+}
+.duo-btn-yellow:hover { filter: brightness(1.05); }
+.duo-btn-yellow:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--duo-yellow-dark); }
+
+.duo-btn-blue {
+  background: var(--duo-blue);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--duo-blue-dark);
+}
+.duo-btn-blue:hover { filter: brightness(1.08); }
+.duo-btn-blue:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--duo-blue-dark); }
+
+.duo-btn-red {
+  background: var(--duo-red);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--duo-red-dark);
+}
+.duo-btn-red:hover { filter: brightness(1.08); }
+.duo-btn-red:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--duo-red-dark); }
+
+.duo-btn-outline {
+  background: transparent;
+  color: var(--duo-blue);
+  box-shadow: 0 4px 0 var(--duo-card-border), inset 0 0 0 2px var(--duo-blue);
+}
+.duo-btn-outline:hover { background: rgba(28,176,246,0.08); }
+
+/* Quiz answer buttons */
+.quiz-option {
+  background: var(--duo-card);
+  border: 2px solid var(--duo-card-border);
+  border-bottom: 4px solid var(--duo-card-shadow);
+  border-radius: 0.875rem;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--duo-text);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  width: 100%;
+}
+.quiz-option:hover { border-color: var(--duo-blue); background: rgba(28,176,246,0.06); }
+.quiz-option.correct { background: rgba(88,204,2,0.15); border-color: var(--duo-green); border-bottom-color: var(--duo-green-dark); color: #a8ff5a; }
+.quiz-option.wrong { background: rgba(255,75,75,0.15); border-color: var(--duo-red); border-bottom-color: var(--duo-red-dark); color: #ff9090; }
+.quiz-option.dimmed { opacity: 0.35; }
+
+/* Progress bar */
+.duo-progress-track {
+  background: #142630;
+  border-radius: 9999px;
+  height: 1.25rem;
+  overflow: hidden;
+  border: 2px solid #1a3040;
+}
+.duo-progress-fill {
+  background: linear-gradient(90deg, var(--duo-green), #7FE003);
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.7s ease;
+  position: relative;
+}
+.duo-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  right: 6px;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 9999px;
+}
+
+/* Nav tab */
+.duo-tab {
+  white-space: nowrap;
+  border-radius: 0.875rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: background 0.15s, color 0.15s;
+  color: var(--duo-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.duo-tab:hover { background: rgba(255,255,255,0.06); color: var(--duo-text); }
+.duo-tab.active { background: var(--duo-green); color: #fff; box-shadow: 0 3px 0 var(--duo-green-dark); }
+
+/* Streak glow */
+.streak-glow { filter: drop-shadow(0 0 8px rgba(255,150,0,0.7)); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
