@@ -8,11 +8,12 @@ import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/type
 import { surahs } from "@/data/surahs";
 import { morphPatterns } from "@/data/morphology";
 import { words } from "@/data/words";
+import { APP_VERSION, BUILD_DATE } from "@/data/version";
 import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
   getLevelShort, getLevelTitle, getMilestone, getNextReviewInfo, getQuizPrompt,
-  getQuranCoverage, getReviewWords, getStreak, searchWords,
+  getQuranCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
   speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
 
@@ -35,6 +36,7 @@ export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
+  const [changelogOpen, setChangelogOpen] = useState(false);
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -55,6 +57,7 @@ export default function DashboardPage() {
   const activeProgress = progress[activeWord.id] || emptyProgress();
   const dailyWords = useMemo(() => getDailyWords(words, progress, 5), [progress]);
 
+  const stageProgress = useMemo(() => getStageProgress(words, progress), [progress]);
   const quizPrompt = useMemo(() => getQuizPrompt(activeWord, quizMode), [activeWord, quizMode]);
   const quizOptions = useMemo(() => buildQuizOptions(words, activeWord, quizMode), [activeWord, quizMode]);
   const searchResults = useMemo(() => searchWords(words, searchQuery), [searchQuery]);
@@ -105,10 +108,33 @@ export default function DashboardPage() {
         <header className="glass-card rounded-[2rem] p-6 mb-6">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm mb-4">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Ayet Hafızası · Kur&apos;an Öğrenme Sistemi
+              <div className="flex items-center gap-3 mb-4 flex-wrap">
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Ayet Hafızası · Kur&apos;an Öğrenme Sistemi
+                </div>
+                <button onClick={() => setChangelogOpen(c => !c)}
+                  className="inline-flex items-center gap-2 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-4 py-2 text-sm transition">
+                  <span className="text-amber-400 font-mono font-bold">v{APP_VERSION}</span>
+                  <span className="text-stone-500">{BUILD_DATE}</span>
+                  <span className="text-xs">{changelogOpen ? "▲" : "▼"}</span>
+                </button>
               </div>
+              {changelogOpen && (
+                <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-4 mb-4 text-sm space-y-2">
+                  {[
+                    { version: "1.3.0", note: "Morfoloji paneli, 9 sure kelime analizi, SM-2 tekrar algoritması" },
+                    { version: "1.2.0", note: "Sure Modu: Fatiha, İhlas, Kevser, Felak, Nas, Asr, Kafirun, Nasr, Mesed" },
+                    { version: "1.1.0", note: "Kök ailesi, 15 gramer + 15 ayet analizi, frekans verileri" },
+                    { version: "1.0.0", note: "İlk sürüm: 300 kelime, görsel hafıza, quiz, tekrar" },
+                  ].map(c => (
+                    <div key={c.version} className="flex gap-3">
+                      <span className="text-amber-400 font-mono shrink-0">v{c.version}</span>
+                      <span className="text-stone-400">{c.note}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
               <h1 className="text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
               <p className="text-stone-300 mt-2 text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
             </div>
@@ -202,26 +228,38 @@ export default function DashboardPage() {
             </section>
 
             <section className="grid md:grid-cols-3 gap-4">
-              {([1, 2, 3] as Level[]).map((l) => {
-                const count = words.filter((w) => w.level === l).length;
-                const learnedInLevel = words.filter(w => w.level === l && progress[w.id]?.known).length;
+              {stageProgress.stages.map((stage) => {
+                const l = stage.id as Level;
                 return (
-                  <button key={l} onClick={() => { setLevel(l); setIndex(0); setPanel("kelime"); }}
-                    className={`text-left rounded-[1.5rem] p-5 border transition ${level === l ? "bg-emerald-700/80 border-emerald-300" : "glass-card hover:border-emerald-400/30"}`}>
+                  <div key={l} className={`rounded-[1.5rem] p-5 border transition ${!stage.unlocked ? "opacity-60 cursor-not-allowed bg-stone-900/40 border-stone-700/40" : level === l ? "bg-emerald-700/80 border-emerald-300 cursor-pointer" : "glass-card cursor-pointer hover:border-emerald-400/30"}`}
+                    onClick={() => { if (stage.unlocked) { setLevel(l); setIndex(0); setPanel("kelime"); } }}>
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <div className="text-xs text-stone-400">{getLevelShort(l)}</div>
-                        <div className="font-bold text-lg">{getLevelTitle(l)}</div>
+                        <div className="text-xs text-stone-400">{stage.label}</div>
+                        <div className="font-bold text-lg">{stage.title}</div>
                       </div>
-                      <div className="text-3xl text-amber-200">{getLevelIcon(l)}</div>
+                      <div className="text-3xl">{!stage.unlocked ? "🔒" : getLevelIcon(l)}</div>
                     </div>
                     <p className="text-stone-300 text-xs mb-3">{getLevelDescription(l)}</p>
                     <div className="h-2 bg-stone-800 rounded-full overflow-hidden mb-1">
                       <div className="h-full bg-emerald-500 rounded-full transition-all"
-                        style={{ width: count > 0 ? `${(learnedInLevel / count) * 100}%` : "0%" }} />
+                        style={{ width: `${stage.pct}%` }} />
                     </div>
-                    <div className="text-xs text-stone-500">{learnedInLevel}/{count} öğrenildi</div>
-                  </button>
+                    <div className="flex justify-between text-xs mt-1">
+                      <span className="text-stone-500">{stage.learned}/{stage.total} öğrenildi</span>
+                      <span className={stage.pct >= 100 ? "text-emerald-400" : "text-stone-400"}>{stage.pct}%</span>
+                    </div>
+                    {!stage.unlocked && stage.unlockAt !== null && (
+                      <div className="mt-3 bg-amber-900/30 border border-amber-700/30 rounded-xl px-3 py-2 text-xs text-amber-300 text-center">
+                        🔓 {stage.unlockAt} kelime daha öğren → kilidi aç
+                      </div>
+                    )}
+                    {stage.unlocked && stage.pct < 100 && (
+                      <div className="mt-3 bg-emerald-900/20 border border-emerald-700/20 rounded-xl px-3 py-2 text-xs text-emerald-400 text-center">
+                        ✓ Açık · Devam et
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </section>
@@ -255,12 +293,18 @@ export default function DashboardPage() {
         {panel === "kelime" && (
           <section className="space-y-4">
             <div className="grid md:grid-cols-3 gap-3 mb-4">
-              {([1, 2, 3] as Level[]).map((l) => (
-                <button key={l} onClick={() => { setLevel(l); setIndex(0); }}
-                  className={`rounded-2xl p-3 text-sm font-semibold border ${level === l ? "bg-emerald-700 border-emerald-300" : "glass-card"}`}>
-                  {getLevelShort(l)}: {getLevelTitle(l)}
-                </button>
-              ))}
+              {stageProgress.stages.map((stage) => {
+                const l = stage.id as Level;
+                return (
+                  <button key={l}
+                    onClick={() => { if (stage.unlocked) { setLevel(l); setIndex(0); } }}
+                    disabled={!stage.unlocked}
+                    className={`rounded-2xl p-3 text-sm font-semibold border transition ${!stage.unlocked ? "opacity-40 cursor-not-allowed bg-stone-900/30 border-stone-700/30" : level === l ? "bg-emerald-700 border-emerald-300" : "glass-card"}`}>
+                    {!stage.unlocked ? "🔒 " : ""}{getLevelShort(l)}: {getLevelTitle(l)}
+                    {!stage.unlocked && <div className="text-xs font-normal text-stone-500 mt-0.5">{stage.unlockAt} kelime kaldı</div>}
+                  </button>
+                );
+              })}
             </div>
             <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-6">
               <div className="glass-card rounded-[2rem] p-6">
@@ -703,8 +747,9 @@ export default function DashboardPage() {
           </section>
         )}
 
-        <footer className="text-center text-stone-500 text-xs py-8 mt-4">
-          Ayet Hafızası · {words.length} kelime · {visualWords.length} görsel kart
+        <footer className="text-center text-stone-500 text-xs py-8 mt-4 space-y-1">
+          <div>Ayet Hafızası · {words.length} kelime · {visualWords.length} görsel kart</div>
+          <div className="text-stone-600">v{APP_VERSION} · {BUILD_DATE}</div>
         </footer>
       </div>
     </main>

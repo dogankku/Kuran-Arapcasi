@@ -143,6 +143,33 @@ export function getNextReviewInfo(p: WordProgress): string {
   return `${diff} gün sonra`;
 }
 
+export function getStageProgress(words: Word[], progress: ProgressMap) {
+  const stage1Words = words.filter(w => w.level === 1);
+  const stage2Words = words.filter(w => w.level === 2);
+  const stage3Words = words.filter(w => w.level === 3);
+
+  const learned1 = stage1Words.filter(w => progress[w.id]?.known).length;
+  const learned2 = stage2Words.filter(w => progress[w.id]?.known).length;
+  const learned3 = stage3Words.filter(w => progress[w.id]?.known).length;
+
+  const pct1 = stage1Words.length > 0 ? Math.round((learned1 / stage1Words.length) * 100) : 0;
+  const pct2 = stage2Words.length > 0 ? Math.round((learned2 / stage2Words.length) * 100) : 0;
+  const pct3 = stage3Words.length > 0 ? Math.round((learned3 / stage3Words.length) * 100) : 0;
+
+  const stage2Unlocked = pct1 >= 70;
+  const stage3Unlocked = pct2 >= 60;
+
+  return {
+    stages: [
+      { id: 1, label: "Kademe 1", title: "Temel Edatlar & Bağlaçlar", total: stage1Words.length, learned: learned1, pct: pct1, unlocked: true, unlockAt: null },
+      { id: 2, label: "Kademe 2", title: "İsimler & Kavramlar", total: stage2Words.length, learned: learned2, pct: pct2, unlocked: stage2Unlocked, unlockAt: Math.max(0, Math.ceil(stage1Words.length * 0.7) - learned1) },
+      { id: 3, label: "Kademe 3", title: "Fiiller & Eylemler", total: stage3Words.length, learned: learned3, pct: pct3, unlocked: stage3Unlocked, unlockAt: Math.max(0, Math.ceil(stage2Words.length * 0.6) - learned2) },
+    ],
+    stage2Unlocked,
+    stage3Unlocked,
+  };
+}
+
 export function updateStreak(streak: StreakData): StreakData {
   const today = new Date().toISOString().split("T")[0];
   const last = streak.lastStudyDate;
