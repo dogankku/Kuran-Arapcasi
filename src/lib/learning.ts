@@ -1,6 +1,35 @@
 import type { Level, ProgressMap, QuizMode, StreakData, Word, WordProgress } from "@/data/types";
+import { getWordAudioUrl } from "@/lib/quranAudio";
+
 export const STORAGE_KEY = "ayet-hafizasi-clean-v1";
-export function speakArabic(text:string){ if(typeof window==="undefined")return; window.speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang="ar-SA"; u.rate=.75; u.pitch=1; window.speechSynthesis.speak(u); }
+
+let _currentAudio: HTMLAudioElement | null = null;
+
+export function stopAudio() {
+  if (_currentAudio) { _currentAudio.pause(); _currentAudio = null; }
+  if (typeof window !== "undefined") window.speechSynthesis?.cancel();
+}
+
+export function speakArabic(text: string) {
+  if (typeof window === "undefined") return;
+  stopAudio();
+
+  const wordUrl = getWordAudioUrl(text);
+  if (wordUrl) {
+    const a = new Audio(wordUrl);
+    _currentAudio = a;
+    a.play().catch(() => _webSpeech(text));
+    return;
+  }
+  _webSpeech(text);
+}
+
+function _webSpeech(text: string) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "ar-SA"; u.rate = 0.72; u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
 export function emptyProgress(): WordProgress {
   return {
     known: false, hard: false,

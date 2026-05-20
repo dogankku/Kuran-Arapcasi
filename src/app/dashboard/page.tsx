@@ -22,6 +22,8 @@ import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
 import AuthModal from "@/components/AuthModal";
 import RankBadge from "@/components/RankBadge";
+import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, SURAH_CHAPTERS, getVerseAudioUrl } from "@/lib/quranAudio";
+import { stopAudio } from "@/lib/learning";
 import { MemoryScene } from "@/components/MemoryScene";
 
 type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
@@ -47,6 +49,9 @@ export default function DashboardPage() {
   const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
   const [changelogOpen, setChangelogOpen] = useState(false);
   const [visualFilter, setVisualFilter] = useState("tümü");
+  const [reciter, setReciter] = useState(DEFAULT_RECITER);
+  const [playingVerse, setPlayingVerse] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
   const [authReady, setAuthReady] = useState(false);
   const [syncing, setSyncing] = useState(false);
@@ -130,6 +135,53 @@ export default function DashboardPage() {
   }, [progress]);
 
   useEffect(() => { setStreak(getStreak()); }, []);
+  useEffect(() => {
+    const saved = localStorage.getItem(RECITER_STORAGE_KEY);
+    if (saved) setReciter(saved);
+  }, []);
+
+  function changeReciter(id: string) {
+    setReciter(id);
+    localStorage.setItem(RECITER_STORAGE_KEY, id);
+    stopCurrentAudio();
+  }
+
+  function stopCurrentAudio() {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; audioRef.current = null; }
+    setPlayingVerse(null);
+    stopAudio();
+  }
+
+  function playVerse(key: string, url: string) {
+    stopCurrentAudio();
+    const a = new Audio(url);
+    audioRef.current = a;
+    setPlayingVerse(key);
+    a.onended = () => setPlayingVerse(null);
+    a.onerror = () => setPlayingVerse(null);
+    a.play().catch(() => setPlayingVerse(null));
+  }
+
+  async function playSurahSequential(surahAppIndex: number) {
+    const chapter = SURAH_CHAPTERS[surahAppIndex + 1];
+    if (!chapter) return;
+    const surah = surahs[surahAppIndex];
+    stopCurrentAudio();
+    for (let vi = 0; vi < surah.verses.length; vi++) {
+      const verseNum = surah.verses[vi].number;
+      const url = getVerseAudioUrl(chapter, verseNum, reciter);
+      const key = `${chapter}:${verseNum}`;
+      setPlayingVerse(key);
+      await new Promise<void>(resolve => {
+        const a = new Audio(url);
+        audioRef.current = a;
+        a.onended = () => resolve();
+        a.onerror = () => resolve();
+        a.play().catch(() => resolve());
+      });
+    }
+    setPlayingVerse(null);
+  }
 
   async function handleLogout() {
     if (supabase) await supabase.auth.signOut();
@@ -686,40 +738,78 @@ export default function DashboardPage() {
                 })}
               </div>
 
-              <div className="glass-card rounded-[2rem] p-6">
+              <div className="glass-card rounded-[2rem] p-5 sm:p-6">
+                {/* Okuyucu seçici */}
+                <div className="flex flex-wrap items-center gap-2 mb-5 pb-4 border-b border-stone-700/40">
+                  <span className="text-stone-400 text-xs font-medium shrink-0">🎙️ Okuyucu:</span>
+                  {RECITERS.map(r => (
+                    <button key={r.id} onClick={() => changeReciter(r.id)}
+                      className={`text-xs px-3 py-1.5 rounded-full border transition ${reciter === r.id ? "bg-emerald-600 border-emerald-400 text-white" : "border-stone-600 text-stone-400 hover:border-emerald-500/50 hover:text-white"}`}>
+                      {r.flag} {r.name}
+                    </button>
+                  ))}
+                </div>
+
                 {surahs[activeSurah] && (() => {
                   const surah = surahs[activeSurah];
+                  const chapter = SURAH_CHAPTERS[activeSurah + 1];
+                  const isSurahPlaying = surah.verses.some(v => playingVerse === `${chapter}:${v.number}`);
                   return (
                     <div>
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h2 className="text-2xl font-bold">{surah.name}</h2>
-                          <p className="text-stone-400 text-sm mt-1 max-w-lg">{surah.theme}</p>
+                      <div className="flex items-start justify-between gap-3 mb-5">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <h2 className="text-xl sm:text-2xl font-bold">{surah.name}</h2>
+                            <span className="arabic-text text-2xl text-amber-200">{surah.arabicName}</span>
+                          </div>
+                          <p className="text-stone-400 text-sm mt-1">{surah.theme}</p>
                         </div>
-                        <button onClick={() => speakArabic(surah.verses.map(v => v.arabic).join(' '))}
-                          className="duo-btn duo-btn-blue text-sm">▶ Tümünü Dinle</button>
+                        <button
+                          onClick={() => isSurahPlaying ? stopCurrentAudio() : playSurahSequential(activeSurah)}
+                          className={`duo-btn shrink-0 text-sm ${isSurahPlaying ? "duo-btn-red" : "duo-btn-blue"}`}>
+                          {isSurahPlaying ? "⏹ Durdur" : "▶ Tümünü Dinle"}
+                        </button>
                       </div>
 
-                      <div className="space-y-4">
-                        {surah.verses.map((verse, vi) => (
-                          <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/30 border-emerald-400/30" : "bg-black/20 border-stone-700/30"}`}>
-                            <button onClick={() => setActiveSurahVerse(activeSurahVerse === vi ? null : vi)}
-                              className="w-full text-left p-5">
+                      <div className="space-y-3">
+                        {surah.verses.map((verse, vi) => {
+                          const verseKey = `${chapter}:${verse.number}`;
+                          const isPlaying = playingVerse === verseKey;
+                          return (
+                          <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/20 border-emerald-400/30" : isPlaying ? "bg-blue-900/20 border-blue-400/40" : "bg-black/20 border-stone-700/30"}`}>
+                            <div className="p-4 sm:p-5">
                               <div className="flex items-center gap-3 mb-2">
-                                <span className="w-7 h-7 rounded-full bg-emerald-800/60 text-emerald-300 text-xs flex items-center justify-center font-bold shrink-0">{verse.number}</span>
-                                <button onClick={(e) => { e.stopPropagation(); speakArabic(verse.arabic); }}
-                                  className="arabic-text text-2xl md:text-3xl text-right flex-1 bg-transparent leading-loose">{verse.arabic}</button>
+                                {/* Ayet numarası + ses butonu */}
+                                <button
+                                  onClick={() => isPlaying ? stopCurrentAudio() : playVerse(verseKey, getVerseAudioUrl(chapter, verse.number, reciter))}
+                                  className={`w-8 h-8 rounded-full text-xs font-bold shrink-0 flex items-center justify-center transition border ${isPlaying ? "bg-blue-500 border-blue-400 text-white animate-pulse" : "bg-emerald-800/60 border-emerald-600/40 text-emerald-300 hover:bg-emerald-600"}`}>
+                                  {isPlaying ? "⏸" : verse.number}
+                                </button>
+                                {/* Ayet metni */}
+                                <div className="arabic-text text-xl sm:text-2xl md:text-3xl text-right flex-1 leading-loose cursor-pointer"
+                                     onClick={() => setActiveSurahVerse(activeSurahVerse === vi ? null : vi)}>
+                                  {verse.arabic}
+                                </div>
                               </div>
-                              <div className="text-stone-400 text-sm pl-10">{verse.turkish}</div>
-                            </button>
+                              <div className="text-stone-400 text-sm pl-11">{verse.turkish}</div>
+                              {isPlaying && (
+                                <div className="pl-11 mt-2 flex items-center gap-1.5">
+                                  {[1,2,3,4,5].map(i => (
+                                    <div key={i} className="w-1 rounded-full bg-blue-400"
+                                         style={{height:`${6 + (i%3)*4}px`, animation:`pulse ${0.4 + i*0.1}s ease-in-out infinite alternate`}} />
+                                  ))}
+                                  <span className="text-blue-400 text-xs ml-1">oynuyor...</span>
+                                </div>
+                              )}
+                            </div>
 
                             {activeSurahVerse === vi && (
-                              <div className="px-5 pb-5 pt-1 border-t border-stone-700/30">
+                              <div className="px-4 sm:px-5 pb-5 pt-1 border-t border-stone-700/30">
                                 <div className="text-stone-500 text-xs mb-3">Kelime Kelime Analiz:</div>
                                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                   {verse.words.map((w, wi) => (
                                     <div key={wi} className="rounded-xl border border-stone-700/50 bg-stone-900/40 p-3">
-                                      <button onClick={() => speakArabic(w.arabic)} className="arabic-text text-2xl bg-transparent w-full text-right mb-2">{w.arabic}</button>
+                                      <button onClick={() => speakArabic(w.arabic)} className="arabic-text text-2xl bg-transparent w-full text-right mb-2 hover:text-emerald-300 transition">{w.arabic}</button>
                                       <div className="text-stone-400 text-xs mb-1">{w.transliteration}</div>
                                       <div className="text-emerald-300 text-sm font-medium">{w.meaning}</div>
                                       <div className="text-stone-500 text-xs mt-1">{w.role}</div>
@@ -731,7 +821,7 @@ export default function DashboardPage() {
                               </div>
                             )}
                           </div>
-                        ))}
+                        );})}
                       </div>
                     </div>
                   );
