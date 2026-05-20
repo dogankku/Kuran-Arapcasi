@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, memo } from "react";
 import Link from "next/link";
 import { SURAH_LIST, getGlobalAyah } from "@/data/surahList";
 import {
@@ -68,27 +68,18 @@ function SurahSidebar({
   );
 }
 
-// ── Single verse row ───────────────────────────────────────────────────────
-function VerseRow({
-  verse, activeWordIdx, isActive, showTr, onClick,
+// ── Single verse row — memoized so React re-renders don't reset direct DOM styles ──
+const VerseRow = memo(function VerseRow({
+  verse, isActive, showTr, onSelect,
 }: {
   verse: VerseText;
-  activeWordIdx: number;
   isActive: boolean;
   showTr: boolean;
-  onClick: () => void;
+  onSelect: (n: number) => void;
 }) {
-  const activeRef = useRef<HTMLSpanElement | null>(null);
-
-  useEffect(() => {
-    if (isActive && activeWordIdx >= 0 && activeRef.current) {
-      activeRef.current.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    }
-  }, [isActive, activeWordIdx]);
-
   return (
     <div
-      onClick={onClick}
+      onClick={() => onSelect(verse.n)}
       className={`rounded-2xl p-4 mb-3 cursor-pointer border transition-all
         ${isActive
           ? "bg-amber-500/10 border-amber-500/40 shadow-lg shadow-amber-500/10"
@@ -106,48 +97,44 @@ function VerseRow({
         >
           {verse.n}
         </div>
-        {/* RTL Arabic text — inline-flex column so arrow sits above word without overflow issues */}
+        {/* RTL Arabic words — data-word-key used for direct DOM targeting */}
         <div dir="rtl" className="flex-1 flex flex-wrap gap-x-1 gap-y-1 justify-end">
-          {verse.words.map((word, idx) => {
-            const active = isActive && idx === activeWordIdx;
-            return (
+          {verse.words.map((word, idx) => (
+            <span
+              key={idx}
+              data-word-key={`${verse.n}-${idx}`}
+              style={{
+                display: "inline-flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "4px 6px 2px",
+                borderRadius: "8px",
+                color: "#f5e6c0",
+                background: "transparent",
+                userSelect: "none",
+              }}
+            >
+              <span style={{
+                fontSize: "1.6rem",
+                fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
+                lineHeight: 1.4,
+              }}>
+                {word}
+              </span>
+              {/* Arrow below word, pointing up — hidden until RAF activates it */}
               <span
-                key={idx}
-                ref={active ? activeRef : undefined}
+                data-arrow="1"
                 style={{
-                  display: "inline-flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "4px 6px 6px",
-                  borderRadius: "8px",
-                  color: active ? "#fff" : "#f5e6c0",
-                  background: active ? "rgba(239,68,68,0.25)" : "transparent",
-                  boxShadow: active ? "0 0 20px rgba(239,68,68,0.5)" : "none",
-                  transition: "background 0.12s ease, box-shadow 0.12s ease, color 0.12s ease",
+                  height: "16px",
+                  lineHeight: "16px",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  color: "transparent",
                   userSelect: "none",
                 }}
-              >
-                {/* Word text — on top */}
-                <span style={{
-                  fontSize: "1.6rem",
-                  fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
-                  lineHeight: 1.4,
-                }}>
-                  {word}
-                </span>
-                {/* Arrow — below the word, always rendered, transparent when inactive */}
-                <span style={{
-                  height: "18px",
-                  lineHeight: "18px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  color: active ? "#ef4444" : "transparent",
-                  transition: "color 0.1s ease",
-                  userSelect: "none",
-                }}>▼</span>
-              </span>
-            );
-          })}
+              >▲</span>
+            </span>
+          ))}
         </div>
       </div>
       {/* Turkish translation */}
@@ -156,28 +143,29 @@ function VerseRow({
       )}
     </div>
   );
-}
+});
 
 // ── Main HatimModule ───────────────────────────────────────────────────────
 export default function HatimModule() {
-  const [surahNum, setSurahNum]       = useState(1);
-  const [verses, setVerses]           = useState<VerseText[]>([]);
-  const [timings, setTimings]         = useState<Map<number, Segment[]>>(new Map());
-  const [loading, setLoading]         = useState(false);
-  const [error, setError]             = useState("");
-  const [reciter, setReciter]         = useState<HatimReciter>(HATIM_RECITERS[0]);
+  const [surahNum, setSurahNum]         = useState(1);
+  const [verses, setVerses]             = useState<VerseText[]>([]);
+  const [timings, setTimings]           = useState<Map<number, Segment[]>>(new Map());
+  const [loading, setLoading]           = useState(false);
+  const [error, setError]               = useState("");
+  const [reciter, setReciter]           = useState<HatimReciter>(HATIM_RECITERS[0]);
   const [currentVerse, setCurrentVerse] = useState(1);
-  const [activeWord, setActiveWord]   = useState(-1);   // 0-indexed
-  const [isPlaying, setIsPlaying]     = useState(false);
-  const [autoNext, setAutoNext]       = useState(true);
-  const [showTr, setShowTr]           = useState(true);
-  const [speed, setSpeed]             = useState(1);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [hasTimings, setHasTimings]   = useState(false);
+  const [isPlaying, setIsPlaying]       = useState(false);
+  const [autoNext, setAutoNext]         = useState(true);
+  const [showTr, setShowTr]             = useState(true);
+  const [speed, setSpeed]               = useState(1);
+  const [sidebarOpen, setSidebarOpen]   = useState(false);
+  const [hasTimings, setHasTimings]     = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const rafRef   = useRef<number>(0);
-  const surahMeta = SURAH_LIST[surahNum - 1];
+  const audioRef      = useRef<HTMLAudioElement | null>(null);
+  const rafRef        = useRef<number>(0);
+  // Direct DOM ref — bypasses React re-renders for zero-lag word highlighting
+  const activeElemRef = useRef<HTMLElement | null>(null);
+  const surahMeta     = SURAH_LIST[surahNum - 1];
 
   // Refs to avoid stale closures in the RAF loop
   const timingsRef     = useRef<Map<number, Segment[]>>(new Map());
@@ -194,6 +182,18 @@ export default function HatimModule() {
   versesLenRef.current = verses.length;
   versesRef.current    = verses;
 
+  // ── Clear word highlight (direct DOM, no re-render) ───────────────────────
+  const clearActiveWord = useCallback(() => {
+    const elem = activeElemRef.current;
+    if (!elem) return;
+    elem.style.color      = "#f5e6c0";
+    elem.style.background = "transparent";
+    elem.style.boxShadow  = "none";
+    const arrow = elem.querySelector<HTMLElement>('[data-arrow="1"]');
+    if (arrow) arrow.style.color = "transparent";
+    activeElemRef.current = null;
+  }, []);
+
   // ── Load surah data ──────────────────────────────────────────────────────
   useEffect(() => {
     let cancelled = false;
@@ -204,7 +204,7 @@ export default function HatimModule() {
     timingsRef.current = new Map();
     setCurrentVerse(1);
     curVerseRef.current = 1;
-    setActiveWord(-1);
+    clearActiveWord();
     setIsPlaying(false);
     setHasTimings(false);
     if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
@@ -225,33 +225,60 @@ export default function HatimModule() {
       .finally(() => { if (!cancelled) setLoading(false); });
 
     return () => { cancelled = true; };
-  }, [surahNum, reciter]);
+  }, [surahNum, reciter, clearActiveWord]);
 
-  // ── Word-tracking RAF loop — reads only refs, never stale ────────────────
+  // ── Word-tracking RAF — direct DOM, zero React re-render lag ─────────────
   const trackWords = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || audio.paused) return;
-    const ms = audio.currentTime * 1000;
-    const segs = timingsRef.current.get(curVerseRef.current);
+
+    const ms     = audio.currentTime * 1000;
+    const verseN = curVerseRef.current;
+    const segs   = timingsRef.current.get(verseN);
+
+    // "Last passed" logic: stay on the most recent word whose startMs has been
+    // reached. This fills inter-word gaps and keeps the arrow in sync.
+    let found = -1;
     if (segs && segs.length > 0) {
-      // "last passed" logic: highlight the most recent word whose startMs has been reached.
-      // This keeps the arrow on the current word until the NEXT word starts,
-      // eliminating gaps between segments that cause the "lagging" effect.
-      let found = -1;
       for (const [wIdx, startMs] of segs) {
         if (ms >= startMs) found = wIdx - 1;
-        else break; // segments are in ascending order — safe to stop
+        else break; // segments are in ascending time order
       }
-      setActiveWord(found);
-    } else {
-      setActiveWord(-1);
     }
-    rafRef.current = requestAnimationFrame(trackWords);
-  }, []); // intentionally empty — all state read via refs
 
-  // ── Estimated timing fallback — divides audio duration equally per word ──
+    const nextKey  = found >= 0 ? `${verseN}-${found}` : null;
+    const nextElem = nextKey
+      ? document.querySelector<HTMLElement>(`[data-word-key="${nextKey}"]`)
+      : null;
+
+    if (activeElemRef.current !== nextElem) {
+      // Deactivate previous word
+      const prev = activeElemRef.current;
+      if (prev) {
+        prev.style.color      = "#f5e6c0";
+        prev.style.background = "transparent";
+        prev.style.boxShadow  = "none";
+        const pa = prev.querySelector<HTMLElement>('[data-arrow="1"]');
+        if (pa) pa.style.color = "transparent";
+      }
+      // Activate next word
+      if (nextElem) {
+        nextElem.style.color      = "#fff";
+        nextElem.style.background = "rgba(239,68,68,0.25)";
+        nextElem.style.boxShadow  = "0 0 20px rgba(239,68,68,0.5)";
+        const na = nextElem.querySelector<HTMLElement>('[data-arrow="1"]');
+        if (na) na.style.color = "#ef4444";
+        nextElem.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+      activeElemRef.current = nextElem;
+    }
+
+    rafRef.current = requestAnimationFrame(trackWords);
+  }, []); // intentionally empty — all state read via refs or activeElemRef
+
+  // ── Estimated timing fallback ─────────────────────────────────────────────
   const buildEstimatedTimings = useCallback((verseN: number, durationSec: number) => {
-    if (timingsRef.current.has(verseN)) return; // real timing already loaded
+    if (timingsRef.current.has(verseN)) return;
     const words = versesRef.current.find(v => v.n === verseN)?.words ?? [];
     if (words.length === 0 || !isFinite(durationSec) || durationSec <= 0) return;
     const msPerWord = (durationSec * 1000) / words.length;
@@ -262,35 +289,35 @@ export default function HatimModule() {
     ]);
     const updated = new Map(timingsRef.current);
     updated.set(verseN, est);
-    timingsRef.current = updated; // update ref directly — RAF sees it immediately
-    setTimings(updated);          // persist in React state so re-renders don't reset timingsRef
+    timingsRef.current = updated; // immediate RAF visibility
+    setTimings(updated);          // persist so re-renders don't reset timingsRef
     setHasTimings(true);
   }, []);
 
   // ── Play a specific verse ────────────────────────────────────────────────
   const playVerse = useCallback((verseN: number) => {
     cancelAnimationFrame(rafRef.current);
+    clearActiveWord();
     setCurrentVerse(verseN);
     curVerseRef.current = verseN;
-    setActiveWord(-1);
 
     const globalAyah = getGlobalAyah(surahNum, verseN);
     const url = getHatimAudioUrl(reciter, globalAyah);
 
     if (!audioRef.current) audioRef.current = new Audio();
     const audio = audioRef.current;
-    audio.onloadedmetadata = null; // clear previous handler
-    audio.onended = null;
+    audio.onplay          = null;
+    audio.onloadedmetadata = null;
+    audio.onended         = null;
     audio.pause();
     audio.src = url;
     audio.playbackRate = speed;
 
-    // Once duration is known, build estimated timing if real data is absent
     audio.onloadedmetadata = () => {
       buildEstimatedTimings(verseN, audio.duration);
     };
 
-    // Start RAF from onplay (fires exactly when audio begins) to avoid startup lag
+    // Start RAF exactly when audio begins (onplay fires before first frame)
     audio.onplay = () => {
       setIsPlaying(true);
       cancelAnimationFrame(rafRef.current);
@@ -300,24 +327,21 @@ export default function HatimModule() {
     audio.play().catch(() => setIsPlaying(false));
 
     audio.onended = () => {
-      setActiveWord(-1);
+      clearActiveWord();
       setIsPlaying(false);
       cancelAnimationFrame(rafRef.current);
       if (autoNextRef.current && verseN < versesLenRef.current) {
         playVerseRef.current(verseN + 1);
       }
     };
-  }, [surahNum, reciter, speed, trackWords, buildEstimatedTimings]);
+  }, [surahNum, reciter, speed, trackWords, buildEstimatedTimings, clearActiveWord]);
 
-  // Keep playVerseRef current so onended can call latest version
   playVerseRef.current = playVerse;
 
-  // Keep speed in sync
   useEffect(() => {
     if (audioRef.current) audioRef.current.playbackRate = speed;
   }, [speed]);
 
-  // Cleanup on unmount
   useEffect(() => () => {
     cancelAnimationFrame(rafRef.current);
     audioRef.current?.pause();
@@ -328,6 +352,7 @@ export default function HatimModule() {
     if (isPlaying) {
       audioRef.current?.pause();
       cancelAnimationFrame(rafRef.current);
+      clearActiveWord();
       setIsPlaying(false);
     } else {
       if (audioRef.current && audioRef.current.src && audioRef.current.paused) {
@@ -343,19 +368,13 @@ export default function HatimModule() {
     }
   };
 
-  const handlePrevVerse = () => {
-    const prev = Math.max(1, currentVerse - 1);
-    playVerse(prev);
-  };
+  const handlePrevVerse = () => playVerse(Math.max(1, currentVerse - 1));
+  const handleNextVerse = () => playVerse(Math.min(verses.length, currentVerse + 1));
 
-  const handleNextVerse = () => {
-    const next = Math.min(verses.length, currentVerse + 1);
-    playVerse(next);
-  };
-
-  const handleSelectVerse = (verseN: number) => {
-    if (isPlaying || currentVerse !== verseN) playVerse(verseN);
-  };
+  // Stable callback — always calls latest playVerse via ref, so VerseRow memo works
+  const handleSelectVerse = useCallback((verseN: number) => {
+    playVerseRef.current(verseN);
+  }, []);
 
   const handleSurahSelect = (n: number) => {
     setSurahNum(n);
@@ -371,7 +390,6 @@ export default function HatimModule() {
         fixed inset-0 z-40 transition-opacity md:static md:opacity-100 md:pointer-events-auto
         ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"}
       `}>
-        {/* Mobile backdrop */}
         <div
           className="absolute inset-0 bg-black/60 md:hidden"
           onClick={() => setSidebarOpen(false)}
@@ -407,7 +425,6 @@ export default function HatimModule() {
             <div className="text-xs text-stone-400">{surahMeta.tr} · {surahMeta.meaning} · {surahMeta.vc} ayet</div>
           </div>
           <div className="flex items-center gap-2">
-            {/* Show translation toggle */}
             <button
               onClick={() => setShowTr(p => !p)}
               title="Türkçe meali göster/gizle"
@@ -461,7 +478,6 @@ export default function HatimModule() {
           )}
           {!loading && !error && verses.length > 0 && (
             <>
-              {/* Basmala header (not for At-Tawbah) */}
               {surahNum !== 9 && (
                 <div
                   dir="rtl"
@@ -475,10 +491,9 @@ export default function HatimModule() {
                 <VerseRow
                   key={verse.n}
                   verse={verse}
-                  activeWordIdx={currentVerse === verse.n ? activeWord : -1}
                   isActive={currentVerse === verse.n}
                   showTr={showTr}
-                  onClick={() => handleSelectVerse(verse.n)}
+                  onSelect={handleSelectVerse}
                 />
               ))}
               <div className="h-28" />
@@ -488,7 +503,6 @@ export default function HatimModule() {
 
         {/* Sticky audio controls */}
         <footer className="shrink-0 border-t border-[#2A4050] bg-[#111C24] px-4 py-3">
-          {/* Verse progress */}
           <div className="flex items-center gap-2 mb-3">
             <span className="text-xs text-stone-500 w-16">{currentVerse}. ayet</span>
             <div className="flex-1 h-1.5 rounded-full bg-[#2A4050] overflow-hidden">
@@ -500,9 +514,7 @@ export default function HatimModule() {
             <span className="text-xs text-stone-500 w-8 text-right">{verses.length}</span>
           </div>
 
-          {/* Controls row */}
           <div className="flex items-center justify-between gap-3">
-            {/* Speed */}
             <div className="flex gap-1">
               {[0.75, 1, 1.25, 1.5].map(s => (
                 <button
@@ -518,7 +530,6 @@ export default function HatimModule() {
               ))}
             </div>
 
-            {/* Prev / Play-Pause / Next */}
             <div className="flex items-center gap-3">
               <button
                 onClick={handlePrevVerse}
@@ -544,7 +555,6 @@ export default function HatimModule() {
               </button>
             </div>
 
-            {/* Auto-next toggle */}
             <button
               onClick={() => setAutoNext(p => !p)}
               className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-colors
@@ -557,10 +567,9 @@ export default function HatimModule() {
             </button>
           </div>
 
-          {/* Timing status */}
-          <p className="text-center text-[10px] mt-2" style={{color: hasTimings ? "#92400e" : "#374151"}}>
+          <p className="text-center text-[10px] mt-2" style={{ color: hasTimings ? "#92400e" : "#374151" }}>
             {hasTimings
-              ? `▼ ok takibi aktif — ${reciter.name}`
+              ? `▲ ok takibi aktif — ${reciter.name}`
               : "▶ oynat butonuna bas — ok takibi otomatik başlar"}
           </p>
         </footer>
