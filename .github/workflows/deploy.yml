@@ -26,8 +26,27 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
 
+      - name: Fix SPA routing for GitHub Pages
+        run: |
+          cat > out/404.html << 'EOF'
+          <!DOCTYPE html><html><head><meta charset="utf-8">
+          <title>Ayet Hafızası</title>
+          <script>
+            var path = window.location.pathname;
+            // If path has no trailing slash, add it — GitHub Pages serves directory/index.html
+            if (!path.endsWith('/')) {
+              window.location.replace(path + '/' + window.location.search + window.location.hash);
+            } else {
+              // Unknown page — go home
+              window.location.replace('/Kuran-Arapcasi/');
+            }
+          </script>
+          </head><body></body></html>
+          EOF
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+
