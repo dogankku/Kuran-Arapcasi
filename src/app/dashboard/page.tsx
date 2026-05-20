@@ -105,26 +105,27 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen text-white" style={{background:"var(--duo-bg)"}}>
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
 
-        {/* HEADER - İlerleme */}
-        <header className="glass-card rounded-[2rem] p-6 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
+        {/* HEADER */}
+        <header className="glass-card rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 mb-5 sm:mb-8">
+          <div className="flex flex-col md:flex-row md:items-center gap-4 sm:gap-6">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm">
+              <div className="flex items-center gap-2 mb-2 sm:mb-4 flex-wrap">
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Ayet Hafızası · Kur&apos;an Öğrenme Sistemi
+                  <span className="hidden sm:inline">Ayet Hafızası · Kur&apos;an Öğrenme Sistemi</span>
+                  <span className="sm:hidden">Ayet Hafızası</span>
                 </div>
                 <button onClick={() => setChangelogOpen(c => !c)}
-                  className="inline-flex items-center gap-2 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-4 py-2 text-sm transition">
+                  className="inline-flex items-center gap-1.5 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-3 py-1.5 text-xs sm:text-sm transition">
                   <span className="text-amber-400 font-mono font-bold">v{APP_VERSION}</span>
-                  <span className="text-stone-500">{BUILD_DATE}</span>
+                  <span className="text-stone-500 hidden sm:inline">{BUILD_DATE}</span>
                   <span className="text-xs">{changelogOpen ? "▲" : "▼"}</span>
                 </button>
               </div>
               {changelogOpen && (
-                <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-4 mb-4 text-sm space-y-2">
+                <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm space-y-2">
                   {[
                     { version: "1.3.0", note: "Morfoloji paneli, 9 sure kelime analizi, SM-2 tekrar algoritması" },
                     { version: "1.2.0", note: "Sure Modu: Fatiha, İhlas, Kevser, Felak, Nas, Asr, Kafirun, Nasr, Mesed" },
@@ -138,11 +139,11 @@ export default function DashboardPage() {
                   ))}
                 </div>
               )}
-              <h1 className="text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
-              <p className="text-stone-300 mt-2 text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
+              <p className="text-stone-300 mt-1 sm:mt-2 text-xs sm:text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
             </div>
             <div className="md:w-64">
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
                 <span className="text-emerald-300 font-bold">%{coverage}</span>
               </div>
@@ -151,18 +152,19 @@ export default function DashboardPage() {
               </div>
               <div className="flex justify-between text-xs text-stone-500">
                 <span>{learned} kelime öğrenildi</span>
-                <span>Sonraki hedef: {milestone.next} kelime → {milestone.label}</span>
+                <span className="hidden sm:inline">Sonraki: {milestone.next} → {milestone.label}</span>
+                <span className="sm:hidden">{milestone.label}</span>
               </div>
             </div>
           </div>
-            <div className="relative mt-5">
+            <div className="relative mt-4 sm:mt-5">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => { setSearchQuery(e.target.value); setSearchOpen(true); }}
                 onFocus={() => setSearchOpen(true)}
                 placeholder="Kelime ara... (Arapça, Türkçe veya transliterasyon)"
-                className="w-full bg-stone-900/60 border border-stone-700 rounded-2xl px-5 py-3 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500/50"
+                className="w-full bg-stone-900/60 border border-stone-700 rounded-2xl px-4 sm:px-5 py-3 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500/50"
               />
               {searchQuery && (
                 <button onClick={() => { setSearchQuery(""); setSearchOpen(false); }}
@@ -193,18 +195,18 @@ export default function DashboardPage() {
         {/* NAVİGASYON */}
         <nav className="duo-card p-2 mb-8 flex gap-1 overflow-x-auto no-scrollbar" style={{borderRadius:"1.4rem"}}>
           {([
-            ["yol", "Öğrenme Yolu"],
-            ["kelime", "Kelimeler"],
-            ["kokler", "Kök Ailesi"],
-            ["gramer", "Gramer"],
-            ["ayet", "Ayet Analizi"],
-            ["sure", "Sure Modu"],
-            ["morfo", "Kalıplar"],
-            ["quiz", "Test"],
-            ["tekrar", `Tekrar (${reviewWords.length})`],
-            ["gorseller", `Görseller`],
-          ] as [Panel, string][]).map(([p, label]) => (
-            <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} />
+            ["yol", "Yol", "🗺️"],
+            ["kelime", "Kelime", "📖"],
+            ["kokler", "Kökler", "🌿"],
+            ["gramer", "Gramer", "✏️"],
+            ["ayet", "Ayet", "📜"],
+            ["sure", "Sure", "🕌"],
+            ["morfo", "Kalıp", "🔤"],
+            ["quiz", "Test", "🎯"],
+            ["tekrar", `Tekrar${reviewWords.length ? ` (${reviewWords.length})` : ""}`, "🔄"],
+            ["gorseller", "Görsel", "🖼️"],
+          ] as [Panel, string, string][]).map(([p, label, icon]) => (
+            <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} icon={icon} />
           ))}
         </nav>
 
@@ -882,10 +884,11 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
     </button>
   );
 }
-function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
+function Tab({ active, onClick, label, icon }: { active: boolean; onClick: () => void; label: string; icon?: string }) {
   return (
     <button onClick={onClick} className={`duo-tab${active ? " active" : ""}`}>
-      {label}
+      {icon && <span className="tab-icon">{icon}</span>}
+      <span>{label}</span>
     </button>
   );
 }
