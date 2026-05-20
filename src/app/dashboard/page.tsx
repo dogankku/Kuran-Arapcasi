@@ -10,7 +10,7 @@ import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/type
 import { surahs } from "@/data/surahs";
 import { morphPatterns } from "@/data/morphology";
 import { words } from "@/data/words";
-import { APP_VERSION, BUILD_DATE } from "@/data/version";
+import { APP_VERSION, BUILD_DATE, BUILD_TIME, CHANGELOG } from "@/data/version";
 import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
@@ -22,7 +22,7 @@ import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
 import AuthModal from "@/components/AuthModal";
 import RankBadge from "@/components/RankBadge";
-import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, SURAH_CHAPTERS, getVerseAudioUrl } from "@/lib/quranAudio";
+import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, getVerseAudioUrl } from "@/lib/quranAudio";
 import { stopAudio } from "@/lib/learning";
 import { MemoryScene } from "@/components/MemoryScene";
 
@@ -163,14 +163,12 @@ export default function DashboardPage() {
   }
 
   async function playSurahSequential(surahAppIndex: number) {
-    const chapter = SURAH_CHAPTERS[surahAppIndex + 1];
-    if (!chapter) return;
     const surah = surahs[surahAppIndex];
     stopCurrentAudio();
     for (let vi = 0; vi < surah.verses.length; vi++) {
       const verseNum = surah.verses[vi].number;
-      const url = getVerseAudioUrl(chapter, verseNum, reciter);
-      const key = `${chapter}:${verseNum}`;
+      const url = getVerseAudioUrl(surahAppIndex + 1, verseNum, reciter);
+      const key = `s${surahAppIndex}:${verseNum}`;
       setPlayingVerse(key);
       await new Promise<void>(resolve => {
         const a = new Audio(url);
@@ -262,8 +260,15 @@ export default function DashboardPage() {
                 <button onClick={() => setChangelogOpen(c => !c)}
                   className="inline-flex items-center gap-1.5 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-3 py-1.5 text-xs sm:text-sm transition">
                   <span className="text-amber-400 font-mono font-bold">v{APP_VERSION}</span>
-                  <span className="text-stone-500 hidden sm:inline">{BUILD_DATE}</span>
+                  <span className="text-stone-500 hidden sm:inline">{BUILD_DATE} {BUILD_TIME}</span>
+                  <span className="text-stone-500 sm:hidden">{BUILD_TIME}</span>
                   <span className="text-xs">{changelogOpen ? "▲" : "▼"}</span>
+                </button>
+                {/* Yenile butonu */}
+                <button onClick={() => window.location.reload()}
+                  title="Sayfayı yenile"
+                  className="inline-flex items-center gap-1 bg-stone-800/60 border border-stone-700/60 text-stone-400 hover:text-white hover:border-emerald-500/40 rounded-full px-2.5 py-1.5 text-xs transition">
+                  🔄 <span className="hidden sm:inline">Yenile</span>
                 </button>
                 {/* Kullanıcı bilgisi */}
                 {user && (
@@ -280,14 +285,10 @@ export default function DashboardPage() {
               </div>
               {changelogOpen && (
                 <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm space-y-2">
-                  {[
-                    { version: "1.3.0", note: "Morfoloji paneli, 9 sure kelime analizi, SM-2 tekrar algoritması" },
-                    { version: "1.2.0", note: "Sure Modu: Fatiha, İhlas, Kevser, Felak, Nas, Asr, Kafirun, Nasr, Mesed" },
-                    { version: "1.1.0", note: "Kök ailesi, 15 gramer + 15 ayet analizi, frekans verileri" },
-                    { version: "1.0.0", note: "İlk sürüm: 300 kelime, görsel hafıza, quiz, tekrar" },
-                  ].map(c => (
-                    <div key={c.version} className="flex gap-3">
+                  {CHANGELOG.map(c => (
+                    <div key={c.version} className="flex gap-3 items-start">
                       <span className="text-amber-400 font-mono shrink-0">v{c.version}</span>
+                      <span className="text-stone-600 shrink-0">{c.date} {c.time}</span>
                       <span className="text-stone-400">{c.note}</span>
                     </div>
                   ))}
@@ -752,8 +753,8 @@ export default function DashboardPage() {
 
                 {surahs[activeSurah] && (() => {
                   const surah = surahs[activeSurah];
-                  const chapter = SURAH_CHAPTERS[activeSurah + 1];
-                  const isSurahPlaying = surah.verses.some(v => playingVerse === `${chapter}:${v.number}`);
+                  const surahIdx = activeSurah + 1; // 1-based app surah index
+                  const isSurahPlaying = surah.verses.some(v => playingVerse === `s${activeSurah}:${v.number}`);
                   return (
                     <div>
                       <div className="flex items-start justify-between gap-3 mb-5">
@@ -773,7 +774,7 @@ export default function DashboardPage() {
 
                       <div className="space-y-3">
                         {surah.verses.map((verse, vi) => {
-                          const verseKey = `${chapter}:${verse.number}`;
+                          const verseKey = `s${activeSurah}:${verse.number}`;
                           const isPlaying = playingVerse === verseKey;
                           return (
                           <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/20 border-emerald-400/30" : isPlaying ? "bg-blue-900/20 border-blue-400/40" : "bg-black/20 border-stone-700/30"}`}>
@@ -781,7 +782,7 @@ export default function DashboardPage() {
                               <div className="flex items-center gap-3 mb-2">
                                 {/* Ayet numarası + ses butonu */}
                                 <button
-                                  onClick={() => isPlaying ? stopCurrentAudio() : playVerse(verseKey, getVerseAudioUrl(chapter, verse.number, reciter))}
+                                  onClick={() => isPlaying ? stopCurrentAudio() : playVerse(verseKey, getVerseAudioUrl(surahIdx, verse.number, reciter))}
                                   className={`w-8 h-8 rounded-full text-xs font-bold shrink-0 flex items-center justify-center transition border ${isPlaying ? "bg-blue-500 border-blue-400 text-white animate-pulse" : "bg-emerald-800/60 border-emerald-600/40 text-emerald-300 hover:bg-emerald-600"}`}>
                                   {isPlaying ? "⏸" : verse.number}
                                 </button>
@@ -1065,7 +1066,7 @@ export default function DashboardPage() {
 
         <footer className="text-center text-stone-500 text-xs py-8 mt-4 space-y-1">
           <div>Ayet Hafızası · {words.length} kelime · {visualWords.length} görsel kart</div>
-          <div className="text-stone-600">v{APP_VERSION} · {BUILD_DATE}</div>
+          <div className="text-stone-600">v{APP_VERSION} · {BUILD_DATE} {BUILD_TIME}</div>
         </footer>
       </div>
     </main>

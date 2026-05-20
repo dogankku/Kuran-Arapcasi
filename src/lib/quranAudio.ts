@@ -1,41 +1,55 @@
 // Quran audio CDN utilities
-// Verse audio: everyayah.com — gerçek Kur'an tilaveti
+// Verse audio: cdn.islamic.network — CORS açık, global ayet numarası sistemi
 // Word audio:  audio.qurancdn.com — kelime bazlı tilavetwbw
 
 export interface Reciter {
   id: string;
   name: string;
   flag: string;
-  style: string;
+  edition: string; // Islamic Network edition kodu
 }
 
 export const RECITERS: Reciter[] = [
-  { id: "Mishary_Rashid_Alafasy_128kbps",   name: "Mishary Raşid",          flag: "🇰🇼", style: "Murattal" },
-  { id: "Husary_128kbps",                    name: "Mahmud Halil Husari",    flag: "🇪🇬", style: "Murattal" },
-  { id: "Abdul_Basit_Murattal_128kbps",      name: "Abdülbasit (Murattal)",  flag: "🇪🇬", style: "Murattal" },
-  { id: "Maher_Al_Muaiqly_128kbps",          name: "Mahir el-Muaykıli",      flag: "🇸🇦", style: "Murattal" },
+  { id: "alafasy",   name: "Mishary Raşid",         flag: "🇰🇼", edition: "ar.alafasy" },
+  { id: "husary",    name: "Mahmud Halil Husari",   flag: "🇪🇬", edition: "ar.husary" },
+  { id: "basit",     name: "Abdülbasit (Murattal)", flag: "🇪🇬", edition: "ar.abdulbasitmurattal" },
+  { id: "muaiqly",   name: "Mahir el-Muaykıli",     flag: "🇸🇦", edition: "ar.mahermuaiqly" },
 ];
 
 export const DEFAULT_RECITER = RECITERS[0].id;
 export const RECITER_STORAGE_KEY = "ayet-reciter-v1";
 
-// Uygulamamızdaki sure sırası → Kur'an bölüm numarası
-export const SURAH_CHAPTERS: Record<number, number> = {
-  1: 1,    // El-Fatiha
-  2: 112,  // El-İhlas
-  3: 108,  // El-Kevser
-  4: 113,  // El-Felak
-  5: 114,  // En-Nas
-  6: 103,  // El-Asr
-  7: 109,  // El-Kafirûn
-  8: 110,  // En-Nasr
-  9: 111,  // El-Mesed
+// Uygulamamızdaki sure indeksi (1-9) → sure başlangıç global ayet numarası
+// Global ayet sayımı: Kur'an'daki toplam 6236 ayetin sıra numarası
+// Son 12 surenin geriye doğru hesabı:
+//   114(6v)=6231-6236, 113(5v)=6226-6230, 112(4v)=6222-6225,
+//   111(5v)=6217-6221, 110(3v)=6214-6216, 109(6v)=6208-6213,
+//   108(3v)=6205-6207, 107(7v)=6198-6204, 106(4v)=6194-6197,
+//   105(5v)=6189-6193, 104(9v)=6180-6188, 103(3v)=6177-6179
+export const SURAH_GLOBAL_START: Record<number, number> = {
+  1: 1,     // El-Fatiha  (ch.1,  7 ayet → global 1-7)
+  2: 6222,  // El-İhlas   (ch.112, 4 ayet → global 6222-6225)
+  3: 6205,  // El-Kevser  (ch.108, 3 ayet → global 6205-6207)
+  4: 6226,  // El-Felak   (ch.113, 5 ayet → global 6226-6230)
+  5: 6231,  // En-Nas     (ch.114, 6 ayet → global 6231-6236)
+  6: 6177,  // El-Asr     (ch.103, 3 ayet → global 6177-6179)
+  7: 6208,  // El-Kafirûn (ch.109, 6 ayet → global 6208-6213)
+  8: 6214,  // En-Nasr    (ch.110, 3 ayet → global 6214-6216)
+  9: 6217,  // El-Mesed   (ch.111, 5 ayet → global 6217-6221)
 };
 
-export function getVerseAudioUrl(chapter: number, verse: number, reciter: string): string {
-  const ch = String(chapter).padStart(3, "0");
-  const vs = String(verse).padStart(3, "0");
-  return `https://everyayah.com/data/${reciter}/${ch}${vs}.mp3`;
+// Uygulamamızdaki sure sırası → Kur'an bölüm numarası (kelime haritası için)
+export const SURAH_CHAPTERS: Record<number, number> = {
+  1: 1, 2: 112, 3: 108, 4: 113, 5: 114, 6: 103, 7: 109, 8: 110, 9: 111,
+};
+
+// Islamic Network CDN — CORS destekli, ücretsiz
+export function getVerseAudioUrl(surahAppIdx: number, verseNumber: number, reciterId: string): string {
+  const startGlobal = SURAH_GLOBAL_START[surahAppIdx];
+  if (!startGlobal) return "";
+  const globalAyah = startGlobal + verseNumber - 1;
+  const reciter = RECITERS.find(r => r.id === reciterId) ?? RECITERS[0];
+  return `https://cdn.islamic.network/quran/audio/128/${reciter.edition}/${globalAyah}.mp3`;
 }
 
 export function getWordAudioUrl(arabic: string): string | null {
