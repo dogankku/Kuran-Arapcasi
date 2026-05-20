@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
@@ -18,8 +18,14 @@ import {
   getQuranCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
   speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
+import { supabase, isConfigured } from "@/lib/supabase";
+import { getRank, getNextRank, RANKS } from "@/data/ranks";
+import AuthModal from "@/components/AuthModal";
+import RankBadge from "@/components/RankBadge";
 
-type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller";
+type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
+
+interface AuthUser { id: string; email: string; username: string; }
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
@@ -40,6 +46,10 @@ export default function DashboardPage() {
   const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
   const [changelogOpen, setChangelogOpen] = useState(false);
   const [visualFilter, setVisualFilter] = useState("tümü");
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -47,16 +57,90 @@ export default function DashboardPage() {
   const visualWords = useMemo(() => words.filter((w) => memoryImagesByArabic[w.arabic]), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
+  // --- Auth + sync helpers ---
+
+  const loadProgressFromDb = useCallback(async (userId: string) => {
+    if (!supabase) return;
+    const { data } = await supabase.from("user_progress").select("progress,streak").eq("id", userId).single();
+    if (data) {
+      if (data.progress) setProgress(data.progress as ProgressMap);
+      if (data.streak) {
+        const s = data.streak as StreakData;
+        setStreak(s);
+        localStorage.setItem(STREAK_KEY, JSON.stringify(s));
+      }
+    }
   }, []);
+
+  const syncProgressToDb = useCallback((userId: string, prog: ProgressMap, str: StreakData) => {
+    if (!supabase) return;
+    if (syncTimer.current) clearTimeout(syncTimer.current);
+    syncTimer.current = setTimeout(async () => {
+      if (!supabase) return;
+      setSyncing(true);
+      await supabase.from("user_progress").upsert({
+        id: userId, progress: prog, streak: str, updated_at: new Date().toISOString(),
+      });
+      setSyncing(false);
+    }, 1500);
+  }, []);
+
+  // Auth state init
+  useEffect(() => {
+    if (!isConfigured || !supabase) { setAuthReady(true); return; }
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        const u = session.user;
+        const authUser = { id: u.id, email: u.email!, username: (u.user_metadata?.username as string) || u.email!.split("@")[0] };
+        setUser(authUser);
+        loadProgressFromDb(u.id).finally(() => setAuthReady(true));
+      } else {
+        setAuthReady(true);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        const u = session.user;
+        setUser({ id: u.id, email: u.email!, username: (u.user_metadata?.username as string) || u.email!.split("@")[0] });
+      } else {
+        setUser(null);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [loadProgressFromDb]);
+
+  // Local storage init (when not using Supabase or while loading)
+  useEffect(() => {
+    if (!isConfigured) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
+    }
+  }, []);
+
+  // Persist progress locally always
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
+
+  // Sync to DB on progress change
+  useEffect(() => {
+    if (user) syncProgressToDb(user.id, progress, streak);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress]);
+
   useEffect(() => { setStreak(getStreak()); }, []);
+
+  async function handleLogout() {
+    if (supabase) await supabase.auth.signOut();
+    setUser(null);
+  }
 
   const learned = Object.values(progress).filter((p) => p.known).length;
   const coverage = getQuranCoverage(learned);
   const milestone = getMilestone(learned);
+  const rank = getRank(learned);
+  const nextRank = getNextRank(learned);
+  const rankPct = nextRank ? Math.round(((learned - rank.min) / (nextRank.min - rank.min)) * 100) : 100;
   const activeProgress = progress[activeWord.id] || emptyProgress();
   const dailyWords = useMemo(() => getDailyWords(words, progress, 5), [progress]);
 
@@ -103,8 +187,13 @@ export default function DashboardPage() {
     save(activeWord, answer === quizPrompt.answer ? "known" : "wrong");
   }
 
+  // Show auth modal when Supabase is configured and user not logged in
+  const showAuthModal = isConfigured && authReady && !user;
+
   return (
     <main className="min-h-screen text-white" style={{background:"var(--duo-bg)"}}>
+      {showAuthModal && <AuthModal onSuccess={async (u) => { setUser(u); await loadProgressFromDb(u.id); }} />}
+
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
 
         {/* HEADER */}
@@ -123,6 +212,18 @@ export default function DashboardPage() {
                   <span className="text-stone-500 hidden sm:inline">{BUILD_DATE}</span>
                   <span className="text-xs">{changelogOpen ? "▲" : "▼"}</span>
                 </button>
+                {/* Kullanıcı bilgisi */}
+                {user && (
+                  <div className="ml-auto flex items-center gap-2 flex-wrap">
+                    <RankBadge learned={learned} compact />
+                    {syncing && <span className="text-stone-500 text-xs animate-pulse">↑ kaydediliyor</span>}
+                    <span className="text-stone-400 text-xs hidden sm:inline">{user.username}</span>
+                    <button onClick={handleLogout}
+                      className="text-xs text-stone-500 hover:text-red-400 transition border border-stone-700 rounded-full px-2.5 py-1">
+                      Çıkış
+                    </button>
+                  </div>
+                )}
               </div>
               {changelogOpen && (
                 <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm space-y-2">
@@ -142,18 +243,42 @@ export default function DashboardPage() {
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
               <p className="text-stone-300 mt-1 sm:mt-2 text-xs sm:text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
             </div>
-            <div className="md:w-64">
-              <div className="flex justify-between text-xs sm:text-sm mb-2">
-                <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
-                <span className="text-emerald-300 font-bold">%{coverage}</span>
+            <div className="md:w-72 space-y-3">
+              {/* Kur'an anlama oranı */}
+              <div>
+                <div className="flex justify-between text-xs sm:text-sm mb-1.5">
+                  <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
+                  <span className="text-emerald-300 font-bold">%{coverage}</span>
+                </div>
+                <div className="duo-progress-track mb-1">
+                  <div className="duo-progress-fill" style={{ width: `${coverage}%` }} />
+                </div>
+                <div className="flex justify-between text-xs text-stone-500">
+                  <span>{learned} kelime öğrenildi</span>
+                  <span className="hidden sm:inline">Sonraki: {milestone.next} → {milestone.label}</span>
+                  <span className="sm:hidden">{milestone.label}</span>
+                </div>
               </div>
-              <div className="duo-progress-track mb-2">
-                <div className="duo-progress-fill" style={{ width: `${coverage}%` }} />
-              </div>
-              <div className="flex justify-between text-xs text-stone-500">
-                <span>{learned} kelime öğrenildi</span>
-                <span className="hidden sm:inline">Sonraki: {milestone.next} → {milestone.label}</span>
-                <span className="sm:hidden">{milestone.label}</span>
+              {/* Rütbe kartı */}
+              <div className="rounded-2xl p-3 border flex items-center gap-3"
+                   style={{background:`${rank.color}12`, borderColor:`${rank.color}35`}}>
+                <span className="text-2xl">{rank.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-bold text-white text-sm">{rank.title}</span>
+                    <span className="arabic-text text-sm shrink-0" style={{color:rank.color}}>{rank.arabic}</span>
+                  </div>
+                  {nextRank && (
+                    <>
+                      <div className="h-1.5 rounded-full mt-1 mb-0.5 overflow-hidden" style={{background:"rgba(255,255,255,0.08)"}}>
+                        <div className="h-full rounded-full transition-all duration-700"
+                             style={{width:`${rankPct}%`, background:rank.color}} />
+                      </div>
+                      <div className="text-stone-500 text-xs">{nextRank.icon} {nextRank.title} için {nextRank.min - learned} kelime kaldı</div>
+                    </>
+                  )}
+                  {!nextRank && <div className="text-xs mt-0.5" style={{color:rank.color}}>En yüksek rütbe! 🎉</div>}
+                </div>
               </div>
             </div>
           </div>
@@ -205,6 +330,7 @@ export default function DashboardPage() {
             ["quiz", "Test", "🎯"],
             ["tekrar", `Tekrar${reviewWords.length ? ` (${reviewWords.length})` : ""}`, "🔄"],
             ["gorseller", "Görsel", "🖼️"],
+            ["rutbe", "Rütbe", "🏅"],
           ] as [Panel, string, string][]).map(([p, label, icon]) => (
             <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} icon={icon} />
           ))}
@@ -795,6 +921,70 @@ export default function DashboardPage() {
                   : words.filter(w => w.part_of_speech.includes(visualFilter === "isim" ? "isim" : visualFilter === "fiil" ? "fiil" : "harf") || (visualFilter === "edat" && (w.part_of_speech.includes("edat") || w.part_of_speech.includes("bağlaç") || w.part_of_speech.includes("olumsuzluk"))))
                 ).map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}
               </div>
+          </section>
+        )}
+
+        {/* RÜTBELER PANELİ */}
+        {panel === "rutbe" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">🏅</span>
+              <div>
+                <h2 className="text-2xl font-bold">Rütbeler</h2>
+                <p className="text-stone-400 text-sm">Öğrendikçe yüksel, Kur'an yolunda ilerle</p>
+              </div>
+            </div>
+
+            {/* Mevcut rütbe vurgusu */}
+            <div className="mb-6 mt-4 rounded-2xl p-5 border-2 text-center"
+                 style={{background:`${rank.color}18`, borderColor:`${rank.color}55`}}>
+              <div className="text-5xl mb-2">{rank.icon}</div>
+              <div className="text-2xl font-bold text-white">{rank.title}</div>
+              <div className="arabic-text text-xl mb-2" style={{color:rank.color}}>{rank.arabic}</div>
+              <div className="text-stone-300 text-sm">{rank.desc}</div>
+              <div className="text-stone-500 text-xs mt-2">{learned} kelime öğrenildi</div>
+              {nextRank && (
+                <div className="mt-3">
+                  <div className="h-2 rounded-full overflow-hidden mx-auto max-w-xs" style={{background:"rgba(255,255,255,0.1)"}}>
+                    <div className="h-full rounded-full transition-all duration-700" style={{width:`${rankPct}%`, background:rank.color}} />
+                  </div>
+                  <div className="text-stone-500 text-xs mt-1">
+                    {nextRank.icon} {nextRank.title} için {nextRank.min - learned} kelime daha
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Tüm rütbeler */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {RANKS.map((r, i) => {
+                const isActive = rank.min === r.min;
+                const isUnlocked = learned >= r.min;
+                const isNext = nextRank?.min === r.min;
+                return (
+                  <div key={i} className="rounded-2xl p-4 border transition-all"
+                       style={{
+                         background: isActive ? `${r.color}22` : isUnlocked ? `${r.color}0e` : "rgba(255,255,255,0.03)",
+                         borderColor: isActive ? `${r.color}80` : isNext ? `${r.color}50` : "rgba(255,255,255,0.08)",
+                         opacity: isUnlocked ? 1 : 0.45,
+                       }}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className={`text-2xl ${!isUnlocked ? "grayscale" : ""}`}>{r.icon}</span>
+                      <div className="flex-1">
+                        <div className="font-bold text-sm text-white">{r.title}</div>
+                        <div className="arabic-text text-sm" style={{color: isUnlocked ? r.color : "#8FA8B4"}}>{r.arabic}</div>
+                      </div>
+                      {isActive && <span className="text-xs font-bold px-2 py-0.5 rounded-full"
+                                        style={{background:`${r.color}33`, color:r.color}}>Mevcut</span>}
+                      {!isUnlocked && !isNext && <span className="text-xs text-stone-600">🔒</span>}
+                      {isNext && <span className="text-xs text-stone-400 font-medium">Sonraki</span>}
+                    </div>
+                    <div className="text-stone-400 text-xs mb-1">{r.desc}</div>
+                    <div className="text-stone-600 text-xs">{r.min} kelimeden itibaren</div>
+                  </div>
+                );
+              })}
+            </div>
           </section>
         )}
 
