@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
-import { memoryCards } from "@/data/memoryEmojis";
+import { MemoryScene } from "@/components/MemoryScene";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
@@ -336,39 +336,15 @@ export default function DashboardPage() {
                       )}
                     </div>
                   )
-                  : (() => {
-                      const mc = memoryCards[activeWord.arabic];
-                      const fbBg: Record<string,string> = { "isim":"from-blue-900","fiil":"from-purple-900","sıfat":"from-amber-900","harf-i cer":"from-teal-900","bağlaç":"from-rose-900","zamir":"from-indigo-900","edat":"from-emerald-900","zarf":"from-orange-900","özel isim":"from-yellow-900","olumsuzluk":"from-red-900","soru":"from-cyan-900","ism-i mevsûl":"from-violet-900" };
-                      const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
-                      const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
-                      return (
-                        <div className={`relative rounded-3xl bg-gradient-to-br ${bg} overflow-hidden flex flex-col items-center justify-center gap-3 py-10 px-5 mb-4`} style={{border:'1.5px solid rgba(217,119,6,0.3)',boxShadow:'0 0 0 1px rgba(217,119,6,0.06),0 8px 40px rgba(0,0,0,0.6)'}}>
-                          {/* Corner ornaments */}
-                          <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/45 rounded-tl pointer-events-none" />
-                          <div className="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/45 rounded-tr pointer-events-none" />
-                          <div className="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/45 rounded-bl pointer-events-none" />
-                          <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/45 rounded-br pointer-events-none" />
-                          {/* Root watermark */}
-                          {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.06] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
-                          {/* Emoji or Arabic */}
-                          {mc?.emoji
-                            ? <span className="text-7xl relative z-10 drop-shadow-lg">{mc.emoji}</span>
-                            : <span className="arabic-text text-6xl text-white/75 relative z-10">{activeWord.arabic}</span>
-                          }
-                          {/* Transliteration */}
-                          <span className="text-amber-300 text-xl font-semibold relative z-10 tracking-wide">{activeWord.transliteration}</span>
-                          {/* Scene hint */}
-                          {mc?.scene && <span className="text-white/50 text-sm italic relative z-10 px-3 text-center">{mc.scene}</span>}
-                          {/* Memory anchor inside card */}
-                          {activeWord.memory_hint && (
-                            <div className="relative z-10 flex items-start gap-2 bg-black/35 rounded-2xl px-3 py-2.5 w-full mt-1">
-                              <span className="text-base shrink-0">💡</span>
-                              <span className="text-amber-200/90 text-xs leading-snug">{activeWord.memory_hint}</span>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()
+                  : (
+                    <MemoryScene
+                      arabic={activeWord.arabic}
+                      transliteration={activeWord.transliteration}
+                      partOfSpeech={activeWord.part_of_speech}
+                      memoryHint={activeWord.memory_hint}
+                      root={activeWord.root}
+                    />
+                  )
                 }
 
                 {/* Örnek ayet — always visible */}
@@ -829,52 +805,33 @@ export default function DashboardPage() {
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const image = memoryImagesByArabic[word.arabic] || null;
-  const card = memoryCards[word.arabic];
-
-  const fallbackBg: Record<string, string> = {
-    "isim": "from-blue-900 to-slate-950",
-    "fiil": "from-purple-900 to-slate-950",
-    "sıfat": "from-amber-900 to-slate-950",
-    "harf-i cer": "from-teal-900 to-slate-950",
-    "bağlaç": "from-rose-900 to-slate-950",
-    "zamir": "from-indigo-900 to-slate-950",
-    "edat": "from-emerald-900 to-slate-950",
-    "zarf": "from-orange-900 to-slate-950",
-    "özel isim": "from-yellow-900 to-slate-950",
-    "olumsuzluk": "from-red-900 to-slate-950",
-    "soru": "from-cyan-900 to-slate-950",
-    "ism-i mevsûl": "from-violet-900 to-slate-950",
-  };
-  const posKey = Object.keys(fallbackBg).find(k => word.part_of_speech.includes(k)) || "isim";
-  const bg = card?.bg || fallbackBg[posKey];
-
-  const heightClass = large ? "h-52" : "h-40";
 
   return (
     <button onClick={onClick} className="rounded-[1.5rem] overflow-hidden text-left hover:scale-[1.02] transition-transform duration-200 w-full"
       style={{background:"var(--duo-card)", border:"2px solid var(--duo-card-border)", borderBottom:"4px solid var(--duo-card-shadow)"}}>
       {/* Görsel alan */}
       {image ? (
-        <img src={imgSrc(image)} alt={word.turkish_meaning}
-          className={`w-full ${heightClass} object-cover`} />
-      ) : (
-        <div className={`w-full ${heightClass} bg-gradient-to-br ${bg} flex flex-col items-center justify-center gap-2 relative overflow-hidden`}>
-          {/* Arka plan kök harfleri — dekoratif */}
-          {word.root && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-              <span className="arabic-text text-[6rem] opacity-[0.07] text-white font-black leading-none">{word.root}</span>
+        <div className="relative">
+          <img src={imgSrc(image)} alt={word.turkish_meaning} className={`w-full ${large ? "h-52" : "h-40"} object-cover`} />
+          {word.memory_hint && (
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-3 pt-6 pb-2">
+              <div className="flex items-start gap-1.5">
+                <span className="text-[11px] shrink-0">💡</span>
+                <span className="text-[10px] text-amber-200/90 leading-tight line-clamp-2">{word.memory_hint}</span>
+              </div>
             </div>
           )}
-          {/* Ana emoji */}
-          {card?.emoji && (
-            <span className={`${large ? "text-6xl" : "text-5xl"} relative z-10 drop-shadow-lg`}>{card.emoji}</span>
-          )}
-          {/* Arapça kelime */}
-          <span className={`arabic-text ${large ? "text-5xl" : "text-4xl"} text-white/95 relative z-10 drop-shadow-md`}>{word.arabic}</span>
-          {/* Görsel sahne ipucu */}
-          {card?.scene && (
-            <span className="text-white/50 text-xs italic relative z-10 px-3 text-center">{card.scene}</span>
-          )}
+        </div>
+      ) : (
+        <div className={`w-full ${large ? "h-52" : "h-40"} relative overflow-hidden`}>
+          <MemoryScene
+            arabic={word.arabic}
+            transliteration={word.transliteration}
+            partOfSpeech={word.part_of_speech}
+            memoryHint={word.memory_hint}
+            root={word.root}
+            compact
+          />
         </div>
       )}
       {/* Bilgi alanı */}
