@@ -309,57 +309,73 @@ export default function DashboardPage() {
             </div>
             <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-6">
               <div className="glass-card rounded-[2rem] p-6">
-                <div className="soft-card rounded-[1.7rem] p-6 text-center">
-                  <div className="relative">
-                    <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
-                    <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
-                  </div>
-                  {activeImage
-                    ? <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
-                    : (() => {
-                        const mc = memoryCards[activeWord.arabic];
-                        const fbBg: Record<string,string> = { "isim":"from-blue-900","fiil":"from-purple-900","sıfat":"from-amber-900","harf-i cer":"from-teal-900","bağlaç":"from-rose-900","zamir":"from-indigo-900","edat":"from-emerald-900","zarf":"from-orange-900","özel isim":"from-yellow-900","olumsuzluk":"from-red-900","soru":"from-cyan-900","ism-i mevsûl":"from-violet-900" };
-                        const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
-                        const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
-                        return (
-                          <div className={`my-5 rounded-3xl bg-gradient-to-br ${bg} relative overflow-hidden flex flex-col items-center justify-center gap-3 py-8`}>
-                            {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.07] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
-                            {mc?.emoji && <span className="text-6xl relative z-10">{mc.emoji}</span>}
-                            {mc?.scene && <span className="text-white/60 text-sm italic relative z-10 px-4 text-center">{mc.scene}</span>}
-                          </div>
-                        );
-                      })()
-                  }
-                  <div className="text-stone-400 mt-4 text-sm">
-                    Türkçe okunuş: <span className="text-stone-200">{activeWord.transliteration}</span>
-                    <span className="text-stone-600 text-xs ml-2">(ses butonu gerçek Arapça telaffuzu oynatır)</span>
-                  </div>
-                  {activeWord.root && (
-                    <div className="mt-2 text-amber-300/80 text-sm">Kök: {activeWord.root}</div>
-                  )}
-                  <div className="mt-2 inline-flex bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 px-4 py-2 rounded-full text-sm">{activeWord.part_of_speech}</div>
-                  {(activeWord as any).frequency && (
-                    <div className="text-amber-400/60 text-xs mt-2">Kur&apos;an&apos;da {(activeWord as any).frequency.toLocaleString()} kez geçer</div>
-                  )}
-                  <div className="text-xs text-stone-500 mt-2">
-                    {activeProgress.known ? "✓ Öğrenildi" : activeProgress.hard ? "⟳ Tekrar gerekli" : "◌ Yeni"}
-                  </div>
+                {/* Word header */}
+                <div className="text-center mb-4">
+                  <button onClick={() => speakArabic(activeWord.arabic)} className="arabic-text arabic-clickable text-7xl md:text-8xl bg-transparent w-full">{activeWord.arabic}</button>
+                  <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
                 </div>
 
-                {showAnswer && (
-                  <div className="mt-5 grid gap-4">
-                    <Info title="Anlam" value={activeWord.turkish_meaning} />
-                    <Info title="Hafıza Tekniği" value={activeWord.memory_hint} />
-                    <div className="soft-card rounded-2xl p-5">
-                      <div className="text-stone-400 text-sm mb-2">Ayet Örneği</div>
-                      <button onClick={() => speakArabic(activeWord.example_arabic)} className="arabic-text arabic-clickable text-3xl my-2 bg-transparent w-full text-right">{activeWord.example_arabic}</button>
-                      <div className="text-stone-300 text-sm">{activeWord.example_turkish}</div>
+                {/* Visual memory card */}
+                {activeImage
+                  ? (
+                    <div className="rounded-3xl overflow-hidden border border-amber-400/25 mb-4" style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.6)'}}>
+                      <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" />
                     </div>
+                  )
+                  : (() => {
+                      const mc = memoryCards[activeWord.arabic];
+                      const fbBg: Record<string,string> = { "isim":"from-blue-900","fiil":"from-purple-900","sıfat":"from-amber-900","harf-i cer":"from-teal-900","bağlaç":"from-rose-900","zamir":"from-indigo-900","edat":"from-emerald-900","zarf":"from-orange-900","özel isim":"from-yellow-900","olumsuzluk":"from-red-900","soru":"from-cyan-900","ism-i mevsûl":"from-violet-900" };
+                      const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
+                      const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
+                      return (
+                        <div className={`rounded-3xl bg-gradient-to-br ${bg} relative overflow-hidden flex flex-col items-center justify-center gap-3 py-10 px-4 mb-4 border border-amber-400/10`} style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.5)'}}>
+                          {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.06] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
+                          {mc?.emoji
+                            ? <span className="text-7xl relative z-10">{mc.emoji}</span>
+                            : <span className="arabic-text text-6xl text-white/70 relative z-10">{activeWord.arabic}</span>
+                          }
+                          <span className="text-amber-300 text-xl font-semibold relative z-10 tracking-wide">{activeWord.transliteration}</span>
+                          {mc?.scene && <span className="text-white/50 text-sm italic relative z-10 px-4 text-center">{mc.scene}</span>}
+                        </div>
+                      );
+                    })()
+                }
+
+                {/* Hafıza çapası — always visible */}
+                {activeWord.memory_hint && (
+                  <div className="flex items-start gap-2.5 rounded-2xl px-4 py-3 mb-3" style={{background:'rgba(251,191,36,0.06)',border:'1px solid rgba(251,191,36,0.2)'}}>
+                    <span className="text-base mt-0.5 shrink-0">💡</span>
+                    <span className="text-amber-200/85 text-sm leading-relaxed">{activeWord.memory_hint}</span>
+                  </div>
+                )}
+
+                {/* Örnek ayet — always visible */}
+                <div className="rounded-2xl px-4 py-3 mb-4" style={{background:'rgba(52,211,153,0.04)',border:'1px solid rgba(52,211,153,0.12)'}}>
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span className="bg-emerald-700/50 border border-emerald-600/30 text-emerald-200 text-xs px-2.5 py-0.5 rounded-full font-semibold shrink-0">Örnek</span>
+                    <button onClick={() => speakArabic(activeWord.example_arabic)} className="arabic-text arabic-clickable text-xl bg-transparent text-right flex-1 min-w-0">{activeWord.example_arabic}</button>
+                  </div>
+                  <div className="text-stone-300 text-sm">{activeWord.example_turkish}</div>
+                </div>
+
+                {/* Compact badges row */}
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-4 text-xs">
+                  {activeImage && <span className="text-amber-300/70">{activeWord.transliteration}</span>}
+                  {activeWord.root && <span className="bg-amber-500/10 border border-amber-400/20 text-amber-300/80 px-2.5 py-1 rounded-full">Kök: {activeWord.root}</span>}
+                  <span className="bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 px-2.5 py-1 rounded-full">{activeWord.part_of_speech}</span>
+                  {(activeWord as any).frequency && <span className="text-amber-400/50">Kur&apos;an&apos;da {(activeWord as any).frequency.toLocaleString()}×</span>}
+                  <span className="text-stone-600">{activeProgress.known ? "✓ Öğrenildi" : activeProgress.hard ? "⟳ Tekrar" : "◌ Yeni"}</span>
+                </div>
+
+                {/* Expandable: Anlam + Gramer */}
+                {showAnswer && (
+                  <div className="mb-4 grid gap-3">
+                    <Info title="Anlam" value={activeWord.turkish_meaning} />
                     <Info title="Gramer Notu" value={activeWord.grammar_note} />
                   </div>
                 )}
 
-                <div className="flex flex-col md:flex-row gap-3 mt-5">
+                <div className="flex flex-col md:flex-row gap-3">
                   <button onClick={() => setShowAnswer(!showAnswer)} className="duo-btn duo-btn-blue flex-1">
                     {showAnswer ? "Cevabı Gizle" : "Cevabı Göster"}
                   </button>
@@ -851,8 +867,14 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
             {word.part_of_speech.split(" ")[0]}
           </span>
         </div>
+        {word.memory_hint && (
+          <div className="flex items-start gap-1 mt-1.5">
+            <span className="text-[11px] shrink-0">💡</span>
+            <div className="text-[11px] italic text-amber-300/60 leading-tight line-clamp-2">{word.memory_hint}</div>
+          </div>
+        )}
         {(word as any).frequency && (
-          <div className="text-[11px] mt-1.5" style={{color:"var(--duo-muted)"}}>
+          <div className="text-[11px] mt-1" style={{color:"var(--duo-muted)"}}>
             {(word as any).frequency.toLocaleString()}× Kur&apos;an&apos;da
           </div>
         )}
