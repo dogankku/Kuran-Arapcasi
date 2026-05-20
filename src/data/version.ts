@@ -1,9 +1,10 @@
-export const APP_VERSION = "1.6.3";
+export const APP_VERSION = "1.7.0";
 export const BUILD_DATE = "2026-05-20";
-export const BUILD_TIME = "22:30";
+export const BUILD_TIME = "23:00";
 export const CHANGELOG = [
-  { version: "1.6.3", date: "2026-05-20", time: "22:30", note: "Ok takibi: sıfır gecikme (React state yerine doğrudan DOM), ▲ kelime altında, VerseRow memo" },
-  { version: "1.6.2", date: "2026-05-20", time: "22:15", note: "Ok aşağıda ▼ + timing gecikme düzeltmesi" },
+  { version: "1.7.0", date: "2026-05-20", time: "23:00", note: "Hatim: kelimeye dokun→anlam popup (yerel sözlük + QDC API), tekrar modu (1×/3×/∞), 0.5× hız, ayet otomatik scroll, ipucu çubuğu" },
+  { version: "1.6.3", date: "2026-05-20", time: "22:30", note: "Ok takibi: sıfır gecikme (doğrudan DOM), ▲ kelime altında, VerseRow memo" },
+  { version: "1.6.2", date: "2026-05-20", time: "22:15", note: "Ok aşağıda, timing gecikme düzeltmesi" },
   { version: "1.6.0", date: "2026-05-20", time: "21:30", note: "Kuran Hatim Modülü: tüm 114 sure, hatip sesine göre kelime ok takibi, 4 okuyucu, Türkçe meal, 404 düzeltmesi" },
   { version: "1.5.0", date: "2026-05-20", time: "19:45", note: "Gerçek Kur'an tilaveti (Islamic Network CDN), 4 okuyucu, SVG illüstrasyonlar, kullanıcı girişi + rütbe sistemi" },
   { version: "1.4.0", date: "2026-05-19", time: "14:00", note: "Duolingo tarzı görsel yeniden tasarım — 3D butonlar, canlı renkler, kademe kilitleme" },
