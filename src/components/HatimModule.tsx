@@ -176,6 +176,7 @@ export default function HatimModule() {
   const curVerseRef    = useRef(1);
   const autoNextRef    = useRef(true);
   const versesLenRef   = useRef(0);
+  const versesRef      = useRef<VerseText[]>([]);
   const playVerseRef   = useRef<(n: number) => void>(() => {});
 
   // Keep refs in sync every render
@@ -183,6 +184,7 @@ export default function HatimModule() {
   curVerseRef.current  = currentVerse;
   autoNextRef.current  = autoNext;
   versesLenRef.current = verses.length;
+  versesRef.current    = verses;
 
   // ── Load surah data ──────────────────────────────────────────────────────
   useEffect(() => {
@@ -233,6 +235,23 @@ export default function HatimModule() {
     rafRef.current = requestAnimationFrame(trackWords);
   }, []); // intentionally empty — all state read via refs
 
+  // ── Estimated timing fallback — divides audio duration equally per word ──
+  const buildEstimatedTimings = useCallback((verseN: number, durationSec: number) => {
+    if (timingsRef.current.has(verseN)) return; // real timing already loaded
+    const words = versesRef.current.find(v => v.n === verseN)?.words ?? [];
+    if (words.length === 0 || !isFinite(durationSec) || durationSec <= 0) return;
+    const msPerWord = (durationSec * 1000) / words.length;
+    const est: Segment[] = words.map((_, i): Segment => [
+      i + 1,
+      Math.round(i * msPerWord),
+      Math.round((i + 1) * msPerWord),
+    ]);
+    const updated = new Map(timingsRef.current);
+    updated.set(verseN, est);
+    timingsRef.current = updated; // update ref directly — RAF sees it immediately
+    setHasTimings(true);
+  }, []);
+
   // ── Play a specific verse ────────────────────────────────────────────────
   const playVerse = useCallback((verseN: number) => {
     cancelAnimationFrame(rafRef.current);
@@ -245,9 +264,17 @@ export default function HatimModule() {
 
     if (!audioRef.current) audioRef.current = new Audio();
     const audio = audioRef.current;
+    audio.onloadedmetadata = null; // clear previous handler
+    audio.onended = null;
     audio.pause();
     audio.src = url;
     audio.playbackRate = speed;
+
+    // Once duration is known, build estimated timing if real data is absent
+    audio.onloadedmetadata = () => {
+      buildEstimatedTimings(verseN, audio.duration);
+    };
+
     audio.play()
       .then(() => {
         setIsPlaying(true);
@@ -264,7 +291,7 @@ export default function HatimModule() {
         playVerseRef.current(verseN + 1);
       }
     };
-  }, [surahNum, reciter, speed, trackWords]);
+  }, [surahNum, reciter, speed, trackWords, buildEstimatedTimings]);
 
   // Keep playVerseRef current so onended can call latest version
   playVerseRef.current = playVerse;
@@ -389,8 +416,11 @@ export default function HatimModule() {
               <span>{r.name}</span>
             </button>
           ))}
-          {!hasTimings && !loading && (
-            <span className="shrink-0 self-center text-xs text-stone-600 ml-2">· kelime takibi yükleniyor…</span>
+          {loading && (
+            <span className="shrink-0 self-center text-xs text-stone-600 ml-2">· yükleniyor…</span>
+          )}
+          {!loading && !hasTimings && (
+            <span className="shrink-0 self-center text-xs text-amber-700/70 ml-2">· ▶ oynat → ok takibi aktif olacak</span>
           )}
         </div>
 
@@ -510,11 +540,11 @@ export default function HatimModule() {
           </div>
 
           {/* Timing status */}
-          {hasTimings && (
-            <p className="text-center text-[10px] text-stone-600 mt-2">
-              ▼ ok takibi aktif — {reciter.name}
-            </p>
-          )}
+          <p className="text-center text-[10px] mt-2" style={{color: hasTimings ? "#92400e" : "#374151"}}>
+            {hasTimings
+              ? `▼ ok takibi aktif — ${reciter.name}`
+              : "▶ oynat butonuna bas — ok takibi otomatik başlar"}
+          </p>
         </footer>
       </div>
     </div>
