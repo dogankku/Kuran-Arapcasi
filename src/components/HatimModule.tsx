@@ -106,37 +106,44 @@ function VerseRow({
         >
           {verse.n}
         </div>
-        {/* RTL Arabic text */}
-        <div dir="rtl" className="flex-1 text-right leading-[3rem] flex flex-wrap-reverse gap-x-2 justify-start">
+        {/* RTL Arabic text — inline-flex column so arrow sits above word without overflow issues */}
+        <div dir="rtl" className="flex-1 flex flex-wrap gap-x-1 gap-y-1 justify-end">
           {verse.words.map((word, idx) => {
             const active = isActive && idx === activeWordIdx;
             return (
               <span
                 key={idx}
                 ref={active ? activeRef : undefined}
-                className="hatim-word relative inline-block"
                 style={{
-                  fontSize: "1.6rem",
-                  fontFamily: "serif",
-                  padding: "2px 4px",
-                  borderRadius: "6px",
+                  display: "inline-flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "4px 6px 6px",
+                  borderRadius: "8px",
                   color: active ? "#fde68a" : "#f5e6c0",
-                  background: active ? "rgba(245,158,11,0.25)" : "transparent",
-                  boxShadow: active ? "0 0 16px rgba(245,158,11,0.5)" : "none",
-                  transition: "all 0.15s ease",
+                  background: active ? "rgba(245,158,11,0.28)" : "transparent",
+                  boxShadow: active ? "0 0 18px rgba(245,158,11,0.55)" : "none",
+                  transition: "background 0.12s ease, box-shadow 0.12s ease, color 0.12s ease",
+                  userSelect: "none",
                 }}
               >
-                {/* Arrow indicator above active word */}
-                {active && (
-                  <span
-                    aria-hidden
-                    className="absolute left-1/2 -translate-x-1/2 text-amber-400 text-[11px] leading-none select-none animate-hatim-arrow"
-                    style={{ top: "-18px" }}
-                  >
-                    ▼
-                  </span>
-                )}
-                {word}
+                {/* Arrow — always rendered, transparent when inactive → no overflow clipping */}
+                <span style={{
+                  height: "15px",
+                  lineHeight: "15px",
+                  fontSize: "12px",
+                  color: active ? "#f59e0b" : "transparent",
+                  transition: "color 0.12s ease",
+                  userSelect: "none",
+                }}>▼</span>
+                {/* Word text */}
+                <span style={{
+                  fontSize: "1.6rem",
+                  fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
+                  lineHeight: 1.4,
+                }}>
+                  {word}
+                </span>
               </span>
             );
           })}
