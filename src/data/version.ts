@@ -1,8 +1,9 @@
-export const APP_VERSION = "1.5.0";
+export const APP_VERSION = "1.6.0";
 export const BUILD_DATE = "2026-05-20";
-export const BUILD_TIME = "19:45";
+export const BUILD_TIME = "21:30";
 export const CHANGELOG = [
-  { version: "1.5.0", date: "2026-05-20", time: "19:45", note: "Gerçek Kur'an tilaveti (EveryAyah CDN), 4 okuyucu, SVG illüstrasyonlar, kullanıcı girişi + rütbe sistemi" },
+  { version: "1.6.0", date: "2026-05-20", time: "21:30", note: "Kuran Hatim Modülü: tüm 114 sure, hatip sesine göre kelime ok takibi, 4 okuyucu, Türkçe meal, 404 düzeltmesi" },
+  { version: "1.5.0", date: "2026-05-20", time: "19:45", note: "Gerçek Kur'an tilaveti (Islamic Network CDN), 4 okuyucu, SVG illüstrasyonlar, kullanıcı girişi + rütbe sistemi" },
   { version: "1.4.0", date: "2026-05-19", time: "14:00", note: "Duolingo tarzı görsel yeniden tasarım — 3D butonlar, canlı renkler, kademe kilitleme" },
   { version: "1.3.0", date: "2026-05-19", time: "10:00", note: "Morfoloji paneli, 9 sure kelime analizi, SM-2 tekrar algoritması" },
   { version: "1.2.0", date: "2025-05-19", time: "08:00", note: "Sure Modu (Fatiha, İhlas, Kevser, Felak, Nas, Asr, Kafirun, Nasr, Mesed)" },
