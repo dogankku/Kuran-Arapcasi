@@ -18,3 +18,7 @@ tsconfig.tsbuildinfo
 # Misc
 .DS_Store
 *.pem
+
+# Next.js static export artifacts
+__next.*.txt
+index.txt
