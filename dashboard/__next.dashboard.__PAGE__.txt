@@ -3,7 +3,7 @@
 3:I[30257,["/Kuran-Arapcasi/_next/static/chunks/0dbhjjzl8qfwv.js","/Kuran-Arapcasi/_next/static/chunks/0nx8ucgt0p5p6.js"],"default"]
 6:I[97367,["/Kuran-Arapcasi/_next/static/chunks/0dbhjjzl8qfwv.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Kuran-Arapcasi/_next/static/chunks/0nx8ucgt0p5p6.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"AP9QMVOYSwRtx3gC3-_0y"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Kuran-Arapcasi/_next/static/chunks/0nx8ucgt0p5p6.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"UR9Vh1I2qFfvYj0uQH-cJ"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
