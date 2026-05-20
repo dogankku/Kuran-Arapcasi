@@ -127,7 +127,15 @@ function VerseRow({
                   userSelect: "none",
                 }}
               >
-                {/* Arrow — always rendered, transparent when inactive → no overflow clipping */}
+                {/* Word text — on top */}
+                <span style={{
+                  fontSize: "1.6rem",
+                  fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
+                  lineHeight: 1.4,
+                }}>
+                  {word}
+                </span>
+                {/* Arrow — below the word, always rendered, transparent when inactive */}
                 <span style={{
                   height: "18px",
                   lineHeight: "18px",
@@ -136,15 +144,7 @@ function VerseRow({
                   color: active ? "#ef4444" : "transparent",
                   transition: "color 0.1s ease",
                   userSelect: "none",
-                }}>▲</span>
-                {/* Word text */}
-                <span style={{
-                  fontSize: "1.6rem",
-                  fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
-                  lineHeight: 1.4,
-                }}>
-                  {word}
-                </span>
+                }}>▼</span>
               </span>
             );
           })}
@@ -234,11 +234,17 @@ export default function HatimModule() {
     const ms = audio.currentTime * 1000;
     const segs = timingsRef.current.get(curVerseRef.current);
     if (segs && segs.length > 0) {
+      // "last passed" logic: highlight the most recent word whose startMs has been reached.
+      // This keeps the arrow on the current word until the NEXT word starts,
+      // eliminating gaps between segments that cause the "lagging" effect.
       let found = -1;
-      for (const [wIdx, startMs, endMs] of segs) {
-        if (ms >= startMs && ms < endMs) { found = wIdx - 1; break; }
+      for (const [wIdx, startMs] of segs) {
+        if (ms >= startMs) found = wIdx - 1;
+        else break; // segments are in ascending order — safe to stop
       }
       setActiveWord(found);
+    } else {
+      setActiveWord(-1);
     }
     rafRef.current = requestAnimationFrame(trackWords);
   }, []); // intentionally empty — all state read via refs
@@ -284,13 +290,14 @@ export default function HatimModule() {
       buildEstimatedTimings(verseN, audio.duration);
     };
 
-    audio.play()
-      .then(() => {
-        setIsPlaying(true);
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = requestAnimationFrame(trackWords);
-      })
-      .catch(() => setIsPlaying(false));
+    // Start RAF from onplay (fires exactly when audio begins) to avoid startup lag
+    audio.onplay = () => {
+      setIsPlaying(true);
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(trackWords);
+    };
+
+    audio.play().catch(() => setIsPlaying(false));
 
     audio.onended = () => {
       setActiveWord(-1);
@@ -324,10 +331,12 @@ export default function HatimModule() {
       setIsPlaying(false);
     } else {
       if (audioRef.current && audioRef.current.src && audioRef.current.paused) {
-        audioRef.current.play().then(() => {
+        audioRef.current.onplay = () => {
           setIsPlaying(true);
+          cancelAnimationFrame(rafRef.current);
           rafRef.current = requestAnimationFrame(trackWords);
-        });
+        };
+        audioRef.current.play().catch(() => {});
       } else {
         playVerse(currentVerse);
       }

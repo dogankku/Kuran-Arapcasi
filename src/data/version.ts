@@ -1,8 +1,9 @@
-export const APP_VERSION = "1.6.1";
+export const APP_VERSION = "1.6.2";
 export const BUILD_DATE = "2026-05-20";
-export const BUILD_TIME = "22:00";
+export const BUILD_TIME = "22:15";
 export const CHANGELOG = [
-  { version: "1.6.1", date: "2026-05-20", time: "22:00", note: "Ok takibi düzeltmesi: ▲ kırmızı ok, timing state kalıcılığı, re-render sonrası ok kaybolmama" },
+  { version: "1.6.2", date: "2026-05-20", time: "22:15", note: "Ok aşağıda (▼), timing gecikmesi düzeltmesi: son geçilen kelimede kalır, onplay'den RAF başlatma" },
+  { version: "1.6.1", date: "2026-05-20", time: "22:00", note: "Ok takibi düzeltmesi: kırmızı ok, timing state kalıcılığı, re-render sonrası ok kaybolmama" },
   { version: "1.6.0", date: "2026-05-20", time: "21:30", note: "Kuran Hatim Modülü: tüm 114 sure, hatip sesine göre kelime ok takibi, 4 okuyucu, Türkçe meal, 404 düzeltmesi" },
   { version: "1.5.0", date: "2026-05-20", time: "19:45", note: "Gerçek Kur'an tilaveti (Islamic Network CDN), 4 okuyucu, SVG illüstrasyonlar, kullanıcı girişi + rütbe sistemi" },
   { version: "1.4.0", date: "2026-05-19", time: "14:00", note: "Duolingo tarzı görsel yeniden tasarım — 3D butonlar, canlı renkler, kademe kilitleme" },
