@@ -22,6 +22,7 @@ import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
 import AuthModal from "@/components/AuthModal";
 import RankBadge from "@/components/RankBadge";
+import { MemoryScene } from "@/components/MemoryScene";
 
 type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
 
@@ -450,23 +451,7 @@ export default function DashboardPage() {
                       <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" />
                     </div>
                   )
-                  : (() => {
-                      const mc = memoryCards[activeWord.arabic];
-                      const fbBg: Record<string,string> = { "isim":"from-blue-900","fiil":"from-purple-900","sıfat":"from-amber-900","harf-i cer":"from-teal-900","bağlaç":"from-rose-900","zamir":"from-indigo-900","edat":"from-emerald-900","zarf":"from-orange-900","özel isim":"from-yellow-900","olumsuzluk":"from-red-900","soru":"from-cyan-900","ism-i mevsûl":"from-violet-900" };
-                      const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
-                      const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
-                      return (
-                        <div className={`rounded-3xl bg-gradient-to-br ${bg} relative overflow-hidden flex flex-col items-center justify-center gap-3 py-10 px-4 mb-4 border border-amber-400/10`} style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.5)'}}>
-                          {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.06] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
-                          {mc?.emoji
-                            ? <span className="text-7xl relative z-10">{mc.emoji}</span>
-                            : <span className="arabic-text text-6xl text-white/70 relative z-10">{activeWord.arabic}</span>
-                          }
-                          <span className="text-amber-300 text-xl font-semibold relative z-10 tracking-wide">{activeWord.transliteration}</span>
-                          {mc?.scene && <span className="text-white/50 text-sm italic relative z-10 px-4 text-center">{mc.scene}</span>}
-                        </div>
-                      );
-                    })()
+                  : <MemoryScene arabic={activeWord.arabic} transliteration={activeWord.transliteration} partOfSpeech={activeWord.part_of_speech} memoryHint={activeWord.memory_hint} />
                 }
 
                 {/* Hafıza çapası — always visible */}
@@ -1028,23 +1013,8 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
         <img src={imgSrc(image)} alt={word.turkish_meaning}
           className={`w-full ${heightClass} object-cover`} />
       ) : (
-        <div className={`w-full ${heightClass} bg-gradient-to-br ${bg} flex flex-col items-center justify-center gap-2 relative overflow-hidden`}>
-          {/* Arka plan kök harfleri — dekoratif */}
-          {word.root && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-              <span className="arabic-text text-[6rem] opacity-[0.07] text-white font-black leading-none">{word.root}</span>
-            </div>
-          )}
-          {/* Ana emoji */}
-          {card?.emoji && (
-            <span className={`${large ? "text-6xl" : "text-5xl"} relative z-10 drop-shadow-lg`}>{card.emoji}</span>
-          )}
-          {/* Arapça kelime */}
-          <span className={`arabic-text ${large ? "text-5xl" : "text-4xl"} text-white/95 relative z-10 drop-shadow-md`}>{word.arabic}</span>
-          {/* Görsel sahne ipucu */}
-          {card?.scene && (
-            <span className="text-white/50 text-xs italic relative z-10 px-3 text-center">{card.scene}</span>
-          )}
+        <div className={heightClass} style={{overflow:"hidden"}}>
+          <MemoryScene arabic={word.arabic} transliteration={word.transliteration} partOfSpeech={word.part_of_speech} memoryHint={word.memory_hint} compact />
         </div>
       )}
       {/* Bilgi alanı */}
