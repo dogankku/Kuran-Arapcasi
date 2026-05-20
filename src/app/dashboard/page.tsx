@@ -315,11 +315,25 @@ export default function DashboardPage() {
                   <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
                 </div>
 
-                {/* Visual memory card */}
+                {/* Visual memory card — Allah kartı tarzı */}
                 {activeImage
                   ? (
-                    <div className="rounded-3xl overflow-hidden border border-amber-400/25 mb-4" style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.6)'}}>
+                    <div className="relative rounded-3xl overflow-hidden mb-4" style={{border:'1.5px solid rgba(217,119,6,0.4)',boxShadow:'0 0 0 1px rgba(217,119,6,0.08),0 8px 40px rgba(0,0,0,0.75)'}}>
+                      {/* Corner ornaments */}
+                      <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/65 rounded-tl pointer-events-none z-20" />
+                      <div className="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/65 rounded-tr pointer-events-none z-20" />
+                      <div className="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/65 rounded-bl pointer-events-none z-20" />
+                      <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/65 rounded-br pointer-events-none z-20" />
                       <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" />
+                      {/* Memory anchor overlay */}
+                      {activeWord.memory_hint && (
+                        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-4 pt-12 pb-4">
+                          <div className="flex items-start gap-2">
+                            <span className="text-base shrink-0">💡</span>
+                            <span className="text-amber-200/95 text-sm leading-snug font-medium">{activeWord.memory_hint}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )
                   : (() => {
@@ -328,26 +342,34 @@ export default function DashboardPage() {
                       const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
                       const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
                       return (
-                        <div className={`rounded-3xl bg-gradient-to-br ${bg} relative overflow-hidden flex flex-col items-center justify-center gap-3 py-10 px-4 mb-4 border border-amber-400/10`} style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.5)'}}>
+                        <div className={`relative rounded-3xl bg-gradient-to-br ${bg} overflow-hidden flex flex-col items-center justify-center gap-3 py-10 px-5 mb-4`} style={{border:'1.5px solid rgba(217,119,6,0.3)',boxShadow:'0 0 0 1px rgba(217,119,6,0.06),0 8px 40px rgba(0,0,0,0.6)'}}>
+                          {/* Corner ornaments */}
+                          <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/45 rounded-tl pointer-events-none" />
+                          <div className="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/45 rounded-tr pointer-events-none" />
+                          <div className="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/45 rounded-bl pointer-events-none" />
+                          <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/45 rounded-br pointer-events-none" />
+                          {/* Root watermark */}
                           {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.06] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
+                          {/* Emoji or Arabic */}
                           {mc?.emoji
-                            ? <span className="text-7xl relative z-10">{mc.emoji}</span>
-                            : <span className="arabic-text text-6xl text-white/70 relative z-10">{activeWord.arabic}</span>
+                            ? <span className="text-7xl relative z-10 drop-shadow-lg">{mc.emoji}</span>
+                            : <span className="arabic-text text-6xl text-white/75 relative z-10">{activeWord.arabic}</span>
                           }
+                          {/* Transliteration */}
                           <span className="text-amber-300 text-xl font-semibold relative z-10 tracking-wide">{activeWord.transliteration}</span>
-                          {mc?.scene && <span className="text-white/50 text-sm italic relative z-10 px-4 text-center">{mc.scene}</span>}
+                          {/* Scene hint */}
+                          {mc?.scene && <span className="text-white/50 text-sm italic relative z-10 px-3 text-center">{mc.scene}</span>}
+                          {/* Memory anchor inside card */}
+                          {activeWord.memory_hint && (
+                            <div className="relative z-10 flex items-start gap-2 bg-black/35 rounded-2xl px-3 py-2.5 w-full mt-1">
+                              <span className="text-base shrink-0">💡</span>
+                              <span className="text-amber-200/90 text-xs leading-snug">{activeWord.memory_hint}</span>
+                            </div>
+                          )}
                         </div>
                       );
                     })()
                 }
-
-                {/* Hafıza çapası — always visible */}
-                {activeWord.memory_hint && (
-                  <div className="flex items-start gap-2.5 rounded-2xl px-4 py-3 mb-3" style={{background:'rgba(251,191,36,0.06)',border:'1px solid rgba(251,191,36,0.2)'}}>
-                    <span className="text-base mt-0.5 shrink-0">💡</span>
-                    <span className="text-amber-200/85 text-sm leading-relaxed">{activeWord.memory_hint}</span>
-                  </div>
-                )}
 
                 {/* Örnek ayet — always visible */}
                 <div className="rounded-2xl px-4 py-3 mb-4" style={{background:'rgba(52,211,153,0.04)',border:'1px solid rgba(52,211,153,0.12)'}}>
