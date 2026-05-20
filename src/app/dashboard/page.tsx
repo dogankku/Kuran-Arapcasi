@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
+import { memoryCards } from "@/data/memoryEmojis";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
@@ -777,38 +778,72 @@ export default function DashboardPage() {
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const image = memoryImagesByArabic[word.arabic] || null;
-  const bgColors: Record<string, string> = {
-    "isim": "from-blue-900/60 to-blue-800/30",
-    "fiil": "from-purple-900/60 to-purple-800/30",
-    "sıfat": "from-amber-900/60 to-amber-800/30",
-    "harf-i cer": "from-teal-900/60 to-teal-800/30",
-    "bağlaç": "from-rose-900/60 to-rose-800/30",
-    "zamir": "from-indigo-900/60 to-indigo-800/30",
-    "edat": "from-emerald-900/60 to-emerald-800/30",
-    "zarf": "from-orange-900/60 to-orange-800/30",
-    "özel isim": "from-yellow-900/60 to-yellow-800/30",
-    "olumsuzluk": "from-red-900/60 to-red-800/30",
-    "soru": "from-cyan-900/60 to-cyan-800/30",
-    "ism-i mevsûl": "from-violet-900/60 to-violet-800/30",
+  const card = memoryCards[word.arabic];
+
+  const fallbackBg: Record<string, string> = {
+    "isim": "from-blue-900 to-slate-950",
+    "fiil": "from-purple-900 to-slate-950",
+    "sıfat": "from-amber-900 to-slate-950",
+    "harf-i cer": "from-teal-900 to-slate-950",
+    "bağlaç": "from-rose-900 to-slate-950",
+    "zamir": "from-indigo-900 to-slate-950",
+    "edat": "from-emerald-900 to-slate-950",
+    "zarf": "from-orange-900 to-slate-950",
+    "özel isim": "from-yellow-900 to-slate-950",
+    "olumsuzluk": "from-red-900 to-slate-950",
+    "soru": "from-cyan-900 to-slate-950",
+    "ism-i mevsûl": "from-violet-900 to-slate-950",
   };
-  const partKey = Object.keys(bgColors).find(k => word.part_of_speech.includes(k)) || "isim";
-  const bgGrad = bgColors[partKey];
+  const posKey = Object.keys(fallbackBg).find(k => word.part_of_speech.includes(k)) || "isim";
+  const bg = card?.bg || fallbackBg[posKey];
+
+  const heightClass = large ? "h-52" : "h-40";
 
   return (
-    <button onClick={onClick} className="soft-card rounded-[1.5rem] p-4 text-left hover:border-emerald-400/50 transition">
+    <button onClick={onClick} className="rounded-[1.5rem] overflow-hidden text-left hover:scale-[1.02] transition-transform duration-200 w-full"
+      style={{background:"var(--duo-card)", border:"2px solid var(--duo-card-border)", borderBottom:"4px solid var(--duo-card-shadow)"}}>
+      {/* Görsel alan */}
       {image ? (
-        <img src={imgSrc(image)} alt={word.turkish_meaning} className={`w-full ${large ? "h-56" : "h-36"} object-cover rounded-2xl border border-emerald-400/20 mb-3`} />
+        <img src={imgSrc(image)} alt={word.turkish_meaning}
+          className={`w-full ${heightClass} object-cover`} />
       ) : (
-        <div className={`w-full ${large ? "h-56" : "h-36"} rounded-2xl mb-3 bg-gradient-to-br ${bgGrad} border border-white/5 flex flex-col items-center justify-center gap-2`}>
-          <div className="arabic-text text-5xl text-white/90">{word.arabic}</div>
-          {word.root && <div className="text-xs text-white/40 font-mono">{word.root}</div>}
+        <div className={`w-full ${heightClass} bg-gradient-to-br ${bg} flex flex-col items-center justify-center gap-2 relative overflow-hidden`}>
+          {/* Arka plan kök harfleri — dekoratif */}
+          {word.root && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+              <span className="arabic-text text-[6rem] opacity-[0.07] text-white font-black leading-none">{word.root}</span>
+            </div>
+          )}
+          {/* Ana emoji */}
+          {card?.emoji && (
+            <span className={`${large ? "text-6xl" : "text-5xl"} relative z-10 drop-shadow-lg`}>{card.emoji}</span>
+          )}
+          {/* Arapça kelime */}
+          <span className={`arabic-text ${large ? "text-5xl" : "text-4xl"} text-white/95 relative z-10 drop-shadow-md`}>{word.arabic}</span>
+          {/* Görsel sahne ipucu */}
+          {card?.scene && (
+            <span className="text-white/50 text-xs italic relative z-10 px-3 text-center">{card.scene}</span>
+          )}
         </div>
       )}
-      <div className="arabic-text text-3xl text-right">{word.arabic}</div>
-      <div className="text-emerald-300 mt-2 font-medium">{word.turkish_meaning}</div>
-      <div className="text-stone-400 text-xs mt-1">{word.part_of_speech}</div>
-      {word.root && <div className="text-amber-400/60 text-xs mt-1">Kök: {word.root}</div>}
-      {(word as any).frequency && <div className="text-stone-600 text-xs mt-0.5">{(word as any).frequency.toLocaleString()}× Kur&apos;an&apos;da</div>}
+      {/* Bilgi alanı */}
+      <div className="p-3">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex-1 min-w-0">
+            <div className="text-white/90 font-semibold text-sm truncate">{word.turkish_meaning}</div>
+            {word.root && <div className="text-amber-400/70 text-xs mt-0.5 font-mono">{word.root}</div>}
+          </div>
+          <span className="text-[10px] px-2 py-0.5 rounded-full shrink-0 mt-0.5"
+            style={{background:"rgba(255,255,255,0.06)", color:"var(--duo-muted)"}}>
+            {word.part_of_speech.split(" ")[0]}
+          </span>
+        </div>
+        {(word as any).frequency && (
+          <div className="text-[11px] mt-1.5" style={{color:"var(--duo-muted)"}}>
+            {(word as any).frequency.toLocaleString()}× Kur&apos;an&apos;da
+          </div>
+        )}
+      </div>
     </button>
   );
 }
