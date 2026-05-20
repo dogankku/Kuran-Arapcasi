@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
@@ -270,6 +271,11 @@ export default function DashboardPage() {
                   className="inline-flex items-center gap-1 bg-stone-800/60 border border-stone-700/60 text-stone-400 hover:text-white hover:border-emerald-500/40 rounded-full px-2.5 py-1.5 text-xs transition">
                   🔄 <span className="hidden sm:inline">Yenile</span>
                 </button>
+                {/* Kuran Hatim modülü linki */}
+                <Link href="/hatim"
+                  className="inline-flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-300 hover:bg-amber-500/25 rounded-full px-3 py-1.5 text-xs font-semibold transition">
+                  📖 <span>Kuran Oku</span>
+                </Link>
                 {/* Kullanıcı bilgisi */}
                 {user && (
                   <div className="ml-auto flex items-center gap-2 flex-wrap">
