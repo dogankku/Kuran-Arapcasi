@@ -171,6 +171,19 @@ export default function HatimModule() {
   const rafRef   = useRef<number>(0);
   const surahMeta = SURAH_LIST[surahNum - 1];
 
+  // Refs to avoid stale closures in the RAF loop
+  const timingsRef     = useRef<Map<number, Segment[]>>(new Map());
+  const curVerseRef    = useRef(1);
+  const autoNextRef    = useRef(true);
+  const versesLenRef   = useRef(0);
+  const playVerseRef   = useRef<(n: number) => void>(() => {});
+
+  // Keep refs in sync every render
+  timingsRef.current   = timings;
+  curVerseRef.current  = currentVerse;
+  autoNextRef.current  = autoNext;
+  versesLenRef.current = verses.length;
+
   // ── Load surah data ──────────────────────────────────────────────────────
   useEffect(() => {
     let cancelled = false;
@@ -178,9 +191,12 @@ export default function HatimModule() {
     setError("");
     setVerses([]);
     setTimings(new Map());
+    timingsRef.current = new Map();
     setCurrentVerse(1);
+    curVerseRef.current = 1;
     setActiveWord(-1);
     setIsPlaying(false);
+    setHasTimings(false);
     if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
 
     Promise.all([
@@ -190,7 +206,9 @@ export default function HatimModule() {
       .then(([v, t]) => {
         if (cancelled) return;
         setVerses(v);
+        versesLenRef.current = v.length;
         setTimings(t);
+        timingsRef.current = t;
         setHasTimings(t.size > 0);
       })
       .catch(e => { if (!cancelled) setError(String(e)); })
@@ -199,26 +217,27 @@ export default function HatimModule() {
     return () => { cancelled = true; };
   }, [surahNum, reciter]);
 
-  // ── Word-tracking RAF loop ───────────────────────────────────────────────
+  // ── Word-tracking RAF loop — reads only refs, never stale ────────────────
   const trackWords = useCallback(() => {
     const audio = audioRef.current;
     if (!audio || audio.paused) return;
     const ms = audio.currentTime * 1000;
-    const segs = timings.get(currentVerse);
-    if (segs) {
+    const segs = timingsRef.current.get(curVerseRef.current);
+    if (segs && segs.length > 0) {
       let found = -1;
       for (const [wIdx, startMs, endMs] of segs) {
         if (ms >= startMs && ms < endMs) { found = wIdx - 1; break; }
       }
-      setActiveWord(prev => (prev !== found ? found : prev));
+      setActiveWord(found);
     }
     rafRef.current = requestAnimationFrame(trackWords);
-  }, [timings, currentVerse]);
+  }, []); // intentionally empty — all state read via refs
 
   // ── Play a specific verse ────────────────────────────────────────────────
   const playVerse = useCallback((verseN: number) => {
     cancelAnimationFrame(rafRef.current);
     setCurrentVerse(verseN);
+    curVerseRef.current = verseN;
     setActiveWord(-1);
 
     const globalAyah = getGlobalAyah(surahNum, verseN);
@@ -230,18 +249,25 @@ export default function HatimModule() {
     audio.src = url;
     audio.playbackRate = speed;
     audio.play()
-      .then(() => { setIsPlaying(true); rafRef.current = requestAnimationFrame(trackWords); })
+      .then(() => {
+        setIsPlaying(true);
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(trackWords);
+      })
       .catch(() => setIsPlaying(false));
 
     audio.onended = () => {
       setActiveWord(-1);
       setIsPlaying(false);
       cancelAnimationFrame(rafRef.current);
-      if (autoNext && verseN < verses.length) {
-        playVerse(verseN + 1);
+      if (autoNextRef.current && verseN < versesLenRef.current) {
+        playVerseRef.current(verseN + 1);
       }
     };
-  }, [surahNum, reciter, speed, autoNext, verses.length, trackWords]);
+  }, [surahNum, reciter, speed, trackWords]);
+
+  // Keep playVerseRef current so onended can call latest version
+  playVerseRef.current = playVerse;
 
   // Keep speed in sync
   useEffect(() => {

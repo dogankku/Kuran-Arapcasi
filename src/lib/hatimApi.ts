@@ -101,22 +101,44 @@ export async function fetchWordTimings(
   }
 
   const map = new Map<number, Segment[]>();
-  try {
-    const res = await fetch(
-      `https://api.qurancdn.com/api/qdc/audio/reciters/${qdcReciterId}/audio_files?chapter_number=${ch}&segments=true`
-    );
-    if (!res.ok) throw new Error(`QDC HTTP ${res.status}`);
-    const data = await res.json();
-    for (const file of data.audio_files as Array<{verse_key:string;segments?:Segment[]}>) {
-      if (!file.segments?.length) continue;
-      const verseN = parseInt(file.verse_key.split(":")[1]);
-      if (!isNaN(verseN)) map.set(verseN, file.segments);
+
+  // Try two endpoints — direct QDC, then Quran.com v4 as fallback
+  const endpoints = [
+    `https://api.qurancdn.com/api/qdc/audio/reciters/${qdcReciterId}/audio_files?chapter_number=${ch}&segments=true`,
+    `https://api.quran.com/api/v4/recitations/${qdcReciterId}/by_chapter/${ch}?per_page=300`,
+  ];
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, { mode: "cors" });
+      if (!res.ok) continue;
+      const data = await res.json();
+
+      // QDC format: { audio_files: [{verse_key, segments}] }
+      // Quran.com v4 format: { audio_files: [{verse_key, audio_url, duration}] } — no segments
+      const files: Array<{verse_key?:string; verse_number?:number; segments?:Segment[]}> =
+        data.audio_files ?? [];
+
+      let found = 0;
+      for (const file of files) {
+        if (!file.segments?.length) continue;
+        const verseN = file.verse_key
+          ? parseInt(file.verse_key.split(":")[1])
+          : (file.verse_number ?? NaN);
+        if (!isNaN(verseN)) { map.set(verseN, file.segments); found++; }
+      }
+      if (found > 0) break; // got timing data, stop trying
+    } catch {
+      // network/CORS failure — try next endpoint
     }
+  }
+
+  if (map.size > 0) {
     const obj: Record<string, Segment[]> = {};
     map.forEach((v, k) => { obj[String(k)] = v; });
     ssSet(ssKey, obj);
-  } catch {
-    // Timing unavailable — playback still works, just no word highlighting
+  } else {
+    // Both endpoints failed — timing unavailable, playback still works
   }
 
   memTimingCache.set(cacheKey, map);
