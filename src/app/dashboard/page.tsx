@@ -316,7 +316,20 @@ export default function DashboardPage() {
                   </div>
                   {activeImage
                     ? <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full max-w-[320px] mx-auto mt-5 rounded-3xl border border-emerald-400/20" />
-                    : <div className="my-5 rounded-3xl border border-dashed border-stone-700 bg-black/20 p-6 text-stone-500 text-sm">Bu kelime için görsel yok.</div>}
+                    : (() => {
+                        const mc = memoryCards[activeWord.arabic];
+                        const fbBg: Record<string,string> = { "isim":"from-blue-900","fiil":"from-purple-900","sıfat":"from-amber-900","harf-i cer":"from-teal-900","bağlaç":"from-rose-900","zamir":"from-indigo-900","edat":"from-emerald-900","zarf":"from-orange-900","özel isim":"from-yellow-900","olumsuzluk":"from-red-900","soru":"from-cyan-900","ism-i mevsûl":"from-violet-900" };
+                        const posKey = Object.keys(fbBg).find(k => activeWord.part_of_speech.includes(k)) || "isim";
+                        const bg = mc?.bg || `${fbBg[posKey]} to-slate-950`;
+                        return (
+                          <div className={`my-5 rounded-3xl bg-gradient-to-br ${bg} relative overflow-hidden flex flex-col items-center justify-center gap-3 py-8`}>
+                            {activeWord.root && <span className="absolute arabic-text text-[7rem] opacity-[0.07] text-white font-black pointer-events-none select-none">{activeWord.root}</span>}
+                            {mc?.emoji && <span className="text-6xl relative z-10">{mc.emoji}</span>}
+                            {mc?.scene && <span className="text-white/60 text-sm italic relative z-10 px-4 text-center">{mc.scene}</span>}
+                          </div>
+                        );
+                      })()
+                  }
                   <div className="text-stone-400 mt-4 text-sm">
                     Türkçe okunuş: <span className="text-stone-200">{activeWord.transliteration}</span>
                     <span className="text-stone-600 text-xs ml-2">(ses butonu gerçek Arapça telaffuzu oynatır)</span>
