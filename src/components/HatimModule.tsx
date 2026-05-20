@@ -120,22 +120,23 @@ function VerseRow({
                   alignItems: "center",
                   padding: "4px 6px 6px",
                   borderRadius: "8px",
-                  color: active ? "#fde68a" : "#f5e6c0",
-                  background: active ? "rgba(245,158,11,0.28)" : "transparent",
-                  boxShadow: active ? "0 0 18px rgba(245,158,11,0.55)" : "none",
+                  color: active ? "#fff" : "#f5e6c0",
+                  background: active ? "rgba(239,68,68,0.25)" : "transparent",
+                  boxShadow: active ? "0 0 20px rgba(239,68,68,0.5)" : "none",
                   transition: "background 0.12s ease, box-shadow 0.12s ease, color 0.12s ease",
                   userSelect: "none",
                 }}
               >
                 {/* Arrow — always rendered, transparent when inactive → no overflow clipping */}
                 <span style={{
-                  height: "15px",
-                  lineHeight: "15px",
-                  fontSize: "12px",
-                  color: active ? "#f59e0b" : "transparent",
-                  transition: "color 0.12s ease",
+                  height: "18px",
+                  lineHeight: "18px",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  color: active ? "#ef4444" : "transparent",
+                  transition: "color 0.1s ease",
                   userSelect: "none",
-                }}>▼</span>
+                }}>▲</span>
                 {/* Word text */}
                 <span style={{
                   fontSize: "1.6rem",
@@ -256,6 +257,7 @@ export default function HatimModule() {
     const updated = new Map(timingsRef.current);
     updated.set(verseN, est);
     timingsRef.current = updated; // update ref directly — RAF sees it immediately
+    setTimings(updated);          // persist in React state so re-renders don't reset timingsRef
     setHasTimings(true);
   }, []);
 
