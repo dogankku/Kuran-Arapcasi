@@ -1,16 +1,16 @@
 'use client';
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
-import { MemoryScene } from "@/components/MemoryScene";
+import { memoryCards } from "@/data/memoryEmojis";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
 import { surahs } from "@/data/surahs";
 import { morphPatterns } from "@/data/morphology";
 import { words } from "@/data/words";
-import { APP_VERSION, BUILD_DATE } from "@/data/version";
+import { APP_VERSION, BUILD_DATE, BUILD_TIME, CHANGELOG } from "@/data/version";
 import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
@@ -18,8 +18,17 @@ import {
   getQuranCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
   speakArabic, updateProgress, updateStreak,
 } from "@/lib/learning";
+import { supabase, isConfigured } from "@/lib/supabase";
+import { getRank, getNextRank, RANKS } from "@/data/ranks";
+import AuthModal from "@/components/AuthModal";
+import RankBadge from "@/components/RankBadge";
+import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, getVerseAudioUrl } from "@/lib/quranAudio";
+import { stopAudio } from "@/lib/learning";
+import { MemoryScene } from "@/components/MemoryScene";
 
-type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller";
+type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
+
+interface AuthUser { id: string; email: string; username: string; }
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
@@ -40,6 +49,13 @@ export default function DashboardPage() {
   const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 });
   const [changelogOpen, setChangelogOpen] = useState(false);
   const [visualFilter, setVisualFilter] = useState("tümü");
+  const [reciter, setReciter] = useState(DEFAULT_RECITER);
+  const [playingVerse, setPlayingVerse] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
@@ -47,16 +63,135 @@ export default function DashboardPage() {
   const visualWords = useMemo(() => words.filter((w) => memoryImagesByArabic[w.arabic]), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
+  // --- Auth + sync helpers ---
+
+  const loadProgressFromDb = useCallback(async (userId: string) => {
+    if (!supabase) return;
+    const { data } = await supabase.from("user_progress").select("progress,streak").eq("id", userId).single();
+    if (data) {
+      if (data.progress) setProgress(data.progress as ProgressMap);
+      if (data.streak) {
+        const s = data.streak as StreakData;
+        setStreak(s);
+        localStorage.setItem(STREAK_KEY, JSON.stringify(s));
+      }
+    }
   }, []);
+
+  const syncProgressToDb = useCallback((userId: string, prog: ProgressMap, str: StreakData) => {
+    if (!supabase) return;
+    if (syncTimer.current) clearTimeout(syncTimer.current);
+    syncTimer.current = setTimeout(async () => {
+      if (!supabase) return;
+      setSyncing(true);
+      await supabase.from("user_progress").upsert({
+        id: userId, progress: prog, streak: str, updated_at: new Date().toISOString(),
+      });
+      setSyncing(false);
+    }, 1500);
+  }, []);
+
+  // Auth state init
+  useEffect(() => {
+    if (!isConfigured || !supabase) { setAuthReady(true); return; }
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        const u = session.user;
+        const authUser = { id: u.id, email: u.email!, username: (u.user_metadata?.username as string) || u.email!.split("@")[0] };
+        setUser(authUser);
+        loadProgressFromDb(u.id).finally(() => setAuthReady(true));
+      } else {
+        setAuthReady(true);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        const u = session.user;
+        setUser({ id: u.id, email: u.email!, username: (u.user_metadata?.username as string) || u.email!.split("@")[0] });
+      } else {
+        setUser(null);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [loadProgressFromDb]);
+
+  // Local storage init (when not using Supabase or while loading)
+  useEffect(() => {
+    if (!isConfigured) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) { try { setProgress(JSON.parse(saved)); } catch { setProgress({}); } }
+    }
+  }, []);
+
+  // Persist progress locally always
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
+
+  // Sync to DB on progress change
+  useEffect(() => {
+    if (user) syncProgressToDb(user.id, progress, streak);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress]);
+
   useEffect(() => { setStreak(getStreak()); }, []);
+  useEffect(() => {
+    const saved = localStorage.getItem(RECITER_STORAGE_KEY);
+    if (saved) setReciter(saved);
+  }, []);
+
+  function changeReciter(id: string) {
+    setReciter(id);
+    localStorage.setItem(RECITER_STORAGE_KEY, id);
+    stopCurrentAudio();
+  }
+
+  function stopCurrentAudio() {
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; audioRef.current = null; }
+    setPlayingVerse(null);
+    stopAudio();
+  }
+
+  function playVerse(key: string, url: string) {
+    stopCurrentAudio();
+    const a = new Audio(url);
+    audioRef.current = a;
+    setPlayingVerse(key);
+    a.onended = () => setPlayingVerse(null);
+    a.onerror = () => setPlayingVerse(null);
+    a.play().catch(() => setPlayingVerse(null));
+  }
+
+  async function playSurahSequential(surahAppIndex: number) {
+    const surah = surahs[surahAppIndex];
+    stopCurrentAudio();
+    for (let vi = 0; vi < surah.verses.length; vi++) {
+      const verseNum = surah.verses[vi].number;
+      const url = getVerseAudioUrl(surahAppIndex + 1, verseNum, reciter);
+      const key = `s${surahAppIndex}:${verseNum}`;
+      setPlayingVerse(key);
+      await new Promise<void>(resolve => {
+        const a = new Audio(url);
+        audioRef.current = a;
+        a.onended = () => resolve();
+        a.onerror = () => resolve();
+        a.play().catch(() => resolve());
+      });
+    }
+    setPlayingVerse(null);
+  }
+
+  async function handleLogout() {
+    if (supabase) await supabase.auth.signOut();
+    setUser(null);
+  }
 
   const learned = Object.values(progress).filter((p) => p.known).length;
   const coverage = getQuranCoverage(learned);
   const milestone = getMilestone(learned);
+  const rank = getRank(learned);
+  const nextRank = getNextRank(learned);
+  const rankPct = nextRank ? Math.round(((learned - rank.min) / (nextRank.min - rank.min)) * 100) : 100;
   const activeProgress = progress[activeWord.id] || emptyProgress();
   const dailyWords = useMemo(() => getDailyWords(words, progress, 5), [progress]);
 
@@ -103,66 +238,112 @@ export default function DashboardPage() {
     save(activeWord, answer === quizPrompt.answer ? "known" : "wrong");
   }
 
+  // Show auth modal when Supabase is configured and user not logged in
+  const showAuthModal = isConfigured && authReady && !user;
+
   return (
     <main className="min-h-screen text-white" style={{background:"var(--duo-bg)"}}>
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      {showAuthModal && <AuthModal onSuccess={async (u) => { setUser(u); await loadProgressFromDb(u.id); }} />}
 
-        {/* HEADER - İlerleme */}
-        <header className="glass-card rounded-[2rem] p-6 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+
+        {/* HEADER */}
+        <header className="glass-card rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 mb-5 sm:mb-8">
+          <div className="flex flex-col md:flex-row md:items-center gap-4 sm:gap-6">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-4 py-2 text-sm">
+              <div className="flex items-center gap-2 mb-2 sm:mb-4 flex-wrap">
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Ayet Hafızası · Kur&apos;an Öğrenme Sistemi
+                  <span className="hidden sm:inline">Ayet Hafızası · Kur&apos;an Öğrenme Sistemi</span>
+                  <span className="sm:hidden">Ayet Hafızası</span>
                 </div>
                 <button onClick={() => setChangelogOpen(c => !c)}
-                  className="inline-flex items-center gap-2 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-4 py-2 text-sm transition">
+                  className="inline-flex items-center gap-1.5 bg-stone-800/80 border border-stone-600/40 text-stone-300 hover:text-white rounded-full px-3 py-1.5 text-xs sm:text-sm transition">
                   <span className="text-amber-400 font-mono font-bold">v{APP_VERSION}</span>
-                  <span className="text-stone-500">{BUILD_DATE}</span>
+                  <span className="text-stone-500 hidden sm:inline">{BUILD_DATE} {BUILD_TIME}</span>
+                  <span className="text-stone-500 sm:hidden">{BUILD_TIME}</span>
                   <span className="text-xs">{changelogOpen ? "▲" : "▼"}</span>
                 </button>
+                {/* Yenile butonu */}
+                <button onClick={() => window.location.reload()}
+                  title="Sayfayı yenile"
+                  className="inline-flex items-center gap-1 bg-stone-800/60 border border-stone-700/60 text-stone-400 hover:text-white hover:border-emerald-500/40 rounded-full px-2.5 py-1.5 text-xs transition">
+                  🔄 <span className="hidden sm:inline">Yenile</span>
+                </button>
+                {/* Kullanıcı bilgisi */}
+                {user && (
+                  <div className="ml-auto flex items-center gap-2 flex-wrap">
+                    <RankBadge learned={learned} compact />
+                    {syncing && <span className="text-stone-500 text-xs animate-pulse">↑ kaydediliyor</span>}
+                    <span className="text-stone-400 text-xs hidden sm:inline">{user.username}</span>
+                    <button onClick={handleLogout}
+                      className="text-xs text-stone-500 hover:text-red-400 transition border border-stone-700 rounded-full px-2.5 py-1">
+                      Çıkış
+                    </button>
+                  </div>
+                )}
               </div>
               {changelogOpen && (
-                <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-4 mb-4 text-sm space-y-2">
-                  {[
-                    { version: "1.3.0", note: "Morfoloji paneli, 9 sure kelime analizi, SM-2 tekrar algoritması" },
-                    { version: "1.2.0", note: "Sure Modu: Fatiha, İhlas, Kevser, Felak, Nas, Asr, Kafirun, Nasr, Mesed" },
-                    { version: "1.1.0", note: "Kök ailesi, 15 gramer + 15 ayet analizi, frekans verileri" },
-                    { version: "1.0.0", note: "İlk sürüm: 300 kelime, görsel hafıza, quiz, tekrar" },
-                  ].map(c => (
-                    <div key={c.version} className="flex gap-3">
+                <div className="bg-stone-900/80 border border-stone-700 rounded-2xl p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm space-y-2">
+                  {CHANGELOG.map(c => (
+                    <div key={c.version} className="flex gap-3 items-start">
                       <span className="text-amber-400 font-mono shrink-0">v{c.version}</span>
+                      <span className="text-stone-600 shrink-0">{c.date} {c.time}</span>
                       <span className="text-stone-400">{c.note}</span>
                     </div>
                   ))}
                 </div>
               )}
-              <h1 className="text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
-              <p className="text-stone-300 mt-2 text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
+              <p className="text-stone-300 mt-1 sm:mt-2 text-xs sm:text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
             </div>
-            <div className="md:w-64">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
-                <span className="text-emerald-300 font-bold">%{coverage}</span>
+            <div className="md:w-72 space-y-3">
+              {/* Kur'an anlama oranı */}
+              <div>
+                <div className="flex justify-between text-xs sm:text-sm mb-1.5">
+                  <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
+                  <span className="text-emerald-300 font-bold">%{coverage}</span>
+                </div>
+                <div className="duo-progress-track mb-1">
+                  <div className="duo-progress-fill" style={{ width: `${coverage}%` }} />
+                </div>
+                <div className="flex justify-between text-xs text-stone-500">
+                  <span>{learned} kelime öğrenildi</span>
+                  <span className="hidden sm:inline">Sonraki: {milestone.next} → {milestone.label}</span>
+                  <span className="sm:hidden">{milestone.label}</span>
+                </div>
               </div>
-              <div className="duo-progress-track mb-2">
-                <div className="duo-progress-fill" style={{ width: `${coverage}%` }} />
-              </div>
-              <div className="flex justify-between text-xs text-stone-500">
-                <span>{learned} kelime öğrenildi</span>
-                <span>Sonraki hedef: {milestone.next} kelime → {milestone.label}</span>
+              {/* Rütbe kartı */}
+              <div className="rounded-2xl p-3 border flex items-center gap-3"
+                   style={{background:`${rank.color}12`, borderColor:`${rank.color}35`}}>
+                <span className="text-2xl">{rank.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-bold text-white text-sm">{rank.title}</span>
+                    <span className="arabic-text text-sm shrink-0" style={{color:rank.color}}>{rank.arabic}</span>
+                  </div>
+                  {nextRank && (
+                    <>
+                      <div className="h-1.5 rounded-full mt-1 mb-0.5 overflow-hidden" style={{background:"rgba(255,255,255,0.08)"}}>
+                        <div className="h-full rounded-full transition-all duration-700"
+                             style={{width:`${rankPct}%`, background:rank.color}} />
+                      </div>
+                      <div className="text-stone-500 text-xs">{nextRank.icon} {nextRank.title} için {nextRank.min - learned} kelime kaldı</div>
+                    </>
+                  )}
+                  {!nextRank && <div className="text-xs mt-0.5" style={{color:rank.color}}>En yüksek rütbe! 🎉</div>}
+                </div>
               </div>
             </div>
           </div>
-            <div className="relative mt-5">
+            <div className="relative mt-4 sm:mt-5">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => { setSearchQuery(e.target.value); setSearchOpen(true); }}
                 onFocus={() => setSearchOpen(true)}
                 placeholder="Kelime ara... (Arapça, Türkçe veya transliterasyon)"
-                className="w-full bg-stone-900/60 border border-stone-700 rounded-2xl px-5 py-3 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500/50"
+                className="w-full bg-stone-900/60 border border-stone-700 rounded-2xl px-4 sm:px-5 py-3 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500/50"
               />
               {searchQuery && (
                 <button onClick={() => { setSearchQuery(""); setSearchOpen(false); }}
@@ -193,18 +374,19 @@ export default function DashboardPage() {
         {/* NAVİGASYON */}
         <nav className="duo-card p-2 mb-8 flex gap-1 overflow-x-auto no-scrollbar" style={{borderRadius:"1.4rem"}}>
           {([
-            ["yol", "Öğrenme Yolu"],
-            ["kelime", "Kelimeler"],
-            ["kokler", "Kök Ailesi"],
-            ["gramer", "Gramer"],
-            ["ayet", "Ayet Analizi"],
-            ["sure", "Sure Modu"],
-            ["morfo", "Kalıplar"],
-            ["quiz", "Test"],
-            ["tekrar", `Tekrar (${reviewWords.length})`],
-            ["gorseller", `Görseller`],
-          ] as [Panel, string][]).map(([p, label]) => (
-            <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} />
+            ["yol", "Yol", "🗺️"],
+            ["kelime", "Kelime", "📖"],
+            ["kokler", "Kökler", "🌿"],
+            ["gramer", "Gramer", "✏️"],
+            ["ayet", "Ayet", "📜"],
+            ["sure", "Sure", "🕌"],
+            ["morfo", "Kalıp", "🔤"],
+            ["quiz", "Test", "🎯"],
+            ["tekrar", `Tekrar${reviewWords.length ? ` (${reviewWords.length})` : ""}`, "🔄"],
+            ["gorseller", "Görsel", "🖼️"],
+            ["rutbe", "Rütbe", "🏅"],
+          ] as [Panel, string, string][]).map(([p, label, icon]) => (
+            <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} icon={icon} />
           ))}
         </nav>
 
@@ -315,37 +497,23 @@ export default function DashboardPage() {
                   <div className="text-stone-600 text-xs text-center mt-1">▶ tıkla → seslendir</div>
                 </div>
 
-                {/* Visual memory card — Allah kartı tarzı */}
+                {/* Visual memory card */}
                 {activeImage
                   ? (
-                    <div className="relative rounded-3xl overflow-hidden mb-4" style={{border:'1.5px solid rgba(217,119,6,0.4)',boxShadow:'0 0 0 1px rgba(217,119,6,0.08),0 8px 40px rgba(0,0,0,0.75)'}}>
-                      {/* Corner ornaments */}
-                      <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-amber-400/65 rounded-tl pointer-events-none z-20" />
-                      <div className="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 border-amber-400/65 rounded-tr pointer-events-none z-20" />
-                      <div className="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 border-amber-400/65 rounded-bl pointer-events-none z-20" />
-                      <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-amber-400/65 rounded-br pointer-events-none z-20" />
+                    <div className="rounded-3xl overflow-hidden border border-amber-400/25 mb-4" style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.6)'}}>
                       <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" />
-                      {/* Memory anchor overlay */}
-                      {activeWord.memory_hint && (
-                        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-4 pt-12 pb-4">
-                          <div className="flex items-start gap-2">
-                            <span className="text-base shrink-0">💡</span>
-                            <span className="text-amber-200/95 text-sm leading-snug font-medium">{activeWord.memory_hint}</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   )
-                  : (
-                    <MemoryScene
-                      arabic={activeWord.arabic}
-                      transliteration={activeWord.transliteration}
-                      partOfSpeech={activeWord.part_of_speech}
-                      memoryHint={activeWord.memory_hint}
-                      root={activeWord.root}
-                    />
-                  )
+                  : <MemoryScene arabic={activeWord.arabic} transliteration={activeWord.transliteration} partOfSpeech={activeWord.part_of_speech} memoryHint={activeWord.memory_hint} />
                 }
+
+                {/* Hafıza çapası — always visible */}
+                {activeWord.memory_hint && (
+                  <div className="flex items-start gap-2.5 rounded-2xl px-4 py-3 mb-3" style={{background:'rgba(251,191,36,0.06)',border:'1px solid rgba(251,191,36,0.2)'}}>
+                    <span className="text-base mt-0.5 shrink-0">💡</span>
+                    <span className="text-amber-200/85 text-sm leading-relaxed">{activeWord.memory_hint}</span>
+                  </div>
+                )}
 
                 {/* Örnek ayet — always visible */}
                 <div className="rounded-2xl px-4 py-3 mb-4" style={{background:'rgba(52,211,153,0.04)',border:'1px solid rgba(52,211,153,0.12)'}}>
@@ -571,40 +739,78 @@ export default function DashboardPage() {
                 })}
               </div>
 
-              <div className="glass-card rounded-[2rem] p-6">
+              <div className="glass-card rounded-[2rem] p-5 sm:p-6">
+                {/* Okuyucu seçici */}
+                <div className="flex flex-wrap items-center gap-2 mb-5 pb-4 border-b border-stone-700/40">
+                  <span className="text-stone-400 text-xs font-medium shrink-0">🎙️ Okuyucu:</span>
+                  {RECITERS.map(r => (
+                    <button key={r.id} onClick={() => changeReciter(r.id)}
+                      className={`text-xs px-3 py-1.5 rounded-full border transition ${reciter === r.id ? "bg-emerald-600 border-emerald-400 text-white" : "border-stone-600 text-stone-400 hover:border-emerald-500/50 hover:text-white"}`}>
+                      {r.flag} {r.name}
+                    </button>
+                  ))}
+                </div>
+
                 {surahs[activeSurah] && (() => {
                   const surah = surahs[activeSurah];
+                  const surahIdx = activeSurah + 1; // 1-based app surah index
+                  const isSurahPlaying = surah.verses.some(v => playingVerse === `s${activeSurah}:${v.number}`);
                   return (
                     <div>
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h2 className="text-2xl font-bold">{surah.name}</h2>
-                          <p className="text-stone-400 text-sm mt-1 max-w-lg">{surah.theme}</p>
+                      <div className="flex items-start justify-between gap-3 mb-5">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <h2 className="text-xl sm:text-2xl font-bold">{surah.name}</h2>
+                            <span className="arabic-text text-2xl text-amber-200">{surah.arabicName}</span>
+                          </div>
+                          <p className="text-stone-400 text-sm mt-1">{surah.theme}</p>
                         </div>
-                        <button onClick={() => speakArabic(surah.verses.map(v => v.arabic).join(' '))}
-                          className="duo-btn duo-btn-blue text-sm">▶ Tümünü Dinle</button>
+                        <button
+                          onClick={() => isSurahPlaying ? stopCurrentAudio() : playSurahSequential(activeSurah)}
+                          className={`duo-btn shrink-0 text-sm ${isSurahPlaying ? "duo-btn-red" : "duo-btn-blue"}`}>
+                          {isSurahPlaying ? "⏹ Durdur" : "▶ Tümünü Dinle"}
+                        </button>
                       </div>
 
-                      <div className="space-y-4">
-                        {surah.verses.map((verse, vi) => (
-                          <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/30 border-emerald-400/30" : "bg-black/20 border-stone-700/30"}`}>
-                            <button onClick={() => setActiveSurahVerse(activeSurahVerse === vi ? null : vi)}
-                              className="w-full text-left p-5">
+                      <div className="space-y-3">
+                        {surah.verses.map((verse, vi) => {
+                          const verseKey = `s${activeSurah}:${verse.number}`;
+                          const isPlaying = playingVerse === verseKey;
+                          return (
+                          <div key={vi} className={`rounded-2xl border transition ${activeSurahVerse === vi ? "bg-emerald-900/20 border-emerald-400/30" : isPlaying ? "bg-blue-900/20 border-blue-400/40" : "bg-black/20 border-stone-700/30"}`}>
+                            <div className="p-4 sm:p-5">
                               <div className="flex items-center gap-3 mb-2">
-                                <span className="w-7 h-7 rounded-full bg-emerald-800/60 text-emerald-300 text-xs flex items-center justify-center font-bold shrink-0">{verse.number}</span>
-                                <button onClick={(e) => { e.stopPropagation(); speakArabic(verse.arabic); }}
-                                  className="arabic-text text-2xl md:text-3xl text-right flex-1 bg-transparent leading-loose">{verse.arabic}</button>
+                                {/* Ayet numarası + ses butonu */}
+                                <button
+                                  onClick={() => isPlaying ? stopCurrentAudio() : playVerse(verseKey, getVerseAudioUrl(surahIdx, verse.number, reciter))}
+                                  className={`w-8 h-8 rounded-full text-xs font-bold shrink-0 flex items-center justify-center transition border ${isPlaying ? "bg-blue-500 border-blue-400 text-white animate-pulse" : "bg-emerald-800/60 border-emerald-600/40 text-emerald-300 hover:bg-emerald-600"}`}>
+                                  {isPlaying ? "⏸" : verse.number}
+                                </button>
+                                {/* Ayet metni */}
+                                <div className="arabic-text text-xl sm:text-2xl md:text-3xl text-right flex-1 leading-loose cursor-pointer"
+                                     onClick={() => setActiveSurahVerse(activeSurahVerse === vi ? null : vi)}>
+                                  {verse.arabic}
+                                </div>
                               </div>
-                              <div className="text-stone-400 text-sm pl-10">{verse.turkish}</div>
-                            </button>
+                              <div className="text-stone-400 text-sm pl-11">{verse.turkish}</div>
+                              {isPlaying && (
+                                <div className="pl-11 mt-2 flex items-center gap-1.5">
+                                  {[1,2,3,4,5].map(i => (
+                                    <div key={i} className="w-1 rounded-full bg-blue-400"
+                                         style={{height:`${6 + (i%3)*4}px`, animation:`pulse ${0.4 + i*0.1}s ease-in-out infinite alternate`}} />
+                                  ))}
+                                  <span className="text-blue-400 text-xs ml-1">oynuyor...</span>
+                                </div>
+                              )}
+                            </div>
 
                             {activeSurahVerse === vi && (
-                              <div className="px-5 pb-5 pt-1 border-t border-stone-700/30">
+                              <div className="px-4 sm:px-5 pb-5 pt-1 border-t border-stone-700/30">
                                 <div className="text-stone-500 text-xs mb-3">Kelime Kelime Analiz:</div>
                                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                   {verse.words.map((w, wi) => (
                                     <div key={wi} className="rounded-xl border border-stone-700/50 bg-stone-900/40 p-3">
-                                      <button onClick={() => speakArabic(w.arabic)} className="arabic-text text-2xl bg-transparent w-full text-right mb-2">{w.arabic}</button>
+                                      <button onClick={() => speakArabic(w.arabic)} className="arabic-text text-2xl bg-transparent w-full text-right mb-2 hover:text-emerald-300 transition">{w.arabic}</button>
                                       <div className="text-stone-400 text-xs mb-1">{w.transliteration}</div>
                                       <div className="text-emerald-300 text-sm font-medium">{w.meaning}</div>
                                       <div className="text-stone-500 text-xs mt-1">{w.role}</div>
@@ -616,7 +822,7 @@ export default function DashboardPage() {
                               </div>
                             )}
                           </div>
-                        ))}
+                        );})}
                       </div>
                     </div>
                   );
@@ -794,9 +1000,73 @@ export default function DashboardPage() {
           </section>
         )}
 
+        {/* RÜTBELER PANELİ */}
+        {panel === "rutbe" && (
+          <section className="glass-card rounded-[2rem] p-6">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">🏅</span>
+              <div>
+                <h2 className="text-2xl font-bold">Rütbeler</h2>
+                <p className="text-stone-400 text-sm">Öğrendikçe yüksel, Kur'an yolunda ilerle</p>
+              </div>
+            </div>
+
+            {/* Mevcut rütbe vurgusu */}
+            <div className="mb-6 mt-4 rounded-2xl p-5 border-2 text-center"
+                 style={{background:`${rank.color}18`, borderColor:`${rank.color}55`}}>
+              <div className="text-5xl mb-2">{rank.icon}</div>
+              <div className="text-2xl font-bold text-white">{rank.title}</div>
+              <div className="arabic-text text-xl mb-2" style={{color:rank.color}}>{rank.arabic}</div>
+              <div className="text-stone-300 text-sm">{rank.desc}</div>
+              <div className="text-stone-500 text-xs mt-2">{learned} kelime öğrenildi</div>
+              {nextRank && (
+                <div className="mt-3">
+                  <div className="h-2 rounded-full overflow-hidden mx-auto max-w-xs" style={{background:"rgba(255,255,255,0.1)"}}>
+                    <div className="h-full rounded-full transition-all duration-700" style={{width:`${rankPct}%`, background:rank.color}} />
+                  </div>
+                  <div className="text-stone-500 text-xs mt-1">
+                    {nextRank.icon} {nextRank.title} için {nextRank.min - learned} kelime daha
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Tüm rütbeler */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {RANKS.map((r, i) => {
+                const isActive = rank.min === r.min;
+                const isUnlocked = learned >= r.min;
+                const isNext = nextRank?.min === r.min;
+                return (
+                  <div key={i} className="rounded-2xl p-4 border transition-all"
+                       style={{
+                         background: isActive ? `${r.color}22` : isUnlocked ? `${r.color}0e` : "rgba(255,255,255,0.03)",
+                         borderColor: isActive ? `${r.color}80` : isNext ? `${r.color}50` : "rgba(255,255,255,0.08)",
+                         opacity: isUnlocked ? 1 : 0.45,
+                       }}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className={`text-2xl ${!isUnlocked ? "grayscale" : ""}`}>{r.icon}</span>
+                      <div className="flex-1">
+                        <div className="font-bold text-sm text-white">{r.title}</div>
+                        <div className="arabic-text text-sm" style={{color: isUnlocked ? r.color : "#8FA8B4"}}>{r.arabic}</div>
+                      </div>
+                      {isActive && <span className="text-xs font-bold px-2 py-0.5 rounded-full"
+                                        style={{background:`${r.color}33`, color:r.color}}>Mevcut</span>}
+                      {!isUnlocked && !isNext && <span className="text-xs text-stone-600">🔒</span>}
+                      {isNext && <span className="text-xs text-stone-400 font-medium">Sonraki</span>}
+                    </div>
+                    <div className="text-stone-400 text-xs mb-1">{r.desc}</div>
+                    <div className="text-stone-600 text-xs">{r.min} kelimeden itibaren</div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
         <footer className="text-center text-stone-500 text-xs py-8 mt-4 space-y-1">
           <div>Ayet Hafızası · {words.length} kelime · {visualWords.length} görsel kart</div>
-          <div className="text-stone-600">v{APP_VERSION} · {BUILD_DATE}</div>
+          <div className="text-stone-600">v{APP_VERSION} · {BUILD_DATE} {BUILD_TIME}</div>
         </footer>
       </div>
     </main>
@@ -805,33 +1075,37 @@ export default function DashboardPage() {
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const image = memoryImagesByArabic[word.arabic] || null;
+  const card = memoryCards[word.arabic];
+
+  const fallbackBg: Record<string, string> = {
+    "isim": "from-blue-900 to-slate-950",
+    "fiil": "from-purple-900 to-slate-950",
+    "sıfat": "from-amber-900 to-slate-950",
+    "harf-i cer": "from-teal-900 to-slate-950",
+    "bağlaç": "from-rose-900 to-slate-950",
+    "zamir": "from-indigo-900 to-slate-950",
+    "edat": "from-emerald-900 to-slate-950",
+    "zarf": "from-orange-900 to-slate-950",
+    "özel isim": "from-yellow-900 to-slate-950",
+    "olumsuzluk": "from-red-900 to-slate-950",
+    "soru": "from-cyan-900 to-slate-950",
+    "ism-i mevsûl": "from-violet-900 to-slate-950",
+  };
+  const posKey = Object.keys(fallbackBg).find(k => word.part_of_speech.includes(k)) || "isim";
+  const bg = card?.bg || fallbackBg[posKey];
+
+  const heightClass = large ? "h-52" : "h-40";
 
   return (
     <button onClick={onClick} className="rounded-[1.5rem] overflow-hidden text-left hover:scale-[1.02] transition-transform duration-200 w-full"
       style={{background:"var(--duo-card)", border:"2px solid var(--duo-card-border)", borderBottom:"4px solid var(--duo-card-shadow)"}}>
       {/* Görsel alan */}
       {image ? (
-        <div className="relative">
-          <img src={imgSrc(image)} alt={word.turkish_meaning} className={`w-full ${large ? "h-52" : "h-40"} object-cover`} />
-          {word.memory_hint && (
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-3 pt-6 pb-2">
-              <div className="flex items-start gap-1.5">
-                <span className="text-[11px] shrink-0">💡</span>
-                <span className="text-[10px] text-amber-200/90 leading-tight line-clamp-2">{word.memory_hint}</span>
-              </div>
-            </div>
-          )}
-        </div>
+        <img src={imgSrc(image)} alt={word.turkish_meaning}
+          className={`w-full ${heightClass} object-cover`} />
       ) : (
-        <div className={`w-full ${large ? "h-52" : "h-40"} relative overflow-hidden`}>
-          <MemoryScene
-            arabic={word.arabic}
-            transliteration={word.transliteration}
-            partOfSpeech={word.part_of_speech}
-            memoryHint={word.memory_hint}
-            root={word.root}
-            compact
-          />
+        <div className={heightClass} style={{overflow:"hidden"}}>
+          <MemoryScene arabic={word.arabic} transliteration={word.transliteration} partOfSpeech={word.part_of_speech} memoryHint={word.memory_hint} compact />
         </div>
       )}
       {/* Bilgi alanı */}
@@ -861,10 +1135,11 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
     </button>
   );
 }
-function Tab({ active, onClick, label }: { active: boolean; onClick: () => void; label: string }) {
+function Tab({ active, onClick, label, icon }: { active: boolean; onClick: () => void; label: string; icon?: string }) {
   return (
     <button onClick={onClick} className={`duo-tab${active ? " active" : ""}`}>
-      {label}
+      {icon && <span className="tab-icon">{icon}</span>}
+      <span>{label}</span>
     </button>
   );
 }

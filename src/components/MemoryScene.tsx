@@ -1,597 +1,879 @@
-'use client';
+import React from "react";
 
-export type SceneType =
-  | 'divine-light' | 'celestial' | 'earth' | 'water' | 'fire'
-  | 'people' | 'eye' | 'speech' | 'path' | 'garden'
-  | 'cosmos' | 'faith' | 'time' | 'barrier' | 'shelter' | 'strength';
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-interface SC { bg1: string; bg2: string; accent: string }
-const C: Record<SceneType, SC> = {
-  'divine-light': { bg1:'#0a2a14', bg2:'#030a06', accent:'#f59e0b' },
-  'celestial':    { bg1:'#050d28', bg2:'#020408', accent:'#93c5fd' },
-  'earth':        { bg1:'#162a0c', bg2:'#060f04', accent:'#86efac' },
-  'water':        { bg1:'#062030', bg2:'#020810', accent:'#7dd3fc' },
-  'fire':         { bg1:'#2a0a04', bg2:'#0f0302', accent:'#fb923c' },
-  'people':       { bg1:'#0c1634', bg2:'#040610', accent:'#a5b4fc' },
-  'eye':          { bg1:'#100528', bg2:'#060210', accent:'#c084fc' },
-  'speech':       { bg1:'#042030', bg2:'#020810', accent:'#38bdf8' },
-  'path':         { bg1:'#080820', bg2:'#020208', accent:'#a78bfa' },
-  'garden':       { bg1:'#082814', bg2:'#030f06', accent:'#4ade80' },
-  'cosmos':       { bg1:'#060218', bg2:'#020108', accent:'#818cf8' },
-  'faith':        { bg1:'#200c14', bg2:'#0a0408', accent:'#f472b6' },
-  'time':         { bg1:'#201406', bg2:'#0a0602', accent:'#fdba74' },
-  'barrier':      { bg1:'#2a0606', bg2:'#0f0202', accent:'#f87171' },
-  'shelter':      { bg1:'#062020', bg2:'#020a0a', accent:'#5eead4' },
-  'strength':     { bg1:'#180428', bg2:'#080210', accent:'#d946ef' },
-};
-
-// Word → scene type mapping
-const WS: Record<string, SceneType> = {
-  // Divine / light
-  "اللَّه":"divine-light","نُور":"divine-light","النُّور":"divine-light",
-  "الْحَمْدُ":"divine-light","رَبِّ":"divine-light","رَبّ":"divine-light",
-  "مُحَمَّد":"divine-light","نَبِيّ":"divine-light","رَسُول":"divine-light",
-  "قُرْآن":"divine-light","مَلَك":"divine-light","آخِرَة":"divine-light",
-  "مُوسَى":"divine-light","عِيسَى":"divine-light","إِبْرَاهِيم":"divine-light",
-  "يُوسُف":"divine-light","مَرْيَم":"divine-light","آيَة":"divine-light",
-  "رَحِيم":"divine-light","حَكِيم":"divine-light","عَلِيم":"divine-light",
-  "غَفُور":"divine-light","كَرِيم":"divine-light","عَظِيم":"divine-light",
-  "قَدِيم":"divine-light","حَيّ":"divine-light","أَزَل":"divine-light",
-  // Celestial
-  "السَّمَاء":"celestial","السَّمَاوَاتِ":"celestial","شَمْس":"celestial",
-  "قَمَر":"celestial","نَجْم":"celestial","لَيْل":"celestial",
-  "نَهَار":"celestial","رِيح":"celestial","سَحَاب":"celestial","طَيْر":"celestial",
-  // Earth
-  "الْأَرْضَ":"earth","أَرْض":"earth","مَطَر":"water",
-  // Water
-  "مَاء":"water","بَحْر":"water","نَهَر":"water","رَحْمَة":"water",
-  // Fire
-  "نَار":"fire","جَحِيم":"fire","عَذَاب":"fire",
-  // People
-  "النَّاس":"people","قَوْم":"people","أَهْل":"people","رَجُل":"people",
-  "امْرَأَة":"people","وَلَد":"people","ابْن":"people","بِنْت":"people",
-  "أَب":"people","أُمّ":"people","أَخ":"people","زَوْج":"people",
-  "نِسَاء":"people","بَنُو":"people","آدَم":"people","الَّذِينَ":"people",
-  "عَبْد":"people","إِنْسَان":"people","نَفْس":"people","جَسَد":"people",
-  "رُوح":"faith","وَجْه":"people","يَد":"people","رَأْس":"people",
-  // Knowledge / sight
-  "عِلْم":"eye","يَعْلَمُ":"eye","عَرَفَ":"eye","بَصِير":"eye",
-  "رَأَى":"eye","نَظَرَ":"eye","الْكِتَاب":"eye","كِتَاب":"eye",
-  "قَلَم":"eye","قَرَأَ":"eye","كَتَبَ":"eye","لَوْح":"eye",
-  "صَحِيفَة":"eye","عَيْن":"eye","بُرْهَان":"eye","بَيِّنَة":"eye",
-  "ذَكَرَ":"eye","نَسِيَ":"eye","مِفْتَاح":"eye",
-  // Speech
-  "قَالَ":"speech","قَوْل":"speech","كَلِمَة":"speech","لِسَان":"speech",
-  "سَمِعَ":"speech","سَمِيع":"speech","أُذُن":"speech","دَعَا":"speech",
-  "وَعَدَ":"speech","أَجَابَ":"speech","سَأَلَ":"speech","حَدِيث":"speech",
-  "أَمَرَ":"speech","نَهَى":"speech","وَعْد":"speech","وَعِيد":"speech",
-  // Path / guidance
-  "صِرَاطٍ":"path","مُسْتَقِيمٍ":"path","هُدًى":"path","هَدَى":"path",
-  "الدِّينِ":"path","حَقّ":"path","إِلَى":"path","ذَهَبَ":"path",
-  "جَاءَ":"path","رَجَعَ":"path","مَشَى":"path","سَعَى":"path",
-  "دَخَلَ":"path","خَرَجَ":"path","نَزَلَ":"path","رَفَعَ":"path",
-  // Garden / paradise
-  "جَنَّة":"garden","فِرْدَوْس":"garden","رِزْق":"garden","نِعْمَة":"garden",
-  "فَضْل":"garden","خَيْر":"garden","حَسَنَة":"garden","شَجَر":"garden",
-  "ثَمَر":"garden","طَعَام":"garden","جَبَل":"earth",
-  // Cosmos / creation
-  "خَلَقَ":"cosmos","الْعَالَمِينَ":"cosmos","دُنْيَا":"cosmos",
-  "قِيَامَة":"cosmos","عَرْش":"cosmos","نُوح":"cosmos",
-  "كَانَ":"cosmos","يَكُونُ":"cosmos","جَعَلَ":"cosmos","بَعَثَ":"cosmos",
-  "جَمَعَ":"cosmos","فَرَّقَ":"cosmos",
-  // Faith / worship
-  "آمَنُوا":"faith","آمَنَ":"faith","إِيمَان":"faith","إِسْلَام":"faith",
-  "تَقْوَى":"faith","صَلَاة":"faith","زَكَاة":"faith","صَوْم":"faith",
-  "دُعَاء":"faith","عِبَادَة":"faith","عَبَدَ":"faith","سَجَدَ":"faith",
-  "رَكَعَ":"faith","صَلَّى":"faith","قَلْب":"faith","حُبّ":"faith",
-  "رَجَا":"faith","شَكَرَ":"faith","تَوْبَة":"faith","ذِكْر":"faith",
-  "صَبْر":"faith","مَغْفِرَة":"faith","عَفْو":"faith","أَجْر":"faith",
-  "شُكْر":"faith","فَرَح":"faith","اتَّقَى":"faith","رَحِمَ":"faith",
-  "غَفَرَ":"faith","حَجّ":"shelter","صَادِق":"faith","خَشِيَ":"faith",
-  // Time
-  "يَوْم":"time","شَهْر":"time","سَنَة":"time","سَاعَة":"time",
-  "بَعْدَ":"time","قَبْلَ":"time","حَتَّى":"time","ثُمَّ":"time",
-  "مَتَى":"time","لَبِثَ":"time",
-  // Barrier / negation / evil
-  "لَا":"barrier","لَمْ":"barrier","لَنْ":"barrier","كَفَرَ":"barrier",
-  "كُفْر":"barrier","شَيْطَان":"barrier","إِبْلِيس":"barrier","ظَلَمَ":"barrier",
-  "فِتْنَة":"barrier","شَرّ":"barrier","سَيِّئَة":"barrier","إِثْم":"barrier",
-  "ذَنْب":"barrier","خَبِيث":"barrier","مَيِّت":"barrier","ضَلَّ":"barrier",
-  "أَضَلَّ":"barrier","قَتَلَ":"barrier","فِرْعَوْن":"barrier",
-  "كَذَبَ":"barrier","بُغْض":"barrier","خَوْف":"barrier","حُزْن":"barrier",
-  "عَذَّبَ":"barrier","بَلَاء":"barrier","مَاتَ":"barrier",
-  // Shelter / mosque
-  "مَسْجِد":"shelter","كَعْبَة":"shelter","بَيْت":"shelter",
-  "كُرْسِيّ":"shelter","أَمْن":"shelter","سَلَام":"shelter",
-  "بَلَد":"shelter","قَرْيَة":"shelter","مَدِينَة":"shelter",
-  // Strength / power
-  "عَزِيز":"strength","قَدِير":"strength","قَوِيّ":"strength","نَصَرَ":"strength",
-  "فَتَحَ":"strength","نَصْر":"strength","فَتْح":"strength","سُلْطَان":"strength",
-  "مُلْك":"strength","مَلِك":"strength","حُكْم":"strength","كَبِير":"strength",
-};
-
-export function getSceneForWord(arabic: string, pos: string): SceneType {
-  if (WS[arabic]) return WS[arabic];
-  if (pos.includes("bağlaç")) return "cosmos";
-  if (pos.includes("harf-i cer")) return "path";
-  if (pos.includes("zamir")) return "people";
-  if (pos.includes("olumsuzluk")) return "barrier";
-  if (pos.includes("edat")) return "path";
-  if (pos.includes("soru")) return "eye";
-  if (pos.includes("zarf")) return "time";
-  if (pos.includes("fiil")) return "cosmos";
-  if (pos.includes("sıfat")) return "faith";
-  return "cosmos";
-}
-
-// ── Scene art components (SVG, viewBox 0 0 300 360) ──────────────────────────
-
-function DivineLightArt({ a }: { a: string }) {
-  const rays = Array.from({ length: 16 }, (_, i) => {
-    const angle = (i * 22.5 - 90) * Math.PI / 180;
-    return { x2: 150 + Math.cos(angle) * 320, y2: 80 + Math.sin(angle) * 320 };
-  });
-  return (
-    <>
-      <g opacity="0.28">
-        {rays.map((r, i) => <line key={i} x1="150" y1="80" x2={r.x2} y2={r.y2} stroke={a} strokeWidth="2.5" />)}
-      </g>
-      <circle cx="150" cy="80" r="14" fill={a} opacity="0.95" />
-      <circle cx="150" cy="80" r="35" fill={a} opacity="0.22" />
-      <circle cx="150" cy="80" r="60" fill={a} opacity="0.1" />
-      <circle cx="150" cy="80" r="95" fill={a} opacity="0.05" />
-      {/* Mosque */}
-      <g fill={a} opacity="0.55">
-        <rect x="38" y="252" width="16" height="108" rx="2" />
-        <polygon points="38,252 46,228 54,252" />
-        <circle cx="46" cy="225" r="6" />
-        <rect x="246" y="252" width="16" height="108" rx="2" />
-        <polygon points="246,252 254,228 262,252" />
-        <circle cx="254" cy="225" r="6" />
-        <path d="M68,320 L68,272 C68,222 108,196 150,196 C192,196 232,222 232,272 L232,320Z" />
-        <rect x="140" y="186" width="20" height="18" rx="3" />
-        <ellipse cx="150" cy="184" rx="12" ry="16" />
-        <rect x="0" y="320" width="300" height="40" />
-      </g>
-    </>
-  );
-}
-
-function CelestialArt({ a }: { a: string }) {
-  const stars = Array.from({ length: 42 }, (_, i) => ({
-    x: ((i * 137.508) % 268) + 16,
-    y: ((i * 89.47) % 320) + 16,
-    r: [0.8, 1.3, 1.8, 1.0, 1.5][i % 5],
-    o: [0.4, 0.65, 0.85, 0.5, 0.7][i % 5],
-  }));
-  return (
-    <>
-      {stars.map((s, i) => <circle key={i} cx={s.x} cy={s.y} r={s.r} fill={a} opacity={s.o} />)}
-      <circle cx="150" cy="125" r="58" fill={a} opacity="0.82" />
-      <circle cx="174" cy="113" r="50" fill="#030d28" />
-      <g transform="translate(214,78) scale(0.9)">
-        <polygon points="0,-14 3.3,-3.3 14,0 3.3,3.3 0,14 -3.3,3.3 -14,0 -3.3,-3.3" fill={a} opacity="0.9" />
-      </g>
-      <g transform="translate(88,52) scale(0.6)">
-        <polygon points="0,-14 3.3,-3.3 14,0 3.3,3.3 0,14 -3.3,3.3 -14,0 -3.3,-3.3" fill={a} opacity="0.75" />
-      </g>
-    </>
-  );
-}
-
-function EarthArt({ a }: { a: string }) {
-  return (
-    <>
-      {[{x:40,y:45},{x:105,y:28},{x:185,y:58},{x:245,y:38},{x:275,y:80}].map((s,i)=>(
-        <circle key={i} cx={s.x} cy={s.y} r="1.6" fill={a} opacity="0.55" />
-      ))}
-      <circle cx="230" cy="60" r="22" fill={a} opacity="0.65" />
-      <circle cx="240" cy="54" r="18" fill="#102a0a" />
-      <path d="M0,270 L75,148 L128,215 L188,118 L248,198 L300,155 L300,360 L0,360Z" fill={a} opacity="0.35" />
-      <path d="M0,270 L75,148 L128,215 L188,118 L248,198 L300,155" fill="none" stroke={a} strokeWidth="2" opacity="0.55" />
-      <path d="M0,310 Q150,285 300,310 L300,360 L0,360Z" fill={a} opacity="0.18" />
-      <rect x="52" y="218" width="11" height="60" rx="2" fill={a} opacity="0.65" />
-      <ellipse cx="57" cy="208" rx="24" ry="30" fill={a} opacity="0.5" />
-    </>
-  );
-}
-
-function WaterArt({ a }: { a: string }) {
-  function wave(y: number, amp: number) {
-    return `M0,${y} C50,${y - amp} 100,${y + amp} 150,${y} C200,${y - amp} 250,${y + amp} 300,${y} L300,360 L0,360Z`;
-  }
-  const waves = [{y:155,a:18},{y:190,a:20},{y:225,a:16},{y:258,a:18},{y:290,a:14}];
-  return (
-    <>
-      <circle cx="150" cy="95" r="32" fill={a} opacity="0.55" />
-      <circle cx="163" cy="87" r="27" fill="#041c2a" />
-      {[{x:65,y:140},{x:180,y:125},{x:245,y:148}].map((s,i)=>(
-        <ellipse key={i} cx={s.x} cy={s.y} rx="28" ry="4" fill={a} opacity="0.1" />
-      ))}
-      {waves.map((w, i) => (
-        <path key={i} d={wave(w.y, w.a)} fill={a} opacity={0.07 + i * 0.038} />
-      ))}
-      {[148, 186, 222].map((y, i) => (
-        <path key={i} d={`M8,${y} C55,${y-16} 108,${y+16} 150,${y} C192,${y-16} 245,${y+16} 292,${y}`}
-              stroke={a} strokeWidth="1.8" fill="none" opacity="0.38" />
-      ))}
-    </>
-  );
-}
-
-function FireArt({ a }: { a: string }) {
-  return (
-    <>
-      {/* Main central flame */}
-      <path d="M150,335 C128,278 95,248 128,185 C108,228 152,218 140,155 C158,212 186,200 173,148 C200,205 178,255 205,282 C216,248 198,185 225,155 C225,212 258,235 234,292 Z"
-            fill={a} opacity="0.88" />
-      {/* Left flame */}
-      <path d="M108,335 C92,292 65,265 98,208 C82,245 122,242 105,182 C122,226 148,212 136,162 C132,222 168,238 148,292 Z"
-            fill={a} opacity="0.58" />
-      {/* Right flame */}
-      <path d="M192,335 C205,295 235,268 200,212 C218,248 178,245 196,188 C178,228 152,215 165,170 C172,222 135,238 158,292 Z"
-            fill={a} opacity="0.55" />
-      {/* Embers */}
-      {[{x:102,y:158},{x:140,y:120},{x:180,y:138},{x:205,y:102},{x:222,y:162},{x:125,y:100}].map((e,i)=>(
-        <circle key={i} cx={e.x} cy={e.y} r="3.5" fill={a} opacity={0.38 + (i%3)*0.22} />
-      ))}
-      <ellipse cx="150" cy="345" rx="85" ry="12" fill={a} opacity="0.18" />
-    </>
-  );
-}
-
-function PeopleArt({ a }: { a: string }) {
-  return (
-    <>
-      <path d="M0,308 Q150,288 300,308 L300,360 L0,360Z" fill={a} opacity="0.1" />
-      {/* Left */}
-      <g fill={a} opacity="0.68" transform="translate(72,268)">
-        <circle cx="0" cy="-48" r="22" />
-        <path d="M-24,-22 C-28,10 -22,66 0,66 C22,66 28,10 24,-22 C16,-34 -16,-34 -24,-22Z" />
-      </g>
-      {/* Center (larger) */}
-      <g fill={a} opacity="0.92" transform="translate(150,258)">
-        <circle cx="0" cy="-55" r="27" />
-        <path d="M-29,-24 C-33,12 -25,78 0,78 C25,78 33,12 29,-24 C20,-40 -20,-40 -29,-24Z" />
-      </g>
-      {/* Right */}
-      <g fill={a} opacity="0.68" transform="translate(228,268)">
-        <circle cx="0" cy="-48" r="22" />
-        <path d="M-24,-22 C-28,10 -22,66 0,66 C22,66 28,10 24,-22 C16,-34 -16,-34 -24,-22Z" />
-      </g>
-    </>
-  );
-}
-
-function EyeArt({ a }: { a: string }) {
-  const beams = Array.from({length:8}, (_,i) => {
-    const ang = (i * 45) * Math.PI / 180;
-    return { x1: Math.cos(ang)*46, y1: Math.sin(ang)*46, x2: Math.cos(ang)*95, y2: Math.sin(ang)*95 };
-  });
-  return (
-    <>
-      <g transform="translate(150,140)">
-        <path d="M-105,0 C-85,-55 -32,-88 0,-88 C32,-88 85,-55 105,0 C85,55 32,88 0,88 C-32,88 -85,55 -105,0Z"
-              fill={a} opacity="0.14" stroke={a} strokeWidth="2.5" />
-        <circle cx="0" cy="0" r="42" fill={a} opacity="0.28" />
-        <circle cx="0" cy="0" r="20" fill={a} opacity="0.85" />
-        <circle cx="-8" cy="-8" r="5.5" fill="white" opacity="0.45" />
-        <g opacity="0.38">
-          {beams.map((b,i) => <line key={i} x1={b.x1} y1={b.y1} x2={b.x2} y2={b.y2} stroke={a} strokeWidth="1.8" />)}
-        </g>
-      </g>
-      {/* Book */}
-      <g transform="translate(150,272)" fill="none" stroke={a} strokeWidth="1.8" opacity="0.45">
-        <path d="M-62,-28 C-62,-33 -6,-38 0,-32 L0,32 C-6,26 -62,22 -62,28Z" />
-        <path d="M62,-28 C62,-33 6,-38 0,-32 L0,32 C6,26 62,22 62,28Z" />
-        {[-18,-7,4].map((y,i) => <line key={i} x1="-42" y1={y} x2="-8" y2={y-1.5} strokeWidth="1.2" />)}
-      </g>
-    </>
-  );
-}
-
-function SpeechArt({ a }: { a: string }) {
-  const arcs = [70, 100, 132, 165];
-  return (
-    <>
-      {/* Lips */}
-      <g transform="translate(150,130)">
-        <path d="M-58,0 C-42,-24 -22,-34 0,-34 C22,-34 42,-24 58,0 C42,24 22,34 0,34 C-22,34 -42,24 -58,0Z"
-              fill={a} opacity="0.2" stroke={a} strokeWidth="2.2" />
-        <path d="M-38,5 C-18,18 18,18 38,5" fill="none" stroke={a} strokeWidth="2" opacity="0.6" />
-        <path d="M-58,0 C-32,-10 32,-10 58,0" fill={a} opacity="0.28" />
-      </g>
-      {/* Sound waves */}
-      {arcs.map((r, i) => (
-        <path key={i}
-              d={`M${150+r*0.72},${130-r*0.42} A${r},${r} 0 0,1 ${150+r*0.72},${130+r*0.42}`}
-              fill="none" stroke={a} strokeWidth="2" opacity={0.52 - i * 0.1} />
-      ))}
-      {/* Calligraphy stroke */}
-      <path d="M55,248 C88,237 112,256 135,242 C152,230 162,252 182,240 C202,228 224,252 248,240"
-            fill="none" stroke={a} strokeWidth="2.8" opacity="0.32" strokeLinecap="round" />
-    </>
-  );
-}
-
-function PathArt({ a }: { a: string }) {
-  const hLines = [185, 220, 258, 300, 345];
-  return (
-    <>
-      {[{x:42,y:55},{x:95,y:32},{x:195,y:60},{x:258,y:42},{x:148,y:18},{x:285,y:88}].map((s,i)=>(
-        <circle key={i} cx={s.x} cy={s.y} r="1.8" fill={a} opacity="0.62" />
-      ))}
-      <path d="M0,360 L118,162 L182,162 L300,360Z" fill={a} opacity="0.07" />
-      <line x1="0" y1="360" x2="150" y2="162" stroke={a} strokeWidth="2.2" opacity="0.55" />
-      <line x1="300" y1="360" x2="150" y2="162" stroke={a} strokeWidth="2.2" opacity="0.55" />
-      {hLines.map((y, i) => {
-        const t = (y - 162) / 198;
-        const w = t * 148;
-        return <line key={i} x1={150-w} y1={y} x2={150+w} y2={y} stroke={a} strokeWidth="1" opacity={0.18 + i*0.08} />;
-      })}
-      <ellipse cx="150" cy="164" rx="42" ry="18" fill={a} opacity="0.42" />
-      <ellipse cx="150" cy="164" rx="82" ry="30" fill={a} opacity="0.15" />
-    </>
-  );
-}
-
-function GardenArt({ a }: { a: string }) {
-  const leftFronds = [[-22,-12],[-34,-32],[-18,-54],[6,-60],[22,-44],[28,-22]];
-  const rightFronds = [[22,-12],[34,-32],[18,-54],[-6,-60],[-22,-44],[-28,-22]];
-  return (
-    <>
-      {/* Arch */}
-      <path d="M78,340 L78,198 C78,126 112,94 150,94 C188,94 222,126 222,198 L222,340Z"
-            fill={a} opacity="0.1" stroke={a} strokeWidth="2.2" />
-      <path d="M78,198 C78,126 112,94 150,94 C188,94 222,126 222,198"
-            fill="none" stroke={a} strokeWidth="2.8" />
-      <circle cx="150" cy="140" r="16" fill={a} opacity="0.52" />
-      {/* Left palm */}
-      <g transform="translate(32,252)" fill="none" stroke={a} strokeWidth="4.5" strokeLinecap="round">
-        <line x1="0" y1="0" x2="0" y2="108" stroke={a} fill={a} strokeWidth="12" opacity="0.55" />
-        {leftFronds.map(([dx,dy],i) => (
-          <path key={i} d={`M0,0 C${dx/2},${dy/2} ${dx},${dy} ${dx},${dy}`} opacity="0.7" />
-        ))}
-      </g>
-      {/* Right palm */}
-      <g transform="translate(268,252) scale(-1,1)" fill="none" stroke={a} strokeWidth="4.5" strokeLinecap="round">
-        <line x1="0" y1="0" x2="0" y2="108" stroke={a} fill={a} strokeWidth="12" opacity="0.55" />
-        {rightFronds.map(([dx,dy],i) => (
-          <path key={i} d={`M0,0 C${dx/2},${dy/2} ${dx},${dy} ${dx},${dy}`} opacity="0.7" />
-        ))}
-      </g>
-      {/* Water */}
-      <path d="M0,332 C55,318 105,345 150,332 C195,318 248,345 300,332 L300,360 L0,360Z"
-            fill={a} opacity="0.22" />
-    </>
-  );
-}
-
-function CosmosArt({ a }: { a: string }) {
-  const burst = Array.from({length:22}, (_, i) => {
-    const ang = (i * (360/22)) * Math.PI / 180;
-    return { x2: 150 + Math.cos(ang) * 230, y2: 160 + Math.sin(ang) * 230 };
-  });
-  const stars = Array.from({length:55}, (_, i) => ({
-    x: ((i * 137.5) % 278) + 11,
-    y: ((i * 89.7) % 348) + 8,
-    r: [0.6, 1.1, 1.6, 0.9][i % 4],
-  }));
-  return (
-    <>
-      {stars.map((s,i) => <circle key={i} cx={s.x} cy={s.y} r={s.r} fill={a} opacity={0.28 + (i%3)*0.2} />)}
-      <g opacity="0.25">
-        {burst.map((r, i) => <line key={i} x1="150" y1="160" x2={r.x2} y2={r.y2} stroke={a} strokeWidth="1.2" />)}
-      </g>
-      <ellipse cx="150" cy="160" rx="62" ry="26" fill="none" stroke={a} strokeWidth="1.8" opacity="0.3" transform="rotate(-22,150,160)" />
-      <ellipse cx="150" cy="160" rx="95" ry="38" fill="none" stroke={a} strokeWidth="1.2" opacity="0.2" transform="rotate(32,150,160)" />
-      <ellipse cx="150" cy="160" rx="128" ry="52" fill="none" stroke={a} strokeWidth="1" opacity="0.14" transform="rotate(-45,150,160)" />
-      <circle cx="150" cy="160" r="22" fill={a} opacity="0.72" />
-      <circle cx="150" cy="160" r="42" fill={a} opacity="0.18" />
-    </>
-  );
-}
-
-function FaithArt({ a }: { a: string }) {
-  const spokes = Array.from({length:12}, (_, i) => {
-    const ang = (i * 30) * Math.PI / 180;
-    return { x1: 150 + Math.cos(ang)*58, y1: 148 + Math.sin(ang)*58, x2: 150 + Math.cos(ang)*118, y2: 148 + Math.sin(ang)*118 };
-  });
-  return (
-    <>
-      <g opacity="0.22">
-        {spokes.map((s,i) => <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke={a} strokeWidth="1.8" />)}
-      </g>
-      <path d="M150,208 C96,174 55,120 78,76 C94,44 138,56 150,82 C162,56 206,44 222,76 C245,120 204,174 150,208Z"
-            fill={a} opacity="0.78" />
-      <path d="M150,192 C118,166 92,130 108,98 C118,76 142,86 150,104 C158,86 182,76 192,98 C208,130 182,166 150,192Z"
-            fill="white" opacity="0.14" />
-      {[{x:88,y:248},{x:150,y:264},{x:212,y:248}].map((s,i) => (
-        <circle key={i} cx={s.x} cy={s.y} r="4" fill={a} opacity="0.48" />
-      ))}
-    </>
-  );
-}
-
-function TimeArt({ a }: { a: string }) {
-  const sunRays = Array.from({length:8}, (_, i) => {
-    const ang = (i * 45) * Math.PI / 180;
-    return { x1: 150 + Math.cos(ang)*54, y1: 100 + Math.sin(ang)*54, x2: 150 + Math.cos(ang)*76, y2: 100 + Math.sin(ang)*76 };
-  });
-  return (
-    <>
-      {[{x:30,y:62},{x:92,y:42},{x:205,y:72},{x:262,y:52}].map((s,i) => (
-        <circle key={i} cx={s.x} cy={s.y} r="1.8" fill={a} opacity="0.52" />
-      ))}
-      <path d="M0,268 Q150,245 300,268 L300,360 L0,360Z" fill={a} opacity="0.15" />
-      <path d="M8,270 A175,175 0 0,1 292,270" fill="none" stroke={a} strokeWidth="2" opacity="0.32" strokeDasharray="9,7" />
-      <circle cx="150" cy="100" r="38" fill={a} opacity="0.85" />
-      <circle cx="150" cy="100" r="54" fill={a} opacity="0.18" />
-      <g opacity="0.5">
-        {sunRays.map((r,i) => <line key={i} x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2} stroke={a} strokeWidth="3.5" strokeLinecap="round" />)}
-      </g>
-    </>
-  );
-}
-
-function BarrierArt({ a }: { a: string }) {
-  return (
-    <>
-      <circle cx="150" cy="158" r="98" fill="none" stroke={a} strokeWidth="12" opacity="0.82" />
-      <line x1="80" y1="88" x2="220" y2="228" stroke={a} strokeWidth="12" opacity="0.82" strokeLinecap="round" />
-      <circle cx="150" cy="158" r="98" fill={a} opacity="0.06" />
-      <circle cx="150" cy="158" r="120" fill="none" stroke={a} strokeWidth="2" opacity="0.22" />
-      <circle cx="150" cy="158" r="138" fill="none" stroke={a} strokeWidth="1" opacity="0.12" />
-    </>
-  );
-}
-
-function ShelterArt({ a }: { a: string }) {
-  return (
-    <>
-      {[{x:55,y:62},{x:115,y:42},{x:195,y:58},{x:252,y:38}].map((s,i) => (
-        <circle key={i} cx={s.x} cy={s.y} r="1.8" fill={a} opacity="0.62" />
-      ))}
-      <g fill={a} opacity="0.65">
-        {/* Left minaret */}
-        <rect x="32" y="188" width="20" height="172" rx="3" />
-        <polygon points="32,188 42,162 52,188" />
-        <ellipse cx="42" cy="159" rx="8" ry="11" />
-        {/* Right minaret */}
-        <rect x="248" y="188" width="20" height="172" rx="3" />
-        <polygon points="248,188 258,162 268,188" />
-        <ellipse cx="258" cy="159" rx="8" ry="11" />
-        {/* Main building */}
-        <rect x="65" y="248" width="170" height="112" rx="3" opacity="0.8" />
-        {/* Main dome */}
-        <path d="M68,248 L68,205 C68,158 108,132 150,132 C192,132 232,158 232,205 L232,248Z" />
-        {/* Dome finial */}
-        <rect x="145" y="122" width="10" height="16" rx="2" />
-        <ellipse cx="150" cy="120" rx="10" ry="14" />
-        {/* Door */}
-        <path d="M126,360 L126,308 C126,292 138,283 150,283 C162,283 174,292 174,308 L174,360Z"
-              fill="none" stroke={a} strokeWidth="2" opacity="0.55" />
-        {/* Windows */}
-        {[88, 150, 212].map((x,i) => (
-          <path key={i} d={`M${x-13},272 L${x-13},258 A13,13 0 0,1 ${x+13},258 L${x+13},272Z`}
-                fill="none" stroke={a} strokeWidth="2" opacity="0.45" />
-        ))}
-      </g>
-    </>
-  );
-}
-
-function StrengthArt({ a }: { a: string }) {
-  return (
-    <>
-      {[{x:42,y:75},{x:130,y:52},{x:225,y:68}].map((s,i) => (
-        <circle key={i} cx={s.x} cy={s.y} r="1.8" fill={a} opacity="0.55" />
-      ))}
-      <path d="M0,360 L62,218 L118,290 L172,158 L228,252 L282,178 L300,215 L300,360Z"
-            fill={a} opacity="0.38" />
-      <path d="M0,360 L62,218 L118,290 L172,158 L228,252 L282,178 L300,215"
-            fill="none" stroke={a} strokeWidth="2.2" opacity="0.62" />
-      {/* Lightning bolt */}
-      <path d="M168,92 L138,178 L162,178 L132,268 L178,162 L154,162 L184,92Z"
-            fill={a} opacity="0.82" />
-      <ellipse cx="155" cy="180" rx="32" ry="42" fill={a} opacity="0.14" />
-    </>
-  );
-}
-
-// Border decoration (inner frame)
-function BorderArt({ a }: { a: string }) {
-  return (
-    <rect x="2" y="2" width="296" height="356" rx="22" ry="22"
-          fill="none" stroke={a} strokeWidth="1.2" opacity="0.32" />
-  );
-}
-
-// ── Main component ─────────────────────────────────────────────────────────────
+type SceneType =
+  | "divine"
+  | "celestial"
+  | "earth"
+  | "water"
+  | "fire"
+  | "people"
+  | "knowledge"
+  | "path"
+  | "paradise"
+  | "faith"
+  | "speech"
+  | "time"
+  | "shelter"
+  | "hand"
+  | "door"
+  | "victory"
+  | "barrier"
+  | "heart"
+  | "cosmos";
 
 interface Props {
   arabic: string;
   transliteration: string;
   partOfSpeech: string;
-  memoryHint?: string | null;
-  root?: string | null;
+  memoryHint?: string;
   compact?: boolean;
 }
 
-export function MemoryScene({ arabic, transliteration, partOfSpeech, memoryHint, root, compact }: Props) {
-  const scene = getSceneForWord(arabic, partOfSpeech);
-  const col = C[scene];
+// ─── Color Palettes ───────────────────────────────────────────────────────────
 
-  const uniqueId = `ms-${arabic.charCodeAt(0)}-${scene}`;
+interface Palette {
+  bg1: string;
+  bg2: string;
+  accent: string;
+}
+
+const PALETTES: Record<SceneType, Palette> = {
+  divine:    { bg1: "#1a1000", bg2: "#2a1a00", accent: "#FFD700" },
+  celestial: { bg1: "#060a1f", bg2: "#0d1240", accent: "#93C5FD" },
+  earth:     { bg1: "#0a1a0a", bg2: "#162616", accent: "#86EFAC" },
+  water:     { bg1: "#04111c", bg2: "#071e30", accent: "#38BDF8" },
+  fire:      { bg1: "#1a0400", bg2: "#2a0800", accent: "#F97316" },
+  people:    { bg1: "#0f0a1e", bg2: "#180e2a", accent: "#C084FC" },
+  knowledge: { bg1: "#050e1a", bg2: "#0b1a2e", accent: "#34D399" },
+  path:      { bg1: "#050f08", bg2: "#0a1a10", accent: "#6EE7B7" },
+  paradise:  { bg1: "#031408", bg2: "#052010", accent: "#4ADE80" },
+  faith:     { bg1: "#150508", bg2: "#200a10", accent: "#F472B6" },
+  speech:    { bg1: "#100d00", bg2: "#1c1500", accent: "#FCD34D" },
+  time:      { bg1: "#0f0900", bg2: "#1a1200", accent: "#FBBF24" },
+  shelter:   { bg1: "#100a00", bg2: "#1e1200", accent: "#FCD34D" },
+  hand:      { bg1: "#0a0a10", bg2: "#14142a", accent: "#A78BFA" },
+  door:      { bg1: "#080a0e", bg2: "#0f1218", accent: "#60A5FA" },
+  victory:   { bg1: "#001208", bg2: "#001e0a", accent: "#34D399" },
+  barrier:   { bg1: "#1a0000", bg2: "#2a0000", accent: "#F87171" },
+  heart:     { bg1: "#150008", bg2: "#220010", accent: "#FB7185" },
+  cosmos:    { bg1: "#050510", bg2: "#0a0a20", accent: "#818CF8" },
+};
+
+// ─── Word → Scene Mapping ─────────────────────────────────────────────────────
+
+const WORD_SCENE: Record<string, SceneType> = {
+  // divine
+  "اللَّه": "divine", "النُّور": "divine", "نُور": "divine", "رَبِّ": "divine", "رَبّ": "divine",
+  "مَلِك": "divine", "مُلْك": "divine", "حُكْم": "divine", "فَضْل": "divine", "عَدْل": "divine",
+  "حَقّ": "divine", "قَدِير": "divine", "كَبِير": "divine", "عَظِيم": "divine", "هُوَ": "divine",
+  "هِيَ": "divine", "عَرْش": "divine", "كُرْسِيّ": "divine", "سُلْطَان": "divine", "مُحَمَّد": "divine",
+
+  // celestial
+  "السَّمَاء": "celestial", "السَّمَاوَاتِ": "celestial", "مَلَك": "celestial", "قَمَر": "celestial",
+  "نَجْم": "celestial", "سَحَاب": "celestial", "رُوح": "celestial", "أَبْيَض": "celestial",
+  "نَزَلَ": "celestial", "رَفَعَ": "celestial", "طَيْر": "celestial", "فَوْقَ": "celestial",
+
+  // earth
+  "الْأَرْضَ": "earth", "أَرْض": "earth", "جَبَل": "earth", "شَجَر": "earth", "دَابَّة": "earth",
+  "أَنْعَام": "earth", "بَلَد": "earth", "قَرْيَة": "earth", "مَال": "earth", "دُنْيَا": "earth",
+  "تَحْتَ": "earth", "مَاتَ": "earth", "حَيِيَ": "earth", "حَيّ": "earth", "مَيِّت": "earth",
+
+  // water
+  "بَحْر": "water", "نَهَر": "water", "مَاء": "water", "رِيح": "water", "مَطَر": "water",
+  "نُوح": "water", "شَرِبَ": "water", "شَرَاب": "water",
+
+  // fire
+  "نَار": "fire", "جَحِيم": "fire", "عَذَاب": "fire", "شَيْطَان": "fire", "إِبْلِيس": "fire",
+  "شَرّ": "fire", "سَيِّئَة": "fire", "إِثْم": "fire", "ذَنْب": "fire", "كُفْر": "fire",
+  "خَبِيث": "fire", "أَسْوَد": "fire", "أَحْمَر": "fire", "خَافَ": "fire", "ظَلَمَ": "fire",
+  "كَذَبَ": "fire", "قَتَلَ": "fire", "دَم": "fire", "وَعِيد": "fire", "فِتْنَة": "fire",
+  "بَلَاء": "fire", "بُغْض": "fire", "خَوْف": "fire",
+
+  // people
+  "النَّاس": "people", "الَّذِينَ": "people", "هُمْ": "people", "أَنْتَ": "people", "نَحْنُ": "people",
+  "مَنْ": "people", "قَوْم": "people", "أَهْل": "people", "بَنُو": "people", "ابْن": "people",
+  "بِنْت": "people", "أَب": "people", "أُمّ": "people", "أَخ": "people", "زَوْج": "people",
+  "وَلَد": "people", "رَجُل": "people", "امْرَأَة": "people", "نِسَاء": "people", "رَسُول": "people",
+  "نَبِيّ": "people", "آدَم": "people", "مُوسَى": "people", "عِيسَى": "people", "إِبْرَاهِيم": "people",
+  "يُوسُف": "people", "مَرْيَم": "people", "فِرْعَوْن": "people", "عَبْد": "people", "جَسَد": "people",
+  "وَجْه": "people", "رَأْس": "people", "جَمَعَ": "people", "فَرَّقَ": "people", "زَكَاة": "people",
+  "لِبَاس": "people",
+
+  // knowledge
+  "عِلْم": "knowledge", "يَعْلَمُ": "knowledge", "بَصِير": "knowledge", "الْكِتَاب": "knowledge",
+  "كِتَاب": "knowledge", "قُرْآن": "knowledge", "آيَة": "knowledge", "حَكِيم": "knowledge",
+  "عَلِيم": "knowledge", "رَأَى": "knowledge", "نَظَرَ": "knowledge", "عَرَفَ": "knowledge",
+  "قَرَأَ": "knowledge", "كَتَبَ": "knowledge", "عَيْن": "knowledge", "كَيْفَ": "knowledge",
+  "لِمَاذَا": "knowledge", "أَيّ": "knowledge", "لَوْح": "knowledge", "قَلَم": "knowledge",
+  "صَحِيفَة": "knowledge", "بُرْهَان": "knowledge", "بَيِّنَة": "knowledge", "سَمِيع": "knowledge",
+  "أُذُن": "knowledge",
+
+  // path
+  "صِرَاطٍ": "path", "مُسْتَقِيمٍ": "path", "هُدًى": "path", "ضَلَّ": "path", "أَضَلَّ": "path",
+  "هَدَى": "path", "مَشَى": "path", "سَعَى": "path", "جَاءَ": "path", "ذَهَبَ": "path",
+  "رَجَعَ": "path", "أَيْنَ": "path", "حَتَّى": "path", "مِنْ": "path", "إِلَى": "path",
+  "فِي": "path", "عَلَى": "path", "عِنْدَ": "path", "بَيْنَ": "path", "أَمَامَ": "path",
+  "خَلْفَ": "path", "وَ": "path", "أَوْ": "path", "ثُمَّ": "path", "مَا": "path", "كُلّ": "path",
+  "نَسِيَ": "path", "قَرِيب": "path", "بَعِيد": "path", "بَعْدَ": "path", "قَبْلَ": "path",
+
+  // paradise
+  "جَنَّة": "paradise", "فِرْدَوْس": "paradise", "رِزْق": "paradise", "ثَمَر": "paradise",
+  "نِعْمَة": "paradise", "طَيِّب": "paradise", "أَجْر": "paradise", "سَلَام": "paradise",
+  "فَرَح": "paradise", "طَعَام": "paradise", "أَكَلَ": "paradise", "كَرِيم": "paradise",
+  "فَرِحَ": "paradise",
+
+  // faith
+  "آمَنُوا": "faith", "الْحَمْدُ": "faith", "الدِّينِ": "faith", "إِيمَان": "faith",
+  "إِسْلَام": "faith", "تَقْوَى": "faith", "صَلَاة": "faith", "صَوْم": "faith", "حَجّ": "faith",
+  "دُعَاء": "faith", "عِبَادَة": "faith", "ذِكْر": "faith", "صَبْر": "faith", "تَوْبَة": "faith",
+  "مَغْفِرَة": "faith", "شُكْر": "faith", "خَيْر": "faith", "حَسَنَة": "faith", "صَالِح": "faith",
+  "ذَكَرَ": "faith", "دَعَا": "faith", "عَبَدَ": "faith", "سَجَدَ": "faith", "رَكَعَ": "faith",
+  "صَلَّى": "faith", "صَامَ": "faith", "شَكَرَ": "faith", "آمَنَ": "faith", "اتَّقَى": "faith",
+  "رَجَا": "faith",
+
+  // speech
+  "قَالَ": "speech", "حَدِيث": "speech", "قَوْل": "speech", "كَلِمَة": "speech", "لِسَان": "speech",
+  "إِنَّ": "speech", "أَنَّ": "speech", "قَدْ": "speech", "هَلْ": "speech", "أَمَرَ": "speech",
+  "سَأَلَ": "speech", "أَجَابَ": "speech", "وَعَدَ": "speech", "أَمْر": "speech", "سَمِعَ": "speech",
+
+  // time
+  "يَوْم": "time", "لَيْل": "time", "نَهَار": "time", "شَهْر": "time", "سَنَة": "time",
+  "سَاعَة": "time", "آخِرَة": "time", "قِيَامَة": "time", "كَانَ": "time", "يَكُونُ": "time",
+  "سَوْفَ": "time", "مَتَى": "time", "لَمْ": "time", "لَنْ": "time", "لَا": "time",
+  "بَلْ": "time", "لَكِنَّ": "time", "لَيْسَ": "time", "لَوْ": "time", "إِنْ": "time",
+  "لَبِثَ": "time", "قَدِيم": "time", "جَدِيد": "time",
+
+  // shelter
+  "مَسْجِد": "shelter", "كَعْبَة": "shelter", "بَيْت (كعبة context)": "shelter", "أَمْن": "shelter",
+
+  // hand
+  "أَخَذَ": "hand", "أَعْطَى": "hand", "فَعَلَ": "hand", "عَمِلَ": "hand", "حَمَلَ": "hand",
+  "وَضَعَ": "hand", "يَد": "hand",
+
+  // door
+  "دَخَلَ": "door", "خَرَجَ": "door", "فَتَحَ": "door", "أَغْلَقَ": "door", "بَاب": "door",
+  "مِفْتَاح": "door",
+
+  // victory
+  "نَصْر": "victory", "فَتْح": "victory",
+
+  // barrier
+  "نَهَى": "barrier", "نَهْي": "barrier", "كَأَنَّ": "barrier",
+
+  // heart
+  "قَلْب": "heart", "نَفْس": "heart", "رَحْمَة": "heart", "حُبّ": "heart", "حُزْن": "heart",
+  "غَفُور": "heart", "رَحِيم": "heart", "غَفَرَ": "heart", "رَحِمَ": "heart", "عَفْو": "heart",
+  "حَزِنَ": "heart",
+
+  // cosmos
+  "الْعَالَمِينَ": "cosmos", "خَلَقَ": "cosmos", "جَعَلَ": "cosmos", "بَعَثَ": "cosmos",
+};
+
+// ─── POS → Scene Fallback ─────────────────────────────────────────────────────
+
+function posToScene(pos: string): SceneType {
+  if (pos.includes("fiil")) return "path";
+  if (pos.includes("isim")) return "earth";
+  if (pos.includes("sıfat")) return "faith";
+  if (pos.includes("harf-i cer")) return "path";
+  if (pos.includes("bağlaç")) return "path";
+  if (pos.includes("zamir")) return "people";
+  if (pos.includes("edat")) return "path";
+  if (pos.includes("olumsuzluk")) return "fire";
+  if (pos.includes("soru")) return "knowledge";
+  if (pos.includes("ism-i mevsûl")) return "people";
+  if (pos.includes("özel isim")) return "divine";
+  if (pos.includes("zarf")) return "time";
+  return "earth";
+}
+
+function getSceneType(arabic: string, partOfSpeech: string): SceneType {
+  return WORD_SCENE[arabic] ?? posToScene(partOfSpeech);
+}
+
+// ─── SVG Art Components ───────────────────────────────────────────────────────
+
+function DivineLightArt({ accent }: { accent: string }) {
+  const rays = Array.from({ length: 9 }, (_, i) => {
+    const angle = -90 + (i - 4) * 20;
+    const rad = (angle * Math.PI) / 180;
+    const x1 = 150;
+    const y1 = -20;
+    const len = 280;
+    const x2 = x1 + Math.cos(rad) * len;
+    const y2 = y1 + Math.sin(rad) * len;
+    return { x1, y1, x2, y2, opacity: 0.06 + Math.abs(i - 4) * 0.01 };
+  });
 
   return (
-    <div className={`relative w-full rounded-3xl overflow-hidden${compact ? "" : " mb-4"}`}
-         style={{
-           background: `linear-gradient(145deg, ${col.bg1}, ${col.bg2})`,
-           border: '1.5px solid rgba(217,119,6,0.3)',
-           boxShadow: `0 0 0 1px rgba(217,119,6,0.06), 0 8px 40px rgba(0,0,0,0.65), 0 0 60px ${col.accent}12`,
-         }}>
+    <g>
+      {/* Rays */}
+      {rays.map((r, i) => (
+        <line key={i} x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2}
+          stroke={accent} strokeWidth={i === 4 ? 3 : 1.5} opacity={i === 4 ? 0.18 : 0.08} />
+      ))}
+      {/* Glow at origin */}
+      <radialGradient id="divineGlow" cx="50%" cy="0%" r="40%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.35" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <ellipse cx="150" cy="0" rx="120" ry="80" fill="url(#divineGlow)" />
+      {/* Mosque silhouette at bottom */}
+      {/* Main body */}
+      <rect x="80" y="165" width="140" height="55" fill={accent} opacity="0.18" />
+      {/* Dome */}
+      <ellipse cx="150" cy="165" rx="40" ry="22" fill={accent} opacity="0.22" />
+      {/* Left minaret */}
+      <rect x="83" y="140" width="10" height="30" fill={accent} opacity="0.2" />
+      <ellipse cx="88" cy="140" rx="5" ry="3" fill={accent} opacity="0.25" />
+      {/* Right minaret */}
+      <rect x="207" y="140" width="10" height="30" fill={accent} opacity="0.2" />
+      <ellipse cx="212" cy="140" rx="5" ry="3" fill={accent} opacity="0.25" />
+      {/* Center glow circle */}
+      <circle cx="150" cy="0" r="18" fill={accent} opacity="0.15" />
+    </g>
+  );
+}
 
-      {/* SVG illustration layer */}
-      <svg viewBox="0 0 300 360" className="w-full" style={{display:'block'}}
-           preserveAspectRatio="xMidYMid meet" aria-hidden>
-        <defs>
-          <radialGradient id={`${uniqueId}-rg`} cx="50%" cy="28%" r="52%">
-            <stop offset="0%" stopColor={col.accent} stopOpacity="0.35" />
-            <stop offset="100%" stopColor={col.accent} stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <rect width="300" height="360" fill={`url(#${uniqueId}-rg)`} />
+function CelestialArt({ accent }: { accent: string }) {
+  const stars = [
+    { cx: 40, cy: 30, r: 1.5 }, { cx: 80, cy: 15, r: 1 }, { cx: 200, cy: 20, r: 2 },
+    { cx: 240, cy: 45, r: 1.5 }, { cx: 260, cy: 15, r: 1 }, { cx: 120, cy: 10, r: 1 },
+    { cx: 50, cy: 70, r: 1 }, { cx: 280, cy: 60, r: 1.5 }, { cx: 170, cy: 35, r: 1 },
+    { cx: 30, cy: 50, r: 2 },
+  ];
+  return (
+    <g>
+      {/* Subtle glow band */}
+      <linearGradient id="celestialBand" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0" />
+        <stop offset="50%" stopColor={accent} stopOpacity="0.06" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </linearGradient>
+      <rect x="0" y="70" width="300" height="30" fill="url(#celestialBand)" />
+      {/* Stars */}
+      {stars.map((s, i) => (
+        <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill={accent} opacity="0.7" />
+      ))}
+      {/* Crescent moon — two circles subtract */}
+      <defs>
+        <mask id="crescentMask">
+          <circle cx="145" cy="100" r="52" fill="white" />
+          <circle cx="165" cy="92" r="44" fill="black" />
+        </mask>
+      </defs>
+      <circle cx="145" cy="100" r="52" fill={accent} opacity="0.22" mask="url(#crescentMask)" />
+      <circle cx="145" cy="100" r="52" fill="none" stroke={accent} strokeWidth="1"
+        opacity="0.35" mask="url(#crescentMask)" />
+    </g>
+  );
+}
 
-        {scene === 'divine-light' && <DivineLightArt a={col.accent} />}
-        {scene === 'celestial'    && <CelestialArt   a={col.accent} />}
-        {scene === 'earth'        && <EarthArt        a={col.accent} />}
-        {scene === 'water'        && <WaterArt        a={col.accent} />}
-        {scene === 'fire'         && <FireArt         a={col.accent} />}
-        {scene === 'people'       && <PeopleArt       a={col.accent} />}
-        {scene === 'eye'          && <EyeArt          a={col.accent} />}
-        {scene === 'speech'       && <SpeechArt       a={col.accent} />}
-        {scene === 'path'         && <PathArt         a={col.accent} />}
-        {scene === 'garden'       && <GardenArt       a={col.accent} />}
-        {scene === 'cosmos'       && <CosmosArt       a={col.accent} />}
-        {scene === 'faith'        && <FaithArt        a={col.accent} />}
-        {scene === 'time'         && <TimeArt         a={col.accent} />}
-        {scene === 'barrier'      && <BarrierArt      a={col.accent} />}
-        {scene === 'shelter'      && <ShelterArt      a={col.accent} />}
-        {scene === 'strength'     && <StrengthArt     a={col.accent} />}
+function EarthArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Sky gradient */}
+      <linearGradient id="earthSky" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#0a1e0a" stopOpacity="1" />
+        <stop offset="60%" stopColor="#0d2210" stopOpacity="1" />
+        <stop offset="100%" stopColor="#162616" stopOpacity="1" />
+      </linearGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#earthSky)" />
+      {/* Far mountains (gray) */}
+      <path d="M-10,160 L40,90 L90,130 L140,70 L190,115 L240,80 L290,110 L310,160 Z"
+        fill="#1a2e1a" opacity="0.7" />
+      {/* Near mountains (darker) */}
+      <path d="M-10,190 L50,120 L100,155 L160,100 L220,140 L270,115 L310,150 L310,220 L-10,220 Z"
+        fill="#0e1e0e" opacity="0.9" />
+      {/* Tree trunk */}
+      <rect x="143" y="155" width="14" height="40" fill={accent} opacity="0.25" rx="3" />
+      {/* Tree crown */}
+      <ellipse cx="150" cy="145" rx="32" ry="28" fill={accent} opacity="0.2" />
+      <ellipse cx="150" cy="138" rx="22" ry="18" fill={accent} opacity="0.15" />
+    </g>
+  );
+}
 
-        <BorderArt a={col.accent} />
+function WaterArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Reflection glow */}
+      <radialGradient id="waterGlow" cx="50%" cy="60%" r="50%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.12" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#waterGlow)" />
+      {/* Wave 1 */}
+      <path d="M-10,90 C30,70 70,110 110,90 C150,70 190,110 230,90 C270,70 290,90 310,80 L310,115 C270,125 230,115 190,125 C150,135 110,115 70,125 C30,135 -10,115 -10,115 Z"
+        fill={accent} opacity="0.12" />
+      <path d="M-10,90 C30,70 70,110 110,90 C150,70 190,110 230,90 C270,70 290,90 310,80"
+        fill="none" stroke={accent} strokeWidth="1.5" opacity="0.4" />
+      {/* Wave 2 */}
+      <path d="M-10,125 C30,105 70,145 110,125 C150,105 190,145 230,125 C270,105 290,125 310,115 L310,150 C270,160 230,150 190,160 C150,170 110,150 70,160 C30,170 -10,150 -10,150 Z"
+        fill={accent} opacity="0.09" />
+      <path d="M-10,125 C30,105 70,145 110,125 C150,105 190,145 230,125 C270,105 290,125 310,115"
+        fill="none" stroke={accent} strokeWidth="1.5" opacity="0.3" />
+      {/* Wave 3 */}
+      <path d="M-10,160 C30,140 70,180 110,160 C150,140 190,180 230,160 C270,140 290,160 310,150 L310,185 C270,195 230,185 190,195 C150,205 110,185 70,195 C30,205 -10,185 -10,185 Z"
+        fill={accent} opacity="0.07" />
+      <path d="M-10,160 C30,140 70,180 110,160 C150,140 190,180 230,160 C270,140 290,160 310,150"
+        fill="none" stroke={accent} strokeWidth="1" opacity="0.25" />
+    </g>
+  );
+}
+
+function FireArt({ accent }: { accent: string }) {
+  const embers = [
+    { cx: 120, cy: 60 }, { cx: 150, cy: 40 }, { cx: 180, cy: 55 },
+    { cx: 135, cy: 30 }, { cx: 165, cy: 25 }, { cx: 110, cy: 45 }, { cx: 190, cy: 35 },
+  ];
+  return (
+    <g>
+      <defs>
+        <linearGradient id="flame1" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="#F97316" stopOpacity="0.6" />
+          <stop offset="60%" stopColor="#EF4444" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#FCD34D" stopOpacity="0.1" />
+        </linearGradient>
+        <linearGradient id="flame2" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="#F97316" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#FCD34D" stopOpacity="0.05" />
+        </linearGradient>
+      </defs>
+      {/* Flame 1 - center */}
+      <path d="M150,200 C130,180 110,150 130,110 C140,90 145,60 150,30 C155,60 160,90 170,110 C190,150 170,180 150,200 Z"
+        fill="url(#flame1)" />
+      {/* Flame 2 - left */}
+      <path d="M110,200 C95,182 80,158 100,122 C108,107 112,82 115,58 C122,82 124,107 135,125 C150,155 130,182 110,200 Z"
+        fill="url(#flame2)" />
+      {/* Flame 3 - right */}
+      <path d="M190,200 C175,182 165,158 170,122 C178,107 182,82 185,58 C192,82 194,107 200,125 C215,155 205,182 190,200 Z"
+        fill="url(#flame2)" />
+      {/* Embers */}
+      {embers.map((e, i) => (
+        <circle key={i} cx={e.cx} cy={e.cy} r={i % 3 === 0 ? 2.5 : 1.5}
+          fill={accent} opacity={0.4 + (i % 3) * 0.1} />
+      ))}
+    </g>
+  );
+}
+
+function PeopleArt({ accent }: { accent: string }) {
+  const people = [
+    { x: 90, scale: 0.85 }, { x: 150, scale: 1 }, { x: 210, scale: 0.9 },
+  ];
+  return (
+    <g>
+      {/* Glow from behind */}
+      <radialGradient id="peopleGlow" cx="50%" cy="55%" r="40%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#peopleGlow)" />
+      {people.map((p, i) => {
+        const bodyH = 70 * p.scale;
+        const bodyW = 30 * p.scale;
+        const headR = 16 * p.scale;
+        const bodyY = 170 - bodyH;
+        return (
+          <g key={i} transform={`translate(${p.x}, 0)`}>
+            {/* Head */}
+            <circle cx="0" cy={bodyY - headR - 4} r={headR} fill={accent} opacity="0.25" />
+            {/* Body */}
+            <rect x={-bodyW / 2} y={bodyY} width={bodyW} height={bodyH}
+              rx={bodyW * 0.35} fill={accent} opacity="0.2" />
+          </g>
+        );
+      })}
+      {/* Ground line */}
+      <line x1="40" y1="172" x2="260" y2="172" stroke={accent} strokeWidth="1" opacity="0.15" />
+    </g>
+  );
+}
+
+function KnowledgeArt({ accent }: { accent: string }) {
+  const beams = Array.from({ length: 6 }, (_, i) => {
+    const angle = i * 60;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 150 + Math.cos(rad) * 38,
+      y1: 100 + Math.sin(rad) * 38,
+      x2: 150 + Math.cos(rad) * 80,
+      y2: 100 + Math.sin(rad) * 80,
+    };
+  });
+  return (
+    <g>
+      {/* Radial beams */}
+      {beams.map((b, i) => (
+        <line key={i} x1={b.x1} y1={b.y1} x2={b.x2} y2={b.y2}
+          stroke={accent} strokeWidth="1.5" opacity="0.25" />
+      ))}
+      {/* Eye outline */}
+      <ellipse cx="150" cy="100" rx="60" ry="35" fill="none" stroke={accent} strokeWidth="1.5" opacity="0.4" />
+      {/* Iris */}
+      <circle cx="150" cy="100" r="22" fill={accent} opacity="0.15" stroke={accent} strokeWidth="1.5" />
+      {/* Pupil */}
+      <circle cx="150" cy="100" r="10" fill={accent} opacity="0.3" />
+      {/* Open book at bottom */}
+      <path d="M105,185 L150,178 L195,185 L150,192 Z" fill={accent} opacity="0.15" />
+      <line x1="150" y1="178" x2="150" y2="192" stroke={accent} strokeWidth="1" opacity="0.3" />
+      <path d="M105,185 C120,178 135,175 150,178" fill="none" stroke={accent} strokeWidth="1" opacity="0.3" />
+      <path d="M195,185 C180,178 165,175 150,178" fill="none" stroke={accent} strokeWidth="1" opacity="0.3" />
+    </g>
+  );
+}
+
+function PathArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Sky gradient top half */}
+      <linearGradient id="pathSky" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#060d08" stopOpacity="1" />
+        <stop offset="100%" stopColor="#0a1a10" stopOpacity="1" />
+      </linearGradient>
+      <rect x="0" y="0" width="300" height="110" fill="url(#pathSky)" />
+      {/* Ground */}
+      <rect x="0" y="110" width="300" height="110" fill="#0a1408" opacity="0.8" />
+      {/* Horizon glow */}
+      <radialGradient id="horizonGlow" cx="50%" cy="50%" r="30%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.5" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <ellipse cx="150" cy="110" rx="90" ry="25" fill="url(#horizonGlow)" />
+      {/* Two perspective path lines */}
+      <line x1="0" y1="220" x2="150" y2="110" stroke={accent} strokeWidth="2" opacity="0.3" />
+      <line x1="300" y1="220" x2="150" y2="110" stroke={accent} strokeWidth="2" opacity="0.3" />
+      {/* Path fill */}
+      <path d="M0,220 L150,110 L300,220 Z" fill={accent} opacity="0.06" />
+      {/* Bright vanishing point */}
+      <circle cx="150" cy="110" r="6" fill={accent} opacity="0.6" />
+      <circle cx="150" cy="110" r="15" fill={accent} opacity="0.15" />
+    </g>
+  );
+}
+
+function ParadiseArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Rich green background handled by container gradient */}
+      {/* Islamic pointed arch frame */}
+      <path d="M70,210 L70,110 C70,60 130,30 150,20 C170,30 230,60 230,110 L230,210"
+        fill="none" stroke={accent} strokeWidth="1.5" opacity="0.35" />
+      <path d="M75,210 L75,112 C75,65 132,36 150,26 C168,36 225,65 225,112 L225,210"
+        fill={accent} opacity="0.05" />
+      {/* Left palm tree */}
+      <rect x="22" y="140" width="8" height="75" fill={accent} opacity="0.2" rx="4" />
+      <ellipse cx="26" cy="140" rx="20" ry="12" fill={accent} opacity="0.18" />
+      <ellipse cx="14" cy="132" rx="14" ry="8" fill={accent} opacity="0.15" transform="rotate(-30,14,132)" />
+      <ellipse cx="38" cy="130" rx="14" ry="8" fill={accent} opacity="0.15" transform="rotate(30,38,130)" />
+      {/* Right palm tree */}
+      <rect x="270" y="140" width="8" height="75" fill={accent} opacity="0.2" rx="4" />
+      <ellipse cx="274" cy="140" rx="20" ry="12" fill={accent} opacity="0.18" />
+      <ellipse cx="262" cy="132" rx="14" ry="8" fill={accent} opacity="0.15" transform="rotate(-30,262,132)" />
+      <ellipse cx="286" cy="130" rx="14" ry="8" fill={accent} opacity="0.15" transform="rotate(30,286,130)" />
+      {/* Reflection pool */}
+      <rect x="60" y="195" width="180" height="8" rx="4" fill={accent} opacity="0.15" />
+      <line x1="60" y1="195" x2="240" y2="195" stroke={accent} strokeWidth="1" opacity="0.3" />
+    </g>
+  );
+}
+
+function FaithArt({ accent }: { accent: string }) {
+  const glowLines = Array.from({ length: 8 }, (_, i) => {
+    const angle = i * 45;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 150 + Math.cos(rad) * 40,
+      y1: 105 + Math.sin(rad) * 40,
+      x2: 150 + Math.cos(rad) * 75,
+      y2: 105 + Math.sin(rad) * 75,
+    };
+  });
+  return (
+    <g>
+      {/* Glow from center */}
+      <radialGradient id="faithGlow" cx="50%" cy="47%" r="35%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.25" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#faithGlow)" />
+      {/* Radiating glow lines */}
+      {glowLines.map((l, i) => (
+        <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
+          stroke={accent} strokeWidth="1" opacity="0.18" />
+      ))}
+      {/* Halo circle (stroke only) */}
+      <circle cx="150" cy="105" r="70" fill="none" stroke={accent} strokeWidth="1" opacity="0.2" />
+      {/* Heart shape */}
+      <path d="M150,140 C150,140 110,115 110,90 C110,72 122,62 135,65 C143,67 150,75 150,75 C150,75 157,67 165,65 C178,62 190,72 190,90 C190,115 150,140 150,140 Z"
+        fill={accent} opacity="0.28" />
+      <path d="M150,140 C150,140 110,115 110,90 C110,72 122,62 135,65 C143,67 150,75 150,75 C150,75 157,67 165,65 C178,62 190,72 190,90 C190,115 150,140 150,140 Z"
+        fill="none" stroke={accent} strokeWidth="1.5" opacity="0.5" />
+    </g>
+  );
+}
+
+function SpeechArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Open book */}
+      <path d="M80,160 C80,155 110,148 150,148 C190,148 220,155 220,160 L220,195 C220,200 190,195 150,195 C110,195 80,200 80,195 Z"
+        fill={accent} opacity="0.12" stroke={accent} strokeWidth="1" />
+      <line x1="150" y1="148" x2="150" y2="195" stroke={accent} strokeWidth="1.5" opacity="0.3" />
+      {/* Page lines left */}
+      <line x1="95" y1="162" x2="145" y2="162" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      <line x1="95" y1="170" x2="145" y2="170" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      <line x1="95" y1="178" x2="145" y2="178" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      {/* Page lines right */}
+      <line x1="155" y1="162" x2="205" y2="162" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      <line x1="155" y1="170" x2="205" y2="170" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      <line x1="155" y1="178" x2="205" y2="178" stroke={accent} strokeWidth="0.8" opacity="0.2" />
+      {/* Arabic calligraphy-like swirl */}
+      <path d="M150,100 C165,85 185,85 190,100 C195,115 185,125 170,120 C158,116 152,105 160,95 C168,85 180,88 183,98"
+        fill="none" stroke={accent} strokeWidth="2" opacity="0.4" strokeLinecap="round" />
+      {/* Sound wave arcs to the right */}
+      <path d="M205,95 C215,90 215,115 205,110" fill="none" stroke={accent} strokeWidth="1.5" opacity="0.3" strokeLinecap="round" />
+      <path d="M215,88 C230,80 230,122 215,115" fill="none" stroke={accent} strokeWidth="1.5" opacity="0.25" strokeLinecap="round" />
+      <path d="M225,80 C245,70 245,130 225,120" fill="none" stroke={accent} strokeWidth="1.5" opacity="0.2" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function TimeArt({ accent }: { accent: string }) {
+  const stars = [
+    { cx: 30, cy: 30, r: 1.5 }, { cx: 80, cy: 20, r: 1 }, { cx: 200, cy: 25, r: 1.5 },
+    { cx: 250, cy: 40, r: 1 }, { cx: 270, cy: 15, r: 2 }, { cx: 130, cy: 15, r: 1 },
+    { cx: 60, cy: 55, r: 1 }, { cx: 290, cy: 55, r: 1.5 },
+  ];
+  const rays = Array.from({ length: 8 }, (_, i) => {
+    const angle = -90 + i * 22.5;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 150 + Math.cos(rad) * 28,
+      y1: 110 + Math.sin(rad) * 28,
+      x2: 150 + Math.cos(rad) * 65,
+      y2: 110 + Math.sin(rad) * 65,
+    };
+  });
+  return (
+    <g>
+      {/* Horizon line */}
+      <line x1="0" y1="110" x2="300" y2="110" stroke={accent} strokeWidth="0.5" opacity="0.2" />
+      {/* Stars in upper half */}
+      {stars.map((s, i) => (
+        <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill={accent} opacity="0.5" />
+      ))}
+      {/* Sun rays */}
+      {rays.filter((_, i) => i < 8).map((r, i) => (
+        <line key={i} x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2}
+          stroke={accent} strokeWidth="1.5" opacity="0.25" />
+      ))}
+      {/* Semi-circle sun */}
+      <defs>
+        <clipPath id="sunClip">
+          <rect x="0" y="0" width="300" height="110" />
+        </clipPath>
+      </defs>
+      <circle cx="150" cy="110" r="28" fill={accent} opacity="0.3" clipPath="url(#sunClip)" />
+      <circle cx="150" cy="110" r="28" fill="none" stroke={accent} strokeWidth="1.5"
+        opacity="0.5" clipPath="url(#sunClip)" />
+      {/* Glow */}
+      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.2" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <ellipse cx="150" cy="110" rx="70" ry="35" fill="url(#sunGlow)" />
+    </g>
+  );
+}
+
+function ShelterArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Golden glow above */}
+      <radialGradient id="shelterGlow" cx="50%" cy="30%" r="40%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.2" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#shelterGlow)" />
+      {/* Mosque body */}
+      <rect x="75" y="145" width="150" height="70" fill={accent} opacity="0.18" rx="4" />
+      {/* Main dome */}
+      <ellipse cx="150" cy="145" rx="50" ry="30" fill={accent} opacity="0.22" />
+      {/* Side domes */}
+      <ellipse cx="100" cy="155" rx="25" ry="15" fill={accent} opacity="0.16" />
+      <ellipse cx="200" cy="155" rx="25" ry="15" fill={accent} opacity="0.16" />
+      {/* Left minaret */}
+      <rect x="72" y="110" width="12" height="40" fill={accent} opacity="0.22" />
+      <ellipse cx="78" cy="110" rx="6" ry="4" fill={accent} opacity="0.28" />
+      {/* Right minaret */}
+      <rect x="216" y="110" width="12" height="40" fill={accent} opacity="0.22" />
+      <ellipse cx="222" cy="110" rx="6" ry="4" fill={accent} opacity="0.28" />
+      {/* Door */}
+      <path d="M138,215 L138,175 C138,168 162,168 162,175 L162,215 Z" fill={accent} opacity="0.3" />
+    </g>
+  );
+}
+
+function HandArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      <radialGradient id="handGlow" cx="50%" cy="60%" r="35%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.2" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#handGlow)" />
+      {/* Palm */}
+      <rect x="120" y="130" width="60" height="65" rx="15" fill={accent} opacity="0.2" />
+      {/* Thumb */}
+      <rect x="100" y="150" width="25" height="18" rx="9" fill={accent} opacity="0.18" transform="rotate(-20,112,159)" />
+      {/* Fingers */}
+      <rect x="122" y="100" width="12" height="38" rx="6" fill={accent} opacity="0.18" />
+      <rect x="138" y="92" width="12" height="45" rx="6" fill={accent} opacity="0.2" />
+      <rect x="154" y="97" width="12" height="40" rx="6" fill={accent} opacity="0.18" />
+      <rect x="170" y="108" width="12" height="30" rx="6" fill={accent} opacity="0.15" />
+    </g>
+  );
+}
+
+function DoorArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      <radialGradient id="doorGlow" cx="50%" cy="50%" r="40%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#doorGlow)" />
+      {/* Door frame */}
+      <rect x="100" y="60" width="100" height="155" rx="2" fill="none" stroke={accent} strokeWidth="2" opacity="0.35" />
+      {/* Arched top */}
+      <path d="M100,105 C100,68 200,68 200,105" fill={accent} opacity="0.35" stroke={accent} strokeWidth="2" />
+      {/* Door fill */}
+      <rect x="100" y="105" width="100" height="110" fill={accent} opacity="0.08" />
+      {/* Door knob */}
+      <circle cx="188" cy="163" r="5" fill={accent} opacity="0.4" />
+      {/* Keyhole */}
+      <circle cx="150" cy="155" r="6" fill={accent} opacity="0.2" />
+      <path d="M147,161 L153,161 L152,172 L148,172 Z" fill={accent} opacity="0.2" />
+    </g>
+  );
+}
+
+function VictoryArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      <radialGradient id="victoryGlow" cx="50%" cy="40%" r="40%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.2" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#victoryGlow)" />
+      {/* Flagpole */}
+      <rect x="148" y="40" width="4" height="170" fill={accent} opacity="0.3" />
+      {/* Flag */}
+      <path d="M152,45 L210,65 L152,85 Z" fill={accent} opacity="0.35" />
+      {/* Flag pattern — crescent hint */}
+      <path d="M175,62 C177,57 183,55 185,62 C183,58 179,58 175,62 Z" fill="#ffffff" opacity="0.3" />
+      {/* Ground */}
+      <ellipse cx="150" cy="210" rx="60" ry="8" fill={accent} opacity="0.08" />
+    </g>
+  );
+}
+
+function BarrierArt({ accent }: { accent: string }) {
+  return (
+    <g>
+      {/* Circle */}
+      <circle cx="150" cy="105" r="72" fill="none" stroke={accent} strokeWidth="4" opacity="0.4" />
+      {/* Diagonal barrier line */}
+      <line x1="99" y1="54" x2="201" y2="156" stroke={accent} strokeWidth="4" opacity="0.4" />
+      {/* Inner fill */}
+      <circle cx="150" cy="105" r="68" fill={accent} opacity="0.06" />
+      {/* Text hint */}
+      <text x="150" y="120" textAnchor="middle" fill={accent} fontSize="32" opacity="0.15" fontWeight="bold">✋</text>
+    </g>
+  );
+}
+
+function HeartArt({ accent }: { accent: string }) {
+  const glowLines = Array.from({ length: 8 }, (_, i) => {
+    const angle = i * 45;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 150 + Math.cos(rad) * 45,
+      y1: 100 + Math.sin(rad) * 45,
+      x2: 150 + Math.cos(rad) * 80,
+      y2: 100 + Math.sin(rad) * 80,
+    };
+  });
+  return (
+    <g>
+      <radialGradient id="heartGlow" cx="50%" cy="45%" r="35%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.3" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#heartGlow)" />
+      {glowLines.map((l, i) => (
+        <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
+          stroke={accent} strokeWidth="1" opacity="0.15" />
+      ))}
+      {/* Heart shape — larger */}
+      <path d="M150,145 C150,145 100,112 100,82 C100,60 116,48 133,52 C143,55 150,65 150,65 C150,65 157,55 167,52 C184,48 200,60 200,82 C200,112 150,145 150,145 Z"
+        fill={accent} opacity="0.3" />
+      <path d="M150,145 C150,145 100,112 100,82 C100,60 116,48 133,52 C143,55 150,65 150,65 C150,65 157,55 167,52 C184,48 200,60 200,82 C200,112 150,145 150,145 Z"
+        fill="none" stroke={accent} strokeWidth="2" opacity="0.55" />
+    </g>
+  );
+}
+
+function CosmosArt({ accent }: { accent: string }) {
+  const burstLines = Array.from({ length: 12 }, (_, i) => {
+    const angle = i * 30;
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x1: 150 + Math.cos(rad) * 20,
+      y1: 105 + Math.sin(rad) * 20,
+      x2: 150 + Math.cos(rad) * 75,
+      y2: 105 + Math.sin(rad) * 75,
+    };
+  });
+  return (
+    <g>
+      <radialGradient id="cosmosGlow" cx="50%" cy="47%" r="45%">
+        <stop offset="0%" stopColor={accent} stopOpacity="0.25" />
+        <stop offset="100%" stopColor={accent} stopOpacity="0" />
+      </radialGradient>
+      <rect x="0" y="0" width="300" height="220" fill="url(#cosmosGlow)" />
+      {/* Starburst */}
+      {burstLines.map((l, i) => (
+        <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
+          stroke={accent} strokeWidth={i % 3 === 0 ? 1.5 : 1} opacity={i % 3 === 0 ? 0.3 : 0.18} />
+      ))}
+      {/* Concentric rings */}
+      <circle cx="150" cy="105" r="40" fill="none" stroke={accent} strokeWidth="1" opacity="0.2" />
+      <circle cx="150" cy="105" r="65" fill="none" stroke={accent} strokeWidth="0.8" opacity="0.15" />
+      <circle cx="150" cy="105" r="90" fill="none" stroke={accent} strokeWidth="0.6" opacity="0.1" />
+      {/* Center star */}
+      <circle cx="150" cy="105" r="10" fill={accent} opacity="0.4" />
+      <circle cx="150" cy="105" r="5" fill={accent} opacity="0.7" />
+    </g>
+  );
+}
+
+// ─── Scene Dispatcher ─────────────────────────────────────────────────────────
+
+function SceneArt({ type, accent }: { type: SceneType; accent: string }) {
+  switch (type) {
+    case "divine":    return <DivineLightArt accent={accent} />;
+    case "celestial": return <CelestialArt accent={accent} />;
+    case "earth":     return <EarthArt accent={accent} />;
+    case "water":     return <WaterArt accent={accent} />;
+    case "fire":      return <FireArt accent={accent} />;
+    case "people":    return <PeopleArt accent={accent} />;
+    case "knowledge": return <KnowledgeArt accent={accent} />;
+    case "path":      return <PathArt accent={accent} />;
+    case "paradise":  return <ParadiseArt accent={accent} />;
+    case "faith":     return <FaithArt accent={accent} />;
+    case "speech":    return <SpeechArt accent={accent} />;
+    case "time":      return <TimeArt accent={accent} />;
+    case "shelter":   return <ShelterArt accent={accent} />;
+    case "hand":      return <HandArt accent={accent} />;
+    case "door":      return <DoorArt accent={accent} />;
+    case "victory":   return <VictoryArt accent={accent} />;
+    case "barrier":   return <BarrierArt accent={accent} />;
+    case "heart":     return <HeartArt accent={accent} />;
+    case "cosmos":    return <CosmosArt accent={accent} />;
+    default:          return <EarthArt accent={accent} />;
+  }
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+
+export function MemoryScene({ arabic, transliteration, partOfSpeech, memoryHint, compact }: Props) {
+  const scene = getSceneType(arabic, partOfSpeech);
+  const col = PALETTES[scene];
+
+  return (
+    <div
+      className={`relative w-full overflow-hidden${compact ? "" : " mb-4"}`}
+      style={{
+        borderRadius: "1.5rem",
+        border: "1.5px solid rgba(217,119,6,0.25)",
+        background: `linear-gradient(150deg, ${col.bg1}, ${col.bg2})`,
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+      }}
+    >
+      {/* SVG illustrated art layer */}
+      <svg
+        viewBox="0 0 300 220"
+        className="w-full"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ display: "block" }}
+      >
+        <SceneArt type={scene} accent={col.accent} />
       </svg>
 
-      {/* Text overlay — centered on the card */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none px-5">
-        {root && (
-          <div className="absolute arabic-text text-[8rem] text-white/[0.05] font-black leading-none"
-               style={{top:'50%', transform:'translateY(-50%)'}}>{root}</div>
-        )}
-        <div className="arabic-text text-[4.5rem] leading-tight text-white/92 font-bold drop-shadow-xl z-10 text-center"
-             style={{textShadow:`0 2px 20px ${col.accent}55`}}>{arabic}</div>
-        <div className="text-[1.15rem] font-semibold z-10 mt-2 tracking-wide drop-shadow-md"
-             style={{color: col.accent}}>{transliteration}</div>
+      {/* Arabic text HTML overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          right: 0,
+          left: 0,
+          textAlign: "center",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "'Traditional Arabic', 'Scheherazade New', 'Amiri', serif",
+            fontSize: "3.5rem",
+            lineHeight: 1.2,
+            color: col.accent,
+            textShadow: `0 0 24px ${col.accent}99, 0 0 8px ${col.accent}66`,
+            direction: "rtl",
+            padding: "0 1rem",
+          }}
+        >
+          {arabic}
+        </div>
+        <div
+          style={{
+            fontSize: "0.8rem",
+            color: col.accent,
+            opacity: 0.8,
+            marginTop: "0.25rem",
+            letterSpacing: "0.05em",
+          }}
+        >
+          {transliteration}
+        </div>
       </div>
 
-      {/* Memory anchor overlay at bottom */}
+      {/* Memory hint gradient overlay at bottom */}
       {memoryHint && (
-        <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/92 via-black/52 to-transparent px-4 pt-14 pb-4">
-          <div className="flex items-start gap-2">
-            <span className="text-[1.05rem] shrink-0 mt-0.5">💡</span>
-            <span className="text-[0.82rem] font-medium leading-snug" style={{color:`${col.accent}f0`}}>{memoryHint}</span>
-          </div>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.7))",
+            padding: "1.5rem 1rem 0.75rem",
+            pointerEvents: "none",
+          }}
+        >
+          <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.4 }}>
+            💡 {memoryHint}
+          </span>
         </div>
       )}
-
-      {/* Corner ornaments */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 rounded-tl" style={{borderColor:`${col.accent}65`}} />
-        <div className="absolute top-3 right-3 w-7 h-7 border-t-2 border-r-2 rounded-tr" style={{borderColor:`${col.accent}65`}} />
-        <div className="absolute bottom-3 left-3 w-7 h-7 border-b-2 border-l-2 rounded-bl" style={{borderColor:`${col.accent}65`}} />
-        <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 rounded-br" style={{borderColor:`${col.accent}65`}} />
-      </div>
     </div>
   );
 }
+
+export default MemoryScene;
