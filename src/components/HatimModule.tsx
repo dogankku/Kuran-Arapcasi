@@ -5,6 +5,8 @@ import { SURAH_LIST, getGlobalAyah } from "@/data/surahList";
 import { words as vocabWords } from "@/data/words";
 import { keywordHints } from "@/data/keywordHints";
 import { KeywordArt } from "@/components/KeywordArt";
+import { CardImage } from "@/components/CardImage";
+import { getCardSlug } from "@/data/cardSlugs";
 import {
   fetchSurahVerses, fetchWordTimings,
   getHatimAudioUrl, HATIM_RECITERS,
@@ -67,6 +69,7 @@ function WordPopup({
   const [loading, setLoading] = useState(true);
   const local   = lookupLocal(word);
   const keyword = lookupKeyword(word);
+  const cardSlug = getCardSlug(word);
 
   useEffect(() => {
     let live = true;
@@ -95,13 +98,19 @@ function WordPopup({
           style={{ background: "rgba(0,0,0,0.4)" }}
         >✕</button>
 
-        {/* ── Üst: KeywordArt illüstrasyon + ses köprüsü ── */}
+        {/* ── Üst: Kart görseli (varsa) veya KeywordArt SVG sahnesi ── */}
         <div className="relative">
-          {/* Illustrated SVG scene */}
-          <KeywordArt
-            sceneId={keyword?.sceneId ?? (keyword?.cognate ? "cognate" : "default")}
-            cognateLabel={keyword?.bridge}
-            cognateEmoji={keyword?.emoji}
+          <CardImage
+            slug={cardSlug ?? ""}
+            arabic={word}
+            meaning={meaning || keyword?.bridge || ""}
+            fallback={
+              <KeywordArt
+                sceneId={keyword?.sceneId ?? (keyword?.cognate ? "cognate" : "default")}
+                cognateLabel={keyword?.bridge}
+                cognateEmoji={keyword?.emoji}
+              />
+            }
           />
 
           {/* "Zaten biliyorsun" rozeti */}
