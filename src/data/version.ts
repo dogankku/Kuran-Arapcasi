@@ -1,7 +1,8 @@
-export const APP_VERSION = "1.7.4";
+export const APP_VERSION = "1.7.5";
 export const BUILD_DATE = "2026-05-21";
-export const BUILD_TIME = "00:30";
+export const BUILD_TIME = "12:00";
 export const CHANGELOG = [
+  { version: "1.7.5", date: "2026-05-21", time: "12:00", note: "Tam 200 kelime kartı: Paket 3-4-7-8-9 görselleri eklendi (kişiler, zaman/edatlar, sıfatlar, kitap/beden, fiiller). 10 yeni kelime (مُؤْمِن, كَافِر, مُسْلِم, عِبَاد, ثُمَّ, حَتَّى, طَيِّب, مَيِّت, قُدُّوس, بَيِّنَة). Toplam 314 kelime." },
   { version: "1.7.4", date: "2026-05-21", time: "10:00", note: "Fotogerçekçi kart görseli sistemi: 100 kart slugu eşlendi, CardImage bileşeni (PNG varsa göster, yoksa SVG), 4 yeni kelime (دَابَّة, صَلَّى, اتَّقَى, ضَلَّ), public/cards/ klasörü hazır" },
   { version: "1.7.3", date: "2026-05-21", time: "00:30", note: "Anahtar kelime hafıza kartları: 17 özel SVG sahne (nar-ateş, kale-konuşma, ayna-göz, anne-su, dervish-gökyüzü…), her kelime için özgün illüstrasyon" },
   { version: "1.7.0", date: "2026-05-20", time: "23:00", note: "Hatim: kelimeye dokun→anlam popup (yerel sözlük + QDC API), tekrar modu (1×/3×/∞), 0.5× hız, ayet otomatik scroll, ipucu çubuğu" },
