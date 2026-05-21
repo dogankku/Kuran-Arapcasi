@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SURAH_LIST, getGlobalAyah } from "@/data/surahList";
 import { words as vocabWords } from "@/data/words";
 import { keywordHints } from "@/data/keywordHints";
+import { MemoryScene } from "@/components/MemoryScene";
 import {
   fetchSurahVerses, fetchWordTimings,
   getHatimAudioUrl, HATIM_RECITERS,
@@ -94,59 +95,41 @@ function WordPopup({
           style={{ background: "rgba(0,0,0,0.4)" }}
         >✕</button>
 
-        {/* ── Üst: hafıza kartı ── */}
-        <div
-          className="px-5 pt-6 pb-5 flex flex-col items-center gap-2"
-          style={{
-            background: keyword?.cognate
-              ? "linear-gradient(150deg,#052e16,#14532d 80%)"
-              : keyword
-              ? "linear-gradient(150deg,#1c1200,#2d1e00 80%)"
-              : "linear-gradient(150deg,#111c24,#0f1923)",
-          }}
-        >
+        {/* ── Üst: MemoryScene illüstrasyon + ses köprüsü ── */}
+        <div className="relative">
+          {/* Illustrated SVG scene */}
+          <MemoryScene
+            arabic={word}
+            transliteration={translit}
+            partOfSpeech={local?.part_of_speech ?? "isim"}
+            memoryHint={keyword?.scene}
+            compact
+          />
+
           {/* "Zaten biliyorsun" rozeti */}
           {keyword?.cognate && (
-            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1"
-              style={{ background: "rgba(34,197,94,0.2)", color: "#86efac", border: "1px solid rgba(34,197,94,0.3)" }}>
-              ✅ Türkçe&apos;de de var!
-            </span>
-          )}
-
-          {/* Emoji */}
-          {keyword && (
-            <span style={{ fontSize: "3.2rem", lineHeight: 1 }}>{keyword.emoji}</span>
-          )}
-
-          {/* Arapça kelime */}
-          <span dir="rtl" style={{
-            fontSize: "2.2rem",
-            fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
-            color: "#fde68a", lineHeight: 1.3,
-          }}>{word}</span>
-
-          {/* Okunuş */}
-          {translit && (
-            <span className="text-stone-400 text-sm italic tracking-wide">{translit}</span>
-          )}
-
-          {/* Ses köprüsü */}
-          {keyword && (
-            <div className="mt-1 px-4 py-1.5 rounded-xl text-center"
-              style={{ background: "rgba(0,0,0,0.3)" }}>
-              <span className="text-xs text-stone-500">ses benzerliği → </span>
-              <span className="text-sm font-bold"
-                style={{ color: keyword.cognate ? "#86efac" : "#fbbf24" }}>
-                {keyword.bridge}
+            <div className="absolute top-3 left-3 z-10">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                style={{ background: "rgba(34,197,94,0.85)", color: "#fff" }}>
+                ✅ Türkçe&apos;de de var!
               </span>
             </div>
           )}
 
-          {/* Hafıza sahnesi */}
-          {keyword?.scene && (
-            <p className="mt-1 text-sm text-center leading-snug text-stone-300 px-2">
-              {keyword.scene}
-            </p>
+          {/* Ses köprüsü — altta yarı şeffaf bant */}
+          {keyword && (
+            <div className="absolute bottom-0 left-0 right-0 px-3 py-2 flex items-center justify-center gap-2"
+              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)" }}>
+              <span className="text-xs text-stone-400">ses →</span>
+              <span className="text-sm font-bold px-2 py-0.5 rounded-lg"
+                style={{
+                  background: keyword.cognate ? "rgba(34,197,94,0.25)" : "rgba(245,158,11,0.25)",
+                  color: keyword.cognate ? "#86efac" : "#fbbf24",
+                  border: `1px solid ${keyword.cognate ? "rgba(34,197,94,0.4)" : "rgba(245,158,11,0.4)"}`,
+                }}>
+                {keyword.bridge}
+              </span>
+            </div>
           )}
         </div>
 
