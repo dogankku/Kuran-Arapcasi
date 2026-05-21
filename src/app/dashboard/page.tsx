@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { grammarTopics } from "@/data/grammar";
-import { memoryImagesByArabic } from "@/data/memoryImages";
+import { getMemoryImage } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
 import { getCardSlug } from "@/data/cardSlugs";
 import { memoryCards } from "@/data/memoryEmojis";
@@ -61,11 +61,12 @@ export default function DashboardPage() {
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
+  const activeMemoryImage = getMemoryImage(activeWord.arabic);
   const activeCardSlug = getCardSlug(activeWord.arabic);
-  const activeImage = activeCardSlug
-    ? `/cards/${activeCardSlug}.png`
-    : (memoryImagesByArabic[activeWord.arabic] || null);
-  const visualWords = useMemo(() => words.filter((w) => getCardSlug(w.arabic) || memoryImagesByArabic[w.arabic]), []);
+  const activeImage = activeMemoryImage
+    ? activeMemoryImage
+    : (activeCardSlug ? `/cards/${activeCardSlug}.png` : null);
+  const visualWords = useMemo(() => words.filter((w) => getMemoryImage(w.arabic) || getCardSlug(w.arabic)), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
 
   // --- Auth + sync helpers ---
@@ -510,8 +511,8 @@ export default function DashboardPage() {
                 {/* Visual memory card */}
                 {activeImage
                   ? (
-                    <div className="rounded-3xl overflow-hidden border border-amber-400/25 mb-4" style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.6)'}}>
-                      <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" />
+                    <div className="rounded-3xl overflow-hidden border border-amber-400/25 mb-4 mx-auto" style={{boxShadow:'0 0 0 1px rgba(251,191,36,0.06),0 6px 40px rgba(0,0,0,0.6)', maxWidth: 380}}>
+                      <img src={imgSrc(activeImage)} alt={activeWord.turkish_meaning} className="w-full block" style={{imageRendering: 'auto'}} />
                     </div>
                   )
                   : <MemoryScene arabic={activeWord.arabic} transliteration={activeWord.transliteration} partOfSpeech={activeWord.part_of_speech} memoryHint={activeWord.memory_hint} />
@@ -1003,7 +1004,7 @@ export default function DashboardPage() {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {(visualFilter === "görselli" ? visualWords
-                  : visualFilter === "tümü" ? [...visualWords, ...words.filter(w => !memoryImagesByArabic[w.arabic])]
+                  : visualFilter === "tümü" ? [...visualWords, ...words.filter(w => !getMemoryImage(w.arabic) && !getCardSlug(w.arabic))]
                   : words.filter(w => w.part_of_speech.includes(visualFilter === "isim" ? "isim" : visualFilter === "fiil" ? "fiil" : "harf") || (visualFilter === "edat" && (w.part_of_speech.includes("edat") || w.part_of_speech.includes("bağlaç") || w.part_of_speech.includes("olumsuzluk"))))
                 ).map((w) => <WordCard key={w.id} word={w} onClick={() => openWord(w)} large />)}
               </div>
@@ -1084,8 +1085,9 @@ export default function DashboardPage() {
 }
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
+  const _mem = getMemoryImage(word.arabic);
   const _slug = getCardSlug(word.arabic);
-  const image = _slug ? `/cards/${_slug}.png` : (memoryImagesByArabic[word.arabic] || null);
+  const image = _mem ? _mem : (_slug ? `/cards/${_slug}.png` : null);
   const card = memoryCards[word.arabic];
 
   const fallbackBg: Record<string, string> = {

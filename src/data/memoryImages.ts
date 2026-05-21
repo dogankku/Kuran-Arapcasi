@@ -62,7 +62,7 @@ export const memoryImagesByArabic: Record<string, string> = {
   "نَفْس": "/images/words/p04-01-nafs.webp",
   "رُوح": "/images/words/p04-02-ruh.webp",
   "عَيْن": "/images/words/p04-03-ayn.webp",
-  "أَذِنَ": "/images/words/p04-04-udhun.webp",
+  "أُذُن": "/images/words/p04-04-udhun.webp",
   "يَد": "/images/words/p04-05-yad.webp",
   "وَجْه": "/images/words/p04-06-wajh.webp",
   "لِسَان": "/images/words/p04-07-lisan.webp",
@@ -171,3 +171,18 @@ export const memoryImagesByArabic: Record<string, string> = {
   "فَعَلَ": "/images/words/p10-13-faala.webp",
   "عَمِلَ": "/images/words/p10-14-amila.webp"
 };
+
+// Tashkeel-normalized lookup: tolerates missing/extra diacritics and shadda+kasra ordering differences.
+const TASHKEEL_RE = /[ً-ْٰـ]/g;
+const normalize = (s: string) => s.replace(TASHKEEL_RE, "").trim();
+
+const normalizedIndex: Record<string, string> = {};
+for (const [k, v] of Object.entries(memoryImagesByArabic)) {
+  normalizedIndex[normalize(k)] = v;
+}
+
+export function getMemoryImage(arabic: string): string | null {
+  if (!arabic) return null;
+  return memoryImagesByArabic[arabic] || normalizedIndex[normalize(arabic)] || null;
+}
+
