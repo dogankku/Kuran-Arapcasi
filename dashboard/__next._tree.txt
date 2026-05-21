@@ -1,2 +1,2 @@
-:HL["/Kuran-Arapcasi/_next/static/chunks/0jjg4val.-xxf.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"dashboard","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"6U9-8QbXWKfwc_yM-YgFM"}
+:HL["/Kuran-Arapcasi/_next/static/chunks/0fdiofln39j-7.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"dashboard","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"0AjSky6eXAg_di22demR1"}
