@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[49668,["/Kuran-Arapcasi/_next/static/chunks/01xlw8hd842-c.js","/Kuran-Arapcasi/_next/static/chunks/0d3shmwh5_nmn.js","/Kuran-Arapcasi/_next/static/chunks/0n60uoajkx1ce.js","/Kuran-Arapcasi/_next/static/chunks/10g4-ucy5.ll_.js"],"default"]
+2:I[49668,["/Kuran-Arapcasi/_next/static/chunks/01xlw8hd842-c.js","/Kuran-Arapcasi/_next/static/chunks/0d3shmwh5_nmn.js","/Kuran-Arapcasi/_next/static/chunks/0mgb0ghjn7vg1.js","/Kuran-Arapcasi/_next/static/chunks/0u0xytvmq3mmw.js"],"default"]
 3:I[97367,["/Kuran-Arapcasi/_next/static/chunks/01xlw8hd842-c.js","/Kuran-Arapcasi/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/Kuran-Arapcasi/_next/static/chunks/0n60uoajkx1ce.js","async":true}],["$","script","script-1",{"src":"/Kuran-Arapcasi/_next/static/chunks/10g4-ucy5.ll_.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"E5sgB5UANxgGmvxBi_TIm"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/Kuran-Arapcasi/_next/static/chunks/0mgb0ghjn7vg1.js","async":true}],["$","script","script-1",{"src":"/Kuran-Arapcasi/_next/static/chunks/0u0xytvmq3mmw.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"hKg_T88BCP9jU7ORT8cmT"}
 5:null
