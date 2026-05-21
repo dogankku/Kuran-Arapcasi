@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SURAH_LIST, getGlobalAyah } from "@/data/surahList";
 import { words as vocabWords } from "@/data/words";
 import { keywordHints } from "@/data/keywordHints";
-import { MemoryScene } from "@/components/MemoryScene";
+import { KeywordArt } from "@/components/KeywordArt";
 import {
   fetchSurahVerses, fetchWordTimings,
   getHatimAudioUrl, HATIM_RECITERS,
@@ -95,15 +95,13 @@ function WordPopup({
           style={{ background: "rgba(0,0,0,0.4)" }}
         >✕</button>
 
-        {/* ── Üst: MemoryScene illüstrasyon + ses köprüsü ── */}
+        {/* ── Üst: KeywordArt illüstrasyon + ses köprüsü ── */}
         <div className="relative">
           {/* Illustrated SVG scene */}
-          <MemoryScene
-            arabic={word}
-            transliteration={translit}
-            partOfSpeech={local?.part_of_speech ?? "isim"}
-            memoryHint={keyword?.scene}
-            compact
+          <KeywordArt
+            sceneId={keyword?.sceneId ?? (keyword?.cognate ? "cognate" : "default")}
+            cognateLabel={keyword?.bridge}
+            cognateEmoji={keyword?.emoji}
           />
 
           {/* "Zaten biliyorsun" rozeti */}
