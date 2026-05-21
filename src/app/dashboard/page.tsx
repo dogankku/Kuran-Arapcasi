@@ -5,6 +5,7 @@ import Link from "next/link";
 import { grammarTopics } from "@/data/grammar";
 import { memoryImagesByArabic } from "@/data/memoryImages";
 import { imgSrc } from "@/lib/asset";
+import { getCardSlug } from "@/data/cardSlugs";
 import { memoryCards } from "@/data/memoryEmojis";
 import { sentenceAnalyses } from "@/data/sentences";
 import type { Level, ProgressMap, QuizMode, StreakData, Word } from "@/data/types";
@@ -60,8 +61,11 @@ export default function DashboardPage() {
 
   const levelWords = useMemo(() => words.filter((w) => w.level === level), [level]);
   const activeWord = levelWords[index] || levelWords[0] || words[0];
-  const activeImage = memoryImagesByArabic[activeWord.arabic] || null;
-  const visualWords = useMemo(() => words.filter((w) => memoryImagesByArabic[w.arabic]), []);
+  const activeCardSlug = getCardSlug(activeWord.arabic);
+  const activeImage = activeCardSlug
+    ? `/cards/${activeCardSlug}.png`
+    : (memoryImagesByArabic[activeWord.arabic] || null);
+  const visualWords = useMemo(() => words.filter((w) => getCardSlug(w.arabic) || memoryImagesByArabic[w.arabic]), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
 
   // --- Auth + sync helpers ---
@@ -1080,7 +1084,8 @@ export default function DashboardPage() {
 }
 
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
-  const image = memoryImagesByArabic[word.arabic] || null;
+  const _slug = getCardSlug(word.arabic);
+  const image = _slug ? `/cards/${_slug}.png` : (memoryImagesByArabic[word.arabic] || null);
   const card = memoryCards[word.arabic];
 
   const fallbackBg: Record<string, string> = {
