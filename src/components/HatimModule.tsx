@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState, memo } from "react";
 import Link from "next/link";
 import { SURAH_LIST, getGlobalAyah } from "@/data/surahList";
 import { words as vocabWords } from "@/data/words";
+import { keywordHints } from "@/data/keywordHints";
 import {
   fetchSurahVerses, fetchWordTimings,
   getHatimAudioUrl, HATIM_RECITERS,
@@ -17,10 +18,15 @@ function stripTashkeel(s: string) {
           .replace(/[أإآا]/g, "ا").replace(/[ىئ]/g, "ي").replace(/ة/g, "ه").trim();
 }
 
-// Local vocabulary lookup — strips diacritics for fuzzy match
 function lookupLocal(word: string) {
   const bare = stripTashkeel(word);
   return vocabWords.find(w => stripTashkeel(w.arabic) === bare) ?? null;
+}
+
+function lookupKeyword(word: string) {
+  if (keywordHints[word]) return keywordHints[word];
+  const bare = stripTashkeel(word);
+  return Object.entries(keywordHints).find(([k]) => stripTashkeel(k) === bare)?.[1] ?? null;
 }
 
 // QDC word-level data cache: "ch:v" → WordInfo[]
@@ -50,15 +56,16 @@ async function fetchWordDetails(ch: number, v: number): Promise<WordInfo[]> {
   } catch { return []; }
 }
 
-// ── Word Popup ─────────────────────────────────────────────────────────────
+// ── Word Popup — anahtar kelime hafıza kartı ──────────────────────────────
 function WordPopup({
   word, wordIdx, verseN, surahNum, onClose,
 }: {
   word: string; wordIdx: number; verseN: number; surahNum: number; onClose: () => void;
 }) {
-  const [info, setInfo] = useState<WordInfo | null>(null);
+  const [info, setInfo]     = useState<WordInfo | null>(null);
   const [loading, setLoading] = useState(true);
-  const local = lookupLocal(word);
+  const local   = lookupLocal(word);
+  const keyword = lookupKeyword(word);
 
   useEffect(() => {
     let live = true;
@@ -71,58 +78,137 @@ function WordPopup({
     return () => { live = false; };
   }, [surahNum, verseN, wordIdx]);
 
+  const translit = info?.translit || keyword?.phonetic || local?.transliteration || "";
+  const meaning  = local?.turkish_meaning || info?.en || "";
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center pb-36 px-4 pointer-events-none">
+    <div className="fixed inset-0 z-50 flex items-end justify-center pb-32 px-3 pointer-events-none">
       <div
-        className="pointer-events-auto bg-[#131f28] border border-amber-500/40 rounded-2xl shadow-2xl p-5 w-full max-w-sm"
+        className="pointer-events-auto w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden relative"
+        style={{ background: "#0e1a24", border: "1px solid rgba(245,158,11,0.25)" }}
         onClick={e => e.stopPropagation()}
       >
-        {/* Arabic word */}
-        <div className="text-center mb-3">
-          <span
-            dir="rtl"
-            style={{
-              fontSize: "2.4rem",
-              fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
-              color: "#fde68a",
-            }}
-          >{word}</span>
-        </div>
-
-        {loading && (
-          <div className="text-center text-stone-500 text-sm py-2">yükleniyor…</div>
-        )}
-
-        {!loading && (
-          <div className="space-y-2">
-            {/* Transliteration */}
-            {info?.translit && (
-              <div className="text-center text-stone-400 text-sm italic">{info.translit}</div>
-            )}
-            {/* Turkish meaning — local DB preferred */}
-            {local ? (
-              <div className="bg-green-900/30 border border-green-700/40 rounded-xl px-3 py-2 text-center">
-                <div className="text-green-300 text-sm font-semibold">{local.turkish_meaning}</div>
-                {local.root && (
-                  <div className="text-green-600 text-xs mt-0.5">kök: {local.root}</div>
-                )}
-                <div className="text-green-700 text-[10px] mt-0.5">{local.part_of_speech} · Kur&#39;an&#39;da {local.frequency}× geçiyor</div>
-              </div>
-            ) : info?.en ? (
-              <div className="bg-[#1f2f3a] rounded-xl px-3 py-2 text-center">
-                <div className="text-white text-sm">{info.en}</div>
-                <div className="text-stone-600 text-[10px] mt-0.5">İngilizce — Türkçe sözlükte bulunamadı</div>
-              </div>
-            ) : (
-              <div className="text-center text-stone-600 text-sm">Bu kelime için bilgi bulunamadı</div>
-            )}
-          </div>
-        )}
-
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-stone-500 hover:text-white text-base w-6 h-6 flex items-center justify-center"
+          className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full text-stone-400 hover:text-white text-sm"
+          style={{ background: "rgba(0,0,0,0.4)" }}
         >✕</button>
+
+        {/* ── Üst: hafıza kartı ── */}
+        <div
+          className="px-5 pt-6 pb-5 flex flex-col items-center gap-2"
+          style={{
+            background: keyword?.cognate
+              ? "linear-gradient(150deg,#052e16,#14532d 80%)"
+              : keyword
+              ? "linear-gradient(150deg,#1c1200,#2d1e00 80%)"
+              : "linear-gradient(150deg,#111c24,#0f1923)",
+          }}
+        >
+          {/* "Zaten biliyorsun" rozeti */}
+          {keyword?.cognate && (
+            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1"
+              style={{ background: "rgba(34,197,94,0.2)", color: "#86efac", border: "1px solid rgba(34,197,94,0.3)" }}>
+              ✅ Türkçe&apos;de de var!
+            </span>
+          )}
+
+          {/* Emoji */}
+          {keyword && (
+            <span style={{ fontSize: "3.2rem", lineHeight: 1 }}>{keyword.emoji}</span>
+          )}
+
+          {/* Arapça kelime */}
+          <span dir="rtl" style={{
+            fontSize: "2.2rem",
+            fontFamily: '"Traditional Arabic","Noto Naskh Arabic","Scheherazade New","Amiri","Arial",serif',
+            color: "#fde68a", lineHeight: 1.3,
+          }}>{word}</span>
+
+          {/* Okunuş */}
+          {translit && (
+            <span className="text-stone-400 text-sm italic tracking-wide">{translit}</span>
+          )}
+
+          {/* Ses köprüsü */}
+          {keyword && (
+            <div className="mt-1 px-4 py-1.5 rounded-xl text-center"
+              style={{ background: "rgba(0,0,0,0.3)" }}>
+              <span className="text-xs text-stone-500">ses benzerliği → </span>
+              <span className="text-sm font-bold"
+                style={{ color: keyword.cognate ? "#86efac" : "#fbbf24" }}>
+                {keyword.bridge}
+              </span>
+            </div>
+          )}
+
+          {/* Hafıza sahnesi */}
+          {keyword?.scene && (
+            <p className="mt-1 text-sm text-center leading-snug text-stone-300 px-2">
+              {keyword.scene}
+            </p>
+          )}
+        </div>
+
+        {/* ── Alt: anlam + bilgi ── */}
+        <div className="px-5 py-4 space-y-2.5">
+          {loading && <p className="text-center text-stone-500 text-sm py-1">yükleniyor…</p>}
+
+          {!loading && (
+            <>
+              {/* Türkçe anlam — büyük ve net */}
+              {meaning && (
+                <div className="flex items-center justify-between rounded-2xl px-4 py-2.5"
+                  style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.2)" }}>
+                  <span className="text-xs text-stone-500">Türkçe anlamı</span>
+                  <span className="text-lg font-bold text-amber-300">{meaning}</span>
+                </div>
+              )}
+
+              {/* Kök · tür · frekans */}
+              {local && (
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  {local.root && (
+                    <div className="rounded-xl py-2 px-1" style={{ background: "rgba(255,255,255,0.04)" }}>
+                      <div className="text-[10px] text-stone-600 mb-0.5">kök</div>
+                      <div className="text-sm font-bold text-stone-300" dir="rtl"
+                        style={{ fontFamily: "serif" }}>{local.root}</div>
+                    </div>
+                  )}
+                  <div className="rounded-xl py-2 px-1" style={{ background: "rgba(255,255,255,0.04)" }}>
+                    <div className="text-[10px] text-stone-600 mb-0.5">tür</div>
+                    <div className="text-xs text-stone-400">{local.part_of_speech}</div>
+                  </div>
+                  <div className="rounded-xl py-2 px-1" style={{ background: "rgba(255,255,255,0.04)" }}>
+                    <div className="text-[10px] text-stone-600 mb-0.5">Kur&apos;an&apos;da</div>
+                    <div className="text-sm font-bold text-amber-600">{local.frequency}×</div>
+                  </div>
+                </div>
+              )}
+
+              {/* Örnek ayet */}
+              {local?.example_arabic && (
+                <div className="rounded-xl px-3 py-2.5"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p dir="rtl" className="text-sm text-stone-300 text-right mb-1"
+                    style={{ fontFamily: "serif" }}>{local.example_arabic}</p>
+                  <p className="text-xs text-stone-500">{local.example_turkish}</p>
+                </div>
+              )}
+
+              {/* Fallback İngilizce */}
+              {!local && !keyword && info?.en && (
+                <div className="text-center text-stone-500 text-sm">
+                  {info.en} <span className="text-stone-700 text-xs">(İngilizce)</span>
+                </div>
+              )}
+
+              {!meaning && !keyword && !loading && (
+                <p className="text-center text-stone-600 text-sm">Bu kelime için bilgi bulunamadı.</p>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
