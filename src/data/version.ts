@@ -1,7 +1,8 @@
-export const APP_VERSION = "1.7.6";
+export const APP_VERSION = "1.7.7";
 export const BUILD_DATE = "2026-05-21";
-export const BUILD_TIME = "12:30";
+export const BUILD_TIME = "13:00";
 export const CHANGELOG = [
+  { version: "1.7.7", date: "2026-05-21", time: "13:00", note: "5 yeni paket: Paket 3 (doğa/zaman), Paket 4 (ruh/beden/duygular), Paket 5 (dini kavramlar - 5×4 grid), Paket 7 (ibadet fiilleri), Paket 8 (eylem fiilleri). 44 yeni kelime (vahiy,sure,helal,haram,kadhdhaba,shaa,arada vb.). Toplam 370 kelime, 335+ kart görseli." },
   { version: "1.7.6", date: "2026-05-21", time: "12:30", note: "300 kelime kartı tamamlandı: peygamberler (آدَم→مُحَمَّد), kişi türleri (مُشْرِك,مُنَافِق,مُجْرِم,مُتَّقِي,مُحْسِن,بَشِير,نَذِير), zamirler (هُوَ,هِيَ,هُم,نَحْنُ,كُلّ), yer edatları (تَحْت,فَوْق,خَلْف), fiiller (وَجَدَ,حَفِظَ,أَرْسَلَ,أَنْزَلَ), kavramlar (كَعْبَة,عَرْش,كُرْسِيّ). Toplam 326 kelime." },
   { version: "1.7.5", date: "2026-05-21", time: "12:00", note: "Tam 200 kelime kartı: Paket 3-4-7-8-9 görselleri eklendi (kişiler, zaman/edatlar, sıfatlar, kitap/beden, fiiller). 10 yeni kelime (مُؤْمِن, كَافِر, مُسْلِم, عِبَاد, ثُمَّ, حَتَّى, طَيِّب, مَيِّت, قُدُّوس, بَيِّنَة). Toplam 314 kelime." },
   { version: "1.7.4", date: "2026-05-21", time: "10:00", note: "Fotogerçekçi kart görseli sistemi: 100 kart slugu eşlendi, CardImage bileşeni (PNG varsa göster, yoksa SVG), 4 yeni kelime (دَابَّة, صَلَّى, اتَّقَى, ضَلَّ), public/cards/ klasörü hazır" },
