@@ -19,38 +19,19 @@ export function CardImage({ slug, arabic, meaning, fallback }: CardImageProps) {
   }
 
   return (
-    <div className="relative w-full" style={{ aspectRatio: "1/1", maxHeight: 280, overflow: "hidden" }}>
+    <div className="relative w-full overflow-hidden" style={{ borderRadius: "24px 24px 0 0" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/cards/${slug}.png`}
         alt={`${arabic} — ${meaning}`}
         onError={() => setFailed(true)}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center top",
-          display: "block",
-        }}
+        style={{ width: "100%", display: "block", maxHeight: 300, objectFit: "cover", objectPosition: "center top" }}
       />
-      {/* Gradient overlay — Arabic word + meaning at bottom */}
+      {/* Alttaki slug metnini kapat — gradient */}
       <div
-        className="absolute inset-0 flex flex-col justify-end"
-        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 45%, transparent 70%)" }}
-      >
-        <div className="px-4 pb-3 pt-6">
-          <div
-            dir="rtl"
-            className="text-center text-3xl font-bold mb-1"
-            style={{ fontFamily: "serif", color: "#f5e6c0", textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}
-          >
-            {arabic}
-          </div>
-          <div className="text-center text-sm font-semibold" style={{ color: "#fbbf24", textShadow: "0 1px 4px rgba(0,0,0,0.9)" }}>
-            {meaning}
-          </div>
-        </div>
-      </div>
+        className="absolute bottom-0 left-0 right-0 h-10"
+        style={{ background: "linear-gradient(to top, #0e1a24 0%, transparent 100%)" }}
+      />
     </div>
   );
 }
@@ -79,15 +60,6 @@ export function CardThumb({ slug, arabic, meaning }: { slug: string; arabic: str
         onError={() => setFailed(true)}
         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
       />
-      <div
-        className="absolute inset-0 flex flex-col justify-end"
-        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)" }}
-      >
-        <div className="px-1 pb-1 text-center">
-          <div dir="rtl" style={{ fontSize: 18, fontFamily: "serif", color: "#f5e6c0", textShadow: "0 1px 4px rgba(0,0,0,0.9)" }}>{arabic}</div>
-          <div style={{ fontSize: 10, color: "#fbbf24", textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}>{meaning}</div>
-        </div>
-      </div>
     </div>
   );
 }
