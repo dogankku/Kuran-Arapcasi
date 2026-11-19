@@ -56,7 +56,7 @@ export function getWordAudioUrl(arabic: string): string | null {
   const pos = WORD_AUDIO_MAP[arabic];
   if (!pos) return null;
   const [ch, vs, wpos] = pos;
-  return `https://audio.qurancdn.com/wbw/${ch}/${vs}/${wpos}.mp3`;
+  return wbwUrl(ch, vs, wpos);
 }
 
 // Kelime → [bölüm, ayet, kelime_sırası] haritası
@@ -198,3 +198,26 @@ export const WORD_AUDIO_MAP: Record<string, [number, number, number]> = {
   "أَكْبَر":     [29, 45, 5],
   "لَا إِلَهَ": [47, 19, 1],
 };
+
+const pad3 = (n: number) => String(n).padStart(3, "0");
+
+/** Kelime kelime tilavet (Quran.com CDN): sure_ayet_kelime, üç haneli. */
+export function wbwUrl(surah: number, ayah: number, word: number): string {
+  return `https://audio.qurancdn.com/wbw/${pad3(surah)}_${pad3(ayah)}_${pad3(word)}.mp3`;
+}
+
+/** Tam ayet tilaveti, global ayet numarasıyla (öğretim için varsayılan: Husarî, tane tane). */
+export function ayahUrlByGlobal(globalAyah: number, edition = "ar.husary"): string {
+  return `https://cdn.islamic.network/quran/audio/128/${edition}/${globalAyah}.mp3`;
+}
+
+let _tutorAudio: HTMLAudioElement | null = null;
+export function playUrl(url: string, onEnd?: () => void): void {
+  if (typeof window === "undefined") return;
+  if (_tutorAudio) { _tutorAudio.pause(); _tutorAudio = null; }
+  window.speechSynthesis?.cancel();
+  const a = new Audio(url);
+  _tutorAudio = a;
+  if (onEnd) a.onended = onEnd;
+  a.play().catch(() => onEnd?.());
+}

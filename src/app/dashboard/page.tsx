@@ -24,18 +24,20 @@ import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
 import AuthModal from "@/components/AuthModal";
 import AccountModal from "@/components/AccountModal";
+import TutorPanel from "@/components/tutor/TutorPanel";
+import { TUTOR_STORAGE_KEY, emptyTutor, normalizeTutor, type TutorState } from "@/lib/tutor";
 import RankBadge from "@/components/RankBadge";
 import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, getVerseAudioUrl } from "@/lib/quranAudio";
 import { stopAudio } from "@/lib/learning";
 import { MemoryScene } from "@/components/MemoryScene";
 
-type Panel = "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
+type Panel = "hoca" | "yol" | "kelime" | "kokler" | "gramer" | "ayet" | "sure" | "morfo" | "quiz" | "tekrar" | "gorseller" | "rutbe";
 
 interface AuthUser { id: string; email: string; username: string; }
 
 export default function DashboardPage() {
   const [level, setLevel] = useState<Level>(1);
-  const [panel, setPanel] = useState<Panel>("yol");
+  const [panel, setPanel] = useState<Panel>("hoca");
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [progress, setProgress] = useState<ProgressMap>({});
@@ -58,6 +60,11 @@ export default function DashboardPage() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [authReady, setAuthReady] = useState(false);
   const [accountMode, setAccountMode] = useState<null | "account" | "recovery">(null);
+  const [tutor, setTutorState] = useState<TutorState>(emptyTutor);
+  const tutorRef = useRef<TutorState>(tutor);
+  tutorRef.current = tutor;
+  const tutorLoaded = useRef(false);
+  const setTutor = useCallback((fn: (t: TutorState) => TutorState) => setTutorState(prev => fn(prev)), []);
   const [syncing, setSyncing] = useState(false);
   const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -73,9 +80,30 @@ export default function DashboardPage() {
 
   // --- Auth + sync helpers ---
 
+  const upsertProgress = useCallback(async (userId: string, prog: unknown, str: unknown) => {
+    if (!supabase) return;
+    const row = { id: userId, progress: prog, streak: str, tutor: tutorRef.current, updated_at: new Date().toISOString() };
+    const { error } = await supabase.from("user_progress").upsert(row);
+    if (error && /tutor/.test(error.message)) {
+      // Veritabanında henüz "tutor" sütunu yoksa ilerlemeyi yine de kaydet
+      const { tutor: _t, ...rest } = row; void _t;
+      await supabase.from("user_progress").upsert(rest);
+    }
+  }, []);
+
   const loadProgressFromDb = useCallback(async (userId: string) => {
     if (!supabase) return;
-    const { data } = await supabase.from("user_progress").select("progress,streak").eq("id", userId).maybeSingle();
+    type Row = { progress: unknown; streak: unknown; tutor?: unknown };
+    let res = await supabase.from("user_progress").select("progress,streak,tutor").eq("id", userId).maybeSingle();
+    if (res.error && /tutor/.test(res.error.message)) {
+      res = await supabase.from("user_progress").select("progress,streak").eq("id", userId).maybeSingle() as typeof res;
+    }
+    const data = res.data as Row | null;
+    const remoteTutor = data?.tutor;
+    if (remoteTutor && typeof remoteTutor === "object" && Object.keys(remoteTutor as object).length > 0) {
+      const t = normalizeTutor(remoteTutor);
+      setTutorState(t); localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(t));
+    }
     const hasRemote = !!data && data.progress && Object.keys(data.progress as object).length > 0;
     if (!hasRemote) {
       // İlk giriş: bu cihazda biriken ilerlemeyi hesaba aktar
@@ -84,9 +112,7 @@ export default function DashboardPage() {
       try { localProg = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { /* yoksay */ }
       try { localStreak = JSON.parse(localStorage.getItem(STREAK_KEY) || "null"); } catch { /* yoksay */ }
       if (Object.keys(localProg).length > 0) {
-        await supabase.from("user_progress").upsert({
-          id: userId, progress: localProg, streak: localStreak ?? {}, updated_at: new Date().toISOString(),
-        });
+        await upsertProgress(userId, localProg, localStreak ?? {});
         setProgress(localProg);
         if (localStreak) setStreak(localStreak);
       }
@@ -108,9 +134,7 @@ export default function DashboardPage() {
     syncTimer.current = setTimeout(async () => {
       if (!supabase) return;
       setSyncing(true);
-      await supabase.from("user_progress").upsert({
-        id: userId, progress: prog, streak: str, updated_at: new Date().toISOString(),
-      });
+      await upsertProgress(userId, prog, str);
       setSyncing(false);
     }, 1500);
   }, []);
@@ -160,6 +184,18 @@ export default function DashboardPage() {
     if (user) syncProgressToDb(user.id, progress, streak);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress]);
+
+  // Hoca durumu: yerelde sakla, girişliyse hesaba senkronla
+  useEffect(() => {
+    try { const raw = localStorage.getItem(TUTOR_STORAGE_KEY); if (raw) setTutorState(normalizeTutor(JSON.parse(raw))); } catch { /* yoksay */ }
+    tutorLoaded.current = true;
+  }, []);
+  useEffect(() => {
+    if (!tutorLoaded.current) return;
+    localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(tutor));
+    if (user) syncProgressToDb(user.id, progress, streak);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tutor]);
 
   useEffect(() => { setStreak(getStreak()); }, []);
   useEffect(() => {
@@ -416,6 +452,7 @@ export default function DashboardPage() {
         {/* NAVİGASYON */}
         <nav className="duo-card p-2 mb-8 flex gap-1 overflow-x-auto no-scrollbar" style={{borderRadius:"1.4rem"}}>
           {([
+            ["hoca", "Hoca", "🧑‍🏫"],
             ["yol", "Yol", "🗺️"],
             ["kelime", "Kelime", "📖"],
             ["kokler", "Kökler", "🌿"],
@@ -431,6 +468,13 @@ export default function DashboardPage() {
             <Tab key={p} active={panel === p} onClick={() => setPanel(p)} label={label} icon={icon} />
           ))}
         </nav>
+
+        {/* HOCA */}
+        {panel === "hoca" && (
+          <TutorPanel words={words} grammar={grammarTopics} sentences={sentenceAnalyses} progress={progress}
+            tutor={tutor} setTutor={setTutor} userName={user?.username}
+            onWordResult={(id, r) => { const w = words.find(x => x.id === id); if (w) save(w, r); }} />
+        )}
 
         {/* ÖĞRENME YOLU */}
         {panel === "yol" && (
