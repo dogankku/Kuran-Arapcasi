@@ -1,22 +1,24 @@
--- Supabase kurulum SQL'i
--- Bu dosyayı Supabase Dashboard > SQL Editor'da çalıştır
+-- Ayet Hafızası — Supabase kurulum SQL'i
+-- Supabase Dashboard → SQL Editor → New query → bu dosyanın tamamını yapıştır → Run.
+-- Birden fazla kez çalıştırmak güvenlidir.
 
--- Kullanıcı ilerleme tablosu
+-- Kullanıcı ilerleme tablosu (her kullanıcı için tek satır)
 create table if not exists public.user_progress (
-  id uuid primary key references auth.users(id) on delete cascade,
-  progress jsonb not null default '{}',
-  streak   jsonb not null default '{}',
+  id         uuid primary key references auth.users(id) on delete cascade,
+  progress   jsonb       not null default '{}',
+  streak     jsonb       not null default '{}',
   updated_at timestamptz not null default now()
 );
 
--- Satır düzeyi güvenlik (RLS)
+-- Satır düzeyi güvenlik: herkes yalnızca kendi satırını görebilir ve değiştirebilir
 alter table public.user_progress enable row level security;
 
--- Her kullanıcı yalnızca kendi verisini okuyabilir / yazabilir
+drop policy if exists "own_data" on public.user_progress;
 create policy "own_data" on public.user_progress
-  using      (auth.uid() = id)
-  with check (auth.uid() = id);
+  for all
+  to authenticated
+  using      ((select auth.uid()) = id)
+  with check ((select auth.uid()) = id);
 
--- Ortam değişkenleri (.env.local dosyasına veya GitHub Secrets'a ekle):
---   NEXT_PUBLIC_SUPABASE_URL  = https://<proje-id>.supabase.co
---   NEXT_PUBLIC_SUPABASE_ANON_KEY = <anon-public-key>
+-- Proje URL'si ve publishable anahtarı .github/workflows/deploy.yml içinde tanımlıdır.
+-- Yerel geliştirme için aynı iki değeri .env.local dosyasına yaz.

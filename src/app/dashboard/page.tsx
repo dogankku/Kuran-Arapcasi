@@ -23,6 +23,7 @@ import {
 import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
 import AuthModal from "@/components/AuthModal";
+import AccountModal from "@/components/AccountModal";
 import RankBadge from "@/components/RankBadge";
 import { RECITERS, DEFAULT_RECITER, RECITER_STORAGE_KEY, getVerseAudioUrl } from "@/lib/quranAudio";
 import { stopAudio } from "@/lib/learning";
@@ -56,6 +57,7 @@ export default function DashboardPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
   const [authReady, setAuthReady] = useState(false);
+  const [accountMode, setAccountMode] = useState<null | "account" | "recovery">(null);
   const [syncing, setSyncing] = useState(false);
   const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -73,7 +75,23 @@ export default function DashboardPage() {
 
   const loadProgressFromDb = useCallback(async (userId: string) => {
     if (!supabase) return;
-    const { data } = await supabase.from("user_progress").select("progress,streak").eq("id", userId).single();
+    const { data } = await supabase.from("user_progress").select("progress,streak").eq("id", userId).maybeSingle();
+    const hasRemote = !!data && data.progress && Object.keys(data.progress as object).length > 0;
+    if (!hasRemote) {
+      // İlk giriş: bu cihazda biriken ilerlemeyi hesaba aktar
+      let localProg: ProgressMap = {};
+      let localStreak: StreakData | null = null;
+      try { localProg = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { /* yoksay */ }
+      try { localStreak = JSON.parse(localStorage.getItem(STREAK_KEY) || "null"); } catch { /* yoksay */ }
+      if (Object.keys(localProg).length > 0) {
+        await supabase.from("user_progress").upsert({
+          id: userId, progress: localProg, streak: localStreak ?? {}, updated_at: new Date().toISOString(),
+        });
+        setProgress(localProg);
+        if (localStreak) setStreak(localStreak);
+      }
+      return;
+    }
     if (data) {
       if (data.progress) setProgress(data.progress as ProgressMap);
       if (data.streak) {
@@ -112,10 +130,13 @@ export default function DashboardPage() {
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "PASSWORD_RECOVERY") setAccountMode("recovery");
       if (session?.user) {
         const u = session.user;
         setUser({ id: u.id, email: u.email!, username: (u.user_metadata?.username as string) || u.email!.split("@")[0] });
+        // E-posta doğrulama bağlantısıyla gelindiğinde ilerlemeyi yükle
+        if (event === "SIGNED_IN") loadProgressFromDb(u.id);
       } else {
         setUser(null);
       }
@@ -190,6 +211,7 @@ export default function DashboardPage() {
   async function handleLogout() {
     if (supabase) await supabase.auth.signOut();
     setUser(null);
+    setAccountMode(null);
   }
 
   const learned = Object.values(progress).filter((p) => p.known).length;
@@ -245,11 +267,17 @@ export default function DashboardPage() {
   }
 
   // Show auth modal when Supabase is configured and user not logged in
-  const showAuthModal = isConfigured && authReady && !user;
+  const showAuthModal = isConfigured && authReady && !user && accountMode !== "recovery";
 
   return (
     <main className="min-h-screen text-white" style={{background:"var(--duo-bg)"}}>
       {showAuthModal && <AuthModal onSuccess={async (u) => { setUser(u); await loadProgressFromDb(u.id); }} />}
+      {accountMode && (
+        <AccountModal user={user} mode={accountMode}
+          onClose={() => setAccountMode(null)}
+          onLogout={handleLogout}
+          onUsernameChange={(name) => setUser(prev => prev ? { ...prev, username: name } : prev)} />
+      )}
 
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
 
@@ -286,7 +314,10 @@ export default function DashboardPage() {
                   <div className="ml-auto flex items-center gap-2 flex-wrap">
                     <RankBadge learned={learned} compact />
                     {syncing && <span className="text-stone-500 text-xs animate-pulse">↑ kaydediliyor</span>}
-                    <span className="text-stone-400 text-xs hidden sm:inline">{user.username}</span>
+                    <button onClick={() => setAccountMode("account")} title="Hesabım"
+                      className="inline-flex items-center gap-1.5 text-xs text-stone-300 hover:text-white border border-stone-700 hover:border-emerald-500/50 rounded-full px-2.5 py-1 transition">
+                      <span aria-hidden>👤</span><span className="max-w-[9rem] truncate">{user.username}</span>
+                    </button>
                     <button onClick={handleLogout}
                       className="text-xs text-stone-500 hover:text-red-400 transition border border-stone-700 rounded-full px-2.5 py-1">
                       Çıkış

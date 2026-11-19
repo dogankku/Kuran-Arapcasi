@@ -25,6 +25,11 @@ jobs:
         run: npm run build
         env:
           GITHUB_ACTIONS: 'true'
+          # E-posta/şifre girişi (Supabase projesi: ayet-hafizasi).
+          # Publishable anahtar tarayıcıda kullanılmak üzere tasarlanmıştır ve herkese açık olabilir;
+          # veriler Row Level Security ile korunur. Secret anahtar ASLA buraya yazılmaz.
+          NEXT_PUBLIC_SUPABASE_URL: https://eplrzbiavujewdjazoes.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_wOS-kOoyVyGsRqVgPWYtUA_cekja1W4
 
       - name: Fix SPA routing for GitHub Pages
         run: |
