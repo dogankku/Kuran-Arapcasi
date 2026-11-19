@@ -20,7 +20,5 @@ create policy "own_data" on public.user_progress
   using      ((select auth.uid()) = id)
   with check ((select auth.uid()) = id);
 
--- GitHub → Settings → Secrets and variables → Actions altına eklenecek gizli değerler:
---   NEXT_PUBLIC_SUPABASE_URL             = https://<proje-id>.supabase.co
---   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = sb_publishable_...   (Publishable key)
+-- Proje URL'si ve publishable anahtarı .github/workflows/deploy.yml içinde tanımlıdır.
 -- Yerel geliştirme için aynı iki değeri .env.local dosyasına yaz.
