@@ -22,7 +22,7 @@ export function CardImage({ slug, arabic, meaning, fallback }: CardImageProps) {
     <div className="relative w-full overflow-hidden" style={{ borderRadius: "24px 24px 0 0" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${BASE}/cards/${slug}.png`}
+        src={`${BASE}/cards/${slug}.webp`}
         alt={`${arabic} — ${meaning}`}
         onError={() => setFailed(true)}
         style={{ width: "100%", display: "block", maxHeight: 300, objectFit: "cover", objectPosition: "center top" }}
@@ -53,7 +53,7 @@ export function CardThumb({ slug, arabic, meaning }: { slug: string; arabic: str
     <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: "1/1" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${BASE}/cards/${slug}.png`}
+        src={`${BASE}/cards/${slug}.webp`}
         alt={`${arabic} — ${meaning}`}
         onError={() => setFailed(true)}
         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}

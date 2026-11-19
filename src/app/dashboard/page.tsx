@@ -65,7 +65,7 @@ export default function DashboardPage() {
   const activeCardSlug = getCardSlug(activeWord.arabic);
   const activeImage = activeMemoryImage
     ? activeMemoryImage
-    : (activeCardSlug ? `/cards/${activeCardSlug}.png` : null);
+    : (activeCardSlug ? `/cards/${activeCardSlug}.webp` : null);
   const visualWords = useMemo(() => words.filter((w) => getMemoryImage(w.arabic) || getCardSlug(w.arabic)), []);
   const reviewWords = useMemo(() => getReviewWords(words, progress), [progress]);
 
@@ -532,7 +532,7 @@ export default function DashboardPage() {
                     <span className="bg-emerald-700/50 border border-emerald-600/30 text-emerald-200 text-xs px-2.5 py-0.5 rounded-full font-semibold shrink-0">Örnek</span>
                     <button onClick={() => speakArabic(activeWord.example_arabic)} className="arabic-text arabic-clickable text-xl bg-transparent text-right flex-1 min-w-0">{activeWord.example_arabic}</button>
                   </div>
-                  <div className="text-stone-300 text-sm">{activeWord.example_turkish}</div>
+                  <div className="text-stone-300 text-sm">{activeWord.example_turkish}{activeWord.example_ref && <span className="text-emerald-300/60 text-xs ml-2 whitespace-nowrap">({activeWord.example_ref})</span>}</div>
                 </div>
 
                 {/* Compact badges row */}
@@ -1087,7 +1087,7 @@ export default function DashboardPage() {
 function WordCard({ word, onClick, large = false }: { word: Word; onClick: () => void; large?: boolean }) {
   const _mem = getMemoryImage(word.arabic);
   const _slug = getCardSlug(word.arabic);
-  const image = _mem ? _mem : (_slug ? `/cards/${_slug}.png` : null);
+  const image = _mem ? _mem : (_slug ? `/cards/${_slug}.webp` : null);
   const card = memoryCards[word.arabic];
 
   const fallbackBg: Record<string, string> = {
@@ -1107,7 +1107,7 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
   const posKey = Object.keys(fallbackBg).find(k => word.part_of_speech.includes(k)) || "isim";
   const bg = card?.bg || fallbackBg[posKey];
 
-  const heightClass = large ? "h-52" : "h-40";
+  const heightClass = large ? "h-60" : "h-48";
 
   return (
     <button onClick={onClick} className="rounded-[1.5rem] overflow-hidden text-left hover:scale-[1.02] transition-transform duration-200 w-full"
@@ -1115,7 +1115,7 @@ function WordCard({ word, onClick, large = false }: { word: Word; onClick: () =>
       {/* Görsel alan */}
       {image ? (
         <img src={imgSrc(image)} alt={word.turkish_meaning}
-          className={`w-full ${heightClass} object-cover`} />
+          className={`w-full ${heightClass} object-contain`} style={{background:"#0b1511"}} loading="lazy" />
       ) : (
         <div className={heightClass} style={{overflow:"hidden"}}>
           <MemoryScene arabic={word.arabic} transliteration={word.transliteration} partOfSpeech={word.part_of_speech} memoryHint={word.memory_hint} compact />
