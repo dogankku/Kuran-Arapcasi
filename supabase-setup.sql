@@ -10,6 +10,9 @@ create table if not exists public.user_progress (
   updated_at timestamptz not null default now()
 );
 
+-- Hoca (kişisel ders planı, eksikler, tekrar takvimi)
+alter table public.user_progress add column if not exists tutor jsonb not null default '{}';
+
 -- Satır düzeyi güvenlik: herkes yalnızca kendi satırını görebilir ve değiştirebilir
 alter table public.user_progress enable row level security;
 
