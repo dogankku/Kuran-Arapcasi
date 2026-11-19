@@ -7,6 +7,7 @@ import { keywordHints } from "@/data/keywordHints";
 import { KeywordArt } from "@/components/KeywordArt";
 import { CardImage } from "@/components/CardImage";
 import { getCardSlug } from "@/data/cardSlugs";
+import Icon from "@/components/Icon";
 import {
   fetchSurahVerses, fetchWordTimings,
   getHatimAudioUrl, HATIM_RECITERS,
@@ -96,7 +97,7 @@ function WordPopup({
           onClick={onClose}
           className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full text-stone-400 hover:text-white text-sm"
           style={{ background: "rgba(0,0,0,0.4)" }}
-        >✕</button>
+        ><Icon name="carpi" /></button>
 
         {/* ── Üst: Kart görseli (varsa) veya KeywordArt SVG sahnesi ── */}
         <div className="relative">
@@ -118,7 +119,7 @@ function WordPopup({
             <div className="absolute top-3 left-3 z-10">
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                 style={{ background: "rgba(34,197,94,0.85)", color: "#fff" }}>
-                ✅ Türkçe&apos;de de var!
+                Türkçe&apos;de de var!
               </span>
             </div>
           )}
@@ -226,7 +227,7 @@ function SurahSidebar({
           className="flex-1 bg-[#1F2F38] text-white text-sm rounded-xl px-3 py-2 border border-[#2A4050] outline-none focus:border-amber-500"
         />
         {onClose && (
-          <button onClick={onClose} className="text-stone-400 hover:text-white p-1 text-lg">✕</button>
+          <button onClick={onClose} className="text-stone-400 hover:text-white p-1 text-lg"><Icon name="carpi" /></button>
         )}
       </div>
       <div className="flex-1 overflow-y-auto">
@@ -542,7 +543,7 @@ export default function HatimModule() {
     setLoopMode(m => m === 0 ? 1 : m === 1 ? 3 : m === 3 ? 99 : 0);
   };
 
-  const loopLabel = loopMode === 0 ? "🔂 Kapalı" : loopMode === 1 ? "🔂 1×" : loopMode === 3 ? "🔂 3×" : "🔂 ∞";
+  const loopLabel = loopMode === 0 ? "Kapalı" : loopMode === 1 ? "1×" : loopMode === 3 ? "3×" : "∞";
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
@@ -606,7 +607,7 @@ export default function HatimModule() {
             className={`shrink-0 text-xs px-3 py-1.5 rounded-full border transition-colors
               ${loopMode > 0 ? "bg-amber-500/20 border-amber-500/50 text-amber-300" : "border-[#2A4050] text-stone-500"}`}
             title="Tekrar modu: kapalı → 1× → 3× → ∞"
-          >{loopLabel}</button>
+          ><Icon name="tekrarOk" /> {loopLabel}</button>
 
           {loading && <span className="shrink-0 self-center text-xs text-stone-600 ml-1">yükleniyor…</span>}
         </div>
@@ -692,7 +693,7 @@ export default function HatimModule() {
               className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-colors
                 ${autoNext ? "bg-amber-500/20 border-amber-500/50 text-amber-300" : "border-[#2A4050] text-stone-500"}`}
             >
-              <span>{autoNext ? "🔁" : "➡️"}</span>
+              <Icon name={autoNext ? "tekrarOk" : "ileri"} />
               <span className="hidden sm:inline">{autoNext ? "Otomatik" : "Manuel"}</span>
             </button>
           </div>

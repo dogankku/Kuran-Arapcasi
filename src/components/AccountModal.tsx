@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { supabase, authErrorTr } from "@/lib/supabase";
 import { PasswordInput, Notice, SubmitButton, type AuthUser } from "@/components/AuthModal";
+import Icon from "@/components/Icon";
 
 /**
  * Hesap paneli (mode="account") veya şifre sıfırlama bağlantısından gelindiğinde
@@ -56,7 +57,7 @@ export default function AccountModal({ user, mode, onClose, onLogout, onUsername
          onClick={e => { if (e.target === e.currentTarget && mode === "account") onClose(); }}>
       <div className="w-full max-w-md my-auto duo-card rounded-[1.75rem] p-6 sm:p-8 relative">
         <button onClick={onClose} aria-label="Kapat"
-          className="absolute top-4 right-4 w-8 h-8 rounded-full text-stone-400 hover:text-white bg-black/30">✕</button>
+          className="absolute top-4 right-4 w-8 h-8 rounded-full text-stone-400 hover:text-white bg-black/30"><Icon name="carpi" size="1em" /></button>
 
         {mode === "account" ? (
           <>
