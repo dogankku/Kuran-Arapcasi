@@ -7,12 +7,12 @@ export const words: Word[] = [
     "arabic": "اللَّه",
     "transliteration": "Allah",
     "turkish_meaning": "Allah",
-    "root": null,
+    "root": "أ-ل-ه",
     "part_of_speech": "özel isim",
     "memory_hint": "Kur’an’daki en merkezi isimdir.",
     "example_arabic": "الْحَمْدُ لِلَّهِ",
     "example_turkish": "Hamd Allah’a mahsustur.",
-    "grammar_note": "اللَّه kelimesi ayet içinde 'Allah' anlam alanıyla kullanılır. Kelime türü: özel isim.",
+    "grammar_note": "Özel isimdir; إِلَٰه (ilah) kelimesine ال takısının eklenmesinden geldiği kabul edilir. Lafzatullah denir; çoğulu ve dişili yapılmaz.",
     "frequency": 2699
   },
   {
@@ -26,7 +26,7 @@ export const words: Word[] = [
     "memory_hint": "Nas suresini hatırla.",
     "example_arabic": "رَبِّ النَّاسِ",
     "example_turkish": "İnsanların Rabbi.",
-    "grammar_note": "النَّاس kelimesi ayet içinde 'insanlar' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Topluluk ismi (ism-i cem‘); tekili yoktur, 'bir insan' için إِنْسَان kullanılır. ال ile belirlidir: النَّاس = (bütün) insanlar.",
     "frequency": 241
   },
   {
@@ -40,7 +40,7 @@ export const words: Word[] = [
     "memory_hint": "Yaratılış sahnesini düşün.",
     "example_arabic": "خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökleri ve yeri yarattı.",
-    "grammar_note": "خَلَقَ kelimesi ayet içinde 'yarattı' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "grammar_note": "Mâzî (geçmiş zaman) fiil, I. bab (فَعَلَ). Muzari: يَخْلُقُ; mastar: خَلْق (yaratma/yaratılış).",
     "frequency": 254
   },
   {
@@ -54,7 +54,7 @@ export const words: Word[] = [
     "memory_hint": "Söz söylemeyi düşün.",
     "example_arabic": "قَالَ رَبِّي",
     "example_turkish": "Rabbim dedi.",
-    "grammar_note": "قَالَ kelimesi ayet içinde 'dedi' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "grammar_note": "Ecvef (ortası illetli) fiil: kök ق-و-ل, و harfi elife dönüşmüştür. Muzari: يَقُولُ, emir: قُلْ (de!).",
     "frequency": 1625
   },
   {
@@ -68,7 +68,7 @@ export const words: Word[] = [
     "memory_hint": "İlim kelimesinden bağ kur.",
     "example_arabic": "وَاللَّهُ يَعْلَمُ",
     "example_turkish": "Allah bilir.",
-    "grammar_note": "يَعْلَمُ kelimesi ayet içinde 'bilir' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "grammar_note": "Muzari (geniş/şimdiki zaman) fiil, 3. tekil eril. Mâzîsi عَلِمَ; ي öneki 'o' öznesini gösterir.",
     "frequency": 382
   },
   {
@@ -82,7 +82,7 @@ export const words: Word[] = [
     "memory_hint": "İman ve güven bağlantısı kur.",
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
-    "grammar_note": "آمَنُوا kelimesi ayet içinde 'iman ettiler' anlam alanıyla kullanılır. Kelime türü: fiil.",
+    "grammar_note": "IV. bab (أَفْعَلَ) mâzî, 3. çoğul eril: آمَنَ + ـُوا. Sondaki elif yazılır ama okunmaz.",
     "frequency": 258
   },
   {
@@ -96,7 +96,7 @@ export const words: Word[] = [
     "memory_hint": "Yeryüzünü düşün.",
     "example_arabic": "وَالْأَرْضَ",
     "example_turkish": "Ve yeri.",
-    "grammar_note": "الْأَرْضَ kelimesi ayet içinde 'yer / yeryüzü' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Dişil isim; burada mansuptur (üstün): fiilin nesnesi olduğu için الْأَرْضَ. Çoğulu nadiren أَرَضُون.",
     "frequency": 461
   },
   {
@@ -110,7 +110,7 @@ export const words: Word[] = [
     "memory_hint": "Yukarıdaki geniş göğü düşün.",
     "example_arabic": "السَّمَاءِ",
     "example_turkish": "Göğün.",
-    "grammar_note": "السَّمَاء kelimesi ayet içinde 'gök / sema' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Hem eril hem dişil kullanılabilen isim; çoğulu سَمَاوَات. Sondaki hemze kökteki و harfinden dönüşmüştür.",
     "frequency": 120
   },
   {
@@ -138,7 +138,7 @@ export const words: Word[] = [
     "memory_hint": "Bilgi ve öğrenme çağrışımı kur.",
     "example_arabic": "عِلْمًا",
     "example_turkish": "Bir bilgi olarak.",
-    "grammar_note": "عِلْم kelimesi ayet içinde 'ilim / bilgi' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar (fiil ismi): عَلِمَ fiilinden. Kur'an'da hem 'bilgi' hem 'bilme' anlamında; عَالِم (bilen) ve عَلِيم aynı köktendir.",
     "frequency": 105
   },
   {
@@ -152,7 +152,7 @@ export const words: Word[] = [
     "memory_hint": "Şükür ve övgü duygusunu düşün.",
     "example_arabic": "الْحَمْدُ لِلَّهِ",
     "example_turkish": "Hamd Allah’a mahsustur.",
-    "grammar_note": "الْحَمْدُ kelimesi ayet içinde 'hamd / övgü / şükür' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar; ال ile cins/istiğrak anlamı taşır: 'bütün övgüler'. Cümlede mübtedâ (merfu, ötre) konumundadır.",
     "frequency": 38
   },
   {
@@ -166,7 +166,7 @@ export const words: Word[] = [
     "memory_hint": "Yetiştiren ve terbiye eden anlamıyla bağ kur.",
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
-    "grammar_note": "رَبِّ kelimesi ayet içinde 'Rab / terbiye eden' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "رَبّ isminin izafet hâli: tamlanan olduğu için ال almaz ve esre ile okunur (رَبِّ الْعَالَمِينَ).",
     "frequency": 975
   },
   {
@@ -180,7 +180,7 @@ export const words: Word[] = [
     "memory_hint": "Birçok âlemi düşün.",
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
-    "grammar_note": "الْعَالَمِينَ kelimesi ayet içinde 'âlemler' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "عَالَم kelimesinin cem‘-i müzekker sâlim (ـِينَ) çoğulu; mecrur/mansup hâlde ـِينَ, merfu hâlde ـُونَ olur.",
     "frequency": 73
   },
   {
@@ -194,7 +194,7 @@ export const words: Word[] = [
     "memory_hint": "Hesap ve sorumluluk çağrışımı kur.",
     "example_arabic": "يَوْمِ الدِّينِ",
     "example_turkish": "Din günü.",
-    "grammar_note": "الدِّينِ kelimesi ayet içinde 'din / hesap / karşılık' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar; Fatiha'da يَوْم ile izafet kurar: يَوْمِ الدِّينِ = hesap/ceza günü. Tamlayan olduğu için mecrurdur.",
     "frequency": 92
   },
   {
@@ -208,7 +208,7 @@ export const words: Word[] = [
     "memory_hint": "Öne doğru uzanan aydınlık yolu düşün.",
     "example_arabic": "صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol.",
-    "grammar_note": "صِرَاطٍ kelimesi ayet içinde 'yol' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Belirsiz (tenvinli) isim; sıfatı مُسْتَقِيمٍ ile aynı hâl ve belirlilikte uyum gösterir. Belirli hâli: الصِّرَاطَ.",
     "frequency": 45
   },
   {
@@ -222,7 +222,7 @@ export const words: Word[] = [
     "memory_hint": "Düz çizgi gibi istikametli düşün.",
     "example_arabic": "صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol.",
-    "grammar_note": "مُسْتَقِيمٍ kelimesi ayet içinde 'dosdoğru' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "grammar_note": "X. bab (اسْتَفْعَلَ) ism-i fâili: 'dosdoğru duran'. صِرَاطٍ'ın sıfatıdır; ondan sonra gelir ve ona uyar.",
     "frequency": 34
   },
   {
@@ -236,7 +236,7 @@ export const words: Word[] = [
     "memory_hint": "Kat kat gökleri düşün.",
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
-    "grammar_note": "السَّمَاوَاتِ kelimesi ayet içinde 'gökler' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "سَمَاء kelimesinin cem‘-i müennes sâlim (ـَات) çoğulu; mansup hâlde de esre (ـَاتِ) alır.",
     "frequency": 190
   },
   {
@@ -250,7 +250,7 @@ export const words: Word[] = [
     "memory_hint": "Bir insan grubunu işaret ettiğini düşün.",
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
-    "grammar_note": "الَّذِينَ kelimesi eril çoğul ism-i mevsûldür (ilgi zamiri). 'Kim ki / onlar ki' anlamında kullanılır. Dişil çoğul karşılığı اللَّاتِي'dir.",
+    "grammar_note": "İsm-i mevsûl (ilgi zamiri), eril çoğul: 'o kimseler ki'. Tekili الَّذِي, dişili الَّتِي; ardından gelen cümle (sıla) onu açıklar.",
     "frequency": 980
   },
   {
@@ -275,10 +275,10 @@ export const words: Word[] = [
     "turkish_meaning": "hidayet / doğru yol gösterme",
     "root": "ه-د-ي",
     "part_of_speech": "isim",
-    "memory_hint": "Yol gösteren ışığı düşün.",
+    "memory_hint": "Hûdâ — 'doğru yolu gösteren ışık'; Fatiha'daki ihdinâ duası aynı kökten.",
     "example_arabic": "هُدًى لِلْمُتَّقِينَ",
     "example_turkish": "Takva sahipleri için hidayet.",
-    "grammar_note": "هُدًى kelimesi ayet içinde 'hidayet / doğru yol gösterme' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar; sonu elif-i maksûre ile biter, tenvin üstünde gösterilir (هُدًى). هَدَى (hidayet etti) fiilinin ismidir.",
     "frequency": 98
   },
   {
@@ -292,7 +292,7 @@ export const words: Word[] = [
     "memory_hint": "Kuşatan merhamet duygusu kur.",
     "example_arabic": "رَحْمَةً",
     "example_turkish": "Bir rahmet olarak.",
-    "grammar_note": "رَحْمَة kelimesi ayet içinde 'rahmet / merhamet' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar, dişil (ة). رَحْمَٰن ve رَحِيم aynı kökten türer; Besmeledeki iki ilahi isim bu kökün iki yoğunluk derecesidir.",
     "frequency": 79
   },
   {
@@ -306,7 +306,7 @@ export const words: Word[] = [
     "memory_hint": "Yeşil, huzurlu bahçeyi düşün.",
     "example_arabic": "فِي جَنَّةٍ",
     "example_turkish": "Bir cennette.",
-    "grammar_note": "جَنَّة kelimesi ayet içinde 'cennet / bahçe' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Dişil isim; kökü ج-ن-ن 'örtmek/gizlemek' anlamı taşır: ağaçlarla örtülü bahçe. Çoğulu جَنَّات.",
     "frequency": 147
   },
   {
@@ -320,7 +320,7 @@ export const words: Word[] = [
     "memory_hint": "Alev çağrışımı kur.",
     "example_arabic": "النَّارِ",
     "example_turkish": "Ateşin.",
-    "grammar_note": "نَار kelimesi ayet içinde 'ateş' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Dişil isim; kökteki و harfi elife dönüşmüştür (ن-و-ر). نُور (ışık) ile aynı köktendir: biri yakar, biri aydınlatır.",
     "frequency": 145
   },
   {
@@ -334,7 +334,7 @@ export const words: Word[] = [
     "memory_hint": "Ses dalgalarını düşün.",
     "example_arabic": "إِنَّهُ هُوَ السَّمِيعُ",
     "example_turkish": "Şüphesiz O işitendir.",
-    "grammar_note": "سَمِيع kelimesi ayet içinde 'işiten' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "grammar_note": "فَعِيل vezninde sıfat-ı müşebbehe: işitme sıfatı süreklidir. Kur'an'da çoğu kez عَلِيم veya بَصِير ile ikili gelir.",
     "frequency": 46
   },
   {
@@ -348,7 +348,7 @@ export const words: Word[] = [
     "memory_hint": "Görme ve ışık çağrışımı kur.",
     "example_arabic": "بَصِيرٌ",
     "example_turkish": "Görendir.",
-    "grammar_note": "بَصِير kelimesi ayet içinde 'gören' anlam alanıyla kullanılır. Kelime türü: sıfat.",
+    "grammar_note": "فَعِيل vezninde sıfat-ı müşebbehe; ayetlerde genellikle سَمِيع ile birlikte, ayet sonlarında gelir.",
     "frequency": 42
   },
   {
@@ -362,7 +362,7 @@ export const words: Word[] = [
     "memory_hint": "Hakikat terazisini düşün.",
     "example_arabic": "الْحَقُّ",
     "example_turkish": "Hak / gerçek.",
-    "grammar_note": "حَقّ kelimesi ayet içinde 'hak / gerçek / doğru' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar ve sıfat olarak kullanılır; zıddı بَاطِل. Şeddeli son harf (قّ) kökün aynı harften iki kez oluştuğunu gösterir.",
     "frequency": 247
   },
   {
@@ -376,7 +376,7 @@ export const words: Word[] = [
     "memory_hint": "Anlam taşıyan işareti düşün.",
     "example_arabic": "آيَةٌ",
     "example_turkish": "Bir ayet / işaret.",
-    "grammar_note": "آيَة kelimesi ayet içinde 'ayet / işaret / delil' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Dişil isim; çoğulu آيَات. Hem Kur'an ayeti hem evrendeki işaret/delil anlamına gelir.",
     "frequency": 382
   },
   {
@@ -390,7 +390,7 @@ export const words: Word[] = [
     "memory_hint": "Hatırlama ve tesbih çağrışımı kur.",
     "example_arabic": "ذِكْرُ اللَّهِ",
     "example_turkish": "Allah’ı anmak.",
-    "grammar_note": "ذِكْر kelimesi ayet içinde 'zikir / anma / hatırlama' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar; ذَكَرَ fiilinden. Kur'an'ın isimlerinden biridir (الذِّكْر). Tamlamada tamlanan olarak gelir: ذِكْرُ اللَّهِ.",
     "frequency": 292
   },
   {
@@ -404,7 +404,7 @@ export const words: Word[] = [
     "memory_hint": "Rüzgâra dayanan ağacı düşün.",
     "example_arabic": "وَاصْبِرْ",
     "example_turkish": "Sabret.",
-    "grammar_note": "صَبْر kelimesi ayet içinde 'sabır / dayanıklılık' anlam alanıyla kullanılır. Kelime türü: isim.",
+    "grammar_note": "Mastar; ص-ب-ر kökü 'tutmak/hapsetmek' anlamı taşır. Örnekteki وَاصْبِرْ aynı kökten emir fiilidir.",
     "frequency": 90
   },
   {
@@ -418,7 +418,7 @@ export const words: Word[] = [
     "memory_hint": "Bir yerden çıkışı düşün.",
     "example_arabic": "مِنَ الْجِنَّةِ وَالنَّاسِ",
     "example_turkish": "Cinlerden ve insanlardan.",
-    "grammar_note": "مِنْ kelimesi ayet içinde '-den / -dan' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "grammar_note": "Harf-i cer: arkasındaki ismi mecrur (esreli) yapar. ال'dan önce مِنَ şeklinde üstünle okunur.",
     "frequency": 3225
   },
   {
@@ -432,7 +432,7 @@ export const words: Word[] = [
     "memory_hint": "Bir şeyin içinde durduğunu hayal et.",
     "example_arabic": "فِي قُلُوبِهِمْ",
     "example_turkish": "Onların kalplerinde.",
-    "grammar_note": "فِي kelimesi ayet içinde 'içinde / -de / -da' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "grammar_note": "Harf-i cer: yer ve zaman içinde bulunmayı bildirir. Ek zamirle: فِيهِ (onda), فِيهِمْ (onlarda).",
     "frequency": 1704
   },
   {
@@ -446,7 +446,7 @@ export const words: Word[] = [
     "memory_hint": "Hedefe giden oku düşün.",
     "example_arabic": "إِلَى رَبِّكَ",
     "example_turkish": "Rabbine doğru.",
-    "grammar_note": "إِلَى kelimesi ayet içinde '-e / -a / doğru' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "grammar_note": "Harf-i cer: yön ve son nokta bildirir. Ek zamir alınca إِلَيْهِ (ona) şekline döner.",
     "frequency": 742
   },
   {
@@ -460,7 +460,7 @@ export const words: Word[] = [
     "memory_hint": "Bir şeyin üstünde durduğunu düşün.",
     "example_arabic": "عَلَى صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol üzerinde.",
-    "grammar_note": "عَلَى kelimesi ayet içinde 'üzerinde / üzerine' anlam alanıyla kullanılır. Kelime türü: harf-i cer.",
+    "grammar_note": "Harf-i cer: üstünde olma, yükümlülük ve aleyhte olma anlamları. Ek zamirle عَلَيْهِ / عَلَيْكُمْ.",
     "frequency": 1432
   },
   {
@@ -474,7 +474,7 @@ export const words: Word[] = [
     "memory_hint": "İki şeyi bağlayan köprü gibi düşün.",
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
-    "grammar_note": "وَ kelimesi ayet içinde 've' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
+    "grammar_note": "Atıf harfi; tek harftir ve sonraki kelimeye bitişik yazılır. Ayrıca yemin (وَالْعَصْرِ) ve hâl vavı olarak da kullanılır.",
     "frequency": 40000
   },
   {
@@ -488,7 +488,7 @@ export const words: Word[] = [
     "memory_hint": "Olumsuzluk işareti gibi düşün.",
     "example_arabic": "لَا رَيْبَ فِيهِ",
     "example_turkish": "Onda şüphe yoktur.",
-    "grammar_note": "لَا kelimesi ayet içinde 'hayır / yok / değil' anlam alanıyla kullanılır. Kelime türü: olumsuzluk edatı.",
+    "grammar_note": "Olumsuzluk harfi. لَا + isim: cinsi tamamen olumsuzlar (لَا رَيْبَ = hiç şüphe yok); لَا + muzari: olumsuz/yasak bildirir.",
     "frequency": 2243
   },
   {
@@ -499,11 +499,12 @@ export const words: Word[] = [
     "turkish_meaning": "ne / şey / değil",
     "root": null,
     "part_of_speech": "edat/zamir",
-    "memory_hint": "ne / şey / değil anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَا",
-    "example_turkish": "ne / şey / değil",
-    "grammar_note": "مَا kelimesi ayet içinde 'ne / şey / değil' anlam alanıyla kullanılır. Kelime türü: edat/zamir.",
-    "frequency": 2226
+    "memory_hint": "Mâ — 'ne?' diye sorar, 'ne varsa' diye kapsar; bağlama göre 'değil' de der.",
+    "example_arabic": "لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
+    "example_turkish": "Göklerde ne var, yerde ne varsa O'nundur.",
+    "grammar_note": "Çok işlevli: ism-i mevsûl ('şey ki'), soru ('ne?') ve olumsuzluk ('değil') olabilir. Burada mevsûldür: 'ne varsa'.",
+    "frequency": 2226,
+    "example_ref": "2:255"
   },
   {
     "id": 37,
@@ -513,11 +514,12 @@ export const words: Word[] = [
     "turkish_meaning": "o",
     "root": null,
     "part_of_speech": "zamir",
-    "memory_hint": "o anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "هُوَ",
-    "example_turkish": "o",
-    "grammar_note": "هُوَ kelimesi eril (müzekker) tekil şahıs zamiridir. 'O' (erkek veya cinsiyetsiz varlıklar için) anlamında kullanılır. Dişil karşılığı هِيَ'dir.",
-    "frequency": 706
+    "memory_hint": "Huve — Türkçe 'o' gibi; İhlas'ın ilk cümlesinde sesini duy: kul huvallâhu.",
+    "example_arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+    "example_turkish": "De ki: O, Allah'tır, tektir.",
+    "grammar_note": "Ayrık zamir, 3. tekil eril, merfu. Cümlenin başında mübtedâ olur; dişili هِيَ, çoğulu هُمْ.",
+    "frequency": 706,
+    "example_ref": "112:1"
   },
   {
     "id": 38,
@@ -527,11 +529,12 @@ export const words: Word[] = [
     "turkish_meaning": "o",
     "root": null,
     "part_of_speech": "zamir",
-    "memory_hint": "o anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "هِيَ",
-    "example_turkish": "o",
-    "grammar_note": "هِيَ kelimesi dişil (müennes) tekil şahıs zamiridir. 'O' (kadın veya dişil sayılan varlıklar için) anlamında kullanılır. Eril karşılığı هُوَ'dir.",
-    "frequency": 170
+    "memory_hint": "Hiye — dişil 'o'; Musa'nın asası (عَصَا) dişil olduğu için هِيَ ile anılır.",
+    "example_arabic": "قَالَ هِيَ عَصَايَ",
+    "example_turkish": "(Musa) dedi ki: Bu benim asamdır.",
+    "grammar_note": "Ayrık zamir, 3. tekil dişil. Arapçada cansız varlıkların da cinsiyeti vardır; عَصَا dişildir, bu yüzden هِيَ.",
+    "frequency": 170,
+    "example_ref": "20:18"
   },
   {
     "id": 39,
@@ -541,11 +544,12 @@ export const words: Word[] = [
     "turkish_meaning": "onlar",
     "root": null,
     "part_of_speech": "zamir",
-    "memory_hint": "onlar anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "هُمْ",
-    "example_turkish": "onlar",
-    "grammar_note": "هُمْ kelimesi eril (müzekker) çoğul şahıs zamiridir. 'Onlar' anlamında kullanılır. Karma ya da erkeklerden oluşan gruplar için kullanılır. Dişil çoğul karşılığı هُنَّ'dir.",
-    "frequency": 1088
+    "memory_hint": "Hum — 'hüm' diye kısa; çoğul 'onlar'. Ek hâli ـهُمْ: kalplerinde = فِي قُلُوبِهِمْ.",
+    "example_arabic": "وَأُولَئِكَ هُمُ الْمُفْلِحُونَ",
+    "example_turkish": "İşte kurtuluşa erenler onlardır.",
+    "grammar_note": "Ayrık zamir, 3. çoğul eril. Burada fasl zamiri: özne ile haberi ayırıp vurgu katar ('onlar ta kendileri').",
+    "frequency": 1088,
+    "example_ref": "2:5"
   },
   {
     "id": 40,
@@ -555,11 +559,12 @@ export const words: Word[] = [
     "turkish_meaning": "sen",
     "root": null,
     "part_of_speech": "zamir",
-    "memory_hint": "sen anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَنْتَ",
-    "example_turkish": "sen",
-    "grammar_note": "أَنْتَ kelimesi ayet içinde 'sen' anlam alanıyla kullanılır. Kelime türü: zamir.",
-    "frequency": 176
+    "memory_hint": "Ente — 'sen'; meleklerin Allah'a 'innake ente' diye hitabını hatırla.",
+    "example_arabic": "إِنَّكَ أَنتَ الْعَلِيمُ الْحَكِيمُ",
+    "example_turkish": "Şüphesiz sen her şeyi bilensin, hikmet sahibisin.",
+    "grammar_note": "Ayrık zamir, 2. tekil eril; dişili أَنْتِ, çoğulu أَنْتُمْ. Burada ek zamir كَ'yi pekiştirir.",
+    "frequency": 176,
+    "example_ref": "2:32"
   },
   {
     "id": 41,
@@ -569,11 +574,12 @@ export const words: Word[] = [
     "turkish_meaning": "biz",
     "root": null,
     "part_of_speech": "zamir",
-    "memory_hint": "biz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَحْنُ",
-    "example_turkish": "biz",
-    "grammar_note": "نَحْنُ kelimesi ayet içinde 'biz' anlam alanıyla kullanılır. Kelime türü: zamir.",
-    "frequency": 88
+    "memory_hint": "Nahnu — 'biz'; azamet çoğulu: Allah kendinden 'biz' diye söz eder.",
+    "example_arabic": "إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ",
+    "example_turkish": "Zikri (Kur'an'ı) şüphesiz biz indirdik.",
+    "grammar_note": "Ayrık zamir, 1. çoğul. Kur'an'da Allah için kullanıldığında saygı/azamet çoğuludur; fiil eki ـنَا ile uyumludur.",
+    "frequency": 88,
+    "example_ref": "15:9"
   },
   {
     "id": 42,
@@ -583,11 +589,12 @@ export const words: Word[] = [
     "turkish_meaning": "her / bütün",
     "root": "ك-ل-ل",
     "part_of_speech": "isim",
-    "memory_hint": "her / bütün anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كُلّ",
-    "example_turkish": "her / bütün",
-    "grammar_note": "كُلّ kelimesi ayet içinde 'her / bütün' anlam alanıyla kullanılır. Kelime türü: isim.",
-    "frequency": 384
+    "memory_hint": "Kull — 'külli' (bütün) kelimesi buradan; her şeyi kapsayan bir halka düşün.",
+    "example_arabic": "كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ",
+    "example_turkish": "Her can ölümü tadacaktır.",
+    "grammar_note": "İsimdir ve hep izafetle gelir: كُلُّ نَفْسٍ (her can), كُلُّ شَيْءٍ (her şey). Belirsiz tamlayanla 'her', belirliyle 'bütün' anlamı verir.",
+    "frequency": 384,
+    "example_ref": "3:185"
   },
   {
     "id": 43,
@@ -597,11 +604,12 @@ export const words: Word[] = [
     "turkish_meaning": "sonra",
     "root": "ب-ع-د",
     "part_of_speech": "zarf",
-    "memory_hint": "sonra anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَعْدَ",
-    "example_turkish": "sonra",
-    "grammar_note": "بَعْدَ zaman zarfıdır ve 'sonra, -den sonra' anlamını taşır. Bir isimle veya zamirle tamlaması olur: بَعْدَ الصَّلَاةِ (namazdan sonra). ثُمَّ'den farkı: zaman zarfıdır, bağlaç değil.",
-    "frequency": 176
+    "memory_hint": "Ba'de — 'ba'dehu' (bundan sonra); ok hep ileri, zaman sonrasını gösterir.",
+    "example_arabic": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا",
+    "example_turkish": "Rabbimiz! Bizi doğru yola ilettikten sonra kalplerimizi eğriltme.",
+    "grammar_note": "Zaman/mekân zarfı; tamlanan olarak gelir ve kendisi mansup (üstünlü) okunur. Zıddı قَبْلَ.",
+    "frequency": 176,
+    "example_ref": "3:8"
   },
   {
     "id": 44,
@@ -611,11 +619,12 @@ export const words: Word[] = [
     "turkish_meaning": "önce",
     "root": "ق-ب-ل",
     "part_of_speech": "zarf",
-    "memory_hint": "önce anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَبْلَ",
-    "example_turkish": "önce",
-    "grammar_note": "قَبْلَ kelimesi ayet içinde 'önce' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 149
+    "memory_hint": "Kable — 'kıble'yle karıştırma; 'önce' demek. Ok hep geriye.",
+    "example_arabic": "قَبْلَ طُلُوعِ الشَّمْسِ وَقَبْلَ الْغُرُوبِ",
+    "example_turkish": "Güneşin doğuşundan önce ve batışından önce.",
+    "grammar_note": "Zaman zarfı, mansup; arkasındaki isim tamlayan olarak mecrur olur (قَبْلَ طُلُوعِ). Zıddı بَعْدَ.",
+    "frequency": 149,
+    "example_ref": "50:39"
   },
   {
     "id": 45,
@@ -625,11 +634,12 @@ export const words: Word[] = [
     "turkish_meaning": "yanında / katında",
     "root": null,
     "part_of_speech": "zarf",
-    "memory_hint": "yanında / katında anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عِنْدَ",
-    "example_turkish": "yanında / katında",
-    "grammar_note": "عِنْدَ kelimesi ayet içinde 'yanında / katında' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 248
+    "memory_hint": "İnde — 'indallah' (Allah katında) ifadesinden tanırsın.",
+    "example_arabic": "مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ",
+    "example_turkish": "O'nun izni olmadan katında kim şefaat edebilir?",
+    "grammar_note": "Mekân/zaman zarfı; 'yanında, katında, -de' anlamı. Ek zamirle عِنْدَهُ (O'nun katında), عِنْدَنَا (bizim katımızda).",
+    "frequency": 248,
+    "example_ref": "2:255"
   },
   {
     "id": 46,
@@ -639,11 +649,12 @@ export const words: Word[] = [
     "turkish_meaning": "ile / beraber",
     "root": null,
     "part_of_speech": "zarf",
-    "memory_hint": "ile / beraber anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَعَ",
-    "example_turkish": "ile / beraber",
-    "grammar_note": "مَعَ kelimesi ayet içinde 'ile / beraber' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 179
+    "memory_hint": "Mea — 'beraber'; İnşirah'ın müjdesi: zorluğun yanında kolaylık.",
+    "example_arabic": "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+    "example_turkish": "Şüphesiz zorlukla beraber bir kolaylık vardır.",
+    "grammar_note": "Birliktelik zarfı, mansup; arkasındaki ismi tamlayan olarak mecrur yapar. Ek zamirle مَعَهُ, مَعَنَا.",
+    "frequency": 179,
+    "example_ref": "94:6"
   },
   {
     "id": 47,
@@ -653,11 +664,12 @@ export const words: Word[] = [
     "turkish_meaning": "arasında",
     "root": "ب-ي-ن",
     "part_of_speech": "zarf",
-    "memory_hint": "arasında anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَيْنَ",
-    "example_turkish": "arasında",
-    "grammar_note": "بَيْنَ kelimesi ayet içinde 'arasında' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 183
+    "memory_hint": "Beyne — iki şeyin 'beyninde' (arasında) dur.",
+    "example_arabic": "يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
+    "example_turkish": "Onların önlerindekini ve arkalarındakini bilir.",
+    "grammar_note": "Mekân zarfı, mansup. بَيْنَ أَيْدِي deyimi 'önünde/huzurunda' anlamına gelir.",
+    "frequency": 183,
+    "example_ref": "2:255"
   },
   {
     "id": 48,
@@ -667,11 +679,12 @@ export const words: Word[] = [
     "turkish_meaning": "altında",
     "root": null,
     "part_of_speech": "zarf",
-    "memory_hint": "altında anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "تَحْتَ",
-    "example_turkish": "altında",
-    "grammar_note": "تَحْتَ kelimesi ayet içinde 'altında' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 34
+    "memory_hint": "Tahte — 'taht'ın altı'; cennet tasvirlerinde ırmaklar hep تَحْت'tan akar.",
+    "example_arabic": "جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ",
+    "example_turkish": "Altlarından ırmaklar akan cennetler.",
+    "grammar_note": "Mekân zarfı; çoğu zaman مِنْ ile gelir ve o zaman mecrur olur: مِنْ تَحْتِهَا. Zıddı فَوْقَ.",
+    "frequency": 34,
+    "example_ref": "2:25"
   },
   {
     "id": 49,
@@ -681,11 +694,12 @@ export const words: Word[] = [
     "turkish_meaning": "üstünde",
     "root": "ف-و-ق",
     "part_of_speech": "zarf",
-    "memory_hint": "üstünde anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَوْقَ",
-    "example_turkish": "üstünde",
-    "grammar_note": "فَوْقَ kelimesi ayet içinde 'üstünde' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 23
+    "memory_hint": "Fevka — 'fevkalade' (olağanüstü) kelimesinden: olağanın üstünde.",
+    "example_arabic": "أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ",
+    "example_turkish": "Üstlerinde (uçan) kuşlara bakmazlar mı?",
+    "grammar_note": "Mekân zarfı, mansup; ek zamirle فَوْقَهُمْ. Mecazi olarak üstünlük de bildirir: فَوْقَ أَيْدِيهِمْ.",
+    "frequency": 23,
+    "example_ref": "67:19"
   },
   {
     "id": 50,
@@ -695,11 +709,12 @@ export const words: Word[] = [
     "turkish_meaning": "önünde",
     "root": "أ-م-م",
     "part_of_speech": "zarf",
-    "memory_hint": "önünde anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَمَامَ",
-    "example_turkish": "önünde",
-    "grammar_note": "أَمَامَ kelimesi ayet içinde 'önünde' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 5
+    "memory_hint": "Emâme — 'imam' en önde durur; أَمَام da 'ön' demek.",
+    "example_arabic": "بَلْ يُرِيدُ الْإِنسَانُ لِيَفْجُرَ أَمَامَهُ",
+    "example_turkish": "Bilakis insan, önündeki günlerde de günaha dalmak ister.",
+    "grammar_note": "Mekân zarfı, mansup; Kur'an'da tek yerde geçer. Daha sık kullanılan karşılığı بَيْنَ يَدَيْ (önünde).",
+    "frequency": 5,
+    "example_ref": "75:5"
   },
   {
     "id": 51,
@@ -709,11 +724,12 @@ export const words: Word[] = [
     "turkish_meaning": "arkasında",
     "root": "خ-ل-ف",
     "part_of_speech": "zarf",
-    "memory_hint": "arkasında anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَلْفَ",
-    "example_turkish": "arkasında",
-    "grammar_note": "خَلْفَ kelimesi ayet içinde 'arkasında' anlam alanıyla kullanılır. Kelime türü: zarf.",
-    "frequency": 9
+    "memory_hint": "Halfe — 'halef' (arkadan gelen); 'selef-halef' ikilisini düşün.",
+    "example_arabic": "لَّا يَأْتِيهِ الْبَاطِلُ مِنْ بَيْنِ يَدَيْهِ وَلَا مِنْ خَلْفِهِ",
+    "example_turkish": "Ona batıl ne önünden ne de arkasından gelebilir.",
+    "grammar_note": "Mekân zarfı; burada مِنْ ile mecrurdur. Kökü 'arkada kalmak, yerine geçmek' anlamı taşır: خَلِيفَة da buradan.",
+    "frequency": 9,
+    "example_ref": "41:42"
   },
   {
     "id": 52,
@@ -723,11 +739,12 @@ export const words: Word[] = [
     "turkish_meaning": "-e kadar / hatta",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "-e kadar / hatta anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَتَّى",
-    "example_turkish": "-e kadar / hatta",
-    "grammar_note": "حَتَّى kelimesi ayet içinde '-e kadar / hatta' anlam alanıyla kullanılır. Kelime türü: edat.",
-    "frequency": 244
+    "memory_hint": "Hattâ — Türkçedeki 'hatta' buradan; Arapçada asıl anlamı '-e kadar'.",
+    "example_arabic": "سَلَامٌ هِيَ حَتَّى مَطْلَعِ الْفَجْرِ",
+    "example_turkish": "O gece, tan yerinin ağarmasına kadar esenliktir.",
+    "grammar_note": "Harf-i cer olarak ismi mecrur yapar (حَتَّى مَطْلَعِ); fiilden önce 'ta ki' anlamında muzariyi mansup kılar.",
+    "frequency": 244,
+    "example_ref": "97:5"
   },
   {
     "id": 53,
@@ -737,11 +754,12 @@ export const words: Word[] = [
     "turkish_meaning": "sonra",
     "root": null,
     "part_of_speech": "bağlaç",
-    "memory_hint": "sonra anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ثُمَّ",
-    "example_turkish": "sonra",
-    "grammar_note": "ثُمَّ sıralama bağlacıdır ve eylemler arasındaki gecikme veya sıralı akışı anlatır. بَعْدَ'den farkı: iki cümleyi/fiili bağlar ve bir süreç sırasını/gecikmesini vurgular.",
-    "frequency": 337
+    "memory_hint": "Sümme — basamak basamak: önce bu, 'sonra' öteki.",
+    "example_arabic": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ",
+    "example_turkish": "Sonra, hayır! Yakında bileceksiniz.",
+    "grammar_note": "Atıf harfi; sıra ve aradaki zaman aralığını bildirir. فَ hemen ardından, ثُمَّ biraz sonra demektir.",
+    "frequency": 337,
+    "example_ref": "102:4"
   },
   {
     "id": 54,
@@ -751,11 +769,12 @@ export const words: Word[] = [
     "turkish_meaning": "veya",
     "root": null,
     "part_of_speech": "bağlaç",
-    "memory_hint": "veya anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَوْ",
-    "example_turkish": "veya",
-    "grammar_note": "أَوْ kelimesi ayet içinde 'veya' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
-    "frequency": 303
+    "memory_hint": "Ev — yol ikiye ayrılır: bu 'veya' şu.",
+    "example_arabic": "فَكَانَ قَابَ قَوْسَيْنِ أَوْ أَدْنَى",
+    "example_turkish": "(Aradaki mesafe) iki yay kadar, hatta daha da yakın oldu.",
+    "grammar_note": "Atıf harfi; seçenek ve şüphe bildirir. Bir şıkkı ekleyerek ilerler: 'ya da hatta'.",
+    "frequency": 303,
+    "example_ref": "53:9"
   },
   {
     "id": 55,
@@ -765,11 +784,12 @@ export const words: Word[] = [
     "turkish_meaning": "bilakis / aksine",
     "root": null,
     "part_of_speech": "bağlaç",
-    "memory_hint": "bilakis / aksine anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَلْ",
-    "example_turkish": "bilakis / aksine",
-    "grammar_note": "بَلْ kelimesi ayet içinde 'bilakis / aksine' anlam alanıyla kullanılır. Kelime türü: bağlaç.",
-    "frequency": 113
+    "memory_hint": "Bel — 'bilakis'; önceki sözü bir kalkanla durdurup yön değiştirir.",
+    "example_arabic": "بَلْ تُؤْثِرُونَ الْحَيَاةَ الدُّنْيَا",
+    "example_turkish": "Bilakis siz dünya hayatını tercih ediyorsunuz.",
+    "grammar_note": "İdrâb (yön değiştirme) harfi: önceki ifadeyi düzeltir veya ondan daha önemlisine geçer.",
+    "frequency": 113,
+    "example_ref": "87:16"
   },
   {
     "id": 56,
@@ -779,11 +799,12 @@ export const words: Word[] = [
     "turkish_meaning": "şüphesiz",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "şüphesiz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِنَّ",
-    "example_turkish": "şüphesiz",
-    "grammar_note": "إِنَّ cümle başında bağımsız bir cümleyi güçlendirir ve 'şüphesiz, gerçekten' anlamı katar. إِنَّ اللَّهَ غَفُورٌ → Şüphesiz Allah çok bağışlayandır. أَنَّ'den farkı: bağımsız cümlede kullanılır.",
-    "frequency": 1729
+    "memory_hint": "İnne — cümleye 'şüphesiz' mührü vurur; inne'llâhe kalıbını ezberle.",
+    "example_arabic": "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+    "example_turkish": "Şüphesiz Allah sabredenlerle beraberdir.",
+    "grammar_note": "Te'kid harfi: ismini mansup, haberini merfu yapar (اللَّهَ üstünlü). 'إنّ ve kardeşleri' grubunun başıdır.",
+    "frequency": 1729,
+    "example_ref": "2:153"
   },
   {
     "id": 57,
@@ -793,11 +814,12 @@ export const words: Word[] = [
     "turkish_meaning": "ki / şüphesiz",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "ki / şüphesiz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَنَّ",
-    "example_turkish": "ki / şüphesiz",
-    "grammar_note": "أَنَّ bir fiil veya ismin yönetimi altındaki bağımlı cümlelerde 'ki, -dığını' anlamı verir. عَلِمَ أَنَّ → '...olduğunu bildi' yapısındaki gibi. إِنَّ'den farkı: bağımlı/nesne cümlesinde kullanılır.",
-    "frequency": 411
+    "memory_hint": "Enne — 'ki'; cümleyi fiile bağlayan menteşe.",
+    "example_arabic": "أَلَمْ تَعْلَمْ أَنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "example_turkish": "Allah'ın her şeye gücü yettiğini bilmez misin?",
+    "grammar_note": "إِنَّ gibi ismini mansup yapar, ancak cümle ortasında gelir ve cümleyi mastara çevirir: 'Allah'ın kadir olduğunu'.",
+    "frequency": 411,
+    "example_ref": "2:106"
   },
   {
     "id": 58,
@@ -807,11 +829,12 @@ export const words: Word[] = [
     "turkish_meaning": "sanki",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "sanki anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَأَنَّ",
-    "example_turkish": "sanki",
-    "grammar_note": "كَأَنَّ kelimesi ayet içinde 'sanki' anlam alanıyla kullanılır. Kelime türü: edat.",
-    "frequency": 15
+    "memory_hint": "Keenne = كَ (gibi) + أَنَّ (ki): 'sanki'.",
+    "example_arabic": "كَأَنَّهُمْ جَرَادٌ مُّنتَشِرٌ",
+    "example_turkish": "Sanki onlar her yana yayılmış çekirgelerdir.",
+    "grammar_note": "إِنَّ'nin kardeşlerinden; teşbih bildirir. İsmini mansup yapar, ek zamirle: كَأَنَّهُمْ.",
+    "frequency": 15,
+    "example_ref": "54:7"
   },
   {
     "id": 59,
@@ -821,11 +844,12 @@ export const words: Word[] = [
     "turkish_meaning": "fakat",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "fakat anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَكِنَّ",
-    "example_turkish": "fakat",
-    "grammar_note": "لَكِنَّ kelimesi ayet içinde 'fakat' anlam alanıyla kullanılır. Kelime türü: edat.",
-    "frequency": 30
+    "memory_hint": "Lâkinne — 'lakin' (ama) kelimesi Türkçeye buradan geçti.",
+    "example_arabic": "وَلَكِنَّ أَكْثَرَ النَّاسِ لَا يَشْكُرُونَ",
+    "example_turkish": "Fakat insanların çoğu şükretmez.",
+    "grammar_note": "İstidrak harfi; إِنَّ'nin kardeşidir ve ismini mansup yapar (أَكْثَرَ). Şeddesiz لَكِنْ ise amel etmez.",
+    "frequency": 30,
+    "example_ref": "2:243"
   },
   {
     "id": 60,
@@ -835,11 +859,12 @@ export const words: Word[] = [
     "turkish_meaning": "değildir",
     "root": "ل-ي-س",
     "part_of_speech": "fiil",
-    "memory_hint": "değildir anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَيْسَ",
-    "example_turkish": "değildir",
-    "grammar_note": "لَيْسَ kelimesi ayet içinde 'değildir' anlam alanıyla kullanılır. Kelime türü: fiil.",
-    "frequency": 71
+    "memory_hint": "Leyse — 'yoktur, değildir'; tevhidin en kısa ifadesi: leyse kemislihî şey'.",
+    "example_arabic": "لَيْسَ كَمِثْلِهِ شَيْءٌ",
+    "example_turkish": "O'nun benzeri hiçbir şey yoktur.",
+    "grammar_note": "Câmid (çekimi eksik) nakıs fiil; كَانَ'nın kardeşlerindendir: ismini merfu, haberini mansup yapar. Sadece mâzî kalıbı vardır.",
+    "frequency": 71,
+    "example_ref": "42:11"
   },
   {
     "id": 61,
@@ -849,11 +874,12 @@ export const words: Word[] = [
     "turkish_meaning": "idi / oldu",
     "root": "ك-و-ن",
     "part_of_speech": "fiil",
-    "memory_hint": "idi / oldu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَانَ",
-    "example_turkish": "idi / oldu",
-    "grammar_note": "كَانَ kelimesi ayet içinde 'idi / oldu' anlam alanıyla kullanılır. Kelime türü: fiil.",
-    "frequency": 1358
+    "memory_hint": "Kâne — 'idi'; Allah için kullanıldığında 'öteden beri öyledir' anlamı taşır.",
+    "example_arabic": "وَكَانَ اللَّهُ عَلِيمًا حَكِيمًا",
+    "example_turkish": "Allah her şeyi bilendir, hikmet sahibidir.",
+    "grammar_note": "Nakıs fiil: ismini merfu (اللَّهُ), haberini mansup (عَلِيمًا) yapar. Allah'ın sıfatlarında süreklilik bildirir.",
+    "frequency": 1358,
+    "example_ref": "4:17"
   },
   {
     "id": 62,
@@ -863,11 +889,12 @@ export const words: Word[] = [
     "turkish_meaning": "olur / olmaktadır",
     "root": "ك-و-ن",
     "part_of_speech": "fiil",
-    "memory_hint": "olur / olmaktadır anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "يَكُونُ",
-    "example_turkish": "olur / olmaktadır",
-    "grammar_note": "يَكُونُ kelimesi ayet içinde 'olur / olmaktadır' anlam alanıyla kullanılır. Kelime türü: fiil.",
-    "frequency": 280
+    "memory_hint": "Yekûnu — 'kün feyekûn': 'Ol' der, o da olur.",
+    "example_arabic": "أَن يَقُولَ لَهُ كُن فَيَكُونُ",
+    "example_turkish": "Ona sadece 'Ol!' der, o da hemen oluverir.",
+    "grammar_note": "كَانَ fiilinin muzarisi; burada tam fiil olarak 'var olur' anlamındadır. Emri كُنْ (ol!).",
+    "frequency": 280,
+    "example_ref": "36:82"
   },
   {
     "id": 63,
@@ -877,11 +904,12 @@ export const words: Word[] = [
     "turkish_meaning": "elbette / -miş olabilir",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "elbette / -miş olabilir anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَدْ",
-    "example_turkish": "elbette / -miş olabilir",
-    "grammar_note": "قَدْ mazi fiil (geçmiş) ile kullanıldığında kesinlik (elbette yapmıştır) anlamı verir; muzari fiil (geniş/şimdiki) ile kullanıldığında ihtimal (belki yapar/-miş olabilir) anlamı katar. Kullanım bağlamı anlam farkını belirler.",
-    "frequency": 408
+    "memory_hint": "Kad — mâzîden önce 'kesinlikle oldu' damgası.",
+    "example_arabic": "قَدْ أَفْلَحَ الْمُؤْمِنُونَ",
+    "example_turkish": "Müminler gerçekten kurtuluşa ermiştir.",
+    "grammar_note": "Tahkik harfi: mâzîden önce kesinlik ve yakın geçmiş, muzariden önce 'bazen/olabilir' anlamı katar.",
+    "frequency": 408,
+    "example_ref": "23:1"
   },
   {
     "id": 64,
@@ -891,11 +919,12 @@ export const words: Word[] = [
     "turkish_meaning": "-ecek / -acak",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "-ecek / -acak anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَوْفَ",
-    "example_turkish": "-ecek / -acak",
-    "grammar_note": "سَوْفَ kelimesi ayet içinde '-ecek / -acak' anlam alanıyla kullanılır. Kelime türü: edat.",
-    "frequency": 74
+    "memory_hint": "Sevfe — geleceğe açılan kapı; kısası سَـ.",
+    "example_arabic": "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى",
+    "example_turkish": "Rabbin sana verecek, sen de hoşnut olacaksın.",
+    "grammar_note": "İstikbal harfi: muzariyi geleceğe yönlendirir. سَ yakın, سَوْفَ daha uzak gelecek için kullanılır.",
+    "frequency": 74,
+    "example_ref": "93:5"
   },
   {
     "id": 65,
@@ -905,11 +934,12 @@ export const words: Word[] = [
     "turkish_meaning": "-medi / -madı",
     "root": null,
     "part_of_speech": "olumsuzluk",
-    "memory_hint": "-medi / -madı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَمْ",
-    "example_turkish": "-medi / -madı",
-    "grammar_note": "لَمْ kelimesi ayet içinde '-medi / -madı' anlam alanıyla kullanılır. Kelime türü: olumsuzluk.",
-    "frequency": 634
+    "memory_hint": "Lem — muzariyi alır ama anlamı geçmişe çevirir: '-medi'.",
+    "example_arabic": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+    "example_turkish": "Doğurmamış ve doğurulmamıştır.",
+    "grammar_note": "Cezm harfi: muzariyi meczum (cezimli) yapar ve geçmiş zaman olumsuzu verir. يَلِدُ → لَمْ يَلِدْ.",
+    "frequency": 634,
+    "example_ref": "112:3"
   },
   {
     "id": 66,
@@ -919,11 +949,12 @@ export const words: Word[] = [
     "turkish_meaning": "asla -meyecek",
     "root": null,
     "part_of_speech": "olumsuzluk",
-    "memory_hint": "asla -meyecek anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَنْ",
-    "example_turkish": "asla -meyecek",
-    "grammar_note": "لَنْ kelimesi ayet içinde 'asla -meyecek' anlam alanıyla kullanılır. Kelime türü: olumsuzluk.",
-    "frequency": 77
+    "memory_hint": "Len — geleceği kesin olarak kapatır: 'asla -meyecek'.",
+    "example_arabic": "لَن تَنَالُوا الْبِرَّ حَتَّى تُنفِقُوا مِمَّا تُحِبُّونَ",
+    "example_turkish": "Sevdiğiniz şeylerden harcamadıkça iyiliğe asla erişemezsiniz.",
+    "grammar_note": "Nasb harfi: muzariyi mansup yapar ve geleceği kesin olumsuzlar. Çoğulda ن düşer: تَنَالُونَ → لَنْ تَنَالُوا.",
+    "frequency": 77,
+    "example_ref": "3:92"
   },
   {
     "id": 67,
@@ -933,11 +964,12 @@ export const words: Word[] = [
     "turkish_meaning": "eğer / şayet",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "eğer / şayet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَوْ",
-    "example_turkish": "eğer / şayet",
-    "grammar_note": "لَوْ gerçekleşmeyecek/imkânsız şart cümlelerinde kullanılır ('keşke olsaydı / eğer olsaydı' gibi). Ardından gelen fiil genellikle mazi kalıbındadır. إِنْ'den farkı: imkânsız/varsayımsal koşul bildirir.",
-    "frequency": 114
+    "memory_hint": "Lev — gerçekleşmemiş bir 'keşke/şayet' dünyası.",
+    "example_arabic": "لَوْ أَنزَلْنَا هَذَا الْقُرْآنَ عَلَى جَبَلٍ",
+    "example_turkish": "Eğer biz bu Kur'an'ı bir dağa indirseydik...",
+    "grammar_note": "Şart harfi; gerçekleşmemiş/varsayımsal şartlar için kullanılır ve genellikle mâzî fiil alır.",
+    "frequency": 114,
+    "example_ref": "59:21"
   },
   {
     "id": 68,
@@ -947,11 +979,12 @@ export const words: Word[] = [
     "turkish_meaning": "eğer",
     "root": null,
     "part_of_speech": "edat",
-    "memory_hint": "eğer anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِنْ",
-    "example_turkish": "eğer",
-    "grammar_note": "إِنْ gerçekleşmesi mümkün şart cümlelerinde kullanılır ('eğer yaparsa' gibi). Ardından gelen fiil genellikle meczum kalıbındadır. لَوْ'dan farkı: gerçekleşebilir koşul bildirir.",
-    "frequency": 667
+    "memory_hint": "İn — şart kapısı: 'eğer bunu yaparsan...'.",
+    "example_arabic": "إِن تَنصُرُوا اللَّهَ يَنصُرْكُمْ",
+    "example_turkish": "Eğer siz Allah'(ın dinin)e yardım ederseniz, O da size yardım eder.",
+    "grammar_note": "Şart edatı: şart ve cevap fiillerini meczum yapar (تَنْصُرُوا / يَنْصُرْكُمْ). Şeddeli إِنَّ ile karıştırma.",
+    "frequency": 667,
+    "example_ref": "47:7"
   },
   {
     "id": 69,
@@ -961,11 +994,12 @@ export const words: Word[] = [
     "turkish_meaning": "kim / kimse",
     "root": null,
     "part_of_speech": "soru/zamir",
-    "memory_hint": "kim / kimse anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَنْ",
-    "example_turkish": "kim / kimse",
-    "grammar_note": "مَنْ kelimesi ayet içinde 'kim / kimse' anlam alanıyla kullanılır. Kelime türü: soru/zamir.",
-    "frequency": 710
+    "memory_hint": "Men — insanlar için 'kim?'; eşyalar için مَا.",
+    "example_arabic": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+    "example_turkish": "Kim zerre ağırlığınca bir iyilik yaparsa onu görür.",
+    "grammar_note": "Akıllılar için kullanılan isim: soru ('kim?'), mevsûl ('kim ki') veya şart olabilir. Burada şarttır, fiilleri meczum yapar.",
+    "frequency": 710,
+    "example_ref": "99:7"
   },
   {
     "id": 70,
@@ -975,11 +1009,12 @@ export const words: Word[] = [
     "turkish_meaning": "ne zaman",
     "root": null,
     "part_of_speech": "soru",
-    "memory_hint": "ne zaman anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَتَى",
-    "example_turkish": "ne zaman",
-    "grammar_note": "مَتَى kelimesi ayet içinde 'ne zaman' anlam alanıyla kullanılır. Kelime türü: soru.",
-    "frequency": 17
+    "memory_hint": "Metâ — saate bakan soru: 'ne zaman?'.",
+    "example_arabic": "مَتَى نَصْرُ اللَّهِ",
+    "example_turkish": "Allah'ın yardımı ne zaman?",
+    "grammar_note": "Zaman soru ismi; cümlenin başında gelir. Şart edatı olarak da 'ne zaman ... ise' anlamı verir.",
+    "frequency": 17,
+    "example_ref": "2:214"
   },
   {
     "id": 71,
@@ -989,11 +1024,12 @@ export const words: Word[] = [
     "turkish_meaning": "nerede",
     "root": null,
     "part_of_speech": "soru",
-    "memory_hint": "nerede anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَيْنَ",
-    "example_turkish": "nerede",
-    "grammar_note": "أَيْنَ kelimesi ayet içinde 'nerede' anlam alanıyla kullanılır. Kelime türü: soru.",
-    "frequency": 26
+    "memory_hint": "Eyne — haritadaki iğne: 'nerede / nereye?'.",
+    "example_arabic": "فَأَيْنَ تَذْهَبُونَ",
+    "example_turkish": "Peki nereye gidiyorsunuz?",
+    "grammar_note": "Mekân soru ismi; mebnidir (hep üstünle biter). Önündeki فَ önceki söze bağlayarak 'peki' anlamı katar.",
+    "frequency": 26,
+    "example_ref": "81:26"
   },
   {
     "id": 72,
@@ -1003,25 +1039,27 @@ export const words: Word[] = [
     "turkish_meaning": "nasıl",
     "root": null,
     "part_of_speech": "soru",
-    "memory_hint": "nasıl anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَيْفَ",
-    "example_turkish": "nasıl",
-    "grammar_note": "كَيْفَ kelimesi ayet içinde 'nasıl' anlam alanıyla kullanılır. Kelime türü: soru.",
-    "frequency": 95
+    "memory_hint": "Keyfe — 'keyfiyet' (nasıllık) kelimesi buradan.",
+    "example_arabic": "أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ",
+    "example_turkish": "Deveye bakmazlar mı, nasıl yaratılmış?",
+    "grammar_note": "Hâl soran soru ismi, mebnidir. Kur'an'da çoğu zaman düşünmeye çağıran ünlem-soru olarak gelir.",
+    "frequency": 95,
+    "example_ref": "88:17"
   },
   {
     "id": 73,
     "level": 1,
-    "arabic": "لِمَاذَا",
-    "transliteration": "limâzâ",
-    "turkish_meaning": "niçin",
+    "arabic": "لِمَ",
+    "transliteration": "lime",
+    "turkish_meaning": "niçin / neden",
     "root": null,
     "part_of_speech": "soru",
-    "memory_hint": "niçin anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لِمَاذَا",
-    "example_turkish": "niçin",
-    "grammar_note": "لِمَاذَا kelimesi ayet içinde 'niçin' anlam alanıyla kullanılır. Kelime türü: soru.",
-    "frequency": 4
+    "memory_hint": "Lime = لِ (için) + مَا (ne): 'ne için?' → 'niçin?'.",
+    "example_arabic": "لِمَ تَقُولُونَ مَا لَا تَفْعَلُونَ",
+    "example_turkish": "Yapmayacağınız şeyi niçin söylüyorsunuz?",
+    "grammar_note": "لِ harf-i ceri ile مَا soru isminin birleşimi; ceri alan مَا'nın elifi düşer: لِمَا → لِمَ. Kur'an'da 'niçin' için bu kullanılır.",
+    "frequency": 4,
+    "example_ref": "61:2"
   },
   {
     "id": 74,
@@ -1031,11 +1069,12 @@ export const words: Word[] = [
     "turkish_meaning": "mi / mı",
     "root": null,
     "part_of_speech": "soru edatı",
-    "memory_hint": "mi / mı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "هَلْ",
-    "example_turkish": "mi / mı",
-    "grammar_note": "هَلْ kelimesi ayet içinde 'mi / mı' anlam alanıyla kullanılır. Kelime türü: soru edatı.",
-    "frequency": 222
+    "memory_hint": "Hel — cümlenin başına 'mi?' sorusu ekler.",
+    "example_arabic": "هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ",
+    "example_turkish": "Her şeyi kuşatacak olanın haberi sana geldi mi?",
+    "grammar_note": "Evet/hayır sorusu harfidir; cümlenin başına gelir ve yapısını değiştirmez. أَ soru hemzesi de aynı işi görür.",
+    "frequency": 222,
+    "example_ref": "88:1"
   },
   {
     "id": 75,
@@ -1045,11 +1084,12 @@ export const words: Word[] = [
     "turkish_meaning": "hangi",
     "root": null,
     "part_of_speech": "soru",
-    "memory_hint": "hangi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَيّ",
-    "example_turkish": "hangi",
-    "grammar_note": "أَيّ kelimesi ayet içinde 'hangi' anlam alanıyla kullanılır. Kelime türü: soru.",
-    "frequency": 88
+    "memory_hint": "Eyy — 'hangisi?'; Rahman suresinde 31 kez tekrar eden nakaratı hatırla.",
+    "example_arabic": "فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ",
+    "example_turkish": "Öyleyse Rabbinizin hangi nimetlerini yalanlıyorsunuz?",
+    "grammar_note": "Soru ismi; hep izafetle gelir (أَيِّ آلَاءِ). Önündeki بِ harf-i ceri yüzünden mecrurdur.",
+    "frequency": 88,
+    "example_ref": "55:13"
   },
   {
     "id": 76,
@@ -1059,10 +1099,11 @@ export const words: Word[] = [
     "turkish_meaning": "kitap",
     "root": "ك-ت-ب",
     "part_of_speech": "isim",
-    "memory_hint": "kitap anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "الْكِتَاب",
-    "example_turkish": "kitap",
-    "grammar_note": "الْكِتَاب belirli artıcı (ال) ile kullanılmıştır: 'o kitap / Kitap'. Kur'an bağlamında çoğunlukla Kur'an'ın veya kutsal kitabın özel adı olarak kullanılır. Belirsiz hali كِتَابٌ'dır. Kök: ك-ت-ب (yazmak)."
+    "memory_hint": "El-Kitâb — ال ile 'o bilinen Kitap': Kur'an.",
+    "example_arabic": "ذَلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ",
+    "example_turkish": "İşte o Kitap; onda hiç şüphe yoktur.",
+    "grammar_note": "كِتَاب isminin ال ile belirli hâli. Kur'an'da çoğunlukla Kur'an'ı veya önceki ilahi kitapları kasteder; ehl-i kitap deyimi buradan.",
+    "example_ref": "2:2"
   },
   {
     "id": 77,
@@ -1072,10 +1113,11 @@ export const words: Word[] = [
     "turkish_meaning": "kitap",
     "root": "ك-ت-ب",
     "part_of_speech": "isim",
-    "memory_hint": "kitap anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كِتَاب",
-    "example_turkish": "kitap",
-    "grammar_note": "كِتَاب belirsiz haldedir: 'bir kitap'. Bağlama göre herhangi bir kitap veya yazılı metin anlamına gelir. Belirli hali الْكِتَاب'dır. Kök: ك-ت-ب (yazmak). كَتَبَ fiilinden türemiştir."
+    "memory_hint": "Kitâb — 'kitabe' (yazıt) ve 'kâtip' ile aynı aile: k-t-b = yazmak.",
+    "example_arabic": "كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ",
+    "example_turkish": "(Bu,) sana indirdiğimiz mübarek bir kitaptır.",
+    "grammar_note": "فِعَال vezninde isim; tenvinli hâli belirsizdir ('bir kitap'). Çoğulu كُتُب; كَتَبَ (yazdı) fiilinden türer.",
+    "example_ref": "38:29"
   },
   {
     "id": 78,
@@ -1085,10 +1127,11 @@ export const words: Word[] = [
     "turkish_meaning": "Kur’an / okuma",
     "root": "ق-ر-أ",
     "part_of_speech": "isim",
-    "memory_hint": "Kur’an / okuma anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قُرْآن",
-    "example_turkish": "Kur’an / okuma",
-    "grammar_note": "قُرْآن kelimesi ayet içinde 'Kur’an / okuma' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kur'ân — 'okunan'; ilk emir de 'ikra' (oku) idi.",
+    "example_arabic": "إِنَّ هَذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ",
+    "example_turkish": "Şüphesiz bu Kur'an en doğru olana iletir.",
+    "grammar_note": "فُعْلَان vezninde mastar: 'okuma' → 'çokça okunan kitap'. قَرَأَ fiilinden türer.",
+    "example_ref": "17:9"
   },
   {
     "id": 79,
@@ -1098,10 +1141,11 @@ export const words: Word[] = [
     "turkish_meaning": "elçi",
     "root": "ر-س-ل",
     "part_of_speech": "isim",
-    "memory_hint": "elçi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَسُول",
-    "example_turkish": "elçi",
-    "grammar_note": "رَسُول kelimesi ayet içinde 'elçi' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Resûl — mesajı taşıyan elçi; 'irsal' (gönderme) ile aynı kök.",
+    "example_arabic": "وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ",
+    "example_turkish": "Muhammed ancak bir elçidir.",
+    "grammar_note": "فَعُول vezninde isim: 'gönderilmiş'. Çoğulu رُسُل. أَرْسَلَ (gönderdi) fiiliyle aynı köktendir.",
+    "example_ref": "3:144"
   },
   {
     "id": 80,
@@ -1111,10 +1155,11 @@ export const words: Word[] = [
     "turkish_meaning": "peygamber",
     "root": "ن-ب-و",
     "part_of_speech": "isim",
-    "memory_hint": "peygamber anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَبِيّ",
-    "example_turkish": "peygamber",
-    "grammar_note": "نَبِيّ kelimesi ayet içinde 'peygamber' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nebiyy — 'nebe' (haber) getiren: gaybdan haber veren.",
+    "example_arabic": "يَا أَيُّهَا النَّبِيُّ حَسْبُكَ اللَّهُ",
+    "example_turkish": "Ey Peygamber! Allah sana yeter.",
+    "grammar_note": "فَعِيل vezninde isim; çoğulu أَنْبِيَاء ve نَبِيُّون. Kökü ن-ب-أ (haber) ile ilişkilendirilir.",
+    "example_ref": "8:64"
   },
   {
     "id": 81,
@@ -1124,10 +1169,11 @@ export const words: Word[] = [
     "turkish_meaning": "melek",
     "root": "م-ل-ك",
     "part_of_speech": "isim",
-    "memory_hint": "melek anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَلَك",
-    "example_turkish": "melek",
-    "grammar_note": "مَلَك kelimesi ayet içinde 'melek' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Melek — kanatlı haberci; çoğulu 'melâike'.",
+    "example_arabic": "وَلَا أَقُولُ لَكُمْ إِنِّي مَلَكٌ",
+    "example_turkish": "Size 'Ben bir meleğim' de demiyorum.",
+    "grammar_note": "İsim; çoğulu مَلَائِكَة. Harekesi farklı olan مَلِك (hükümdar) ve مُلْك (mülk) ile karıştırılmamalı.",
+    "example_ref": "6:50"
   },
   {
     "id": 82,
@@ -1137,10 +1183,11 @@ export const words: Word[] = [
     "turkish_meaning": "şeytan",
     "root": "ش-ط-ن",
     "part_of_speech": "isim",
-    "memory_hint": "şeytan anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَيْطَان",
-    "example_turkish": "şeytan",
-    "grammar_note": "شَيْطَان kelimesi ayet içinde 'şeytan' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şeytân — haktan 'uzaklaşan'; 'şetn' kökü uzaklık bildirir.",
+    "example_arabic": "وَلَا تَتَّبِعُوا خُطُوَاتِ الشَّيْطَانِ",
+    "example_turkish": "Şeytanın adımlarına uymayın.",
+    "grammar_note": "فَيْعَال vezninde isim; çoğulu شَيَاطِين. ال ile cins anlamında 'şeytan' kavramını bildirir.",
+    "example_ref": "2:168"
   },
   {
     "id": 83,
@@ -1150,10 +1197,11 @@ export const words: Word[] = [
     "turkish_meaning": "İblis",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "İblis anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِبْلِيس",
-    "example_turkish": "İblis",
-    "grammar_note": "إِبْلِيس kelimesi ayet içinde 'İblis' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "İblîs — secdeyi reddeden; büyüklenmenin sembolü.",
+    "example_arabic": "فَسَجَدُوا إِلَّا إِبْلِيسَ أَبَى وَاسْتَكْبَرَ",
+    "example_turkish": "İblis hariç hepsi secde etti; o diretti ve büyüklendi.",
+    "grammar_note": "Özel isim; gayr-i munsarif olduğu için tenvin almaz ve mecrur hâlde de üstünle okunur. Kökeninin yabancı olduğu da söylenir.",
+    "example_ref": "2:34"
   },
   {
     "id": 84,
@@ -1163,10 +1211,11 @@ export const words: Word[] = [
     "turkish_meaning": "Âdem",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Âdem anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "آدَم",
-    "example_turkish": "Âdem",
-    "grammar_note": "آدَم kelimesi ayet içinde 'Âdem' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Âdem — ilk insan; 'Âdemoğlu' (beni Âdem) bütün insanlık.",
+    "example_arabic": "وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا",
+    "example_turkish": "Ve Âdem'e bütün isimleri öğretti.",
+    "grammar_note": "Özel isim; gayr-i munsarif, tenvin almaz. Burada عَلَّمَ fiilinin birinci nesnesi olarak mansuptur.",
+    "example_ref": "2:31"
   },
   {
     "id": 85,
@@ -1176,10 +1225,11 @@ export const words: Word[] = [
     "turkish_meaning": "Musa",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Musa anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مُوسَى",
-    "example_turkish": "Musa",
-    "grammar_note": "مُوسَى kelimesi ayet içinde 'Musa' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Mûsâ — 'Kelîmullah'; Allah'la konuşan peygamber.",
+    "example_arabic": "وَكَلَّمَ اللَّهُ مُوسَى تَكْلِيمًا",
+    "example_turkish": "Allah Musa ile gerçekten konuştu.",
+    "grammar_note": "Özel isim; sonu elif-i maksûre olduğundan hâl ekleri görünmez (takdiri i'rab). Kur'an'da en çok anılan peygamberdir.",
+    "example_ref": "4:164"
   },
   {
     "id": 86,
@@ -1189,10 +1239,11 @@ export const words: Word[] = [
     "turkish_meaning": "İsa",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "İsa anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عِيسَى",
-    "example_turkish": "İsa",
-    "grammar_note": "عِيسَى kelimesi ayet içinde 'İsa' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Îsâ — babasız doğan peygamber; Âdem'le karşılaştırılır.",
+    "example_arabic": "إِنَّ مَثَلَ عِيسَى عِندَ اللَّهِ كَمَثَلِ آدَمَ",
+    "example_turkish": "Allah katında İsa'nın durumu, Âdem'in durumu gibidir.",
+    "grammar_note": "Özel isim; Kur'an'da genellikle ابْنُ مَرْيَمَ (Meryem oğlu) ile anılır. Sonu elif-i maksûre olduğu için i'rab takdiridir.",
+    "example_ref": "3:59"
   },
   {
     "id": 87,
@@ -1202,10 +1253,11 @@ export const words: Word[] = [
     "turkish_meaning": "İbrahim",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "İbrahim anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِبْرَاهِيم",
-    "example_turkish": "İbrahim",
-    "grammar_note": "إِبْرَاهِيم kelimesi ayet içinde 'İbrahim' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "İbrâhîm — 'Halîlullah' (Allah'ın dostu); Kâbe'nin kurucusu.",
+    "example_arabic": "وَاتَّخَذَ اللَّهُ إِبْرَاهِيمَ خَلِيلًا",
+    "example_turkish": "Allah İbrahim'i dost edindi.",
+    "grammar_note": "Yabancı kökenli özel isim; gayr-i munsarif. Burada اتَّخَذَ fiilinin nesnesi olarak mansuptur.",
+    "example_ref": "4:125"
   },
   {
     "id": 88,
@@ -1215,10 +1267,11 @@ export const words: Word[] = [
     "turkish_meaning": "Nuh",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Nuh anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نُوح",
-    "example_turkish": "Nuh",
-    "grammar_note": "نُوح kelimesi ayet içinde 'Nuh' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Nûh — gemi ve tufan; 950 yıl davet.",
+    "example_arabic": "إِنَّا أَرْسَلْنَا نُوحًا إِلَى قَوْمِهِ",
+    "example_turkish": "Biz Nuh'u kavmine gönderdik.",
+    "grammar_note": "Üç harfli ve ortası sakin yabancı isim olduğu için tenvin alabilir (نُوحًا). Kur'an'da adını taşıyan bir sure vardır.",
+    "example_ref": "71:1"
   },
   {
     "id": 89,
@@ -1228,10 +1281,11 @@ export const words: Word[] = [
     "turkish_meaning": "Muhammed",
     "root": "ح-م-د",
     "part_of_speech": "özel isim",
-    "memory_hint": "Muhammed anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مُحَمَّد",
-    "example_turkish": "Muhammed",
-    "grammar_note": "مُحَمَّد kelimesi ayet içinde 'Muhammed' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Muhammed — 'çokça övülen'; hamd ile aynı kök.",
+    "example_arabic": "مُّحَمَّدٌ رَّسُولُ اللَّهِ",
+    "example_turkish": "Muhammed, Allah'ın elçisidir.",
+    "grammar_note": "II. bab (فَعَّلَ) ism-i mef'ûlü: 'defalarca övülmüş'. Özel isim olarak tenvin alır (مُحَمَّدٌ).",
+    "example_ref": "48:29"
   },
   {
     "id": 90,
@@ -1241,10 +1295,11 @@ export const words: Word[] = [
     "turkish_meaning": "Yusuf",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Yusuf anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "يُوسُف",
-    "example_turkish": "Yusuf",
-    "grammar_note": "يُوسُف kelimesi ayet içinde 'Yusuf' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Yûsuf — 'kıssaların en güzeli' onun suresinde.",
+    "example_arabic": "إِذْ قَالَ يُوسُفُ لِأَبِيهِ",
+    "example_turkish": "Hani Yusuf babasına demişti ki...",
+    "grammar_note": "Yabancı kökenli özel isim, gayr-i munsarif. Burada قَالَ fiilinin öznesi olarak merfudur.",
+    "example_ref": "12:4"
   },
   {
     "id": 91,
@@ -1254,10 +1309,11 @@ export const words: Word[] = [
     "turkish_meaning": "Meryem",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Meryem anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَرْيَم",
-    "example_turkish": "Meryem",
-    "grammar_note": "مَرْيَم kelimesi ayet içinde 'Meryem' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Meryem — Kur'an'da adıyla anılan tek kadın.",
+    "example_arabic": "يَا مَرْيَمُ إِنَّ اللَّهَ اصْطَفَاكِ",
+    "example_turkish": "Ey Meryem! Şüphesiz Allah seni seçti.",
+    "grammar_note": "Özel isim; nida (يَا) ile ötreli gelir: يَا مَرْيَمُ. Ek zamir كِ dişil 'seni' anlamındadır.",
+    "example_ref": "3:42"
   },
   {
     "id": 92,
@@ -1267,10 +1323,11 @@ export const words: Word[] = [
     "turkish_meaning": "Firavun",
     "root": null,
     "part_of_speech": "özel isim",
-    "memory_hint": "Firavun anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فِرْعَوْن",
-    "example_turkish": "Firavun",
-    "grammar_note": "فِرْعَوْن kelimesi ayet içinde 'Firavun' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Fir'avn — azgınlığın sembolü; Mısır hükümdarlarının unvanı.",
+    "example_arabic": "اذْهَبْ إِلَى فِرْعَوْنَ إِنَّهُ طَغَى",
+    "example_turkish": "Firavun'a git; çünkü o azdı.",
+    "grammar_note": "Yabancı kökenli unvan/özel isim; gayr-i munsarif olduğundan إِلَى'dan sonra da üstünle okunur.",
+    "example_ref": "20:24"
   },
   {
     "id": 93,
@@ -1280,10 +1337,11 @@ export const words: Word[] = [
     "turkish_meaning": "toplum / kavim",
     "root": "ق-و-م",
     "part_of_speech": "isim",
-    "memory_hint": "toplum / kavim anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَوْم",
-    "example_turkish": "toplum / kavim",
-    "grammar_note": "قَوْم kelimesi ayet içinde 'toplum / kavim' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kavm — 'kıyam' ile aynı kök: birlikte ayağa kalkan topluluk.",
+    "example_arabic": "إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا بِأَنفُسِهِمْ",
+    "example_turkish": "Bir toplum kendini değiştirmedikçe Allah onların durumunu değiştirmez.",
+    "grammar_note": "Topluluk ismi; çoğulu أَقْوَام. Ek zamirle قَوْمِهِ (onun kavmi) şeklinde peygamber kıssalarında sık geçer.",
+    "example_ref": "13:11"
   },
   {
     "id": 94,
@@ -1293,10 +1351,11 @@ export const words: Word[] = [
     "turkish_meaning": "aile / halk",
     "root": "أ-ه-ل",
     "part_of_speech": "isim",
-    "memory_hint": "aile / halk anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَهْل",
-    "example_turkish": "aile / halk",
-    "grammar_note": "أَهْل kelimesi ayet içinde 'aile / halk' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ehl — 'ehil' (yetkin) ve 'ehali' (halk) buradan.",
+    "example_arabic": "قُلْ يَا أَهْلَ الْكِتَابِ",
+    "example_turkish": "De ki: Ey Kitap ehli!",
+    "grammar_note": "İsim; hep izafetle gelir: أَهْلُ الْكِتَابِ (kitap ehli), أَهْلُ الْبَيْتِ (ev halkı). Nida ile mansup: يَا أَهْلَ.",
+    "example_ref": "3:64"
   },
   {
     "id": 95,
@@ -1306,10 +1365,11 @@ export const words: Word[] = [
     "turkish_meaning": "oğulları",
     "root": "ب-ن-و",
     "part_of_speech": "isim",
-    "memory_hint": "oğulları anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَنُو",
-    "example_turkish": "oğulları",
-    "grammar_note": "بَنُو kelimesi ayet içinde 'oğulları' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Benû — 'oğulları'; 'Benî İsrail' kalıbından tanırsın.",
+    "example_arabic": "يَا بَنِي آدَمَ خُذُوا زِينَتَكُمْ",
+    "example_turkish": "Ey Âdemoğulları! (Mescide giderken) süslerinizi alın.",
+    "grammar_note": "ابْن kelimesinin cem'-i müzekker sâlim çoğulu; merfu بَنُو, mansup/mecrur بَنِي. İzafette sondaki ن düşer.",
+    "example_ref": "7:31"
   },
   {
     "id": 96,
@@ -1319,10 +1379,11 @@ export const words: Word[] = [
     "turkish_meaning": "oğul",
     "root": "ب-ن-و",
     "part_of_speech": "isim",
-    "memory_hint": "oğul anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ابْن",
-    "example_turkish": "oğul",
-    "grammar_note": "ابْن kelimesi ayet içinde 'oğul' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "İbn — 'İbn Sina, İbn Haldun': '... oğlu'.",
+    "example_arabic": "ذَلِكَ عِيسَى ابْنُ مَرْيَمَ",
+    "example_turkish": "İşte Meryem oğlu İsa budur.",
+    "grammar_note": "İsim; başındaki hemze vasl hemzesidir, ortada okunmaz. Çoğulu أَبْنَاء ve بَنُون.",
+    "example_ref": "19:34"
   },
   {
     "id": 97,
@@ -1332,10 +1393,11 @@ export const words: Word[] = [
     "turkish_meaning": "kız evlat",
     "root": "ب-ن-و",
     "part_of_speech": "isim",
-    "memory_hint": "kız evlat anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بِنْت",
-    "example_turkish": "kız evlat",
-    "grammar_note": "بِنْت kelimesi ayet içinde 'kız evlat' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Bint — 'kız evlat'; ibn'in dişil karşılığı.",
+    "example_arabic": "وَمَرْيَمَ ابْنَتَ عِمْرَانَ",
+    "example_turkish": "Ve İmran kızı Meryem'i (örnek verdi).",
+    "grammar_note": "İsim; çoğulu بَنَات. Kur'an'da vasl hemzeli ابْنَة şekli de geçer (ابْنَتَ عِمْرَانَ).",
+    "example_ref": "66:12"
   },
   {
     "id": 98,
@@ -1345,10 +1407,11 @@ export const words: Word[] = [
     "turkish_meaning": "baba",
     "root": "أ-ب-و",
     "part_of_speech": "isim",
-    "memory_hint": "baba anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَب",
-    "example_turkish": "baba",
-    "grammar_note": "أَب kelimesi ayet içinde 'baba' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Eb — 'ebeveyn' (anne-baba) kelimesindeki 'eb'.",
+    "example_arabic": "إِذْ قَالَ لِأَبِيهِ يَا أَبَتِ",
+    "example_turkish": "Hani (İbrahim) babasına 'Babacığım!' demişti.",
+    "grammar_note": "Esmâ-i hamse'dendir: izafette hâl harfle gösterilir (أَبُوهُ / أَبَاهُ / أَبِيهِ). يَا أَبَتِ sevgi dolu hitaptır.",
+    "example_ref": "19:42"
   },
   {
     "id": 99,
@@ -1358,10 +1421,11 @@ export const words: Word[] = [
     "turkish_meaning": "anne",
     "root": "أ-م-م",
     "part_of_speech": "isim",
-    "memory_hint": "anne anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أُمّ",
-    "example_turkish": "anne",
-    "grammar_note": "أُمّ kelimesi ayet içinde 'anne' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ümm — 'Ümmü'l-Kur'an' (Fatiha): her şeyin anası/özü.",
+    "example_arabic": "وَأَوْحَيْنَا إِلَى أُمِّ مُوسَى",
+    "example_turkish": "Musa'nın annesine vahyettik.",
+    "grammar_note": "İsim; çoğulu أُمَّهَات. Mecazen 'asıl, kaynak' anlamı da taşır; أُمَّة (ümmet) aynı köktendir.",
+    "example_ref": "28:7"
   },
   {
     "id": 100,
@@ -1371,10 +1435,11 @@ export const words: Word[] = [
     "turkish_meaning": "kardeş",
     "root": "أ-خ-و",
     "part_of_speech": "isim",
-    "memory_hint": "kardeş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَخ",
-    "example_turkish": "kardeş",
-    "grammar_note": "أَخ kelimesi ayet içinde 'kardeş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ah — 'uhuvvet' (kardeşlik) ve 'ihvan' aynı kök.",
+    "example_arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ",
+    "example_turkish": "Müminler ancak kardeştir.",
+    "grammar_note": "Esmâ-i hamse'den; çoğulları إِخْوَة (soy kardeşi) ve إِخْوَان (din/dava kardeşi).",
+    "example_ref": "49:10"
   },
   {
     "id": 101,
@@ -1384,10 +1449,11 @@ export const words: Word[] = [
     "turkish_meaning": "eş",
     "root": "ز-و-ج",
     "part_of_speech": "isim",
-    "memory_hint": "eş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "زَوْج",
-    "example_turkish": "eş",
-    "grammar_note": "زَوْج kelimesi ayet içinde 'eş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Zevc — 'çift'; Türkçedeki 'zevce' buradan.",
+    "example_arabic": "اسْكُنْ أَنتَ وَزَوْجُكَ الْجَنَّةَ",
+    "example_turkish": "Sen ve eşin cennete yerleşin.",
+    "grammar_note": "İsim; hem erkek hem kadın için 'eş' anlamında kullanılır. Çoğulu أَزْوَاج; 'çift/tür' anlamı da vardır.",
+    "example_ref": "2:35"
   },
   {
     "id": 102,
@@ -1397,10 +1463,11 @@ export const words: Word[] = [
     "turkish_meaning": "çocuk",
     "root": "و-ل-د",
     "part_of_speech": "isim",
-    "memory_hint": "çocuk anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَلَد",
-    "example_turkish": "çocuk",
-    "grammar_note": "وَلَد kelimesi ayet içinde 'çocuk' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Veled — 'velâdet' (doğum) ve 'mevlid' aynı kök.",
+    "example_arabic": "مَا كَانَ لِلَّهِ أَن يَتَّخِذَ مِن وَلَدٍ",
+    "example_turkish": "Allah'ın çocuk edinmesi olacak şey değildir.",
+    "grammar_note": "İsim; tekil ve çoğul için kullanılabilir, çoğulu أَوْلَاد. وَلَدَ (doğurdu) fiilinden türer.",
+    "example_ref": "19:35"
   },
   {
     "id": 103,
@@ -1410,10 +1477,11 @@ export const words: Word[] = [
     "turkish_meaning": "adam",
     "root": "ر-ج-ل",
     "part_of_speech": "isim",
-    "memory_hint": "adam anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَجُل",
-    "example_turkish": "adam",
-    "grammar_note": "رَجُل kelimesi ayet içinde 'adam' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Racul — 'ricâl' (adamlar, devlet ricali) buradan.",
+    "example_arabic": "وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَى",
+    "example_turkish": "Şehrin en uzak ucundan bir adam koşarak geldi.",
+    "grammar_note": "İsim; çoğulu رِجَال. Burada جَاءَ fiilinin öznesi olarak merfu ve tenvinlidir (belirsiz: 'bir adam').",
+    "example_ref": "36:20"
   },
   {
     "id": 104,
@@ -1423,10 +1491,11 @@ export const words: Word[] = [
     "turkish_meaning": "kadın",
     "root": "م-ر-أ",
     "part_of_speech": "isim",
-    "memory_hint": "kadın anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "امْرَأَة",
-    "example_turkish": "kadın",
-    "grammar_note": "امْرَأَة kelimesi ayet içinde 'kadın' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "İmrae — mer' (kişi) kelimesinin dişili: 'kadın'.",
+    "example_arabic": "وَضَرَبَ اللَّهُ مَثَلًا لِّلَّذِينَ آمَنُوا امْرَأَتَ فِرْعَوْنَ",
+    "example_turkish": "Allah, iman edenlere Firavun'un karısını örnek gösterdi.",
+    "grammar_note": "Dişil isim; başında vasl hemzesi vardır. Kur'an'da izafette ة uzun ت ile yazılır: امْرَأَتَ فِرْعَوْنَ.",
+    "example_ref": "66:11"
   },
   {
     "id": 105,
@@ -1436,10 +1505,11 @@ export const words: Word[] = [
     "turkish_meaning": "kadınlar",
     "root": "ن-س-و",
     "part_of_speech": "isim",
-    "memory_hint": "kadınlar anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نِسَاء",
-    "example_turkish": "kadınlar",
-    "grammar_note": "نِسَاء kelimesi ayet içinde 'kadınlar' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nisâ — 4. surenin adı; kadın hakları suresi.",
+    "example_arabic": "وَآتُوا النِّسَاءَ صَدُقَاتِهِنَّ نِحْلَةً",
+    "example_turkish": "Kadınlara mehirlerini gönül hoşluğuyla verin.",
+    "grammar_note": "امْرَأَة'nın kendi kökünden olmayan çoğuludur (cem'-i mükesser gibi). Burada nesne olarak mansuptur.",
+    "example_ref": "4:4"
   },
   {
     "id": 106,
@@ -1449,10 +1519,11 @@ export const words: Word[] = [
     "turkish_meaning": "gün",
     "root": "ي-و-م",
     "part_of_speech": "isim",
-    "memory_hint": "gün anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "يَوْم",
-    "example_turkish": "gün",
-    "grammar_note": "يَوْم kelimesi ayet içinde 'gün' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Yevm — 'yevmiye' (günlük) kelimesinden hatırla.",
+    "example_arabic": "مَالِكِ يَوْمِ الدِّينِ",
+    "example_turkish": "Din gününün sahibi.",
+    "grammar_note": "İsim; çoğulu أَيَّام. Kur'an'da çoğu kez kıyamet gününü anlatan tamlamalarda tamlanan olarak gelir.",
+    "example_ref": "1:4"
   },
   {
     "id": 107,
@@ -1462,10 +1533,11 @@ export const words: Word[] = [
     "turkish_meaning": "gece",
     "root": "ل-ي-ل",
     "part_of_speech": "isim",
-    "memory_hint": "gece anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَيْل",
-    "example_turkish": "gece",
-    "grammar_note": "لَيْل kelimesi ayet içinde 'gece' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Leyl — 'Leyla' (gece güzeli) adı buradan.",
+    "example_arabic": "وَاللَّيْلِ إِذَا يَغْشَى",
+    "example_turkish": "Örttüğü zaman geceye andolsun.",
+    "grammar_note": "İsim; başındaki وَ yemin vavıdır ve ismi mecrur yapar. Tekil 'bir gece' için لَيْلَة (Kadir gecesi: لَيْلَةُ الْقَدْرِ).",
+    "example_ref": "92:1"
   },
   {
     "id": 108,
@@ -1475,10 +1547,11 @@ export const words: Word[] = [
     "turkish_meaning": "gündüz",
     "root": "ن-ه-ر",
     "part_of_speech": "isim",
-    "memory_hint": "gündüz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَهَار",
-    "example_turkish": "gündüz",
-    "grammar_note": "نَهَار kelimesi ayet içinde 'gündüz' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nehâr — 'nehir' gibi akan aydınlık; leyl'in karşıtı.",
+    "example_arabic": "وَالنَّهَارِ إِذَا تَجَلَّى",
+    "example_turkish": "Açılıp ağardığı zaman gündüze andolsun.",
+    "grammar_note": "İsim; Kur'an'da çoğu zaman اللَّيْل ile çift olarak gelir. Burada da yemin vavıyla mecrurdur.",
+    "example_ref": "92:2"
   },
   {
     "id": 109,
@@ -1488,10 +1561,11 @@ export const words: Word[] = [
     "turkish_meaning": "ay",
     "root": "ش-ه-ر",
     "part_of_speech": "isim",
-    "memory_hint": "ay anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَهْر",
-    "example_turkish": "ay",
-    "grammar_note": "شَهْر kelimesi ayet içinde 'ay' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şehr — hilalin 'şöhret' bulup görünmesiyle başlayan ay.",
+    "example_arabic": "شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ",
+    "example_turkish": "Ramazan ayı, Kur'an'ın indirildiği aydır.",
+    "grammar_note": "İsim; çoğulu أَشْهُر ve شُهُور. Gökteki ay ise قَمَر'dır; شَهْر takvim ayıdır.",
+    "example_ref": "2:185"
   },
   {
     "id": 110,
@@ -1501,10 +1575,11 @@ export const words: Word[] = [
     "turkish_meaning": "yıl",
     "root": "س-ن-و",
     "part_of_speech": "isim",
-    "memory_hint": "yıl anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَنَة",
-    "example_turkish": "yıl",
-    "grammar_note": "سَنَة kelimesi ayet içinde 'yıl' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Sene — Türkçede de 'sene': yıl.",
+    "example_arabic": "أَلْفَ سَنَةٍ مِّمَّا تَعُدُّونَ",
+    "example_turkish": "Sizin saydıklarınızdan bin yıl.",
+    "grammar_note": "Dişil isim; çoğulu سِنُون / سَنَوَات. Sayı ile temyiz olarak mecrur gelir: أَلْفَ سَنَةٍ.",
+    "example_ref": "32:5"
   },
   {
     "id": 111,
@@ -1512,12 +1587,13 @@ export const words: Word[] = [
     "arabic": "سَاعَة",
     "transliteration": "sâa",
     "turkish_meaning": "saat / kıyamet anı",
-    "root": null,
+    "root": "س-و-ع",
     "part_of_speech": "isim",
-    "memory_hint": "saat / kıyamet anı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَاعَة",
-    "example_turkish": "saat / kıyamet anı",
-    "grammar_note": "سَاعَة kelimesi ayet içinde 'saat / kıyamet anı' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Sâa — 'saat'; Kur'an'da çoğunlukla 'o saat' = kıyamet anı.",
+    "example_arabic": "اقْتَرَبَتِ السَّاعَةُ وَانشَقَّ الْقَمَرُ",
+    "example_turkish": "Kıyamet saati yaklaştı ve ay yarıldı.",
+    "grammar_note": "Dişil isim; ال ile 'o bilinen saat' yani kıyamet. Zaman ölçüsü anlamında 'bir an/süre' de olur.",
+    "example_ref": "54:1"
   },
   {
     "id": 112,
@@ -1527,10 +1603,11 @@ export const words: Word[] = [
     "turkish_meaning": "dünya / yakın hayat",
     "root": "د-ن-و",
     "part_of_speech": "isim",
-    "memory_hint": "dünya / yakın hayat anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دُنْيَا",
-    "example_turkish": "dünya / yakın hayat",
-    "grammar_note": "دُنْيَا kelimesi ayet içinde 'dünya / yakın hayat' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Dünyâ — 'en yakın' olan; ahiret ise sonraki.",
+    "example_arabic": "وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا مَتَاعُ الْغُرُورِ",
+    "example_turkish": "Dünya hayatı aldatıcı bir geçimlikten başka bir şey değildir.",
+    "grammar_note": "أَدْنَى'nın dişil üstünlük (ism-i tafdil) şeklidir: 'en yakın (hayat)'. Çoğu zaman الْحَيَاة'nın sıfatıdır.",
+    "example_ref": "57:20"
   },
   {
     "id": 113,
@@ -1540,10 +1617,11 @@ export const words: Word[] = [
     "turkish_meaning": "ahiret",
     "root": "أ-خ-ر",
     "part_of_speech": "isim",
-    "memory_hint": "ahiret anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "آخِرَة",
-    "example_turkish": "ahiret",
-    "grammar_note": "آخِرَة kelimesi ayet içinde 'ahiret' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Âhire — 'âhir' (son) ile aynı kök: son yurt.",
+    "example_arabic": "وَالْأخِرَةُ خَيْرٌ وَأَبْقَى",
+    "example_turkish": "Ahiret ise daha hayırlı ve daha kalıcıdır.",
+    "grammar_note": "ism-i fâil dişili: 'sonraki (hayat/yurt)'. Burada mübtedâdır; haberi خَيْرٌ.",
+    "example_ref": "87:17"
   },
   {
     "id": 114,
@@ -1553,10 +1631,11 @@ export const words: Word[] = [
     "turkish_meaning": "kıyamet",
     "root": "ق-و-م",
     "part_of_speech": "isim",
-    "memory_hint": "kıyamet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قِيَامَة",
-    "example_turkish": "kıyamet",
-    "grammar_note": "قِيَامَة kelimesi ayet içinde 'kıyamet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kıyâme — 'kıyam': herkesin ayağa kalkacağı gün.",
+    "example_arabic": "لَا أُقْسِمُ بِيَوْمِ الْقِيَامَةِ",
+    "example_turkish": "Kıyamet gününe yemin ederim.",
+    "grammar_note": "قَامَ fiilinden mastar; يَوْم ile izafetle gelir: يَوْمُ الْقِيَامَةِ. Kökteki و ي'ye dönüşmüştür.",
+    "example_ref": "75:1"
   },
   {
     "id": 115,
@@ -1566,10 +1645,11 @@ export const words: Word[] = [
     "turkish_meaning": "cehennem ateşi",
     "root": "ج-ح-م",
     "part_of_speech": "isim",
-    "memory_hint": "cehennem ateşi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَحِيم",
-    "example_turkish": "cehennem ateşi",
-    "grammar_note": "جَحِيم kelimesi ayet içinde 'cehennem ateşi' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Cahîm — alevi 'harlanmış' büyük ateş.",
+    "example_arabic": "لَتَرَوُنَّ الْجَحِيمَ",
+    "example_turkish": "Cehennemi mutlaka göreceksiniz.",
+    "grammar_note": "فَعِيل vezninde isim; cehennemin isimlerindendir. Burada nesne olarak mansuptur.",
+    "example_ref": "102:6"
   },
   {
     "id": 116,
@@ -1579,10 +1659,11 @@ export const words: Word[] = [
     "turkish_meaning": "Firdevs cenneti",
     "root": null,
     "part_of_speech": "isim",
-    "memory_hint": "Firdevs cenneti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فِرْدَوْس",
-    "example_turkish": "Firdevs cenneti",
-    "grammar_note": "فِرْدَوْس kelimesi ayet içinde 'Firdevs cenneti' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Firdevs — 'paradise' kelimesiyle akraba: en yüksek bahçe.",
+    "example_arabic": "كَانَتْ لَهُمْ جَنَّاتُ الْفِرْدَوْسِ نُزُلًا",
+    "example_turkish": "Firdevs cennetleri onlar için bir konak olacaktır.",
+    "grammar_note": "Yabancı (Farsça kökenli) isim, Arapça kökü yoktur. Cennetin en yüksek derecesini anlatır.",
+    "example_ref": "18:107"
   },
   {
     "id": 117,
@@ -1590,12 +1671,13 @@ export const words: Word[] = [
     "arabic": "رِزْق",
     "transliteration": "rizk",
     "turkish_meaning": "rızık",
-    "root": null,
+    "root": "ر-ز-ق",
     "part_of_speech": "isim",
-    "memory_hint": "rızık anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رِزْق",
-    "example_turkish": "rızık",
-    "grammar_note": "رِزْق kelimesi ayet içinde 'rızık' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Rızk — 'Rezzâk' (rızık veren) ismi aynı kökten.",
+    "example_arabic": "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا",
+    "example_turkish": "Yeryüzünde rızkı Allah'a ait olmayan hiçbir canlı yoktur.",
+    "grammar_note": "Mastar/isim; رَزَقَ fiilinden. Hem yiyecek hem her türlü nimet anlamında geniş kullanılır.",
+    "example_ref": "11:6"
   },
   {
     "id": 118,
@@ -1603,12 +1685,13 @@ export const words: Word[] = [
     "arabic": "مَال",
     "transliteration": "mâl",
     "turkish_meaning": "mal / servet",
-    "root": null,
+    "root": "م-و-ل",
     "part_of_speech": "isim",
-    "memory_hint": "mal / servet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَال",
-    "example_turkish": "mal / servet",
-    "grammar_note": "مَال kelimesi ayet içinde 'mal / servet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mâl — Türkçede de 'mal'; servet.",
+    "example_arabic": "الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا",
+    "example_turkish": "Mal ve oğullar dünya hayatının süsüdür.",
+    "grammar_note": "İsim; kökteki و elife dönüşmüştür. Çoğulu أَمْوَال; Kur'an'da sık sık أَنْفُس (canlar) ile birlikte geçer.",
+    "example_ref": "18:46"
   },
   {
     "id": 119,
@@ -1616,12 +1699,13 @@ export const words: Word[] = [
     "arabic": "بَيْت",
     "transliteration": "beyt",
     "turkish_meaning": "ev",
-    "root": null,
+    "root": "ب-ي-ت",
     "part_of_speech": "isim",
-    "memory_hint": "ev anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَيْت",
-    "example_turkish": "ev",
-    "grammar_note": "بَيْت kelimesi ayet içinde 'ev' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Beyt — 'Beytullah' (Kâbe) ve 'beyit' (şiir dizesi).",
+    "example_arabic": "فَلْيَعْبُدُوا رَبَّ هَذَا الْبَيْتِ",
+    "example_turkish": "Bu evin (Kâbe'nin) Rabbine kulluk etsinler.",
+    "grammar_note": "İsim; çoğulu بُيُوت. ال ile Kur'an'da çoğu kez Kâbe'yi kasteder (الْبَيْتُ الْحَرَامُ).",
+    "example_ref": "106:3"
   },
   {
     "id": 120,
@@ -1629,12 +1713,13 @@ export const words: Word[] = [
     "arabic": "بَلَد",
     "transliteration": "beled",
     "turkish_meaning": "şehir / belde",
-    "root": null,
+    "root": "ب-ل-د",
     "part_of_speech": "isim",
-    "memory_hint": "şehir / belde anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَلَد",
-    "example_turkish": "şehir / belde",
-    "grammar_note": "بَلَد kelimesi ayet içinde 'şehir / belde' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Beled — 'belediye' kelimesi buradan.",
+    "example_arabic": "لَا أُقْسِمُ بِهَذَا الْبَلَدِ",
+    "example_turkish": "Bu şehre yemin ederim.",
+    "grammar_note": "İsim; çoğulu بِلَاد. Burada Mekke'yi kasteder; işaret ismi هَذَا ile belirlenmiştir.",
+    "example_ref": "90:1"
   },
   {
     "id": 121,
@@ -1642,12 +1727,13 @@ export const words: Word[] = [
     "arabic": "قَرْيَة",
     "transliteration": "karye",
     "turkish_meaning": "köy / şehir",
-    "root": null,
+    "root": "ق-ر-ي",
     "part_of_speech": "isim",
-    "memory_hint": "köy / şehir anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَرْيَة",
-    "example_turkish": "köy / şehir",
-    "grammar_note": "قَرْيَة kelimesi ayet içinde 'köy / şehir' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Karye — 'karye' (köy) Osmanlıcada da vardı.",
+    "example_arabic": "وَضَرَبَ اللَّهُ مَثَلًا قَرْيَةً كَانَتْ آمِنَةً مُّطْمَئِنَّةً",
+    "example_turkish": "Allah, güven ve huzur içindeki bir şehri örnek verdi.",
+    "grammar_note": "Dişil isim; çoğulu قُرَى. Kur'an'da sadece köy değil, büyük şehirler için de kullanılır (أُمُّ الْقُرَى = Mekke).",
+    "example_ref": "16:112"
   },
   {
     "id": 122,
@@ -1655,12 +1741,13 @@ export const words: Word[] = [
     "arabic": "مَسْجِد",
     "transliteration": "mescid",
     "turkish_meaning": "mescit",
-    "root": null,
+    "root": "س-ج-د",
     "part_of_speech": "isim",
-    "memory_hint": "mescit anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَسْجِد",
-    "example_turkish": "mescit",
-    "grammar_note": "مَسْجِد kelimesi ayet içinde 'mescit' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mescid — 'secde edilen yer'.",
+    "example_arabic": "مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى",
+    "example_turkish": "Mescid-i Haram'dan Mescid-i Aksa'ya.",
+    "grammar_note": "مَفْعِل vezninde ism-i mekân: سَجَدَ (secde etti) fiilinden 'secde yeri'. Çoğulu مَسَاجِد.",
+    "example_ref": "17:1"
   },
   {
     "id": 123,
@@ -1668,12 +1755,13 @@ export const words: Word[] = [
     "arabic": "كَعْبَة",
     "transliteration": "ka‘be",
     "turkish_meaning": "Kâbe",
-    "root": null,
+    "root": "ك-ع-ب",
     "part_of_speech": "özel isim",
-    "memory_hint": "Kâbe anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَعْبَة",
-    "example_turkish": "Kâbe",
-    "grammar_note": "كَعْبَة kelimesi ayet içinde 'Kâbe' anlam alanıyla kullanılır. Kelime türü: özel isim."
+    "memory_hint": "Ka'be — 'küp' biçimli yapı; kök 'yükseklik, çıkıntı' bildirir.",
+    "example_arabic": "جَعَلَ اللَّهُ الْكَعْبَةَ الْبَيْتَ الْحَرَامَ قِيَامًا لِّلنَّاسِ",
+    "example_turkish": "Allah, Kâbe'yi, o saygın evi insanlar için bir dayanak kıldı.",
+    "grammar_note": "Dişil özel isim; Kur'an'da iki yerde adıyla geçer. Burada جَعَلَ fiilinin nesnesi olarak mansuptur.",
+    "example_ref": "5:97"
   },
   {
     "id": 124,
@@ -1681,12 +1769,13 @@ export const words: Word[] = [
     "arabic": "أَرْض",
     "transliteration": "ard",
     "turkish_meaning": "yer",
-    "root": null,
+    "root": "أ-ر-ض",
     "part_of_speech": "isim",
-    "memory_hint": "yer anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَرْض",
-    "example_turkish": "yer",
-    "grammar_note": "أَرْض kelimesi ayet içinde 'yer' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Arz — 'arz' (yeryüzü) ve 'arazi' buradan.",
+    "example_arabic": "هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا",
+    "example_turkish": "Yeryüzünü size boyun eğdiren O'dur.",
+    "grammar_note": "Dişil isim; Kur'an'da neredeyse hep ال ile gelir. جَعَلَ fiilinin birinci nesnesi olduğu için mansuptur.",
+    "example_ref": "67:15"
   },
   {
     "id": 125,
@@ -1694,25 +1783,27 @@ export const words: Word[] = [
     "arabic": "بَحْر",
     "transliteration": "bahr",
     "turkish_meaning": "deniz",
-    "root": null,
+    "root": "ب-ح-ر",
     "part_of_speech": "isim",
-    "memory_hint": "deniz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَحْر",
-    "example_turkish": "deniz",
-    "grammar_note": "بَحْر kelimesi ayet içinde 'deniz' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Bahr — 'Bahr-i Muhit' (okyanus); geniş su.",
+    "example_arabic": "قُل لَّوْ كَانَ الْبَحْرُ مِدَادًا لِّكَلِمَاتِ رَبِّي",
+    "example_turkish": "De ki: Rabbimin sözleri(ni yazmak) için deniz mürekkep olsaydı...",
+    "grammar_note": "İsim; çoğulu بِحَار ve أَبْحُر. Burada كَانَ fiilinin ismi olarak merfudur.",
+    "example_ref": "18:109"
   },
   {
     "id": 126,
     "level": 2,
     "arabic": "نَهَر",
-    "transliteration": "nehr",
+    "transliteration": "neher",
     "turkish_meaning": "nehir",
-    "root": null,
+    "root": "ن-ه-ر",
     "part_of_speech": "isim",
-    "memory_hint": "nehir anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَهَر",
-    "example_turkish": "nehir",
-    "grammar_note": "نَهَر kelimesi ayet içinde 'nehir' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Neher — 'nehir'; akıp giden su.",
+    "example_arabic": "إِنَّ الْمُتَّقِينَ فِي جَنَّاتٍ وَنَهَرٍ",
+    "example_turkish": "Takva sahipleri cennetlerde ve ırmaklar başındadır.",
+    "grammar_note": "İsim; نَهْر şeklinde de okunur. Çoğulu أَنْهَار ve cennet tasvirlerinde çok geçer. نَهَار (gündüz) ile aynı köktendir.",
+    "example_ref": "54:54"
   },
   {
     "id": 127,
@@ -1720,12 +1811,13 @@ export const words: Word[] = [
     "arabic": "جَبَل",
     "transliteration": "cebel",
     "turkish_meaning": "dağ",
-    "root": null,
+    "root": "ج-ب-ل",
     "part_of_speech": "isim",
-    "memory_hint": "dağ anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَبَل",
-    "example_turkish": "dağ",
-    "grammar_note": "جَبَل kelimesi ayet içinde 'dağ' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Cebel — 'Cebelitarık' (Tarık'ın dağı).",
+    "example_arabic": "وَلَكِنِ انظُرْ إِلَى الْجَبَلِ",
+    "example_turkish": "Fakat dağa bak.",
+    "grammar_note": "İsim; çoğulu جِبَال. إِلَى harf-i ceriyle mecrurdur.",
+    "example_ref": "7:143"
   },
   {
     "id": 128,
@@ -1733,12 +1825,13 @@ export const words: Word[] = [
     "arabic": "شَجَر",
     "transliteration": "şecer",
     "turkish_meaning": "ağaç",
-    "root": null,
+    "root": "ش-ج-ر",
     "part_of_speech": "isim",
-    "memory_hint": "ağaç anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَجَر",
-    "example_turkish": "ağaç",
-    "grammar_note": "شَجَر kelimesi ayet içinde 'ağaç' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şecer — 'şecere' (soy ağacı) buradan.",
+    "example_arabic": "وَالنَّجْمُ وَالشَّجَرُ يَسْجُدَانِ",
+    "example_turkish": "Bitkiler ve ağaçlar secde eder.",
+    "grammar_note": "Cins ismi: 'ağaçlar'; tek bir ağaç için شَجَرَة. Fiil ikil (يَسْجُدَانِ) çünkü iki özne var.",
+    "example_ref": "55:6"
   },
   {
     "id": 129,
@@ -1746,12 +1839,13 @@ export const words: Word[] = [
     "arabic": "ثَمَر",
     "transliteration": "semer",
     "turkish_meaning": "meyve",
-    "root": null,
+    "root": "ث-م-ر",
     "part_of_speech": "isim",
-    "memory_hint": "meyve anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ثَمَر",
-    "example_turkish": "meyve",
-    "grammar_note": "ثَمَر kelimesi ayet içinde 'meyve' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Semer — 'semere' (verim, sonuç) buradan.",
+    "example_arabic": "انظُرُوا إِلَى ثَمَرِهِ إِذَا أَثْمَرَ وَيَنْعِهِ",
+    "example_turkish": "Meyve verdiğinde meyvesine ve olgunlaşmasına bakın.",
+    "grammar_note": "Cins ismi; tekili ثَمَرَة, çoğulu ثَمَرَات. Aynı kökten أَثْمَرَ (meyve verdi) IV. bab fiildir.",
+    "example_ref": "6:99"
   },
   {
     "id": 130,
@@ -1759,12 +1853,13 @@ export const words: Word[] = [
     "arabic": "مَاء",
     "transliteration": "mâ",
     "turkish_meaning": "su",
-    "root": null,
+    "root": "م-و-ه",
     "part_of_speech": "isim",
-    "memory_hint": "su anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَاء",
-    "example_turkish": "su",
-    "grammar_note": "مَاء kelimesi ayet içinde 'su' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mâ' — 'mâ-i hayat' (hayat suyu).",
+    "example_arabic": "وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ",
+    "example_turkish": "Her canlı şeyi sudan meydana getirdik.",
+    "grammar_note": "İsim; kökteki ه hemzeye dönüşmüştür (çoğulu مِيَاه aslını gösterir). Harf-i cerle mecrur: مِنَ الْمَاءِ.",
+    "example_ref": "21:30"
   },
   {
     "id": 131,
@@ -1772,12 +1867,13 @@ export const words: Word[] = [
     "arabic": "رِيح",
     "transliteration": "rîh",
     "turkish_meaning": "rüzgâr",
-    "root": null,
+    "root": "ر-و-ح",
     "part_of_speech": "isim",
-    "memory_hint": "rüzgâr anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رِيح",
-    "example_turkish": "rüzgâr",
-    "grammar_note": "رِيح kelimesi ayet içinde 'rüzgâr' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Rîh — 'ruh' ile aynı kök: görünmez ama hissedilen nefes.",
+    "example_arabic": "وَأَمَّا عَادٌ فَأُهْلِكُوا بِرِيحٍ صَرْصَرٍ عَاتِيَةٍ",
+    "example_turkish": "Âd kavmi ise dondurucu, azgın bir rüzgârla helak edildi.",
+    "grammar_note": "Dişil isim; çoğulu رِيَاح. Kur'an'da tekil رِيح genellikle azap, çoğul رِيَاح rahmet rüzgârı için kullanılır.",
+    "example_ref": "69:6"
   },
   {
     "id": 132,
@@ -1785,12 +1881,13 @@ export const words: Word[] = [
     "arabic": "سَحَاب",
     "transliteration": "sehâb",
     "turkish_meaning": "bulut",
-    "root": null,
+    "root": "س-ح-ب",
     "part_of_speech": "isim",
-    "memory_hint": "bulut anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَحَاب",
-    "example_turkish": "bulut",
-    "grammar_note": "سَحَاب kelimesi ayet içinde 'bulut' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Sehâb — gökyüzünde 'sürüklenen' (sahb) bulut.",
+    "example_arabic": "وَالسَّحَابِ الْمُسَخَّرِ بَيْنَ السَّمَاءِ وَالْأَرْضِ",
+    "example_turkish": "Gökle yer arasında emre amade bulutlarda (ibretler vardır).",
+    "grammar_note": "Cins ismi: 'bulutlar'; sıfatı الْمُسَخَّر (boyun eğdirilmiş) ona uyar.",
+    "example_ref": "2:164"
   },
   {
     "id": 133,
@@ -1798,12 +1895,13 @@ export const words: Word[] = [
     "arabic": "مَطَر",
     "transliteration": "matar",
     "turkish_meaning": "yağmur",
-    "root": null,
+    "root": "م-ط-ر",
     "part_of_speech": "isim",
-    "memory_hint": "yağmur anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَطَر",
-    "example_turkish": "yağmur",
-    "grammar_note": "مَطَر kelimesi ayet içinde 'yağmur' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Matar — Kur'an'da çoğu kez azap yağmuru; rahmet yağmuru ise غَيْث.",
+    "example_arabic": "وَأَمْطَرْنَا عَلَيْهِم مَّطَرًا",
+    "example_turkish": "Üzerlerine (taştan) bir yağmur yağdırdık.",
+    "grammar_note": "İsim; aynı kökten أَمْطَرَ (yağdırdı). Burada mef'ûl-i mutlak gibi pekiştirme için gelmiştir.",
+    "example_ref": "26:173"
   },
   {
     "id": 134,
@@ -1811,12 +1909,13 @@ export const words: Word[] = [
     "arabic": "شَمْس",
     "transliteration": "şems",
     "turkish_meaning": "güneş",
-    "root": null,
+    "root": "ش-م-س",
     "part_of_speech": "isim",
-    "memory_hint": "güneş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَمْس",
-    "example_turkish": "güneş",
-    "grammar_note": "شَمْس kelimesi ayet içinde 'güneş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şems — 'Şems suresi'; güneş harfleri (ال okunmaz) bu kelimeyle adlandırılır.",
+    "example_arabic": "وَالشَّمْسِ وَضُحَاهَا",
+    "example_turkish": "Güneşe ve onun aydınlığına andolsun.",
+    "grammar_note": "Dişil isim; ال'ın lamı okunmaz (eş-şems) çünkü ش güneş harfidir. Yemin vavıyla mecrurdur.",
+    "example_ref": "91:1"
   },
   {
     "id": 135,
@@ -1824,12 +1923,13 @@ export const words: Word[] = [
     "arabic": "قَمَر",
     "transliteration": "kamer",
     "turkish_meaning": "ay",
-    "root": null,
+    "root": "ق-م-ر",
     "part_of_speech": "isim",
-    "memory_hint": "ay anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَمَر",
-    "example_turkish": "ay",
-    "grammar_note": "قَمَر kelimesi ayet içinde 'ay' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kamer — 'kameri takvim' (ay takvimi).",
+    "example_arabic": "وَالْقَمَرِ إِذَا تَلَاهَا",
+    "example_turkish": "Onu izlediği zaman aya andolsun.",
+    "grammar_note": "Eril isim; ال'ın lamı okunur (el-kamer) çünkü ق ay harfidir. Güneş/ay harfleri ayrımı buradan.",
+    "example_ref": "91:2"
   },
   {
     "id": 136,
@@ -1837,12 +1937,13 @@ export const words: Word[] = [
     "arabic": "نَجْم",
     "transliteration": "necm",
     "turkish_meaning": "yıldız",
-    "root": null,
+    "root": "ن-ج-م",
     "part_of_speech": "isim",
-    "memory_hint": "yıldız anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَجْم",
-    "example_turkish": "yıldız",
-    "grammar_note": "نَجْم kelimesi ayet içinde 'yıldız' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Necm — 'müneccim' (yıldızbilimci) aynı kök.",
+    "example_arabic": "وَالنَّجْمِ إِذَا هَوَى",
+    "example_turkish": "Battığı zaman yıldıza andolsun.",
+    "grammar_note": "İsim; çoğulu نُجُوم. 'Bölüm bölüm inme' anlamı da vardır; Kur'an'ın 'necm necm' indirilmesi buradan.",
+    "example_ref": "53:1"
   },
   {
     "id": 137,
@@ -1850,12 +1951,13 @@ export const words: Word[] = [
     "arabic": "طَيْر",
     "transliteration": "tayr",
     "turkish_meaning": "kuş",
-    "root": null,
+    "root": "ط-ي-ر",
     "part_of_speech": "isim",
-    "memory_hint": "kuş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "طَيْر",
-    "example_turkish": "kuş",
-    "grammar_note": "طَيْر kelimesi ayet içinde 'kuş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Tayr — 'tayyare' (uçak) buradan: uçan.",
+    "example_arabic": "وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ",
+    "example_turkish": "Üzerlerine sürü sürü kuşlar gönderdi.",
+    "grammar_note": "Cins ismi: 'kuşlar'; tekili طَائِر. Burada nesne olarak mansup ve tenvinlidir.",
+    "example_ref": "105:3"
   },
   {
     "id": 138,
@@ -1863,12 +1965,13 @@ export const words: Word[] = [
     "arabic": "دَابَّة",
     "transliteration": "dâbbe",
     "turkish_meaning": "canlı / hayvan",
-    "root": null,
+    "root": "د-ب-ب",
     "part_of_speech": "isim",
-    "memory_hint": "canlı / hayvan anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دَابَّة",
-    "example_turkish": "canlı / hayvan",
-    "grammar_note": "دَابَّة kelimesi ayet içinde 'canlı / hayvan' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Dâbbe — yerde 'kıpırdayarak yürüyen' her canlı.",
+    "example_arabic": "وَاللَّهُ خَلَقَ كُلَّ دَابَّةٍ مِّن مَّاءٍ",
+    "example_turkish": "Allah her canlıyı sudan yarattı.",
+    "grammar_note": "ism-i fâil dişili: 'yürüyen, kımıldayan'. Çoğulu دَوَابّ; insan dahil bütün canlıları kapsar.",
+    "example_ref": "24:45"
   },
   {
     "id": 139,
@@ -1876,12 +1979,13 @@ export const words: Word[] = [
     "arabic": "أَنْعَام",
     "transliteration": "en‘âm",
     "turkish_meaning": "hayvanlar",
-    "root": null,
+    "root": "ن-ع-م",
     "part_of_speech": "isim",
-    "memory_hint": "hayvanlar anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَنْعَام",
-    "example_turkish": "hayvanlar",
-    "grammar_note": "أَنْعَام kelimesi ayet içinde 'hayvanlar' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "En'âm — 'nimet' ile aynı kök: insana nimet olan evcil hayvanlar.",
+    "example_arabic": "وَالْأَنْعَامَ خَلَقَهَا لَكُمْ",
+    "example_turkish": "Hayvanları da sizin için yarattı.",
+    "grammar_note": "Çoğul isim (tekili نَعَم): deve, sığır, koyun, keçi. 6. surenin adıdır.",
+    "example_ref": "16:5"
   },
   {
     "id": 140,
@@ -1889,12 +1993,13 @@ export const words: Word[] = [
     "arabic": "خَيْر",
     "transliteration": "hayr",
     "turkish_meaning": "hayır / iyilik",
-    "root": null,
+    "root": "خ-ي-ر",
     "part_of_speech": "isim",
-    "memory_hint": "hayır / iyilik anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَيْر",
-    "example_turkish": "hayır / iyilik",
-    "grammar_note": "خَيْر kelimesi ayet içinde 'hayır / iyilik' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hayr — 'hayırlı olsun'; Türkçede de iyilik.",
+    "example_arabic": "لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ",
+    "example_turkish": "Kadir gecesi bin aydan daha hayırlıdır.",
+    "grammar_note": "Hem isim ('iyilik') hem tafdil ('daha hayırlı') olarak kullanılır; tafdilde مِنْ ile gelir.",
+    "example_ref": "97:3"
   },
   {
     "id": 141,
@@ -1902,12 +2007,13 @@ export const words: Word[] = [
     "arabic": "شَرّ",
     "transliteration": "şerr",
     "turkish_meaning": "kötülük",
-    "root": null,
+    "root": "ش-ر-ر",
     "part_of_speech": "isim",
-    "memory_hint": "kötülük anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَرّ",
-    "example_turkish": "kötülük",
-    "grammar_note": "شَرّ kelimesi ayet içinde 'kötülük' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şerr — 'şer'; hayrın karşıtı. Felak suresinde dört kez geçer.",
+    "example_arabic": "مِن شَرِّ مَا خَلَقَ",
+    "example_turkish": "Yarattığı şeylerin şerrinden.",
+    "grammar_note": "İsim; şeddeli ر kökün iki aynı harften oluştuğunu gösterir. Burada مِنْ ile mecrur ve tamlanandır.",
+    "example_ref": "113:2"
   },
   {
     "id": 142,
@@ -1915,12 +2021,13 @@ export const words: Word[] = [
     "arabic": "حَسَنَة",
     "transliteration": "hasene",
     "turkish_meaning": "iyilik",
-    "root": null,
+    "root": "ح-س-ن",
     "part_of_speech": "isim",
-    "memory_hint": "iyilik anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَسَنَة",
-    "example_turkish": "iyilik",
-    "grammar_note": "حَسَنَة kelimesi ayet içinde 'iyilik' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hasene — 'hüsn' (güzellik) ile aynı kök; 'Rabbena âtina' duası.",
+    "example_arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْأخِرَةِ حَسَنَةً",
+    "example_turkish": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver.",
+    "grammar_note": "Dişil sıfat/isim: 'güzel şey, iyilik'. Çoğulu حَسَنَات; zıddı سَيِّئَة.",
+    "example_ref": "2:201"
   },
   {
     "id": 143,
@@ -1928,12 +2035,13 @@ export const words: Word[] = [
     "arabic": "سَيِّئَة",
     "transliteration": "seyyie",
     "turkish_meaning": "kötülük / günah",
-    "root": null,
+    "root": "س-و-أ",
     "part_of_speech": "isim",
-    "memory_hint": "kötülük / günah anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَيِّئَة",
-    "example_turkish": "kötülük / günah",
-    "grammar_note": "سَيِّئَة kelimesi ayet içinde 'kötülük / günah' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Seyyie — 'sû-i' (kötü) kelimesindeki kök.",
+    "example_arabic": "وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُ",
+    "example_turkish": "İyilik ile kötülük bir olmaz.",
+    "grammar_note": "Dişil isim; çoğulu سَيِّئَات. Kökteki و ي'ye dönüşüp şeddelenmiştir.",
+    "example_ref": "41:34"
   },
   {
     "id": 144,
@@ -1941,12 +2049,13 @@ export const words: Word[] = [
     "arabic": "إِثْم",
     "transliteration": "ism",
     "turkish_meaning": "günah",
-    "root": null,
+    "root": "أ-ث-م",
     "part_of_speech": "isim",
-    "memory_hint": "günah anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِثْم",
-    "example_turkish": "günah",
-    "grammar_note": "إِثْم kelimesi ayet içinde 'günah' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "İsm — insanı yavaşlatan, geride bırakan günah.",
+    "example_arabic": "وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ",
+    "example_turkish": "Günah ve düşmanlık üzerine yardımlaşmayın.",
+    "grammar_note": "İsim; çoğu zaman 'kul hakkı ve sınırı aşma' anlamı taşıyan عُدْوَان ile birlikte gelir.",
+    "example_ref": "5:2"
   },
   {
     "id": 145,
@@ -1954,12 +2063,13 @@ export const words: Word[] = [
     "arabic": "ذَنْب",
     "transliteration": "zenb",
     "turkish_meaning": "günah",
-    "root": null,
+    "root": "ذ-ن-ب",
     "part_of_speech": "isim",
-    "memory_hint": "günah anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ذَنْب",
-    "example_turkish": "günah",
-    "grammar_note": "ذَنْب kelimesi ayet içinde 'günah' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Zenb — 'zeneb' (kuyruk) ile akraba: insanın peşinden gelen sonuç.",
+    "example_arabic": "غَافِرِ الذَّنْبِ وَقَابِلِ التَّوْبِ",
+    "example_turkish": "Günahı bağışlayan, tövbeyi kabul eden.",
+    "grammar_note": "İsim; çoğulu ذُنُوب. Burada غَافِر (bağışlayan) ile izafet kurar.",
+    "example_ref": "40:3"
   },
   {
     "id": 146,
@@ -1967,12 +2077,13 @@ export const words: Word[] = [
     "arabic": "تَوْبَة",
     "transliteration": "tevbe",
     "turkish_meaning": "tevbe",
-    "root": null,
+    "root": "ت-و-ب",
     "part_of_speech": "isim",
-    "memory_hint": "tevbe anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "تَوْبَة",
-    "example_turkish": "tevbe",
-    "grammar_note": "تَوْبَة kelimesi ayet içinde 'tevbe' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Tevbe — 'dönmek'; kul günahtan, Allah da affa döner.",
+    "example_arabic": "تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا",
+    "example_turkish": "Allah'a içten bir tövbeyle dönün.",
+    "grammar_note": "Mastar; تَابَ fiilinden. Burada تُوبُوا fiilinin mef'ûl-i mutlakıdır (pekiştirme).",
+    "example_ref": "66:8"
   },
   {
     "id": 147,
@@ -1980,12 +2091,13 @@ export const words: Word[] = [
     "arabic": "مَغْفِرَة",
     "transliteration": "mağfire",
     "turkish_meaning": "bağışlanma",
-    "root": null,
+    "root": "غ-ف-ر",
     "part_of_speech": "isim",
-    "memory_hint": "bağışlanma anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَغْفِرَة",
-    "example_turkish": "bağışlanma",
-    "grammar_note": "مَغْفِرَة kelimesi ayet içinde 'bağışlanma' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mağfiret — 'miğfer' gibi: günahı örtüp korur.",
+    "example_arabic": "وَسَارِعُوا إِلَى مَغْفِرَةٍ مِّن رَّبِّكُمْ",
+    "example_turkish": "Rabbinizden bir bağışlanmaya koşun.",
+    "grammar_note": "مَفْعِلَة vezninde mastar; kökün anlamı 'örtmek'. Çoğu zaman أَجْر veya رَحْمَة ile birlikte geçer.",
+    "example_ref": "3:133"
   },
   {
     "id": 148,
@@ -1993,12 +2105,13 @@ export const words: Word[] = [
     "arabic": "عَفْو",
     "transliteration": "afv",
     "turkish_meaning": "af",
-    "root": null,
+    "root": "ع-ف-و",
     "part_of_speech": "isim",
-    "memory_hint": "af anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَفْو",
-    "example_turkish": "af",
-    "grammar_note": "عَفْو kelimesi ayet içinde 'af' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Afv — 'af': izi tamamen silmek.",
+    "example_arabic": "خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ",
+    "example_turkish": "Affı tut, iyiliği emret.",
+    "grammar_note": "Mastar; Allah'ın isimlerinden الْعَفُوّ aynı köktendir. Kökün aslı 'silip yok etmek'.",
+    "example_ref": "7:199"
   },
   {
     "id": 149,
@@ -2006,12 +2119,13 @@ export const words: Word[] = [
     "arabic": "عَذَاب",
     "transliteration": "azâb",
     "turkish_meaning": "azap",
-    "root": null,
+    "root": "ع-ذ-ب",
     "part_of_speech": "isim",
-    "memory_hint": "azap anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَذَاب",
-    "example_turkish": "azap",
-    "grammar_note": "عَذَاب kelimesi ayet içinde 'azap' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Azâb — 'eziyet' çağrışımıyla hatırla.",
+    "example_arabic": "وَلَهُمْ عَذَابٌ عَظِيمٌ",
+    "example_turkish": "Onlar için büyük bir azap vardır.",
+    "grammar_note": "İsim/mastar; sıfatıyla birlikte sık gelir: عَذَابٌ عَظِيمٌ / أَلِيمٌ. Aynı kökten عَذَّبَ (azap etti).",
+    "example_ref": "2:7"
   },
   {
     "id": 150,
@@ -2019,12 +2133,13 @@ export const words: Word[] = [
     "arabic": "أَجْر",
     "transliteration": "ecr",
     "turkish_meaning": "ödül / karşılık",
-    "root": null,
+    "root": "أ-ج-ر",
     "part_of_speech": "isim",
-    "memory_hint": "ödül / karşılık anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَجْر",
-    "example_turkish": "ödül / karşılık",
-    "grammar_note": "أَجْر kelimesi ayet içinde 'ödül / karşılık' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ecr — 'ecir/ücret': emeğin karşılığı.",
+    "example_arabic": "إِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ",
+    "example_turkish": "Allah iyilik yapanların ecrini zayi etmez.",
+    "grammar_note": "İsim; çoğulu أُجُور. Burada يُضِيعُ fiilinin nesnesi olarak mansup ve tamlanandır.",
+    "example_ref": "9:120"
   },
   {
     "id": 151,
@@ -2032,12 +2147,13 @@ export const words: Word[] = [
     "arabic": "فَضْل",
     "transliteration": "fadl",
     "turkish_meaning": "lütuf / fazilet",
-    "root": null,
+    "root": "ف-ض-ل",
     "part_of_speech": "isim",
-    "memory_hint": "lütuf / fazilet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَضْل",
-    "example_turkish": "lütuf / fazilet",
-    "grammar_note": "فَضْل kelimesi ayet içinde 'lütuf / fazilet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Fazl — 'fazla' kelimesi buradan: hakkın üstüne verilen.",
+    "example_arabic": "ذَلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ",
+    "example_turkish": "Bu, Allah'ın lütfudur; onu dilediğine verir.",
+    "grammar_note": "İsim; 'üstünlük, ihsan' anlamı. Aynı kökten فَضَّلَ (üstün kıldı) ve أَفْضَل (daha üstün).",
+    "example_ref": "62:4"
   },
   {
     "id": 152,
@@ -2045,12 +2161,13 @@ export const words: Word[] = [
     "arabic": "نِعْمَة",
     "transliteration": "ni‘me",
     "turkish_meaning": "nimet",
-    "root": null,
+    "root": "ن-ع-م",
     "part_of_speech": "isim",
-    "memory_hint": "nimet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نِعْمَة",
-    "example_turkish": "nimet",
-    "grammar_note": "نِعْمَة kelimesi ayet içinde 'nimet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ni'met — 'nimet'; en'âm ve 'nam' (yumuşak) aynı kök.",
+    "example_arabic": "وَإِن تَعُدُّوا نِعْمَةَ اللَّهِ لَا تُحْصُوهَا",
+    "example_turkish": "Allah'ın nimetini saymaya kalksanız sayamazsınız.",
+    "grammar_note": "Dişil isim; çoğulu نِعَم ve أَنْعُم. Kur'an imlasında bazı yerlerde ت ile yazılır (نِعْمَتَ).",
+    "example_ref": "14:34"
   },
   {
     "id": 153,
@@ -2058,12 +2175,13 @@ export const words: Word[] = [
     "arabic": "شُكْر",
     "transliteration": "şükr",
     "turkish_meaning": "şükür",
-    "root": null,
+    "root": "ش-ك-ر",
     "part_of_speech": "isim",
-    "memory_hint": "şükür anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شُكْر",
-    "example_turkish": "şükür",
-    "grammar_note": "شُكْر kelimesi ayet içinde 'şükür' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şükr — nimeti görüp karşılığını vermek.",
+    "example_arabic": "اعْمَلُوا آلَ دَاوُدَ شُكْرًا",
+    "example_turkish": "Ey Davud ailesi! Şükretmek için çalışın.",
+    "grammar_note": "Mastar; burada 'şükür olarak/şükür için' anlamında mef'ûlün leh (sebep) olarak mansuptur.",
+    "example_ref": "34:13"
   },
   {
     "id": 154,
@@ -2071,12 +2189,13 @@ export const words: Word[] = [
     "arabic": "كُفْر",
     "transliteration": "küfr",
     "turkish_meaning": "inkâr",
-    "root": null,
+    "root": "ك-ف-ر",
     "part_of_speech": "isim",
-    "memory_hint": "inkâr anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كُفْر",
-    "example_turkish": "inkâr",
-    "grammar_note": "كُفْر kelimesi ayet içinde 'inkâr' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Küfr — 'örtmek': çiftçiye de tohumu örttüğü için kâfir denir.",
+    "example_arabic": "وَكَرَّهَ إِلَيْكُمُ الْكُفْرَ وَالْفُسُوقَ وَالْعِصْيَانَ",
+    "example_turkish": "İnkârı, yoldan çıkmayı ve isyanı size çirkin gösterdi.",
+    "grammar_note": "Mastar; كَفَرَ fiilinden. Hem 'inkâr' hem 'nankörlük' (nimeti örtme) anlamı vardır.",
+    "example_ref": "49:7"
   },
   {
     "id": 155,
@@ -2084,12 +2203,13 @@ export const words: Word[] = [
     "arabic": "إِيمَان",
     "transliteration": "îmân",
     "turkish_meaning": "iman",
-    "root": null,
+    "root": "أ-م-ن",
     "part_of_speech": "isim",
-    "memory_hint": "iman anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِيمَان",
-    "example_turkish": "iman",
-    "grammar_note": "إِيمَان kelimesi ayet içinde 'iman' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Îmân — 'emniyet' ile aynı kök: inanan güvene kavuşur.",
+    "example_arabic": "حَبَّبَ إِلَيْكُمُ الْإِيمَانَ وَزَيَّنَهُ فِي قُلُوبِكُمْ",
+    "example_turkish": "İmanı size sevdirdi ve onu kalplerinizde süsledi.",
+    "grammar_note": "IV. bab (أَفْعَلَ) mastarı: آمَنَ → إِيمَان. Kökün anlamı 'güven'.",
+    "example_ref": "49:7"
   },
   {
     "id": 156,
@@ -2097,12 +2217,13 @@ export const words: Word[] = [
     "arabic": "إِسْلَام",
     "transliteration": "islâm",
     "turkish_meaning": "İslam / teslimiyet",
-    "root": null,
+    "root": "س-ل-م",
     "part_of_speech": "isim",
-    "memory_hint": "İslam / teslimiyet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "إِسْلَام",
-    "example_turkish": "İslam / teslimiyet",
-    "grammar_note": "إِسْلَام kelimesi ayet içinde 'İslam / teslimiyet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "İslâm — 'selam' ve 'selamet' ile aynı kök: teslimiyetle gelen esenlik.",
+    "example_arabic": "إِنَّ الدِّينَ عِندَ اللَّهِ الْإِسْلَامُ",
+    "example_turkish": "Allah katında din İslam'dır.",
+    "grammar_note": "IV. bab mastarı: أَسْلَمَ → إِسْلَام. Burada إِنَّ'nin haberi olarak merfudur.",
+    "example_ref": "3:19"
   },
   {
     "id": 157,
@@ -2110,12 +2231,13 @@ export const words: Word[] = [
     "arabic": "تَقْوَى",
     "transliteration": "takvâ",
     "turkish_meaning": "takva / sakınma",
-    "root": null,
+    "root": "و-ق-ي",
     "part_of_speech": "isim",
-    "memory_hint": "takva / sakınma anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "تَقْوَى",
-    "example_turkish": "takva / sakınma",
-    "grammar_note": "تَقْوَى kelimesi ayet içinde 'takva / sakınma' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Takvâ — 'vikaye' (korunma) kökü: kendini korumaya almak.",
+    "example_arabic": "وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَى",
+    "example_turkish": "Azık edinin; azığın en hayırlısı takvadır.",
+    "grammar_note": "Mastar; kökün و harfi ت'ye dönüşmüştür (وَقْوَى → تَقْوَى). اتَّقَى fiili ve مُتَّقِي aynı köktendir.",
+    "example_ref": "2:197"
   },
   {
     "id": 158,
@@ -2123,12 +2245,13 @@ export const words: Word[] = [
     "arabic": "صَلَاة",
     "transliteration": "salât",
     "turkish_meaning": "namaz / dua",
-    "root": null,
+    "root": "ص-ل-و",
     "part_of_speech": "isim",
-    "memory_hint": "namaz / dua anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَلَاة",
-    "example_turkish": "namaz / dua",
-    "grammar_note": "صَلَاة kelimesi ayet içinde 'namaz / dua' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Salât — 'dua' ve 'bağlanma'; Rab ile kul arasında bağ.",
+    "example_arabic": "إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ",
+    "example_turkish": "Namaz hayasızlıktan ve kötülükten alıkoyar.",
+    "grammar_note": "Dişil isim; Kur'an imlasında صَلَوٰة şeklinde و ile yazılır. Çoğulu صَلَوَات.",
+    "example_ref": "29:45"
   },
   {
     "id": 159,
@@ -2136,12 +2259,13 @@ export const words: Word[] = [
     "arabic": "زَكَاة",
     "transliteration": "zekât",
     "turkish_meaning": "zekât",
-    "root": null,
+    "root": "ز-ك-و",
     "part_of_speech": "isim",
-    "memory_hint": "zekât anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "زَكَاة",
-    "example_turkish": "zekât",
-    "grammar_note": "زَكَاة kelimesi ayet içinde 'zekât' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Zekât — 'tezkiye' (arınma): malı arıtır ve artırır.",
+    "example_arabic": "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ",
+    "example_turkish": "Namazı kılın, zekâtı verin.",
+    "grammar_note": "Dişil isim; Kur'an imlasında زَكَوٰة şeklinde yazılır. Çoğu zaman صَلَاة ile birlikte gelir.",
+    "example_ref": "2:43"
   },
   {
     "id": 160,
@@ -2149,12 +2273,13 @@ export const words: Word[] = [
     "arabic": "صَوْم",
     "transliteration": "savm",
     "turkish_meaning": "oruç",
-    "root": null,
+    "root": "ص-و-م",
     "part_of_speech": "isim",
-    "memory_hint": "oruç anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَوْم",
-    "example_turkish": "oruç",
-    "grammar_note": "صَوْم kelimesi ayet içinde 'oruç' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Savm — 'kendini tutmak'; Meryem'in sessizlik orucu.",
+    "example_arabic": "إِنِّي نَذَرْتُ لِلرَّحْمَنِ صَوْمًا",
+    "example_turkish": "Ben Rahman'a (konuşmama) orucu adadım.",
+    "grammar_note": "Mastar; Kur'an'da ibadet olan oruç için daha çok صِيَام kullanılır. Burada 'susma orucu' anlamındadır.",
+    "example_ref": "19:26"
   },
   {
     "id": 161,
@@ -2162,12 +2287,13 @@ export const words: Word[] = [
     "arabic": "حَجّ",
     "transliteration": "hacc",
     "turkish_meaning": "hac",
-    "root": null,
+    "root": "ح-ج-ج",
     "part_of_speech": "isim",
-    "memory_hint": "hac anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَجّ",
-    "example_turkish": "hac",
-    "grammar_note": "حَجّ kelimesi ayet içinde 'hac' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hacc — 'kastetmek': Kâbe'ye yönelmek.",
+    "example_arabic": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ",
+    "example_turkish": "Haccı ve umreyi Allah için tamamlayın.",
+    "grammar_note": "Mastar; حِجّ şeklinde de okunur (3:97). Burada أَتِمُّوا fiilinin nesnesi olarak mansuptur.",
+    "example_ref": "2:196"
   },
   {
     "id": 162,
@@ -2175,12 +2301,13 @@ export const words: Word[] = [
     "arabic": "دُعَاء",
     "transliteration": "duâ",
     "turkish_meaning": "dua",
-    "root": null,
+    "root": "د-ع-و",
     "part_of_speech": "isim",
-    "memory_hint": "dua anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دُعَاء",
-    "example_turkish": "dua",
-    "grammar_note": "دُعَاء kelimesi ayet içinde 'dua' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Duâ — 'davet' ile aynı kök: Rabbi çağırmak.",
+    "example_arabic": "رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
+    "example_turkish": "Rabbimiz! Duamı kabul et.",
+    "grammar_note": "Mastar; دَعَا fiilinden. Sondaki esre, düşmüş 'benim' zamirini (ي) gösterir: دُعَائِي → دُعَاءِ.",
+    "example_ref": "14:40"
   },
   {
     "id": 163,
@@ -2188,12 +2315,13 @@ export const words: Word[] = [
     "arabic": "عِبَادَة",
     "transliteration": "ibâde",
     "turkish_meaning": "ibadet",
-    "root": null,
+    "root": "ع-ب-د",
     "part_of_speech": "isim",
-    "memory_hint": "ibadet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عِبَادَة",
-    "example_turkish": "ibadet",
-    "grammar_note": "عِبَادَة kelimesi ayet içinde 'ibadet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "İbâdet — 'abd' (kul) olmanın gereği.",
+    "example_arabic": "وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا",
+    "example_turkish": "Rabbine ibadette hiç kimseyi ortak koşmasın.",
+    "grammar_note": "Mastar; عَبَدَ fiilinden. بِ harf-i ceriyle mecrur ve رَبِّهِ ile tamlamadır.",
+    "example_ref": "18:110"
   },
   {
     "id": 164,
@@ -2201,12 +2329,13 @@ export const words: Word[] = [
     "arabic": "عَبْد",
     "transliteration": "abd",
     "turkish_meaning": "kul",
-    "root": null,
+    "root": "ع-ب-د",
     "part_of_speech": "isim",
-    "memory_hint": "kul anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَبْد",
-    "example_turkish": "kul",
-    "grammar_note": "عَبْد kelimesi ayet içinde 'kul' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Abd — 'Abdullah' (Allah'ın kulu) isminden hatırla.",
+    "example_arabic": "سُبْحَانَ الَّذِي أَسْرَى بِعَبْدِهِ لَيْلًا",
+    "example_turkish": "Kulunu bir gece yürüten (Allah) her türlü eksiklikten uzaktır.",
+    "grammar_note": "İsim; çoğulları عِبَاد (Allah'ın kulları) ve عَبِيد (köleler). Peygamber için en şerefli sıfat olarak kullanılır.",
+    "example_ref": "17:1"
   },
   {
     "id": 165,
@@ -2214,12 +2343,13 @@ export const words: Word[] = [
     "arabic": "رَبّ",
     "transliteration": "rabb",
     "turkish_meaning": "Rab",
-    "root": null,
+    "root": "ر-ب-ب",
     "part_of_speech": "isim",
-    "memory_hint": "Rab anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَبّ",
-    "example_turkish": "Rab",
-    "grammar_note": "رَبّ kelimesi ayet içinde 'Rab' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Rabb — terbiye eden, yetiştiren; 'rabbânî' aynı kök.",
+    "example_arabic": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+    "example_turkish": "De ki: İnsanların Rabbine sığınırım.",
+    "grammar_note": "İsim; mutlak olarak ال ile sadece Allah için kullanılır. Burada بِ ile mecrur ve النَّاس ile tamlamadır.",
+    "example_ref": "114:1"
   },
   {
     "id": 166,
@@ -2227,12 +2357,13 @@ export const words: Word[] = [
     "arabic": "مَلِك",
     "transliteration": "melik",
     "turkish_meaning": "hükümdar / kral",
-    "root": null,
+    "root": "م-ل-ك",
     "part_of_speech": "isim",
-    "memory_hint": "hükümdar / kral anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَلِك",
-    "example_turkish": "hükümdar / kral",
-    "grammar_note": "مَلِك kelimesi ayet içinde 'hükümdar / kral' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Melik — 'hükümdar'; melek (kanatlı) ile harekesine dikkat!",
+    "example_arabic": "مَلِكِ النَّاسِ",
+    "example_turkish": "İnsanların hükümdarı.",
+    "grammar_note": "فَعِل vezninde sıfat: 'hükümdar'. مَالِك (sahip) ve مُلْك (hükümranlık) ile aynı köktendir.",
+    "example_ref": "114:2"
   },
   {
     "id": 167,
@@ -2240,12 +2371,13 @@ export const words: Word[] = [
     "arabic": "مُلْك",
     "transliteration": "mülk",
     "turkish_meaning": "hükümranlık",
-    "root": null,
+    "root": "م-ل-ك",
     "part_of_speech": "isim",
-    "memory_hint": "hükümranlık anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مُلْك",
-    "example_turkish": "hükümranlık",
-    "grammar_note": "مُلْك kelimesi ayet içinde 'hükümranlık' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mülk — 'mülk' ve 'memleket' buradan.",
+    "example_arabic": "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ",
+    "example_turkish": "Hükümranlık elinde olan (Allah) yücedir.",
+    "grammar_note": "Mastar/isim: 'hükümranlık, egemenlik'. 67. sure (Mülk) bu kelimeyle adlandırılmıştır.",
+    "example_ref": "67:1"
   },
   {
     "id": 168,
@@ -2253,12 +2385,13 @@ export const words: Word[] = [
     "arabic": "حُكْم",
     "transliteration": "hükm",
     "turkish_meaning": "hüküm",
-    "root": null,
+    "root": "ح-ك-م",
     "part_of_speech": "isim",
-    "memory_hint": "hüküm anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حُكْم",
-    "example_turkish": "hüküm",
-    "grammar_note": "حُكْم kelimesi ayet içinde 'hüküm' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hüküm — 'hâkim' ve 'mahkeme' aynı kök.",
+    "example_arabic": "إِنِ الْحُكْمُ إِلَّا لِلَّهِ",
+    "example_turkish": "Hüküm ancak Allah'ındır.",
+    "grammar_note": "Mastar; buradaki إِنْ olumsuzluk harfidir ve إِلَّا ile hasr (sadece) anlamı kurar.",
+    "example_ref": "6:57"
   },
   {
     "id": 169,
@@ -2266,12 +2399,13 @@ export const words: Word[] = [
     "arabic": "حَكِيم",
     "transliteration": "hakîm",
     "turkish_meaning": "hikmet sahibi",
-    "root": null,
+    "root": "ح-ك-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "hikmet sahibi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَكِيم",
-    "example_turkish": "hikmet sahibi",
-    "grammar_note": "حَكِيم kelimesi ayet içinde 'hikmet sahibi' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Hakîm — 'hikmet' sahibi; her işi yerli yerinde yapan.",
+    "example_arabic": "وَهُوَ الْعَزِيزُ الْحَكِيمُ",
+    "example_turkish": "O mutlak güç ve hikmet sahibidir.",
+    "grammar_note": "فَعِيل vezninde sıfat; Kur'an'da çoğunlukla عَزِيز veya عَلِيم ile birlikte, ayet sonlarında gelir.",
+    "example_ref": "59:1"
   },
   {
     "id": 170,
@@ -2279,12 +2413,13 @@ export const words: Word[] = [
     "arabic": "عَلِيم",
     "transliteration": "alîm",
     "turkish_meaning": "her şeyi bilen",
-    "root": null,
+    "root": "ع-ل-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "her şeyi bilen anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَلِيم",
-    "example_turkish": "her şeyi bilen",
-    "grammar_note": "عَلِيم kelimesi ayet içinde 'her şeyi bilen' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Alîm — 'âlim'den daha güçlü: her şeyi bilen.",
+    "example_arabic": "وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
+    "example_turkish": "O her şeyi bilendir.",
+    "grammar_note": "فَعِيل vezninde mübalağalı sıfat. بِ harf-i ceri bildiği şeyi gösterir: بِكُلِّ شَيْءٍ.",
+    "example_ref": "2:29"
   },
   {
     "id": 171,
@@ -2292,12 +2427,13 @@ export const words: Word[] = [
     "arabic": "غَفُور",
     "transliteration": "ğafûr",
     "turkish_meaning": "çok bağışlayan",
-    "root": null,
+    "root": "غ-ف-ر",
     "part_of_speech": "sıfat",
-    "memory_hint": "çok bağışlayan anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "غَفُور",
-    "example_turkish": "çok bağışlayan",
-    "grammar_note": "غَفُور kelimesi ayet içinde 'çok bağışlayan' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Ğafûr — tekrar tekrar bağışlayan; 'mağfiret' aynı kök.",
+    "example_arabic": "نَبِّئْ عِبَادِي أَنِّي أَنَا الْغَفُورُ الرَّحِيمُ",
+    "example_turkish": "Kullarıma haber ver: Ben çok bağışlayanım, çok merhametliyim.",
+    "grammar_note": "فَعُول vezninde mübalağa sıfatı; Kur'an'da çoğunlukla رَحِيم ile ikili gelir.",
+    "example_ref": "15:49"
   },
   {
     "id": 172,
@@ -2305,12 +2441,13 @@ export const words: Word[] = [
     "arabic": "رَحِيم",
     "transliteration": "rahîm",
     "turkish_meaning": "çok merhametli",
-    "root": null,
+    "root": "ر-ح-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "çok merhametli anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَحِيم",
-    "example_turkish": "çok merhametli",
-    "grammar_note": "رَحِيم kelimesi ayet içinde 'çok merhametli' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Rahîm — sürekli merhamet eden; Rahman'ın yanında hep durur.",
+    "example_arabic": "الرَّحْمَنِ الرَّحِيمِ",
+    "example_turkish": "Rahman'dır, Rahim'dir.",
+    "grammar_note": "فَعِيل vezninde sıfat. Rahman merhametin genişliğini, Rahim sürekliliğini anlatır.",
+    "example_ref": "1:3"
   },
   {
     "id": 173,
@@ -2318,12 +2455,13 @@ export const words: Word[] = [
     "arabic": "عَزِيز",
     "transliteration": "azîz",
     "turkish_meaning": "üstün / güçlü",
-    "root": null,
+    "root": "ع-ز-ز",
     "part_of_speech": "sıfat",
-    "memory_hint": "üstün / güçlü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَزِيز",
-    "example_turkish": "üstün / güçlü",
-    "grammar_note": "عَزِيز kelimesi ayet içinde 'üstün / güçlü' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Azîz — 'izzet' sahibi; yenilmez ve değerli.",
+    "example_arabic": "إِنَّ اللَّهَ عَزِيزٌ غَفُورٌ",
+    "example_turkish": "Şüphesiz Allah mutlak güç sahibidir, çok bağışlayandır.",
+    "grammar_note": "فَعِيل vezninde sıfat; إِنَّ'nin haberi olarak merfudur. Türkçedeki 'aziz' (değerli) anlamı buradan.",
+    "example_ref": "35:28"
   },
   {
     "id": 174,
@@ -2331,12 +2469,13 @@ export const words: Word[] = [
     "arabic": "كَرِيم",
     "transliteration": "kerîm",
     "turkish_meaning": "cömert / değerli",
-    "root": null,
+    "root": "ك-ر-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "cömert / değerli anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَرِيم",
-    "example_turkish": "cömert / değerli",
-    "grammar_note": "كَرِيم kelimesi ayet içinde 'cömert / değerli' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Kerîm — 'kerem' ve 'ikram' aynı kök: cömert ve şerefli.",
+    "example_arabic": "يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ",
+    "example_turkish": "Ey insan! Cömert Rabbine karşı seni ne aldattı?",
+    "grammar_note": "فَعِيل vezninde sıfat; burada رَبِّكَ'nin sıfatı olarak ona uyar (mecrur).",
+    "example_ref": "82:6"
   },
   {
     "id": 175,
@@ -2344,12 +2483,13 @@ export const words: Word[] = [
     "arabic": "قَدِير",
     "transliteration": "kadîr",
     "turkish_meaning": "güç yetiren",
-    "root": null,
+    "root": "ق-د-ر",
     "part_of_speech": "sıfat",
-    "memory_hint": "güç yetiren anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَدِير",
-    "example_turkish": "güç yetiren",
-    "grammar_note": "قَدِير kelimesi ayet içinde 'güç yetiren' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Kadîr — 'kudret' ile aynı kök: her şeye gücü yeten.",
+    "example_arabic": "وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "example_turkish": "O'nun her şeye gücü yeter.",
+    "grammar_note": "فَعِيل vezninde sıfat; عَلَى ile birlikte gelir: عَلَى كُلِّ شَيْءٍ قَدِيرٌ (Kur'an'ın sık kalıbı).",
+    "example_ref": "67:1"
   },
   {
     "id": 176,
@@ -2357,12 +2497,13 @@ export const words: Word[] = [
     "arabic": "قَوِيّ",
     "transliteration": "kaviyy",
     "turkish_meaning": "güçlü",
-    "root": null,
+    "root": "ق-و-ي",
     "part_of_speech": "sıfat",
-    "memory_hint": "güçlü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَوِيّ",
-    "example_turkish": "güçlü",
-    "grammar_note": "قَوِيّ kelimesi ayet içinde 'güçlü' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Kaviyy — 'kuvvet' ile aynı kök.",
+    "example_arabic": "إِنَّ اللَّهَ لَقَوِيٌّ عَزِيزٌ",
+    "example_turkish": "Şüphesiz Allah çok güçlüdür, mutlak üstündür.",
+    "grammar_note": "فَعِيل vezninde sıfat; başındaki لَ te'kid lamıdır (mutlaka güçlü).",
+    "example_ref": "22:74"
   },
   {
     "id": 177,
@@ -2370,12 +2511,13 @@ export const words: Word[] = [
     "arabic": "كَبِير",
     "transliteration": "kebîr",
     "turkish_meaning": "büyük",
-    "root": null,
+    "root": "ك-ب-ر",
     "part_of_speech": "sıfat",
-    "memory_hint": "büyük anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَبِير",
-    "example_turkish": "büyük",
-    "grammar_note": "كَبِير kelimesi ayet içinde 'büyük' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Kebîr — 'Allahu ekber'deki 'ekber' bunun üstünlük hâli.",
+    "example_arabic": "عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ",
+    "example_turkish": "Görüleni de görülmeyeni de bilendir; çok büyüktür, yücedir.",
+    "grammar_note": "فَعِيل vezninde sıfat; ism-i tafdili أَكْبَر (daha/en büyük).",
+    "example_ref": "13:9"
   },
   {
     "id": 178,
@@ -2383,12 +2525,13 @@ export const words: Word[] = [
     "arabic": "عَظِيم",
     "transliteration": "azîm",
     "turkish_meaning": "yüce / büyük",
-    "root": null,
+    "root": "ع-ظ-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "yüce / büyük anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَظِيم",
-    "example_turkish": "yüce / büyük",
-    "grammar_note": "عَظِيم kelimesi ayet içinde 'yüce / büyük' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Azîm — 'azamet' ve 'muazzam' aynı kök.",
+    "example_arabic": "وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+    "example_turkish": "O çok yücedir, çok büyüktür.",
+    "grammar_note": "فَعِيل vezninde sıfat; Âyetü'l-Kürsî'nin son kelimesidir.",
+    "example_ref": "2:255"
   },
   {
     "id": 179,
@@ -2396,12 +2539,13 @@ export const words: Word[] = [
     "arabic": "قَرِيب",
     "transliteration": "karîb",
     "turkish_meaning": "yakın",
-    "root": null,
+    "root": "ق-ر-ب",
     "part_of_speech": "sıfat",
-    "memory_hint": "yakın anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَرِيب",
-    "example_turkish": "yakın",
-    "grammar_note": "قَرِيب kelimesi ayet içinde 'yakın' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Karîb — 'akraba' ve 'kurban' (yaklaştıran) aynı kök.",
+    "example_arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",
+    "example_turkish": "Kullarım sana beni sorduğunda (bilsinler ki) ben çok yakınım.",
+    "grammar_note": "فَعِيل vezninde sıfat; zıddı بَعِيد. إِنَّ'nin haberi olarak merfudur.",
+    "example_ref": "2:186"
   },
   {
     "id": 180,
@@ -2409,12 +2553,13 @@ export const words: Word[] = [
     "arabic": "بَعِيد",
     "transliteration": "baîd",
     "turkish_meaning": "uzak",
-    "root": null,
+    "root": "ب-ع-د",
     "part_of_speech": "sıfat",
-    "memory_hint": "uzak anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَعِيد",
-    "example_turkish": "uzak",
-    "grammar_note": "بَعِيد kelimesi ayet içinde 'uzak' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Baîd — 'bu'd' (uzaklık, boyut) aynı kök.",
+    "example_arabic": "ذَلِكَ رَجْعٌ بَعِيدٌ",
+    "example_turkish": "Bu, (akla) uzak bir dönüş!",
+    "grammar_note": "فَعِيل vezninde sıfat; رَجْعٌ'ün sıfatıdır ve ona uyar.",
+    "example_ref": "50:3"
   },
   {
     "id": 181,
@@ -2422,12 +2567,13 @@ export const words: Word[] = [
     "arabic": "صَالِح",
     "transliteration": "sâlih",
     "turkish_meaning": "salih / iyi",
-    "root": null,
+    "root": "ص-ل-ح",
     "part_of_speech": "sıfat",
-    "memory_hint": "salih / iyi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَالِح",
-    "example_turkish": "salih / iyi",
-    "grammar_note": "صَالِح kelimesi ayet içinde 'salih / iyi' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Sâlih — 'ıslah' ve 'sulh' aynı kök: düzgün, yararlı.",
+    "example_arabic": "فَلْيَعْمَلْ عَمَلًا صَالِحًا",
+    "example_turkish": "Salih (iyi) bir amel işlesin.",
+    "grammar_note": "ism-i fâil; Kur'an'da en çok عَمَل ile tamlama/sıfat olarak gelir (عَمَلًا صَالِحًا).",
+    "example_ref": "18:110"
   },
   {
     "id": 182,
@@ -2435,12 +2581,13 @@ export const words: Word[] = [
     "arabic": "طَيِّب",
     "transliteration": "tayyib",
     "turkish_meaning": "temiz / güzel",
-    "root": null,
+    "root": "ط-ي-ب",
     "part_of_speech": "sıfat",
-    "memory_hint": "temiz / güzel anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "طَيِّب",
-    "example_turkish": "temiz / güzel",
-    "grammar_note": "طَيِّب kelimesi ayet içinde 'temiz / güzel' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Tayyib — 'tîb' (güzel koku); temiz ve hoş.",
+    "example_arabic": "كَلِمَةً طَيِّبَةً كَشَجَرَةٍ طَيِّبَةٍ",
+    "example_turkish": "Güzel bir söz, güzel bir ağaç gibidir.",
+    "grammar_note": "فَيْعِل vezninde sıfat; burada dişil (طَيِّبَة) ve her iki isimle uyumludur. Zıddı خَبِيث.",
+    "example_ref": "14:24"
   },
   {
     "id": 183,
@@ -2448,12 +2595,13 @@ export const words: Word[] = [
     "arabic": "خَبِيث",
     "transliteration": "habîs",
     "turkish_meaning": "kötü / pis",
-    "root": null,
+    "root": "خ-ب-ث",
     "part_of_speech": "sıfat",
-    "memory_hint": "kötü / pis anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَبِيث",
-    "example_turkish": "kötü / pis",
-    "grammar_note": "خَبِيث kelimesi ayet içinde 'kötü / pis' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Habîs — 'habis' (kötü huylu, kötücül) buradan.",
+    "example_arabic": "قُل لَّا يَسْتَوِي الْخَبِيثُ وَالطَّيِّبُ",
+    "example_turkish": "De ki: Kötü ile temiz bir olmaz.",
+    "grammar_note": "فَعِيل vezninde sıfat; burada isim gibi kullanılmıştır. Zıddı طَيِّب.",
+    "example_ref": "5:100"
   },
   {
     "id": 184,
@@ -2461,12 +2609,13 @@ export const words: Word[] = [
     "arabic": "جَدِيد",
     "transliteration": "cedîd",
     "turkish_meaning": "yeni",
-    "root": null,
+    "root": "ج-د-د",
     "part_of_speech": "sıfat",
-    "memory_hint": "yeni anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَدِيد",
-    "example_turkish": "yeni",
-    "grammar_note": "جَدِيد kelimesi ayet içinde 'yeni' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Cedîd — 'tecdit' (yenileme) ve 'müceddit' aynı kök.",
+    "example_arabic": "بَلْ هُمْ فِي لَبْسٍ مِّنْ خَلْقٍ جَدِيدٍ",
+    "example_turkish": "Hayır, onlar yeni bir yaratılıştan şüphe içindeler.",
+    "grammar_note": "فَعِيل vezninde sıfat; خَلْقٍ'in sıfatı olarak mecrurdur. Kur'an'da çoğunlukla ahirette yeniden yaratılış için.",
+    "example_ref": "50:15"
   },
   {
     "id": 185,
@@ -2474,12 +2623,13 @@ export const words: Word[] = [
     "arabic": "قَدِيم",
     "transliteration": "kadîm",
     "turkish_meaning": "eski",
-    "root": null,
+    "root": "ق-د-م",
     "part_of_speech": "sıfat",
-    "memory_hint": "eski anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَدِيم",
-    "example_turkish": "eski",
-    "grammar_note": "قَدِيم kelimesi ayet içinde 'eski' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Kadîm — 'kadim' (çok eski); 'kadem' (ayak, önce gelmek).",
+    "example_arabic": "حَتَّى عَادَ كَالْعُرْجُونِ الْقَدِيمِ",
+    "example_turkish": "Sonunda (ay) kurumuş eski hurma dalı gibi olur.",
+    "grammar_note": "فَعِيل vezninde sıfat; الْعُرْجُون'un sıfatıdır. Kur'an'da 'eski' anlamında az sayıda geçer.",
+    "example_ref": "36:39"
   },
   {
     "id": 186,
@@ -2487,12 +2637,13 @@ export const words: Word[] = [
     "arabic": "حَيّ",
     "transliteration": "hayy",
     "turkish_meaning": "diri / canlı",
-    "root": null,
+    "root": "ح-ي-ي",
     "part_of_speech": "sıfat",
-    "memory_hint": "diri / canlı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَيّ",
-    "example_turkish": "diri / canlı",
-    "grammar_note": "حَيّ kelimesi ayet içinde 'diri / canlı' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Hayy — 'hayat' ile aynı kök: ölümsüz diri.",
+    "example_arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+    "example_turkish": "Allah, O'ndan başka ilah yoktur; diridir, her şeyi ayakta tutandır.",
+    "grammar_note": "Sıfat-ı müşebbehe; kökün son iki harfi aynı olduğu için şeddelidir. Zıddı مَيِّت.",
+    "example_ref": "2:255"
   },
   {
     "id": 187,
@@ -2500,12 +2651,13 @@ export const words: Word[] = [
     "arabic": "مَيِّت",
     "transliteration": "meyyit",
     "turkish_meaning": "ölü",
-    "root": null,
+    "root": "م-و-ت",
     "part_of_speech": "sıfat",
-    "memory_hint": "ölü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَيِّت",
-    "example_turkish": "ölü",
-    "grammar_note": "مَيِّت kelimesi ayet içinde 'ölü' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Meyyit — 'mevt' (ölüm) ile aynı kök.",
+    "example_arabic": "إِنَّكَ مَيِّتٌ وَإِنَّهُم مَّيِّتُونَ",
+    "example_turkish": "Sen de öleceksin, onlar da ölecekler.",
+    "grammar_note": "فَيْعِل vezninde sıfat; çoğulu مَيِّتُونَ ve أَمْوَات. Şeddesiz مَيْت 'ölmüş', şeddeli مَيِّت 'ölecek/ölü'.",
+    "example_ref": "39:30"
   },
   {
     "id": 188,
@@ -2513,12 +2665,13 @@ export const words: Word[] = [
     "arabic": "أَبْيَض",
     "transliteration": "ebyad",
     "turkish_meaning": "beyaz",
-    "root": null,
+    "root": "ب-ي-ض",
     "part_of_speech": "sıfat",
-    "memory_hint": "beyaz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَبْيَض",
-    "example_turkish": "beyaz",
-    "grammar_note": "أَبْيَض kelimesi ayet içinde 'beyaz' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Ebyaz — sahurun sonu: beyaz ipliğin seçildiği an.",
+    "example_arabic": "حَتَّى يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ",
+    "example_turkish": "Beyaz iplik size seçilinceye kadar.",
+    "grammar_note": "أَفْعَل vezninde renk sıfatı; dişili بَيْضَاء, çoğulu بِيض. Renk sıfatları gayr-i munsariftir.",
+    "example_ref": "2:187"
   },
   {
     "id": 189,
@@ -2526,12 +2679,13 @@ export const words: Word[] = [
     "arabic": "أَسْوَد",
     "transliteration": "esved",
     "turkish_meaning": "siyah",
-    "root": null,
+    "root": "س-و-د",
     "part_of_speech": "sıfat",
-    "memory_hint": "siyah anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَسْوَد",
-    "example_turkish": "siyah",
-    "grammar_note": "أَسْوَد kelimesi ayet içinde 'siyah' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Esved — 'Hacer-i Esved' (siyah taş) buradan.",
+    "example_arabic": "مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ",
+    "example_turkish": "Fecir vaktinde siyah iplikten (ayırt edilinceye kadar).",
+    "grammar_note": "أَفْعَل vezninde renk sıfatı; dişili سَوْدَاء, çoğulu سُود. Burada الْخَيْط'in sıfatıdır.",
+    "example_ref": "2:187"
   },
   {
     "id": 190,
@@ -2539,12 +2693,13 @@ export const words: Word[] = [
     "arabic": "أَحْمَر",
     "transliteration": "ahmer",
     "turkish_meaning": "kırmızı",
-    "root": null,
+    "root": "ح-م-ر",
     "part_of_speech": "sıfat",
-    "memory_hint": "kırmızı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَحْمَر",
-    "example_turkish": "kırmızı",
-    "grammar_note": "أَحْمَر kelimesi ayet içinde 'kırmızı' anlam alanıyla kullanılır. Kelime türü: sıfat."
+    "memory_hint": "Ahmer — 'Kızıldeniz' Arapçada 'el-Bahru'l-Ahmer'.",
+    "example_arabic": "وَمِنَ الْجِبَالِ جُدَدٌ بِيضٌ وَحُمْرٌ",
+    "example_turkish": "Dağlardan da beyaz ve kırmızı yollar (katmanlar) vardır.",
+    "grammar_note": "أَفْعَل vezninde renk sıfatı; çoğulu حُمْر (örnekte bu çoğul geçer), dişili حَمْرَاء.",
+    "example_ref": "35:27"
   },
   {
     "id": 191,
@@ -2552,12 +2707,13 @@ export const words: Word[] = [
     "arabic": "جَاءَ",
     "transliteration": "câe",
     "turkish_meaning": "geldi",
-    "root": null,
+    "root": "ج-ي-أ",
     "part_of_speech": "fiil",
-    "memory_hint": "geldi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَاءَ",
-    "example_turkish": "geldi",
-    "grammar_note": "جَاءَ kelimesi ayet içinde 'geldi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Câe — kapıdan içeri adım atan biri: 'geldi'.",
+    "example_arabic": "وَقُلْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ",
+    "example_turkish": "De ki: Hak geldi, batıl yok oldu.",
+    "grammar_note": "Ecvef ve mehmûz fiil (orta harf ي, son harf hemze). Muzari: يَجِيءُ. بِ ile geçişli olunca 'getirdi' anlamı verir (جَاءَ بِـ).",
+    "example_ref": "17:81"
   },
   {
     "id": 192,
@@ -2565,12 +2721,13 @@ export const words: Word[] = [
     "arabic": "ذَهَبَ",
     "transliteration": "zehebe",
     "turkish_meaning": "gitti",
-    "root": null,
+    "root": "ذ-ه-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "gitti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ذَهَبَ",
-    "example_turkish": "gitti",
-    "grammar_note": "ذَهَبَ kelimesi ayet içinde 'gitti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Zehebe — uzaklaşan yol; 'zehab' (gidiş) kelimesi.",
+    "example_arabic": "ذَهَبَ اللَّهُ بِنُورِهِمْ",
+    "example_turkish": "Allah onların ışığını giderdi.",
+    "grammar_note": "I. bab mâzî. بِ harf-i ceriyle 'götürdü/giderdi' anlamı kazanır. Muzari: يَذْهَبُ.",
+    "example_ref": "2:17"
   },
   {
     "id": 193,
@@ -2578,12 +2735,13 @@ export const words: Word[] = [
     "arabic": "رَجَعَ",
     "transliteration": "racea",
     "turkish_meaning": "döndü",
-    "root": null,
+    "root": "ر-ج-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "döndü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَجَعَ",
-    "example_turkish": "döndü",
-    "grammar_note": "رَجَعَ kelimesi ayet içinde 'döndü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Racea — 'rücu' (geri dönüş); 'innâ ileyhi râciûn'.",
+    "example_arabic": "وَلَمَّا رَجَعَ مُوسَى إِلَى قَوْمِهِ غَضْبَانَ أَسِفًا",
+    "example_turkish": "Musa kavmine öfkeli ve üzgün olarak döndüğünde...",
+    "grammar_note": "I. bab mâzî; إِلَى ile dönülen yeri alır. Mastarı رُجُوع, ism-i fâili رَاجِع.",
+    "example_ref": "7:150"
   },
   {
     "id": 194,
@@ -2591,12 +2749,13 @@ export const words: Word[] = [
     "arabic": "دَخَلَ",
     "transliteration": "dehale",
     "turkish_meaning": "girdi",
-    "root": null,
+    "root": "د-خ-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "girdi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دَخَلَ",
-    "example_turkish": "girdi",
-    "grammar_note": "دَخَلَ kelimesi ayet içinde 'girdi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Dehale — 'dahil' ve 'müdahale' aynı kök.",
+    "example_arabic": "وَمَن دَخَلَهُ كَانَ آمِنًا",
+    "example_turkish": "Oraya (Harem'e) giren güvende olur.",
+    "grammar_note": "I. bab mâzî; burada şart cümlesinde. Girilen yer doğrudan nesne olur: دَخَلَهُ (oraya girdi).",
+    "example_ref": "3:97"
   },
   {
     "id": 195,
@@ -2604,12 +2763,13 @@ export const words: Word[] = [
     "arabic": "خَرَجَ",
     "transliteration": "harace",
     "turkish_meaning": "çıktı",
-    "root": null,
+    "root": "خ-ر-ج",
     "part_of_speech": "fiil",
-    "memory_hint": "çıktı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَرَجَ",
-    "example_turkish": "çıktı",
-    "grammar_note": "خَرَجَ kelimesi ayet içinde 'çıktı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Harace — 'hariç' ve 'harç' (çıkan para) aynı kök.",
+    "example_arabic": "فَخَرَجَ مِنْهَا خَائِفًا يَتَرَقَّبُ",
+    "example_turkish": "Korku içinde, etrafı gözeterek oradan çıktı.",
+    "grammar_note": "I. bab mâzî; مِنْ ile çıkılan yeri alır. خَائِفًا hâl (durum) bildirir. IV. babı أَخْرَجَ (çıkardı).",
+    "example_ref": "28:21"
   },
   {
     "id": 196,
@@ -2617,12 +2777,13 @@ export const words: Word[] = [
     "arabic": "نَزَلَ",
     "transliteration": "nezele",
     "turkish_meaning": "indi",
-    "root": null,
+    "root": "ن-ز-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "indi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَزَلَ",
-    "example_turkish": "indi",
-    "grammar_note": "نَزَلَ kelimesi ayet içinde 'indi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Nezele — 'nüzul' (iniş); 'nüzul sebebi'.",
+    "example_arabic": "نَزَلَ بِهِ الرُّوحُ الْأَمِينُ",
+    "example_turkish": "Onu güvenilir Ruh (Cebrail) indirdi.",
+    "grammar_note": "I. bab mâzî, geçişsiz: 'indi'. بِ ile 'indirdi' olur. Geçişli bablar: أَنْزَلَ ve نَزَّلَ.",
+    "example_ref": "26:193"
   },
   {
     "id": 197,
@@ -2630,12 +2791,13 @@ export const words: Word[] = [
     "arabic": "رَفَعَ",
     "transliteration": "rafea",
     "turkish_meaning": "yükseltti",
-    "root": null,
+    "root": "ر-ف-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "yükseltti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَفَعَ",
-    "example_turkish": "yükseltti",
-    "grammar_note": "رَفَعَ kelimesi ayet içinde 'yükseltti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Rafea — 'refah' değil 'rif'at' (yükseklik) aynı kök.",
+    "example_arabic": "اللَّهُ الَّذِي رَفَعَ السَّمَاوَاتِ بِغَيْرِ عَمَدٍ تَرَوْنَهَا",
+    "example_turkish": "Gökleri gördüğünüz direkler olmadan yükselten Allah'tır.",
+    "grammar_note": "I. bab mâzî; doğrudan nesne alır (السَّمَاوَاتِ). Gramerde 'merfu' (ötreli) terimi de bu kökten.",
+    "example_ref": "13:2"
   },
   {
     "id": 198,
@@ -2643,12 +2805,13 @@ export const words: Word[] = [
     "arabic": "أَخَذَ",
     "transliteration": "ehaze",
     "turkish_meaning": "aldı",
-    "root": null,
+    "root": "أ-خ-ذ",
     "part_of_speech": "fiil",
-    "memory_hint": "aldı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَخَذَ",
-    "example_turkish": "aldı",
-    "grammar_note": "أَخَذَ kelimesi ayet içinde 'aldı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ehaze — 'ahz' (alma); 'ahzü ita' (alışveriş).",
+    "example_arabic": "وَإِذْ أَخَذَ اللَّهُ مِيثَاقَ النَّبِيِّينَ",
+    "example_turkish": "Hani Allah peygamberlerden söz almıştı.",
+    "grammar_note": "Mehmûzu'l-fâ fiil (ilk harf hemze). Emri خُذْ (al!) düzensizdir. VIII. babı اتَّخَذَ (edindi).",
+    "example_ref": "3:81"
   },
   {
     "id": 199,
@@ -2656,12 +2819,13 @@ export const words: Word[] = [
     "arabic": "أَعْطَى",
     "transliteration": "a‘tâ",
     "turkish_meaning": "verdi",
-    "root": null,
+    "root": "ع-ط-و",
     "part_of_speech": "fiil",
-    "memory_hint": "verdi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَعْطَى",
-    "example_turkish": "verdi",
-    "grammar_note": "أَعْطَى kelimesi ayet içinde 'verdi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "A'tâ — 'atiyye' (bağış) ve 'ata' aynı kök.",
+    "example_arabic": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+    "example_turkish": "Şüphesiz biz sana Kevser'i verdik.",
+    "grammar_note": "IV. bab (أَفْعَلَ) mâzî; iki nesne alır: كَ (seni) ve الْكَوْثَرَ. Muzari: يُعْطِي.",
+    "example_ref": "108:1"
   },
   {
     "id": 200,
@@ -2669,12 +2833,13 @@ export const words: Word[] = [
     "arabic": "جَعَلَ",
     "transliteration": "ceale",
     "turkish_meaning": "kıldı / yaptı",
-    "root": null,
+    "root": "ج-ع-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "kıldı / yaptı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَعَلَ",
-    "example_turkish": "kıldı / yaptı",
-    "grammar_note": "جَعَلَ kelimesi ayet içinde 'kıldı / yaptı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ceale — bir şeyi başka bir şeye 'dönüştürmek, kılmak'.",
+    "example_arabic": "وَجَعَلْنَا اللَّيْلَ لِبَاسًا",
+    "example_turkish": "Geceyi bir örtü kıldık.",
+    "grammar_note": "I. bab mâzî; 'kıldı' anlamında iki nesne alır (اللَّيْلَ / لِبَاسًا). Kur'an'da en sık fiillerdendir.",
+    "example_ref": "78:10"
   },
   {
     "id": 201,
@@ -2682,12 +2847,13 @@ export const words: Word[] = [
     "arabic": "فَعَلَ",
     "transliteration": "feale",
     "turkish_meaning": "yaptı",
-    "root": null,
+    "root": "ف-ع-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "yaptı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَعَلَ",
-    "example_turkish": "yaptı",
-    "grammar_note": "فَعَلَ kelimesi ayet içinde 'yaptı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Feale — gramerde bütün vezinlerin kalıbı: فَعَلَ.",
+    "example_arabic": "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ",
+    "example_turkish": "Rabbinin fil sahiplerine ne yaptığını görmedin mi?",
+    "grammar_note": "I. bab mâzî; Arap gramerindeki vezin sistemi (فَعَلَ، فَاعِل، مَفْعُول) bu kök üzerine kurulur.",
+    "example_ref": "105:1"
   },
   {
     "id": 202,
@@ -2695,12 +2861,13 @@ export const words: Word[] = [
     "arabic": "عَمِلَ",
     "transliteration": "amile",
     "turkish_meaning": "amel etti / yaptı",
-    "root": null,
+    "root": "ع-م-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "amel etti / yaptı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَمِلَ",
-    "example_turkish": "amel etti / yaptı",
-    "grammar_note": "عَمِلَ kelimesi ayet içinde 'amel etti / yaptı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Amile — 'amel' ve 'amele' (işçi) aynı kök.",
+    "example_arabic": "مَنْ عَمِلَ صَالِحًا مِّن ذَكَرٍ أَوْ أُنثَى وَهُوَ مُؤْمِنٌ",
+    "example_turkish": "Erkek olsun kadın olsun, mümin olarak kim salih amel işlerse...",
+    "grammar_note": "I. bab mâzî (فَعِلَ); muzari يَعْمَلُ. Kur'an'da çoğu zaman صَالِحًا / الصَّالِحَاتِ ile birlikte gelir.",
+    "example_ref": "16:97"
   },
   {
     "id": 203,
@@ -2708,12 +2875,13 @@ export const words: Word[] = [
     "arabic": "كَتَبَ",
     "transliteration": "ketebe",
     "turkish_meaning": "yazdı",
-    "root": null,
+    "root": "ك-ت-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "yazdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَتَبَ",
-    "example_turkish": "yazdı",
-    "grammar_note": "كَتَبَ kelimesi ayet içinde 'yazdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ketebe — 'kâtip, mektup, kitap': hep yazı.",
+    "example_arabic": "كَتَبَ رَبُّكُمْ عَلَى نَفْسِهِ الرَّحْمَةَ",
+    "example_turkish": "Rabbiniz merhameti kendi üzerine yazdı.",
+    "grammar_note": "I. bab mâzî; عَلَى ile 'farz kıldı' anlamı da verir (كُتِبَ عَلَيْكُمُ الصِّيَامُ).",
+    "example_ref": "6:54"
   },
   {
     "id": 204,
@@ -2721,12 +2889,13 @@ export const words: Word[] = [
     "arabic": "قَرَأَ",
     "transliteration": "karae",
     "turkish_meaning": "okudu",
-    "root": null,
+    "root": "ق-ر-أ",
     "part_of_speech": "fiil",
-    "memory_hint": "okudu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَرَأَ",
-    "example_turkish": "okudu",
-    "grammar_note": "قَرَأَ kelimesi ayet içinde 'okudu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Karae — ilk vahiy 'ikra' (oku!) emriyle başladı.",
+    "example_arabic": "فَإِذَا قَرَأْتَ الْقُرْآنَ",
+    "example_turkish": "Kur'an okuyacağın zaman...",
+    "grammar_note": "Mehmûzu'l-lâm fiil (son harf hemze). Burada 2. tekil mâzî (قَرَأْتَ); إِذَا ile gelecek anlamı kazanır.",
+    "example_ref": "16:98"
   },
   {
     "id": 205,
@@ -2734,12 +2903,13 @@ export const words: Word[] = [
     "arabic": "سَمِعَ",
     "transliteration": "semia",
     "turkish_meaning": "işitti",
-    "root": null,
+    "root": "س-م-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "işitti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَمِعَ",
-    "example_turkish": "işitti",
-    "grammar_note": "سَمِعَ kelimesi ayet içinde 'işitti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Semia — 'sem'' (işitme) ve 'semâ' (dinleti) aynı kök.",
+    "example_arabic": "إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا",
+    "example_turkish": "Biz hayranlık verici bir Kur'an dinledik.",
+    "grammar_note": "I. bab mâzî (فَعِلَ), 1. çoğul: سَمِعْنَا. Muzari: يَسْمَعُ; sıfatı سَمِيع.",
+    "example_ref": "72:1"
   },
   {
     "id": 206,
@@ -2747,12 +2917,13 @@ export const words: Word[] = [
     "arabic": "رَأَى",
     "transliteration": "raâ",
     "turkish_meaning": "gördü",
-    "root": null,
+    "root": "ر-أ-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "gördü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَأَى",
-    "example_turkish": "gördü",
-    "grammar_note": "رَأَى kelimesi ayet içinde 'gördü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Raâ — 'rüya' ve 're'y' (görüş) aynı kök.",
+    "example_arabic": "مَا كَذَبَ الْفُؤَادُ مَا رَأَى",
+    "example_turkish": "Kalp, gördüğünü yalanlamadı.",
+    "grammar_note": "Mehmûz ve nâkıs fiil. Muzarisinde hemze düşer: يَرَى. Hem gözle görmek hem 'görüş sahibi olmak' anlamı.",
+    "example_ref": "53:11"
   },
   {
     "id": 207,
@@ -2760,12 +2931,13 @@ export const words: Word[] = [
     "arabic": "نَظَرَ",
     "transliteration": "nazara",
     "turkish_meaning": "baktı",
-    "root": null,
+    "root": "ن-ظ-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "baktı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَظَرَ",
-    "example_turkish": "baktı",
-    "grammar_note": "نَظَرَ kelimesi ayet içinde 'baktı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Nazara — 'nazar' (bakış) ve 'manzara' aynı kök.",
+    "example_arabic": "ثُمَّ نَظَرَ",
+    "example_turkish": "Sonra (etrafına) baktı.",
+    "grammar_note": "I. bab mâzî; إِلَى ile bakılan şeyi alır. رَأَى görmektir, نَظَرَ bakmaktır.",
+    "example_ref": "74:21"
   },
   {
     "id": 208,
@@ -2773,12 +2945,13 @@ export const words: Word[] = [
     "arabic": "عَرَفَ",
     "transliteration": "arefe",
     "turkish_meaning": "bildi / tanıdı",
-    "root": null,
+    "root": "ع-ر-ف",
     "part_of_speech": "fiil",
-    "memory_hint": "bildi / tanıdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَرَفَ",
-    "example_turkish": "bildi / tanıdı",
-    "grammar_note": "عَرَفَ kelimesi ayet içinde 'bildi / tanıdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Arefe — 'irfan' ve 'marifet' aynı kök; Arafat (tanışma yeri).",
+    "example_arabic": "فَلَمَّا جَاءَهُم مَّا عَرَفُوا كَفَرُوا بِهِ",
+    "example_turkish": "Tanıdıkları şey kendilerine gelince onu inkâr ettiler.",
+    "grammar_note": "I. bab mâzî, 3. çoğul: عَرَفُوا. عَلِمَ bilmek, عَرَفَ tanımak/farkına varmaktır.",
+    "example_ref": "2:89"
   },
   {
     "id": 209,
@@ -2786,12 +2959,13 @@ export const words: Word[] = [
     "arabic": "ذَكَرَ",
     "transliteration": "zekera",
     "turkish_meaning": "and‎ı / hatırladı",
-    "root": null,
+    "root": "ذ-ك-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "and‎ı / hatırladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ذَكَرَ",
-    "example_turkish": "and‎ı / hatırladı",
-    "grammar_note": "ذَكَرَ kelimesi ayet içinde 'and‎ı / hatırladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Zekera — 'zikir' ve 'tezkere' aynı kök.",
+    "example_arabic": "وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّى",
+    "example_turkish": "Rabbinin adını anıp namaz kılan (kurtuluşa erer).",
+    "grammar_note": "I. bab mâzî; doğrudan nesne alır (اسْمَ). II. babı ذَكَّرَ 'hatırlattı, öğüt verdi'.",
+    "example_ref": "87:15"
   },
   {
     "id": 210,
@@ -2799,12 +2973,13 @@ export const words: Word[] = [
     "arabic": "نَسِيَ",
     "transliteration": "nesiye",
     "turkish_meaning": "unuttu",
-    "root": null,
+    "root": "ن-س-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "unuttu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَسِيَ",
-    "example_turkish": "unuttu",
-    "grammar_note": "نَسِيَ kelimesi ayet içinde 'unuttu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Nesiye — 'nisyan' (unutkanlık); insan (insân) kelimesiyle ilişkilendirilir.",
+    "example_arabic": "وَلَقَدْ عَهِدْنَا إِلَى آدَمَ مِن قَبْلُ فَنَسِيَ",
+    "example_turkish": "Andolsun, daha önce Âdem'e ahid vermiştik; ama o unuttu.",
+    "grammar_note": "I. bab mâzî (فَعِلَ), nâkıs (son harf ي). Muzari: يَنْسَى.",
+    "example_ref": "20:115"
   },
   {
     "id": 211,
@@ -2812,12 +2987,13 @@ export const words: Word[] = [
     "arabic": "دَعَا",
     "transliteration": "deâ",
     "turkish_meaning": "dua etti / çağırdı",
-    "root": null,
+    "root": "د-ع-و",
     "part_of_speech": "fiil",
-    "memory_hint": "dua etti / çağırdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دَعَا",
-    "example_turkish": "dua etti / çağırdı",
-    "grammar_note": "دَعَا kelimesi ayet içinde 'dua etti / çağırdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Deâ — 'davet' ve 'dua' aynı kök: çağırmak.",
+    "example_arabic": "هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُ",
+    "example_turkish": "Orada Zekeriya Rabbine dua etti.",
+    "grammar_note": "Nâkıs fiil (son harf و elife dönmüş). Muzari: يَدْعُو. Hem 'dua etti' hem 'çağırdı' anlamı.",
+    "example_ref": "3:38"
   },
   {
     "id": 212,
@@ -2825,12 +3001,13 @@ export const words: Word[] = [
     "arabic": "عَبَدَ",
     "transliteration": "abede",
     "turkish_meaning": "ibadet etti",
-    "root": null,
+    "root": "ع-ب-د",
     "part_of_speech": "fiil",
-    "memory_hint": "ibadet etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَبَدَ",
-    "example_turkish": "ibadet etti",
-    "grammar_note": "عَبَدَ kelimesi ayet içinde 'ibadet etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Abede — 'abd' (kul) ve 'ibadet' ile aynı kök.",
+    "example_arabic": "وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ",
+    "example_turkish": "Ben de sizin taptıklarınıza tapacak değilim.",
+    "grammar_note": "I. bab mâzî, 2. çoğul: عَبَدْتُمْ. ism-i fâili عَابِد, Fatiha'daki muzari نَعْبُدُ.",
+    "example_ref": "109:4"
   },
   {
     "id": 213,
@@ -2838,12 +3015,13 @@ export const words: Word[] = [
     "arabic": "سَجَدَ",
     "transliteration": "secede",
     "turkish_meaning": "secde etti",
-    "root": null,
+    "root": "س-ج-د",
     "part_of_speech": "fiil",
-    "memory_hint": "secde etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَجَدَ",
-    "example_turkish": "secde etti",
-    "grammar_note": "سَجَدَ kelimesi ayet içinde 'secde etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Secede — 'secde' ve 'mescid' aynı kök.",
+    "example_arabic": "فَسَجَدَ الْمَلَائِكَةُ كُلُّهُمْ أَجْمَعُونَ",
+    "example_turkish": "Meleklerin hepsi topluca secde etti.",
+    "grammar_note": "I. bab mâzî; fiil öznenin önünde geldiği için çoğul özneye rağmen tekil kalır (سَجَدَ الْمَلَائِكَةُ).",
+    "example_ref": "15:30"
   },
   {
     "id": 214,
@@ -2851,12 +3029,13 @@ export const words: Word[] = [
     "arabic": "رَكَعَ",
     "transliteration": "rekea",
     "turkish_meaning": "rükû etti",
-    "root": null,
+    "root": "ر-ك-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "rükû etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَكَعَ",
-    "example_turkish": "rükû etti",
-    "grammar_note": "رَكَعَ kelimesi ayet içinde 'rükû etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Rekea — 'rükû' ve 'rekât' aynı kök.",
+    "example_arabic": "وَارْكَعُوا مَعَ الرَّاكِعِينَ",
+    "example_turkish": "Rükû edenlerle birlikte rükû edin.",
+    "grammar_note": "Örnekte emir fiil (ارْكَعُوا) ve ism-i fâil çoğulu (الرَّاكِعِينَ) aynı kökten yan yana gelir.",
+    "example_ref": "2:43"
   },
   {
     "id": 215,
@@ -2864,12 +3043,13 @@ export const words: Word[] = [
     "arabic": "صَلَّى",
     "transliteration": "sallâ",
     "turkish_meaning": "namaz kıldı / dua etti",
-    "root": null,
+    "root": "ص-ل-و",
     "part_of_speech": "fiil",
-    "memory_hint": "namaz kıldı / dua etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَلَّى",
-    "example_turkish": "namaz kıldı / dua etti",
-    "grammar_note": "صَلَّى kelimesi ayet içinde 'namaz kıldı / dua etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Sallâ — 'salât' ile aynı kök; II. bab yoğunluk bildirir.",
+    "example_arabic": "فَلَا صَدَّقَ وَلَا صَلَّى",
+    "example_turkish": "O ne doğruladı ne de namaz kıldı.",
+    "grammar_note": "II. bab (فَعَّلَ) mâzî, nâkıs. لَا burada mâzîyi olumsuzlar (nadir ve vurgulu kullanım).",
+    "example_ref": "75:31"
   },
   {
     "id": 216,
@@ -2877,12 +3057,13 @@ export const words: Word[] = [
     "arabic": "صَامَ",
     "transliteration": "sâme",
     "turkish_meaning": "oruç tuttu",
-    "root": null,
+    "root": "ص-و-م",
     "part_of_speech": "fiil",
-    "memory_hint": "oruç tuttu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَامَ",
-    "example_turkish": "oruç tuttu",
-    "grammar_note": "صَامَ kelimesi ayet içinde 'oruç tuttu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Sâme — 'savm' ile aynı kök: kendini tutmak.",
+    "example_arabic": "فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ",
+    "example_turkish": "Sizden kim bu aya ulaşırsa onu oruçla geçirsin.",
+    "grammar_note": "Ecvef fiil (ortası و): صَامَ / يَصُومُ. Örnekteki فَلْيَصُمْهُ emir lamıyla meczum muzaridir; و düşmüştür.",
+    "example_ref": "2:185"
   },
   {
     "id": 217,
@@ -2890,12 +3071,13 @@ export const words: Word[] = [
     "arabic": "شَكَرَ",
     "transliteration": "şekera",
     "turkish_meaning": "şükretti",
-    "root": null,
+    "root": "ش-ك-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "şükretti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَكَرَ",
-    "example_turkish": "şükretti",
-    "grammar_note": "شَكَرَ kelimesi ayet içinde 'şükretti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Şekera — nimeti tanıyıp karşılık vermek.",
+    "example_arabic": "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+    "example_turkish": "Andolsun, şükrederseniz size (nimetimi) artırırım.",
+    "grammar_note": "I. bab mâzî, 2. çoğul. لَئِنْ yemin + şart; cevabı te'kid nunuyla gelir (لَأَزِيدَنَّكُمْ).",
+    "example_ref": "14:7"
   },
   {
     "id": 218,
@@ -2903,12 +3085,13 @@ export const words: Word[] = [
     "arabic": "كَفَرَ",
     "transliteration": "kefera",
     "turkish_meaning": "inkâr etti",
-    "root": null,
+    "root": "ك-ف-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "inkâr etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَفَرَ",
-    "example_turkish": "inkâr etti",
-    "grammar_note": "كَفَرَ kelimesi ayet içinde 'inkâr etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Kefera — 'örttü': hakikati örten.",
+    "example_arabic": "إِنَّ الَّذِينَ كَفَرُوا سَوَاءٌ عَلَيْهِمْ",
+    "example_turkish": "İnkâr edenler için (uyarsan da uyarmasan da) birdir.",
+    "grammar_note": "I. bab mâzî, 3. çoğul (كَفَرُوا); الَّذِينَ'nin sılası olarak gelir. ism-i fâili كَافِر.",
+    "example_ref": "2:6"
   },
   {
     "id": 219,
@@ -2916,12 +3099,13 @@ export const words: Word[] = [
     "arabic": "آمَنَ",
     "transliteration": "âmene",
     "turkish_meaning": "iman etti",
-    "root": null,
+    "root": "أ-م-ن",
     "part_of_speech": "fiil",
-    "memory_hint": "iman etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "آمَنَ",
-    "example_turkish": "iman etti",
-    "grammar_note": "آمَنَ kelimesi ayet içinde 'iman etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Âmene — 'emin' oldu, güvendi.",
+    "example_arabic": "آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ",
+    "example_turkish": "Peygamber, Rabbinden kendisine indirilene iman etti.",
+    "grammar_note": "IV. bab (أَفْعَلَ) mâzî: أَأْمَنَ → آمَنَ. بِ harf-i ceriyle iman edilen şeyi alır.",
+    "example_ref": "2:285"
   },
   {
     "id": 220,
@@ -2929,12 +3113,13 @@ export const words: Word[] = [
     "arabic": "اتَّقَى",
     "transliteration": "itteḳâ",
     "turkish_meaning": "sakındı / takva sahibi oldu",
-    "root": null,
+    "root": "و-ق-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "sakındı / takva sahibi oldu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "اتَّقَى",
-    "example_turkish": "sakındı / takva sahibi oldu",
-    "grammar_note": "اتَّقَى kelimesi ayet içinde 'sakındı / takva sahibi oldu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "İttekâ — kendini 'vikaye' (koruma) altına aldı.",
+    "example_arabic": "فَأَمَّا مَنْ أَعْطَى وَاتَّقَى",
+    "example_turkish": "Kim verir ve (Allah'tan) sakınırsa...",
+    "grammar_note": "VIII. bab (افْتَعَلَ) mâzî; kökteki و ت'ye dönüşüp şeddelenmiştir (اوْتَقَى → اتَّقَى).",
+    "example_ref": "92:5"
   },
   {
     "id": 221,
@@ -2942,12 +3127,13 @@ export const words: Word[] = [
     "arabic": "غَفَرَ",
     "transliteration": "ğafera",
     "turkish_meaning": "bağışladı",
-    "root": null,
+    "root": "غ-ف-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "bağışladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "غَفَرَ",
-    "example_turkish": "bağışladı",
-    "grammar_note": "غَفَرَ kelimesi ayet içinde 'bağışladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ğafera — örttü, bağışladı; 'mağfiret' aynı kök.",
+    "example_arabic": "فَغَفَرَ لَهُ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ",
+    "example_turkish": "(Allah) onu bağışladı; çünkü O çok bağışlayan, çok merhametlidir.",
+    "grammar_note": "I. bab mâzî; bağışlanan kişi لِ ile gelir (غَفَرَ لَهُ). X. babı اسْتَغْفَرَ (bağışlanma diledi).",
+    "example_ref": "28:16"
   },
   {
     "id": 222,
@@ -2955,12 +3141,13 @@ export const words: Word[] = [
     "arabic": "رَحِمَ",
     "transliteration": "rahime",
     "turkish_meaning": "merhamet etti",
-    "root": null,
+    "root": "ر-ح-م",
     "part_of_speech": "fiil",
-    "memory_hint": "merhamet etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَحِمَ",
-    "example_turkish": "merhamet etti",
-    "grammar_note": "رَحِمَ kelimesi ayet içinde 'merhamet etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Rahime — 'rahim' (ana rahmi) ile aynı kök: şefkatle saran.",
+    "example_arabic": "لَا عَاصِمَ الْيَوْمَ مِنْ أَمْرِ اللَّهِ إِلَّا مَن رَّحِمَ",
+    "example_turkish": "Bugün Allah'ın emrinden, O'nun merhamet ettiği kimse dışında, koruyacak yoktur.",
+    "grammar_note": "I. bab mâzî (فَعِلَ); muzari يَرْحَمُ. رَحْمَة, رَحِيم, رَحْمَٰن hep bu kökten.",
+    "example_ref": "11:43"
   },
   {
     "id": 223,
@@ -2968,12 +3155,13 @@ export const words: Word[] = [
     "arabic": "عَذَّبَ",
     "transliteration": "azzebe",
     "turkish_meaning": "azap etti",
-    "root": null,
+    "root": "ع-ذ-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "azap etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَذَّبَ",
-    "example_turkish": "azap etti",
-    "grammar_note": "عَذَّبَ kelimesi ayet içinde 'azap etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Azzebe — 'azap' verdi; II. bab yoğunluk katar.",
+    "example_arabic": "وَمَا كَانَ اللَّهُ لِيُعَذِّبَهُمْ وَأَنتَ فِيهِمْ",
+    "example_turkish": "Sen onların arasındayken Allah onlara azap edecek değildir.",
+    "grammar_note": "II. bab (فَعَّلَ) fiil; örnekte لِ (cuhûd lamı) ile mansup muzari: لِيُعَذِّبَهُمْ.",
+    "example_ref": "8:33"
   },
   {
     "id": 224,
@@ -2981,12 +3169,13 @@ export const words: Word[] = [
     "arabic": "هَدَى",
     "transliteration": "hedâ",
     "turkish_meaning": "hidayet etti",
-    "root": null,
+    "root": "ه-د-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "hidayet etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "هَدَى",
-    "example_turkish": "hidayet etti",
-    "grammar_note": "هَدَى kelimesi ayet içinde 'hidayet etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Hedâ — 'hidayet'; yol gösteren fener.",
+    "example_arabic": "وَوَجَدَكَ ضَالًّا فَهَدَى",
+    "example_turkish": "Seni yolunu arar bulup doğru yola iletti.",
+    "grammar_note": "Nâkıs fiil (son harf ي elife dönmüş). Muzari يَهْدِي, emir اهْدِ (Fatiha: اهْدِنَا).",
+    "example_ref": "93:7"
   },
   {
     "id": 225,
@@ -2994,12 +3183,13 @@ export const words: Word[] = [
     "arabic": "ضَلَّ",
     "transliteration": "dalle",
     "turkish_meaning": "saptı",
-    "root": null,
+    "root": "ض-ل-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "saptı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ضَلَّ",
-    "example_turkish": "saptı",
-    "grammar_note": "ضَلَّ kelimesi ayet içinde 'saptı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Dalle — 'dalalet' (sapıklık) ve 'dâll' aynı kök.",
+    "example_arabic": "مَا ضَلَّ صَاحِبُكُمْ وَمَا غَوَى",
+    "example_turkish": "Arkadaşınız (Muhammed) sapmadı ve azmadı.",
+    "grammar_note": "Muzaaf fiil (son iki harf aynı): ضَلَلَ → ضَلَّ. مَا burada mâzîyi olumsuzlar.",
+    "example_ref": "53:2"
   },
   {
     "id": 226,
@@ -3007,12 +3197,13 @@ export const words: Word[] = [
     "arabic": "أَضَلَّ",
     "transliteration": "edalle",
     "turkish_meaning": "saptırdı",
-    "root": null,
+    "root": "ض-ل-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "saptırdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَضَلَّ",
-    "example_turkish": "saptırdı",
-    "grammar_note": "أَضَلَّ kelimesi ayet içinde 'saptırdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Edalle — ضَلَّ'nin ettirgeni: başkasını saptırdı.",
+    "example_arabic": "وَأَضَلَّ فِرْعَوْنُ قَوْمَهُ وَمَا هَدَى",
+    "example_turkish": "Firavun kavmini saptırdı, doğru yola iletmedi.",
+    "grammar_note": "IV. bab (أَفْعَلَ) mâzî, muzaaf; geçişsiz ضَلَّ fiilini geçişli yapar.",
+    "example_ref": "20:79"
   },
   {
     "id": 227,
@@ -3020,12 +3211,13 @@ export const words: Word[] = [
     "arabic": "نَصَرَ",
     "transliteration": "nasara",
     "turkish_meaning": "yardım etti",
-    "root": null,
+    "root": "ن-ص-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "yardım etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَصَرَ",
-    "example_turkish": "yardım etti",
-    "grammar_note": "نَصَرَ kelimesi ayet içinde 'yardım etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Nasara — 'nusret' ve 'Ensar' (yardımcılar) aynı kök.",
+    "example_arabic": "وَلَقَدْ نَصَرَكُمُ اللَّهُ بِبَدْرٍ وَأَنتُمْ أَذِلَّةٌ",
+    "example_turkish": "Andolsun, siz güçsüzken Allah size Bedir'de yardım etti.",
+    "grammar_note": "I. bab mâzî; yardım edilen doğrudan nesne olur (نَصَرَكُمُ). Mastarı نَصْر, ism-i fâili نَاصِر.",
+    "example_ref": "3:123"
   },
   {
     "id": 228,
@@ -3033,25 +3225,27 @@ export const words: Word[] = [
     "arabic": "فَتَحَ",
     "transliteration": "feteha",
     "turkish_meaning": "açtı",
-    "root": null,
+    "root": "ف-ت-ح",
     "part_of_speech": "fiil",
-    "memory_hint": "açtı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَتَحَ",
-    "example_turkish": "açtı",
-    "grammar_note": "فَتَحَ kelimesi ayet içinde 'açtı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Feteha — 'Fâtiha' (açılış suresi) ve 'miftah' aynı kök.",
+    "example_arabic": "إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا",
+    "example_turkish": "Biz sana apaçık bir fetih verdik.",
+    "grammar_note": "I. bab mâzî, 1. çoğul; ardından aynı kökten mastar (فَتْحًا) mef'ûl-i mutlak olarak pekiştirme yapar.",
+    "example_ref": "48:1"
   },
   {
     "id": 229,
     "level": 3,
-    "arabic": "أَغْلَقَ",
-    "transliteration": "ağlaka",
-    "turkish_meaning": "kapattı",
-    "root": null,
+    "arabic": "غَلَّقَ",
+    "transliteration": "ğallaka",
+    "turkish_meaning": "(sıkıca) kapattı / kilitledi",
+    "root": "غ-ل-ق",
     "part_of_speech": "fiil",
-    "memory_hint": "kapattı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَغْلَقَ",
-    "example_turkish": "kapattı",
-    "grammar_note": "أَغْلَقَ kelimesi ayet içinde 'kapattı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ğallaka — tek tek, sıkı sıkı kilitlemek.",
+    "example_arabic": "وَغَلَّقَتِ الْأَبْوَابَ وَقَالَتْ هَيْتَ لَكَ",
+    "example_turkish": "Kapıları sıkıca kapattı ve 'Haydi gel!' dedi.",
+    "grammar_note": "II. bab (فَعَّلَ) mâzî, 3. tekil dişil (ـَتْ); şedde işin yoğunluğunu ve kapıların çokluğunu bildirir.",
+    "example_ref": "12:23"
   },
   {
     "id": 230,
@@ -3059,12 +3253,13 @@ export const words: Word[] = [
     "arabic": "قَتَلَ",
     "transliteration": "katele",
     "turkish_meaning": "öldürdü",
-    "root": null,
+    "root": "ق-ت-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "öldürdü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَتَلَ",
-    "example_turkish": "öldürdü",
-    "grammar_note": "قَتَلَ kelimesi ayet içinde 'öldürdü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Katele — 'katil' ve 'kıtal' (savaş) aynı kök.",
+    "example_arabic": "مَن قَتَلَ نَفْسًا بِغَيْرِ نَفْسٍ",
+    "example_turkish": "Kim bir cana kıyarsa (karşılığı olmaksızın)...",
+    "grammar_note": "I. bab mâzî; burada şart fiili. Edilgeni قُتِلَ (öldürüldü).",
+    "example_ref": "5:32"
   },
   {
     "id": 231,
@@ -3072,12 +3267,13 @@ export const words: Word[] = [
     "arabic": "مَاتَ",
     "transliteration": "mâte",
     "turkish_meaning": "öldü",
-    "root": null,
+    "root": "م-و-ت",
     "part_of_speech": "fiil",
-    "memory_hint": "öldü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَاتَ",
-    "example_turkish": "öldü",
-    "grammar_note": "مَاتَ kelimesi ayet içinde 'öldü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Mâte — 'mevt' (ölüm) ve 'memat' aynı kök.",
+    "example_arabic": "أَفَإِنْ مَّاتَ أَوْ قُتِلَ",
+    "example_turkish": "O ölür veya öldürülürse...",
+    "grammar_note": "Ecvef fiil (ortası و): مَاتَ / يَمُوتُ. Örnekte edilgen قُتِلَ ile karşılaştırılır.",
+    "example_ref": "3:144"
   },
   {
     "id": 232,
@@ -3085,12 +3281,13 @@ export const words: Word[] = [
     "arabic": "حَيِيَ",
     "transliteration": "hayiye",
     "turkish_meaning": "yaşadı / dirildi",
-    "root": null,
+    "root": "ح-ي-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "yaşadı / dirildi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَيِيَ",
-    "example_turkish": "yaşadı / dirildi",
-    "grammar_note": "حَيِيَ kelimesi ayet içinde 'yaşadı / dirildi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Hayiye — 'hayat'; Allah'ın ismi 'el-Hayy'.",
+    "example_arabic": "وَيَحْيَى مَنْ حَيَّ عَنْ بَيِّنَةٍ",
+    "example_turkish": "Yaşayan da apaçık bir delille yaşasın.",
+    "grammar_note": "Lefîf fiil: حَيِيَ şeklinde de, idğamla حَيَّ şeklinde de gelir. Muzari يَحْيَا; IV. babı أَحْيَا (diriltti).",
+    "example_ref": "8:42"
   },
   {
     "id": 233,
@@ -3098,12 +3295,13 @@ export const words: Word[] = [
     "arabic": "بَعَثَ",
     "transliteration": "bease",
     "turkish_meaning": "gönderdi / diriltti",
-    "root": null,
+    "root": "ب-ع-ث",
     "part_of_speech": "fiil",
-    "memory_hint": "gönderdi / diriltti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَعَثَ",
-    "example_turkish": "gönderdi / diriltti",
-    "grammar_note": "بَعَثَ kelimesi ayet içinde 'gönderdi / diriltti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Bease — 'bi'set' (peygamber gönderilmesi) ve 'ba's' (diriliş).",
+    "example_arabic": "هُوَ الَّذِي بَعَثَ فِي الْأُمِّيِّينَ رَسُولًا مِّنْهُمْ",
+    "example_turkish": "Ümmîler arasından kendilerine bir elçi gönderen O'dur.",
+    "grammar_note": "I. bab mâzî; iki anlamı vardır: 'gönderdi' ve 'diriltti' (يَوْمَ يُبْعَثُونَ).",
+    "example_ref": "62:2"
   },
   {
     "id": 234,
@@ -3111,12 +3309,13 @@ export const words: Word[] = [
     "arabic": "جَمَعَ",
     "transliteration": "cemea",
     "turkish_meaning": "topladı",
-    "root": null,
+    "root": "ج-م-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "topladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَمَعَ",
-    "example_turkish": "topladı",
-    "grammar_note": "جَمَعَ kelimesi ayet içinde 'topladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Cemea — 'cemaat', 'cami' ve 'cuma' aynı kök.",
+    "example_arabic": "الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ",
+    "example_turkish": "Mal toplayıp onu sayıp duran.",
+    "grammar_note": "I. bab mâzî; الَّذِي'nin sılası. Cuma (يَوْمُ الْجُمُعَة) 'toplanma günü' demektir.",
+    "example_ref": "104:2"
   },
   {
     "id": 235,
@@ -3124,12 +3323,13 @@ export const words: Word[] = [
     "arabic": "فَرَّقَ",
     "transliteration": "ferraka",
     "turkish_meaning": "ayırdı",
-    "root": null,
+    "root": "ف-ر-ق",
     "part_of_speech": "fiil",
-    "memory_hint": "ayırdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَرَّقَ",
-    "example_turkish": "ayırdı",
-    "grammar_note": "فَرَّقَ kelimesi ayet içinde 'ayırdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ferraka — 'fark' ve 'Furkan' (ayırt eden) aynı kök.",
+    "example_arabic": "إِنَّ الَّذِينَ فَرَّقُوا دِينَهُمْ وَكَانُوا شِيَعًا",
+    "example_turkish": "Dinlerini parça parça edip gruplara ayrılanlar...",
+    "grammar_note": "II. bab (فَعَّلَ) mâzî, 3. çoğul; şedde ayırmanın çokluğunu bildirir.",
+    "example_ref": "6:159"
   },
   {
     "id": 236,
@@ -3137,12 +3337,13 @@ export const words: Word[] = [
     "arabic": "حَمَلَ",
     "transliteration": "hamele",
     "turkish_meaning": "taşıdı",
-    "root": null,
+    "root": "ح-م-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "taşıdı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَمَلَ",
-    "example_turkish": "taşıdı",
-    "grammar_note": "حَمَلَ kelimesi ayet içinde 'taşıdı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Hamele — 'hamal' ve 'hamile' aynı kök: yük taşımak.",
+    "example_arabic": "وَحَمَلَهَا الْإِنسَانُ",
+    "example_turkish": "Onu (emaneti) insan yüklendi.",
+    "grammar_note": "I. bab mâzî; ek zamir هَا (onu) emanete döner. Mastarı حَمْل.",
+    "example_ref": "33:72"
   },
   {
     "id": 237,
@@ -3150,12 +3351,13 @@ export const words: Word[] = [
     "arabic": "وَضَعَ",
     "transliteration": "vadaa",
     "turkish_meaning": "koydu",
-    "root": null,
+    "root": "و-ض-ع",
     "part_of_speech": "fiil",
-    "memory_hint": "koydu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَضَعَ",
-    "example_turkish": "koydu",
-    "grammar_note": "وَضَعَ kelimesi ayet içinde 'koydu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Vadaa — 'vaz'' (koyma) ve 'mevzu' aynı kök.",
+    "example_arabic": "وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ",
+    "example_turkish": "Göğü yükseltti ve dengeyi (mizanı) koydu.",
+    "grammar_note": "Misal fiil (ilk harf و). Muzaride و düşer: يَضَعُ. Örnekte رَفَعَ'nın zıddı olarak gelir.",
+    "example_ref": "55:7"
   },
   {
     "id": 238,
@@ -3163,12 +3365,13 @@ export const words: Word[] = [
     "arabic": "أَكَلَ",
     "transliteration": "ekele",
     "turkish_meaning": "yedi",
-    "root": null,
+    "root": "أ-ك-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "yedi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَكَلَ",
-    "example_turkish": "yedi",
-    "grammar_note": "أَكَلَ kelimesi ayet içinde 'yedi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ekele — 'ekl' (yeme) ve 'me'kûlât' (yiyecekler).",
+    "example_arabic": "فَأَكَلَهُ الذِّئْبُ",
+    "example_turkish": "Onu kurt yedi.",
+    "grammar_note": "Mehmûzu'l-fâ fiil; emri düzensiz: كُلْ (ye!). Kur'an'da 'haksız yere yemek' mecazı da sık geçer.",
+    "example_ref": "12:17"
   },
   {
     "id": 239,
@@ -3176,12 +3379,13 @@ export const words: Word[] = [
     "arabic": "شَرِبَ",
     "transliteration": "şeribe",
     "turkish_meaning": "içti",
-    "root": null,
+    "root": "ش-ر-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "içti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَرِبَ",
-    "example_turkish": "içti",
-    "grammar_note": "شَرِبَ kelimesi ayet içinde 'içti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Şeribe — 'şerbet' ve 'meşrubat' aynı kök.",
+    "example_arabic": "فَشَرِبُوا مِنْهُ إِلَّا قَلِيلًا مِّنْهُمْ",
+    "example_turkish": "İçlerinden pek azı hariç ondan içtiler.",
+    "grammar_note": "I. bab mâzî (فَعِلَ), 3. çoğul. Emri اشْرَبْ; 'yiyin için' = كُلُوا وَاشْرَبُوا.",
+    "example_ref": "2:249"
   },
   {
     "id": 240,
@@ -3189,12 +3393,13 @@ export const words: Word[] = [
     "arabic": "لَبِثَ",
     "transliteration": "lebise",
     "turkish_meaning": "kaldı / bekledi",
-    "root": null,
+    "root": "ل-ب-ث",
     "part_of_speech": "fiil",
-    "memory_hint": "kaldı / bekledi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَبِثَ",
-    "example_turkish": "kaldı / bekledi",
-    "grammar_note": "لَبِثَ kelimesi ayet içinde 'kaldı / bekledi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Lebise — bir yerde 'oyalanıp kalmak'; Ashab-ı Kehf.",
+    "example_arabic": "وَلَبِثُوا فِي كَهْفِهِمْ ثَلَاثَ مِائَةٍ سِنِينَ",
+    "example_turkish": "Mağaralarında üç yüz yıl kaldılar.",
+    "grammar_note": "I. bab mâzî (فَعِلَ); süre bildiren zaman zarfıyla birlikte gelir.",
+    "example_ref": "18:25"
   },
   {
     "id": 241,
@@ -3202,12 +3407,13 @@ export const words: Word[] = [
     "arabic": "مَشَى",
     "transliteration": "meşâ",
     "turkish_meaning": "yürüdü",
-    "root": null,
+    "root": "م-ش-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "yürüdü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مَشَى",
-    "example_turkish": "yürüdü",
-    "grammar_note": "مَشَى kelimesi ayet içinde 'yürüdü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Meşâ — 'meşy' (yürüyüş); 'mişvar'.",
+    "example_arabic": "وَلَا تَمْشِ فِي الْأَرْضِ مَرَحًا",
+    "example_turkish": "Yeryüzünde böbürlenerek yürüme.",
+    "grammar_note": "Nâkıs fiil; yasak (nehiy) lâ'sıyla muzari meczum olur ve son harf düşer: تَمْشِي → لَا تَمْشِ.",
+    "example_ref": "31:18"
   },
   {
     "id": 242,
@@ -3215,12 +3421,13 @@ export const words: Word[] = [
     "arabic": "سَعَى",
     "transliteration": "seâ",
     "turkish_meaning": "çabaladı",
-    "root": null,
+    "root": "س-ع-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "çabaladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَعَى",
-    "example_turkish": "çabaladı",
-    "grammar_note": "سَعَى kelimesi ayet içinde 'çabaladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Seâ — 'sa'y' (çaba); hacdaki Safa-Merve koşusu.",
+    "example_arabic": "وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَى",
+    "example_turkish": "İnsan için ancak çalıştığı vardır.",
+    "grammar_note": "Nâkıs fiil (son harf ي elife dönmüş). Mastarı سَعْي. Örnek, sorumluluk ilkesinin temel ayetidir.",
+    "example_ref": "53:39"
   },
   {
     "id": 243,
@@ -3228,12 +3435,13 @@ export const words: Word[] = [
     "arabic": "خَافَ",
     "transliteration": "hâfe",
     "turkish_meaning": "korktu",
-    "root": null,
+    "root": "خ-و-ف",
     "part_of_speech": "fiil",
-    "memory_hint": "korktu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَافَ",
-    "example_turkish": "korktu",
-    "grammar_note": "خَافَ kelimesi ayet içinde 'korktu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Hâfe — 'havf' (korku) ve 'mahûf' (korkulan).",
+    "example_arabic": "وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِ",
+    "example_turkish": "Kim Rabbinin huzurunda duracağından korkarsa...",
+    "grammar_note": "Ecvef fiil (ortası و): خَافَ / يَخَافُ. Korkulan şey doğrudan nesne olur.",
+    "example_ref": "79:40"
   },
   {
     "id": 244,
@@ -3241,12 +3449,13 @@ export const words: Word[] = [
     "arabic": "رَجَا",
     "transliteration": "recâ",
     "turkish_meaning": "umut etti",
-    "root": null,
+    "root": "ر-ج-و",
     "part_of_speech": "fiil",
-    "memory_hint": "umut etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَجَا",
-    "example_turkish": "umut etti",
-    "grammar_note": "رَجَا kelimesi ayet içinde 'umut etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Recâ — 'rica' ve 'reca' (ümit) aynı kök.",
+    "example_arabic": "فَمَن كَانَ يَرْجُو لِقَاءَ رَبِّهِ",
+    "example_turkish": "Kim Rabbine kavuşmayı umuyorsa...",
+    "grammar_note": "Nâkıs fiil (son harf و). Muzari يَرْجُو; örnekte كَانَ ile 'umar durur' anlamı kazanır.",
+    "example_ref": "18:110"
   },
   {
     "id": 245,
@@ -3254,12 +3463,13 @@ export const words: Word[] = [
     "arabic": "حَزِنَ",
     "transliteration": "hazina",
     "turkish_meaning": "üzüldü",
-    "root": null,
+    "root": "ح-ز-ن",
     "part_of_speech": "fiil",
-    "memory_hint": "üzüldü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَزِنَ",
-    "example_turkish": "üzüldü",
-    "grammar_note": "حَزِنَ kelimesi ayet içinde 'üzüldü' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Hazine — 'hüzün' ile aynı kök; Sevr mağarasındaki teselli.",
+    "example_arabic": "لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا",
+    "example_turkish": "Üzülme, Allah bizimle beraberdir.",
+    "grammar_note": "I. bab (فَعِلَ) fiil; örnekte yasak لَا ile meczum muzari: لَا تَحْزَنْ.",
+    "example_ref": "9:40"
   },
   {
     "id": 246,
@@ -3267,12 +3477,13 @@ export const words: Word[] = [
     "arabic": "فَرِحَ",
     "transliteration": "feriha",
     "turkish_meaning": "sevindi",
-    "root": null,
+    "root": "ف-ر-ح",
     "part_of_speech": "fiil",
-    "memory_hint": "sevindi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَرِحَ",
-    "example_turkish": "sevindi",
-    "grammar_note": "فَرِحَ kelimesi ayet içinde 'sevindi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Feriha — 'ferah' ve 'ferahlık' aynı kök.",
+    "example_arabic": "فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِن فَضْلِهِ",
+    "example_turkish": "Allah'ın lütfundan kendilerine verdiklerine sevinerek.",
+    "grammar_note": "I. bab (فَعِلَ) fiil; örnekteki فَرِحِينَ sıfat-ı müşebbehe çoğuludur ve hâl bildirir.",
+    "example_ref": "3:170"
   },
   {
     "id": 247,
@@ -3280,12 +3491,13 @@ export const words: Word[] = [
     "arabic": "صَدَقَ",
     "transliteration": "sadaka",
     "turkish_meaning": "doğru söyledi",
-    "root": null,
+    "root": "ص-د-ق",
     "part_of_speech": "fiil",
-    "memory_hint": "doğru söyledi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَدَقَ",
-    "example_turkish": "doğru söyledi",
-    "grammar_note": "صَدَقَ kelimesi ayet içinde 'doğru söyledi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Sadaka — 'sadık' ve 'sıdk' aynı kök.",
+    "example_arabic": "رِجَالٌ صَدَقُوا مَا عَاهَدُوا اللَّهَ عَلَيْهِ",
+    "example_turkish": "Allah'a verdikleri söze sadık kalan adamlar.",
+    "grammar_note": "I. bab mâzî; 'sözünü tuttu, doğru çıktı'. II. babı صَدَّقَ (doğruladı).",
+    "example_ref": "33:23"
   },
   {
     "id": 248,
@@ -3293,12 +3505,13 @@ export const words: Word[] = [
     "arabic": "كَذَبَ",
     "transliteration": "kezebe",
     "turkish_meaning": "yalanladı",
-    "root": null,
+    "root": "ك-ذ-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "yalanladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَذَبَ",
-    "example_turkish": "yalanladı",
-    "grammar_note": "كَذَبَ kelimesi ayet içinde 'yalanladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Kezebe — 'kizb' (yalan); II. babı tekzip (yalanlama).",
+    "example_arabic": "انظُرْ كَيْفَ كَذَبُوا عَلَى أَنفُسِهِمْ",
+    "example_turkish": "Bak, kendi aleyhlerine nasıl yalan söylediler.",
+    "grammar_note": "I. bab mâzî: 'yalan söyledi'. II. babı كَذَّبَ 'yalanladı' anlamındadır; ikisini karıştırma.",
+    "example_ref": "6:24"
   },
   {
     "id": 249,
@@ -3306,12 +3519,13 @@ export const words: Word[] = [
     "arabic": "ظَلَمَ",
     "transliteration": "zaleme",
     "turkish_meaning": "zulmetti",
-    "root": null,
+    "root": "ظ-ل-م",
     "part_of_speech": "fiil",
-    "memory_hint": "zulmetti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "ظَلَمَ",
-    "example_turkish": "zulmetti",
-    "grammar_note": "ظَلَمَ kelimesi ayet içinde 'zulmetti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Zaleme — 'zulüm' ve 'zulmet' (karanlık) aynı kök.",
+    "example_arabic": "قَالَا رَبَّنَا ظَلَمْنَا أَنفُسَنَا",
+    "example_turkish": "Dediler ki: Rabbimiz! Biz kendimize zulmettik.",
+    "grammar_note": "I. bab mâzî, 1. çoğul; kökün aslı 'bir şeyi yerinin dışına koymak'. Âdem ile Havva'nın duası.",
+    "example_ref": "7:23"
   },
   {
     "id": 250,
@@ -3319,12 +3533,13 @@ export const words: Word[] = [
     "arabic": "عَدَلَ",
     "transliteration": "adele",
     "turkish_meaning": "adaletli oldu",
-    "root": null,
+    "root": "ع-د-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "adaletli oldu anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَدَلَ",
-    "example_turkish": "adaletli oldu",
-    "grammar_note": "عَدَلَ kelimesi ayet içinde 'adaletli oldu' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Adele — 'adalet' ve 'itidal' (denge) aynı kök.",
+    "example_arabic": "الَّذِي خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ",
+    "example_turkish": "Seni yaratan, düzenleyen ve dengeli kılan.",
+    "grammar_note": "I. bab mâzî; 'adaletli davrandı' ve 'dengeli kıldı' anlamları vardır. Örnekte ikincisi geçer.",
+    "example_ref": "82:7"
   },
   {
     "id": 251,
@@ -3332,12 +3547,13 @@ export const words: Word[] = [
     "arabic": "أَمَرَ",
     "transliteration": "emera",
     "turkish_meaning": "emretti",
-    "root": null,
+    "root": "أ-م-ر",
     "part_of_speech": "fiil",
-    "memory_hint": "emretti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَمَرَ",
-    "example_turkish": "emretti",
-    "grammar_note": "أَمَرَ kelimesi ayet içinde 'emretti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Emera — 'emir' ve 'âmir' aynı kök.",
+    "example_arabic": "إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ",
+    "example_turkish": "Şüphesiz Allah adaleti ve iyiliği emreder.",
+    "grammar_note": "Mehmûzu'l-fâ fiil; emredilen şey بِ ile gelir (يَأْمُرُ بِالْعَدْلِ). Emri düzensiz: مُرْ.",
+    "example_ref": "16:90"
   },
   {
     "id": 252,
@@ -3345,12 +3561,13 @@ export const words: Word[] = [
     "arabic": "نَهَى",
     "transliteration": "nehâ",
     "turkish_meaning": "yasakladı",
-    "root": null,
+    "root": "ن-ه-ي",
     "part_of_speech": "fiil",
-    "memory_hint": "yasakladı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَهَى",
-    "example_turkish": "yasakladı",
-    "grammar_note": "نَهَى kelimesi ayet içinde 'yasakladı' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Nehâ — 'nehiy' (yasak); emrin zıddı.",
+    "example_arabic": "وَيَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ وَالْبَغْيِ",
+    "example_turkish": "Hayasızlığı, kötülüğü ve azgınlığı yasaklar.",
+    "grammar_note": "Nâkıs fiil; yasaklanan şey عَنْ ile gelir. Örnek, أَمَرَ ile aynı ayette karşıt olarak geçer.",
+    "example_ref": "16:90"
   },
   {
     "id": 253,
@@ -3358,12 +3575,13 @@ export const words: Word[] = [
     "arabic": "سَأَلَ",
     "transliteration": "seele",
     "turkish_meaning": "sordu / istedi",
-    "root": null,
+    "root": "س-أ-ل",
     "part_of_speech": "fiil",
-    "memory_hint": "sordu / istedi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَأَلَ",
-    "example_turkish": "sordu / istedi",
-    "grammar_note": "سَأَلَ kelimesi ayet içinde 'sordu / istedi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Seele — 'sual' (soru) ve 'mesele' aynı kök.",
+    "example_arabic": "سَأَلَ سَائِلٌ بِعَذَابٍ وَاقِعٍ",
+    "example_turkish": "Bir soran, gerçekleşecek bir azabı sordu.",
+    "grammar_note": "Mehmûzu'l-ayn fiil (orta harf hemze). Örnekte fiil ve ism-i fâili yan yana: سَأَلَ سَائِلٌ.",
+    "example_ref": "70:1"
   },
   {
     "id": 254,
@@ -3371,12 +3589,13 @@ export const words: Word[] = [
     "arabic": "أَجَابَ",
     "transliteration": "ecâbe",
     "turkish_meaning": "cevap verdi",
-    "root": null,
+    "root": "ج-و-ب",
     "part_of_speech": "fiil",
-    "memory_hint": "cevap verdi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَجَابَ",
-    "example_turkish": "cevap verdi",
-    "grammar_note": "أَجَابَ kelimesi ayet içinde 'cevap verdi' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Ecâbe — 'cevap' ve 'icabet' aynı kök.",
+    "example_arabic": "أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+    "example_turkish": "Dua edenin duasına, bana dua ettiğinde karşılık veririm.",
+    "grammar_note": "IV. bab ecvef fiil; örnekte 1. tekil muzari أُجِيبُ. X. babı اسْتَجَابَ (duaya icabet etti).",
+    "example_ref": "2:186"
   },
   {
     "id": 255,
@@ -3384,12 +3603,13 @@ export const words: Word[] = [
     "arabic": "وَعَدَ",
     "transliteration": "veade",
     "turkish_meaning": "vaat etti",
-    "root": null,
+    "root": "و-ع-د",
     "part_of_speech": "fiil",
-    "memory_hint": "vaat etti anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَعَدَ",
-    "example_turkish": "vaat etti",
-    "grammar_note": "وَعَدَ kelimesi ayet içinde 'vaat etti' anlam alanıyla kullanılır. Kelime türü: fiil."
+    "memory_hint": "Veade — 'vaat' ve 'mev'id' (buluşma) aynı kök.",
+    "example_arabic": "وَعَدَ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَعَمِلُوا الصَّالِحَاتِ",
+    "example_turkish": "Allah içinizden iman edip salih ameller işleyenlere vaat etti.",
+    "grammar_note": "Misal fiil (ilk harf و); muzaride و düşer: يَعِدُ. Mastarları وَعْد (vaat) ve وَعِيد (tehdit).",
+    "example_ref": "24:55"
   },
   {
     "id": 256,
@@ -3397,12 +3617,13 @@ export const words: Word[] = [
     "arabic": "حَدِيث",
     "transliteration": "hadîs",
     "turkish_meaning": "söz / haber",
-    "root": null,
+    "root": "ح-د-ث",
     "part_of_speech": "isim",
-    "memory_hint": "söz / haber anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حَدِيث",
-    "example_turkish": "söz / haber",
-    "grammar_note": "حَدِيث kelimesi ayet içinde 'söz / haber' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hadîs — 'hadis' ve 'hâdise' (olay) aynı kök: yeni olan, anlatılan.",
+    "example_arabic": "اللَّهُ نَزَّلَ أَحْسَنَ الْحَدِيثِ",
+    "example_turkish": "Allah sözün en güzelini indirdi.",
+    "grammar_note": "فَعِيل vezninde isim; çoğulu أَحَادِيث. Kur'an'da 'söz, haber, kıssa' anlamında.",
+    "example_ref": "39:23"
   },
   {
     "id": 257,
@@ -3410,12 +3631,13 @@ export const words: Word[] = [
     "arabic": "قَوْل",
     "transliteration": "kavl",
     "turkish_meaning": "söz",
-    "root": null,
+    "root": "ق-و-ل",
     "part_of_speech": "isim",
-    "memory_hint": "söz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَوْل",
-    "example_turkish": "söz",
-    "grammar_note": "قَوْل kelimesi ayet içinde 'söz' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kavl — 'kavil' (söz); 'kavl-i sedid' (doğru söz).",
+    "example_arabic": "قَوْلٌ مَّعْرُوفٌ وَمَغْفِرَةٌ خَيْرٌ مِّن صَدَقَةٍ يَتْبَعُهَا أَذًى",
+    "example_turkish": "Güzel bir söz ve bağışlama, ardından eziyet gelen sadakadan daha hayırlıdır.",
+    "grammar_note": "قَالَ fiilinin mastarı; sıfatıyla gelir: قَوْلٌ مَعْرُوفٌ. Çoğulu أَقْوَال.",
+    "example_ref": "2:263"
   },
   {
     "id": 258,
@@ -3423,12 +3645,13 @@ export const words: Word[] = [
     "arabic": "كَلِمَة",
     "transliteration": "kelime",
     "turkish_meaning": "kelime / söz",
-    "root": null,
+    "root": "ك-ل-م",
     "part_of_speech": "isim",
-    "memory_hint": "kelime / söz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كَلِمَة",
-    "example_turkish": "kelime / söz",
-    "grammar_note": "كَلِمَة kelimesi ayet içinde 'kelime / söz' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kelime — 'kelam' ve 'Kelîmullah' aynı kök.",
+    "example_arabic": "وَكَلِمَةُ اللَّهِ هِيَ الْعُلْيَا",
+    "example_turkish": "Allah'ın sözü ise en yücedir.",
+    "grammar_note": "Dişil isim; çoğulu كَلِمَات. Burada mübtedâ; هِيَ fasl zamiri vurgu katar.",
+    "example_ref": "9:40"
   },
   {
     "id": 259,
@@ -3436,12 +3659,13 @@ export const words: Word[] = [
     "arabic": "لِسَان",
     "transliteration": "lisân",
     "turkish_meaning": "dil",
-    "root": null,
+    "root": "ل-س-ن",
     "part_of_speech": "isim",
-    "memory_hint": "dil anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لِسَان",
-    "example_turkish": "dil",
-    "grammar_note": "لِسَان kelimesi ayet içinde 'dil' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Lisân — 'lisan' Türkçede de 'dil'.",
+    "example_arabic": "وَمَا أَرْسَلْنَا مِن رَّسُولٍ إِلَّا بِلِسَانِ قَوْمِهِ",
+    "example_turkish": "Her elçiyi yalnızca kendi kavminin diliyle gönderdik.",
+    "grammar_note": "İsim; hem organ hem 'konuşulan dil' anlamında. Çoğulu أَلْسِنَة.",
+    "example_ref": "14:4"
   },
   {
     "id": 260,
@@ -3449,12 +3673,13 @@ export const words: Word[] = [
     "arabic": "قَلْب",
     "transliteration": "kalb",
     "turkish_meaning": "kalp",
-    "root": null,
+    "root": "ق-ل-ب",
     "part_of_speech": "isim",
-    "memory_hint": "kalp anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَلْب",
-    "example_turkish": "kalp",
-    "grammar_note": "قَلْب kelimesi ayet içinde 'kalp' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kalb — 'inkılap' (dönüşüm): sürekli dönen yürek.",
+    "example_arabic": "إِلَّا مَنْ أَتَى اللَّهَ بِقَلْبٍ سَلِيمٍ",
+    "example_turkish": "Ancak Allah'a temiz bir kalple gelen (fayda bulur).",
+    "grammar_note": "İsim; kökü 'çevirmek, döndürmek'. Çoğulu قُلُوب; sıfatı سَلِيمٍ ona uyar.",
+    "example_ref": "26:89"
   },
   {
     "id": 261,
@@ -3462,25 +3687,27 @@ export const words: Word[] = [
     "arabic": "عَيْن",
     "transliteration": "ayn",
     "turkish_meaning": "göz / kaynak",
-    "root": null,
+    "root": "ع-ي-ن",
     "part_of_speech": "isim",
-    "memory_hint": "göz / kaynak anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَيْن",
-    "example_turkish": "göz / kaynak",
-    "grammar_note": "عَيْن kelimesi ayet içinde 'göz / kaynak' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ayn — hem 'göz' hem 'pınar'; ikisi de su akıtır.",
+    "example_arabic": "فِيهَا عَيْنٌ جَارِيَةٌ",
+    "example_turkish": "Orada akan bir pınar vardır.",
+    "grammar_note": "Dişil isim; çoğulları أَعْيُن (gözler) ve عُيُون (pınarlar/gözler).",
+    "example_ref": "88:12"
   },
   {
     "id": 262,
     "level": 2,
     "arabic": "أُذُن",
-    "transliteration": "uzun",
+    "transliteration": "üzün",
     "turkish_meaning": "kulak",
-    "root": null,
+    "root": "أ-ذ-ن",
     "part_of_speech": "isim",
-    "memory_hint": "kulak anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أُذُن",
-    "example_turkish": "kulak",
-    "grammar_note": "أُذُن kelimesi ayet içinde 'kulak' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Üzün — 'ezan' ve 'izin' aynı kök: işitilip duyurulan.",
+    "example_arabic": "وَالْأُذُنَ بِالْأُذُنِ",
+    "example_turkish": "Kulağa kulak (kısas).",
+    "grammar_note": "Dişil isim; çoğulu آذَان. Örnekte بِ 'karşılığında' anlamındadır.",
+    "example_ref": "5:45"
   },
   {
     "id": 263,
@@ -3488,12 +3715,13 @@ export const words: Word[] = [
     "arabic": "يَد",
     "transliteration": "yed",
     "turkish_meaning": "el",
-    "root": null,
+    "root": "ي-د-ي",
     "part_of_speech": "isim",
-    "memory_hint": "el anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "يَد",
-    "example_turkish": "el",
-    "grammar_note": "يَد kelimesi ayet içinde 'el' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Yed — 'yed-i emin' (güvenilir el) deyiminden.",
+    "example_arabic": "يَدُ اللَّهِ فَوْقَ أَيْدِيهِمْ",
+    "example_turkish": "Allah'ın eli onların ellerinin üstündedir.",
+    "grammar_note": "Dişil isim; aslı يَدْيٌ, son harf düşmüştür. Çoğulu أَيْدِي; mecazen 'güç, kudret'.",
+    "example_ref": "48:10"
   },
   {
     "id": 264,
@@ -3501,12 +3729,13 @@ export const words: Word[] = [
     "arabic": "وَجْه",
     "transliteration": "vech",
     "turkish_meaning": "yüz / yön",
-    "root": null,
+    "root": "و-ج-ه",
     "part_of_speech": "isim",
-    "memory_hint": "yüz / yön anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَجْه",
-    "example_turkish": "yüz / yön",
-    "grammar_note": "وَجْه kelimesi ayet içinde 'yüz / yön' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Vech — 'vecih' (yön, tarz) ve 'tevcih' (yöneltme) aynı kök.",
+    "example_arabic": "وَيَبْقَى وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ",
+    "example_turkish": "Celal ve ikram sahibi Rabbinin yüzü (zâtı) baki kalır.",
+    "grammar_note": "İsim; çoğulu وُجُوه. Hem 'yüz' hem 'yön/rıza' anlamında kullanılır.",
+    "example_ref": "55:27"
   },
   {
     "id": 265,
@@ -3514,12 +3743,13 @@ export const words: Word[] = [
     "arabic": "رَأْس",
     "transliteration": "re’s",
     "turkish_meaning": "baş",
-    "root": null,
+    "root": "ر-أ-س",
     "part_of_speech": "isim",
-    "memory_hint": "baş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رَأْس",
-    "example_turkish": "baş",
-    "grammar_note": "رَأْس kelimesi ayet içinde 'baş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Re's — 'reis' (baş, başkan) aynı kök.",
+    "example_arabic": "وَاشْتَعَلَ الرَّأْسُ شَيْبًا",
+    "example_turkish": "Saçım ağarıp tutuştu (başım ak düştü).",
+    "grammar_note": "İsim; çoğulu رُؤُوس. Örnekte şeybâ temyizdir: 'ağarmak bakımından tutuştu'.",
+    "example_ref": "19:4"
   },
   {
     "id": 266,
@@ -3527,12 +3757,13 @@ export const words: Word[] = [
     "arabic": "نَفْس",
     "transliteration": "nefs",
     "turkish_meaning": "nefis / can",
-    "root": null,
+    "root": "ن-ف-س",
     "part_of_speech": "isim",
-    "memory_hint": "nefis / can anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَفْس",
-    "example_turkish": "nefis / can",
-    "grammar_note": "نَفْس kelimesi ayet içinde 'nefis / can' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nefs — 'nefes' ile aynı kök: canlıyı canlı kılan.",
+    "example_arabic": "وَنَفْسٍ وَمَا سَوَّاهَا",
+    "example_turkish": "Nefse ve onu düzenleyene andolsun.",
+    "grammar_note": "Dişil isim; çoğulları أَنْفُس ve نُفُوس. 'Kendisi' anlamında zamir gibi de kullanılır.",
+    "example_ref": "91:7"
   },
   {
     "id": 267,
@@ -3540,12 +3771,13 @@ export const words: Word[] = [
     "arabic": "رُوح",
     "transliteration": "rûh",
     "turkish_meaning": "ruh",
-    "root": null,
+    "root": "ر-و-ح",
     "part_of_speech": "isim",
-    "memory_hint": "ruh anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "رُوح",
-    "example_turkish": "ruh",
-    "grammar_note": "رُوح kelimesi ayet içinde 'ruh' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Rûh — 'rîh' (rüzgâr) ile aynı kök: görünmez nefes.",
+    "example_arabic": "وَيَسْأَلُونَكَ عَنِ الرُّوحِ قُلِ الرُّوحُ مِنْ أَمْرِ رَبِّي",
+    "example_turkish": "Sana ruhu soruyorlar. De ki: Ruh Rabbimin emrindendir.",
+    "grammar_note": "İsim; çoğulu أَرْوَاح. Kur'an'da Cebrail için de kullanılır (الرُّوحُ الْأَمِينُ).",
+    "example_ref": "17:85"
   },
   {
     "id": 268,
@@ -3553,12 +3785,13 @@ export const words: Word[] = [
     "arabic": "جَسَد",
     "transliteration": "cesed",
     "turkish_meaning": "beden",
-    "root": null,
+    "root": "ج-س-د",
     "part_of_speech": "isim",
-    "memory_hint": "beden anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "جَسَد",
-    "example_turkish": "beden",
-    "grammar_note": "جَسَد kelimesi ayet içinde 'beden' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Cesed — 'ceset': ruhsuz beden.",
+    "example_arabic": "فَأَخْرَجَ لَهُمْ عِجْلًا جَسَدًا لَّهُ خُوَارٌ",
+    "example_turkish": "Onlar için böğüren bir buzağı heykeli çıkardı.",
+    "grammar_note": "İsim; Kur'an'da genellikle ruhsuz, cansız beden anlamında geçer. Çoğulu أَجْسَاد.",
+    "example_ref": "20:88"
   },
   {
     "id": 269,
@@ -3566,12 +3799,13 @@ export const words: Word[] = [
     "arabic": "دَم",
     "transliteration": "dem",
     "turkish_meaning": "kan",
-    "root": null,
+    "root": "د-م-و",
     "part_of_speech": "isim",
-    "memory_hint": "kan anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "دَم",
-    "example_turkish": "kan",
-    "grammar_note": "دَم kelimesi ayet içinde 'kan' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Dem — 'demevi' (kanlı) kelimesi buradan.",
+    "example_arabic": "حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ",
+    "example_turkish": "Leş ve kan size haram kılındı.",
+    "grammar_note": "İki harfli görünen isim; aslı دَمَوٌ'dur, son harf düşmüştür. Çoğulu دِمَاء.",
+    "example_ref": "5:3"
   },
   {
     "id": 270,
@@ -3579,12 +3813,13 @@ export const words: Word[] = [
     "arabic": "طَعَام",
     "transliteration": "taâm",
     "turkish_meaning": "yiyecek",
-    "root": null,
+    "root": "ط-ع-م",
     "part_of_speech": "isim",
-    "memory_hint": "yiyecek anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "طَعَام",
-    "example_turkish": "yiyecek",
-    "grammar_note": "طَعَام kelimesi ayet içinde 'yiyecek' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Taâm — 'tat' ve 'it'am' (doyurma) aynı kök.",
+    "example_arabic": "وَيُطْعِمُونَ الطَّعَامَ عَلَى حُبِّهِ مِسْكِينًا",
+    "example_turkish": "Yemeği, ona olan sevgilerine rağmen yoksula yedirirler.",
+    "grammar_note": "İsim; örnekte aynı kökten IV. bab fiil يُطْعِمُونَ ile birlikte geçer.",
+    "example_ref": "76:8"
   },
   {
     "id": 271,
@@ -3592,12 +3827,13 @@ export const words: Word[] = [
     "arabic": "شَرَاب",
     "transliteration": "şerâb",
     "turkish_meaning": "içecek",
-    "root": null,
+    "root": "ش-ر-ب",
     "part_of_speech": "isim",
-    "memory_hint": "içecek anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "شَرَاب",
-    "example_turkish": "içecek",
-    "grammar_note": "شَرَاب kelimesi ayet içinde 'içecek' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Şerâb — 'şurup' ve 'şerbet' aynı kök: içilen şey.",
+    "example_arabic": "وَسَقَاهُمْ رَبُّهُمْ شَرَابًا طَهُورًا",
+    "example_turkish": "Rableri onlara tertemiz bir içecek içirir.",
+    "grammar_note": "فَعَال vezninde isim; شَرِبَ fiilinden. Türkçedeki 'şarap' anlamıyla sınırlı değildir.",
+    "example_ref": "76:21"
   },
   {
     "id": 272,
@@ -3605,12 +3841,13 @@ export const words: Word[] = [
     "arabic": "لِبَاس",
     "transliteration": "libâs",
     "turkish_meaning": "elbise",
-    "root": null,
+    "root": "ل-ب-س",
     "part_of_speech": "isim",
-    "memory_hint": "elbise anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لِبَاس",
-    "example_turkish": "elbise",
-    "grammar_note": "لِبَاس kelimesi ayet içinde 'elbise' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Libâs — 'libas' (giysi) ve 'telbis' (örtme, karıştırma).",
+    "example_arabic": "وَلِبَاسُ التَّقْوَى ذَلِكَ خَيْرٌ",
+    "example_turkish": "Takva elbisesi ise, işte o daha hayırlıdır.",
+    "grammar_note": "فِعَال vezninde isim; mecazen 'örtü' anlamı da taşır (geceyi örtü kıldık).",
+    "example_ref": "7:26"
   },
   {
     "id": 273,
@@ -3618,12 +3855,13 @@ export const words: Word[] = [
     "arabic": "بَاب",
     "transliteration": "bâb",
     "turkish_meaning": "kapı",
-    "root": null,
+    "root": "ب-و-ب",
     "part_of_speech": "isim",
-    "memory_hint": "kapı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَاب",
-    "example_turkish": "kapı",
-    "grammar_note": "بَاب kelimesi ayet içinde 'kapı' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Bâb — 'bab' (kapı, bölüm); kitap bölümleri de 'bab'.",
+    "example_arabic": "وَادْخُلُوا الْبَابَ سُجَّدًا",
+    "example_turkish": "Kapıdan eğilerek girin.",
+    "grammar_note": "İsim; kökteki و elife dönüşmüştür. Çoğulu أَبْوَاب.",
+    "example_ref": "2:58"
   },
   {
     "id": 274,
@@ -3631,12 +3869,13 @@ export const words: Word[] = [
     "arabic": "مِفْتَاح",
     "transliteration": "miftâh",
     "turkish_meaning": "anahtar",
-    "root": null,
+    "root": "ف-ت-ح",
     "part_of_speech": "isim",
-    "memory_hint": "anahtar anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مِفْتَاح",
-    "example_turkish": "anahtar",
-    "grammar_note": "مِفْتَاح kelimesi ayet içinde 'anahtar' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Miftâh — 'feth' (açma) ile aynı kök: açan alet.",
+    "example_arabic": "وَعِندَهُ مَفَاتِحُ الْغَيْبِ",
+    "example_turkish": "Gaybın anahtarları O'nun katındadır.",
+    "grammar_note": "مِفْعَال vezninde alet ismi. Kur'an'da tekili geçmez; çoğulları مَفَاتِح ve مَقَالِيد kullanılır.",
+    "example_ref": "6:59"
   },
   {
     "id": 275,
@@ -3644,12 +3883,13 @@ export const words: Word[] = [
     "arabic": "عَرْش",
     "transliteration": "arş",
     "turkish_meaning": "arş",
-    "root": null,
+    "root": "ع-ر-ش",
     "part_of_speech": "isim",
-    "memory_hint": "arş anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَرْش",
-    "example_turkish": "arş",
-    "grammar_note": "عَرْش kelimesi ayet içinde 'arş' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Arş — yüksek taht; 'çardak' anlamı da var.",
+    "example_arabic": "الرَّحْمَنُ عَلَى الْعَرْشِ اسْتَوَى",
+    "example_turkish": "Rahman, Arş'a hükmetti.",
+    "grammar_note": "İsim; Allah'ın hükümranlığını ifade eden kavramlardandır. Çoğulu عُرُوش.",
+    "example_ref": "20:5"
   },
   {
     "id": 276,
@@ -3657,12 +3897,13 @@ export const words: Word[] = [
     "arabic": "كُرْسِيّ",
     "transliteration": "kursî",
     "turkish_meaning": "kürsü",
-    "root": null,
+    "root": "ك-ر-س",
     "part_of_speech": "isim",
-    "memory_hint": "kürsü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "كُرْسِيّ",
-    "example_turkish": "kürsü",
-    "grammar_note": "كُرْسِيّ kelimesi ayet içinde 'kürsü' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kürsî — 'kürsü' ve Âyetü'l-Kürsî.",
+    "example_arabic": "وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ",
+    "example_turkish": "O'nun kürsüsü gökleri ve yeri kuşatmıştır.",
+    "grammar_note": "Nisbe ي'si ile biten isim; Âyetü'l-Kürsî adını bu kelimeden alır.",
+    "example_ref": "2:255"
   },
   {
     "id": 277,
@@ -3670,12 +3911,13 @@ export const words: Word[] = [
     "arabic": "لَوْح",
     "transliteration": "levh",
     "turkish_meaning": "levha",
-    "root": null,
+    "root": "ل-و-ح",
     "part_of_speech": "isim",
-    "memory_hint": "levha anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "لَوْح",
-    "example_turkish": "levha",
-    "grammar_note": "لَوْح kelimesi ayet içinde 'levha' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Levh — 'levha'; Levh-i Mahfuz.",
+    "example_arabic": "فِي لَوْحٍ مَّحْفُوظٍ",
+    "example_turkish": "Korunmuş bir levhadadır.",
+    "grammar_note": "İsim; çoğulu أَلْوَاح (Musa'nın levhaları). Sıfatı مَحْفُوظٍ ona uyar.",
+    "example_ref": "85:22"
   },
   {
     "id": 278,
@@ -3683,12 +3925,13 @@ export const words: Word[] = [
     "arabic": "قَلَم",
     "transliteration": "kalem",
     "turkish_meaning": "kalem",
-    "root": null,
+    "root": "ق-ل-م",
     "part_of_speech": "isim",
-    "memory_hint": "kalem anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "قَلَم",
-    "example_turkish": "kalem",
-    "grammar_note": "قَلَم kelimesi ayet içinde 'kalem' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Kalem — Türkçede de 'kalem'; 68. sure 'Kalem'.",
+    "example_arabic": "الَّذِي عَلَّمَ بِالْقَلَمِ",
+    "example_turkish": "O ki kalemle öğretti.",
+    "grammar_note": "İsim; çoğulu أَقْلَام. بِ harf-i ceri burada araç bildirir: 'kalemle'.",
+    "example_ref": "96:4"
   },
   {
     "id": 279,
@@ -3696,12 +3939,13 @@ export const words: Word[] = [
     "arabic": "صَحِيفَة",
     "transliteration": "sahîfe",
     "turkish_meaning": "sayfa",
-    "root": null,
+    "root": "ص-ح-ف",
     "part_of_speech": "isim",
-    "memory_hint": "sayfa anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "صَحِيفَة",
-    "example_turkish": "sayfa",
-    "grammar_note": "صَحِيفَة kelimesi ayet içinde 'sayfa' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Sahîfe — 'sahife' (sayfa) ve 'mushaf' aynı kök.",
+    "example_arabic": "رَسُولٌ مِّنَ اللَّهِ يَتْلُو صُحُفًا مُّطَهَّرَةً",
+    "example_turkish": "Allah tarafından, tertemiz sayfalar okuyan bir elçi.",
+    "grammar_note": "Dişil isim; Kur'an'da çoğulu صُحُف geçer (Musa ve İbrahim'in sahifeleri).",
+    "example_ref": "98:2"
   },
   {
     "id": 280,
@@ -3709,12 +3953,13 @@ export const words: Word[] = [
     "arabic": "بُرْهَان",
     "transliteration": "burhân",
     "turkish_meaning": "delil",
-    "root": null,
+    "root": "ب-ر-ه",
     "part_of_speech": "isim",
-    "memory_hint": "delil anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بُرْهَان",
-    "example_turkish": "delil",
-    "grammar_note": "بُرْهَان kelimesi ayet içinde 'delil' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Burhân — kesin delil; 'berhane' (ispat etmek).",
+    "example_arabic": "قُلْ هَاتُوا بُرْهَانَكُمْ إِن كُنتُمْ صَادِقِينَ",
+    "example_turkish": "De ki: Doğru söylüyorsanız delilinizi getirin.",
+    "grammar_note": "فُعْلَان vezninde isim; çoğulu بَرَاهِين. Burada هَاتُوا fiilinin nesnesidir.",
+    "example_ref": "2:111"
   },
   {
     "id": 281,
@@ -3722,12 +3967,13 @@ export const words: Word[] = [
     "arabic": "بَيِّنَة",
     "transliteration": "beyyine",
     "turkish_meaning": "apaçık delil",
-    "root": null,
+    "root": "ب-ي-ن",
     "part_of_speech": "isim",
-    "memory_hint": "apaçık delil anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَيِّنَة",
-    "example_turkish": "apaçık delil",
-    "grammar_note": "بَيِّنَة kelimesi ayet içinde 'apaçık delil' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Beyyine — 'beyan' (açıklama) ile aynı kök.",
+    "example_arabic": "حَتَّى تَأْتِيَهُمُ الْبَيِّنَةُ",
+    "example_turkish": "Kendilerine apaçık delil gelinceye kadar.",
+    "grammar_note": "فَيْعِلَة vezninde dişil sıfat; isim gibi 'apaçık delil' anlamında kullanılır. 98. surenin adıdır.",
+    "example_ref": "98:1"
   },
   {
     "id": 282,
@@ -3735,12 +3981,13 @@ export const words: Word[] = [
     "arabic": "سُلْطَان",
     "transliteration": "sultân",
     "turkish_meaning": "yetki / delil",
-    "root": null,
+    "root": "س-ل-ط",
     "part_of_speech": "isim",
-    "memory_hint": "yetki / delil anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سُلْطَان",
-    "example_turkish": "yetki / delil",
-    "grammar_note": "سُلْطَان kelimesi ayet içinde 'yetki / delil' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Sultân — 'sultan' ve 'saltanat': güç, hâkimiyet.",
+    "example_arabic": "لَا تَنفُذُونَ إِلَّا بِسُلْطَانٍ",
+    "example_turkish": "Ancak bir güçle (yetkiyle) geçebilirsiniz.",
+    "grammar_note": "فُعْلَان vezninde isim; Kur'an'da 'delil, yetki, güç' anlamlarında kullanılır.",
+    "example_ref": "55:33"
   },
   {
     "id": 283,
@@ -3748,12 +3995,13 @@ export const words: Word[] = [
     "arabic": "أَمْر",
     "transliteration": "emr",
     "turkish_meaning": "iş / emir",
-    "root": null,
+    "root": "أ-م-ر",
     "part_of_speech": "isim",
-    "memory_hint": "iş / emir anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَمْر",
-    "example_turkish": "iş / emir",
-    "grammar_note": "أَمْر kelimesi ayet içinde 'iş / emir' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Emr — hem 'emir' hem 'iş' demek.",
+    "example_arabic": "بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ",
+    "example_turkish": "Rablerinin izniyle her iş için (inerler).",
+    "grammar_note": "Mastar/isim; iki çoğulu anlamı ayırır: أَوَامِر (emirler), أُمُور (işler).",
+    "example_ref": "97:4"
   },
   {
     "id": 284,
@@ -3761,12 +4009,13 @@ export const words: Word[] = [
     "arabic": "نَهْي",
     "transliteration": "nehy",
     "turkish_meaning": "yasaklama",
-    "root": null,
+    "root": "ن-ه-ي",
     "part_of_speech": "isim",
-    "memory_hint": "yasaklama anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَهْي",
-    "example_turkish": "yasaklama",
-    "grammar_note": "نَهْي kelimesi ayet içinde 'yasaklama' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nehy — 'nehiy' (yasak); emr-i bi'l-ma'ruf ve nehy-i ani'l-münker.",
+    "example_arabic": "وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ",
+    "example_turkish": "İyiliği emreder ve kötülükten alıkoyarlar.",
+    "grammar_note": "Mastar; Kur'an'da mastar olarak geçmez, fiil şekilleri (يَنْهَوْنَ, نَهَى) kullanılır.",
+    "example_ref": "3:104"
   },
   {
     "id": 285,
@@ -3774,12 +4023,13 @@ export const words: Word[] = [
     "arabic": "وَعْد",
     "transliteration": "va‘d",
     "turkish_meaning": "vaat",
-    "root": null,
+    "root": "و-ع-د",
     "part_of_speech": "isim",
-    "memory_hint": "vaat anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَعْد",
-    "example_turkish": "vaat",
-    "grammar_note": "وَعْد kelimesi ayet içinde 'vaat' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Va'd — 'vaat'; iyi şey için verilen söz.",
+    "example_arabic": "إِنَّ وَعْدَ اللَّهِ حَقٌّ",
+    "example_turkish": "Şüphesiz Allah'ın vaadi gerçektir.",
+    "grammar_note": "وَعَدَ fiilinin mastarı; iyi şeyler için kullanılır. Kötülükle tehdit ise وَعِيد.",
+    "example_ref": "31:33"
   },
   {
     "id": 286,
@@ -3787,12 +4037,13 @@ export const words: Word[] = [
     "arabic": "وَعِيد",
     "transliteration": "vaîd",
     "turkish_meaning": "tehdit / uyarı",
-    "root": null,
+    "root": "و-ع-د",
     "part_of_speech": "isim",
-    "memory_hint": "tehdit / uyarı anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "وَعِيد",
-    "example_turkish": "tehdit / uyarı",
-    "grammar_note": "وَعِيد kelimesi ayet içinde 'tehdit / uyarı' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Vaîd — vaadin karanlık ikizi: tehdit.",
+    "example_arabic": "فَذَكِّرْ بِالْقُرْآنِ مَن يَخَافُ وَعِيدِ",
+    "example_turkish": "Benim tehdidimden korkanlara Kur'an ile öğüt ver.",
+    "grammar_note": "فَعِيل vezninde mastar; sondaki esre düşmüş 'benim' zamirini (ي) gösterir: وَعِيدِي → وَعِيدِ.",
+    "example_ref": "50:45"
   },
   {
     "id": 287,
@@ -3800,12 +4051,13 @@ export const words: Word[] = [
     "arabic": "عَهْد",
     "transliteration": "ahd",
     "turkish_meaning": "söz / antlaşma",
-    "root": null,
+    "root": "ع-ه-د",
     "part_of_speech": "isim",
-    "memory_hint": "söz / antlaşma anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَهْد",
-    "example_turkish": "söz / antlaşma",
-    "grammar_note": "عَهْد kelimesi ayet içinde 'söz / antlaşma' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ahd — 'ahit' ve 'taahhüt' aynı kök.",
+    "example_arabic": "وَأَوْفُوا بِالْعَهْدِ",
+    "example_turkish": "Verdiğiniz sözü yerine getirin.",
+    "grammar_note": "İsim; çoğulu عُهُود. أَوْفَى بِـ kalıbıyla 'sözü yerine getirmek' anlamı kurar.",
+    "example_ref": "17:34"
   },
   {
     "id": 288,
@@ -3813,12 +4065,13 @@ export const words: Word[] = [
     "arabic": "مِيثَاق",
     "transliteration": "mîsâk",
     "turkish_meaning": "sağlam söz",
-    "root": null,
+    "root": "و-ث-ق",
     "part_of_speech": "isim",
-    "memory_hint": "sağlam söz anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "مِيثَاق",
-    "example_turkish": "sağlam söz",
-    "grammar_note": "مِيثَاق kelimesi ayet içinde 'sağlam söz' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Mîsâk — 'vesika' ve 'vüsuk' (güven) aynı kök.",
+    "example_arabic": "وَأَخَذْنَا مِنْهُم مِّيثَاقًا غَلِيظًا",
+    "example_turkish": "Onlardan sağlam bir söz aldık.",
+    "grammar_note": "مِفْعَال vezninde isim; kökteki و ي'ye dönmüştür. أَخَذَ fiiliyle 'söz almak' kalıbı kurar.",
+    "example_ref": "4:154"
   },
   {
     "id": 289,
@@ -3826,12 +4079,13 @@ export const words: Word[] = [
     "arabic": "فِتْنَة",
     "transliteration": "fitne",
     "turkish_meaning": "imtihan / fitne",
-    "root": null,
+    "root": "ف-ت-ن",
     "part_of_speech": "isim",
-    "memory_hint": "imtihan / fitne anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فِتْنَة",
-    "example_turkish": "imtihan / fitne",
-    "grammar_note": "فِتْنَة kelimesi ayet içinde 'imtihan / fitne' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Fitne — altını ateşte 'fetn' (eritip sınamak).",
+    "example_arabic": "وَاعْلَمُوا أَنَّمَا أَمْوَالُكُمْ وَأَوْلَادُكُمْ فِتْنَةٌ",
+    "example_turkish": "Bilin ki mallarınız ve evlatlarınız bir imtihandır.",
+    "grammar_note": "Dişil isim; kökün aslı altını ateşte sınamak. Kur'an'da çoğunlukla 'imtihan' anlamındadır.",
+    "example_ref": "8:28"
   },
   {
     "id": 290,
@@ -3839,12 +4093,13 @@ export const words: Word[] = [
     "arabic": "بَلَاء",
     "transliteration": "belâ",
     "turkish_meaning": "imtihan / bela",
-    "root": null,
+    "root": "ب-ل-و",
     "part_of_speech": "isim",
-    "memory_hint": "imtihan / bela anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بَلَاء",
-    "example_turkish": "imtihan / bela",
-    "grammar_note": "بَلَاء kelimesi ayet içinde 'imtihan / bela' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Belâ — 'bela' sadece musibet değil, sınav demek.",
+    "example_arabic": "إِنَّ هَذَا لَهُوَ الْبَلَاءُ الْمُبِينُ",
+    "example_turkish": "Bu gerçekten apaçık bir imtihandır.",
+    "grammar_note": "Mastar; kökteki و hemzeye dönmüştür. İyilikle de kötülükle de sınamayı kapsar.",
+    "example_ref": "37:106"
   },
   {
     "id": 291,
@@ -3852,12 +4107,13 @@ export const words: Word[] = [
     "arabic": "نَصْر",
     "transliteration": "nasr",
     "turkish_meaning": "yardım / zafer",
-    "root": null,
+    "root": "ن-ص-ر",
     "part_of_speech": "isim",
-    "memory_hint": "yardım / zafer anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "نَصْر",
-    "example_turkish": "yardım / zafer",
-    "grammar_note": "نَصْر kelimesi ayet içinde 'yardım / zafer' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Nasr — 'Nasr suresi'; 'nusret' (zafer).",
+    "example_arabic": "نَصْرٌ مِّنَ اللَّهِ وَفَتْحٌ قَرِيبٌ",
+    "example_turkish": "Allah'tan bir yardım ve yakın bir fetih.",
+    "grammar_note": "Mastar; نَصَرَ fiilinden. Kur'an'da çoğu kez فَتْح ile birlikte gelir.",
+    "example_ref": "61:13"
   },
   {
     "id": 292,
@@ -3865,12 +4121,13 @@ export const words: Word[] = [
     "arabic": "فَتْح",
     "transliteration": "feth",
     "turkish_meaning": "fetih / açılış",
-    "root": null,
+    "root": "ف-ت-ح",
     "part_of_speech": "isim",
-    "memory_hint": "fetih / açılış anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَتْح",
-    "example_turkish": "fetih / açılış",
-    "grammar_note": "فَتْح kelimesi ayet içinde 'fetih / açılış' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Feth — 'fetih' ve 'Fâtiha' (açan sure) aynı kök.",
+    "example_arabic": "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+    "example_turkish": "Allah'ın yardımı ve fetih geldiğinde.",
+    "grammar_note": "Mastar; فَتَحَ fiilinden. 48. sure (Fetih) bu kelimeyle adlandırılmıştır.",
+    "example_ref": "110:1"
   },
   {
     "id": 293,
@@ -3878,12 +4135,13 @@ export const words: Word[] = [
     "arabic": "سَلَام",
     "transliteration": "selâm",
     "turkish_meaning": "selam / esenlik",
-    "root": null,
+    "root": "س-ل-م",
     "part_of_speech": "isim",
-    "memory_hint": "selam / esenlik anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "سَلَام",
-    "example_turkish": "selam / esenlik",
-    "grammar_note": "سَلَام kelimesi ayet içinde 'selam / esenlik' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Selâm — 'selamet' ve 'teslim' aynı kök: esenlik.",
+    "example_arabic": "سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ",
+    "example_turkish": "Çok merhametli bir Rab'den sözlü bir selam vardır.",
+    "grammar_note": "Mastar/isim; Allah'ın isimlerinden السَّلَام. Burada mübtedâ olarak tenvinlidir.",
+    "example_ref": "36:58"
   },
   {
     "id": 294,
@@ -3891,12 +4149,13 @@ export const words: Word[] = [
     "arabic": "أَمْن",
     "transliteration": "emn",
     "turkish_meaning": "güven",
-    "root": null,
+    "root": "أ-م-ن",
     "part_of_speech": "isim",
-    "memory_hint": "güven anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "أَمْن",
-    "example_turkish": "güven",
-    "grammar_note": "أَمْن kelimesi ayet içinde 'güven' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Emn — 'emniyet' ve 'emin' aynı kök.",
+    "example_arabic": "أُولَئِكَ لَهُمُ الْأَمْنُ وَهُم مُّهْتَدُونَ",
+    "example_turkish": "İşte güven onlarındır; doğru yolda olanlar da onlardır.",
+    "grammar_note": "Mastar; zıddı خَوْف. Haberi öne alınmış: لَهُمُ الْأَمْنُ (güven yalnız onlarındır).",
+    "example_ref": "6:82"
   },
   {
     "id": 295,
@@ -3904,12 +4163,13 @@ export const words: Word[] = [
     "arabic": "خَوْف",
     "transliteration": "havf",
     "turkish_meaning": "korku",
-    "root": null,
+    "root": "خ-و-ف",
     "part_of_speech": "isim",
-    "memory_hint": "korku anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "خَوْف",
-    "example_turkish": "korku",
-    "grammar_note": "خَوْف kelimesi ayet içinde 'korku' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Havf — 'havf u reca' (korku ve ümit) ikilisi.",
+    "example_arabic": "الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ",
+    "example_turkish": "Onları açlıktan doyuran ve korkudan emin kılan (Rab).",
+    "grammar_note": "Mastar; خَافَ fiilinden. Örnekte أَمْن kökünden fiille karşıt olarak geçer.",
+    "example_ref": "106:4"
   },
   {
     "id": 296,
@@ -3917,12 +4177,13 @@ export const words: Word[] = [
     "arabic": "حُزْن",
     "transliteration": "huzn",
     "turkish_meaning": "üzüntü",
-    "root": null,
+    "root": "ح-ز-ن",
     "part_of_speech": "isim",
-    "memory_hint": "üzüntü anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حُزْن",
-    "example_turkish": "üzüntü",
-    "grammar_note": "حُزْن kelimesi ayet içinde 'üzüntü' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hüzn — 'hüzün'; Yakub'un Yusuf'a hasreti.",
+    "example_arabic": "وَابْيَضَّتْ عَيْنَاهُ مِنَ الْحُزْنِ",
+    "example_turkish": "Üzüntüden gözlerine ak düştü.",
+    "grammar_note": "Mastar; حَزَن şekli de vardır. مِنْ burada sebep bildirir: 'üzüntüden dolayı'.",
+    "example_ref": "12:84"
   },
   {
     "id": 297,
@@ -3930,12 +4191,13 @@ export const words: Word[] = [
     "arabic": "فَرَح",
     "transliteration": "ferah",
     "turkish_meaning": "sevinç",
-    "root": null,
+    "root": "ف-ر-ح",
     "part_of_speech": "isim",
-    "memory_hint": "sevinç anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "فَرَح",
-    "example_turkish": "sevinç",
-    "grammar_note": "فَرَح kelimesi ayet içinde 'sevinç' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Ferah — sevinç; ama ölçüsü kaçınca şımarıklık.",
+    "example_arabic": "لَا تَفْرَحْ إِنَّ اللَّهَ لَا يُحِبُّ الْفَرِحِينَ",
+    "example_turkish": "Şımarma; Allah şımaranları sevmez.",
+    "grammar_note": "Mastar; Kur'an'da fiil ve sıfat şekilleri geçer. Bağlama göre 'sevinç' veya 'şımarıklık' anlamı taşır.",
+    "example_ref": "28:76"
   },
   {
     "id": 298,
@@ -3943,12 +4205,13 @@ export const words: Word[] = [
     "arabic": "حُبّ",
     "transliteration": "hubb",
     "turkish_meaning": "sevgi",
-    "root": null,
+    "root": "ح-ب-ب",
     "part_of_speech": "isim",
-    "memory_hint": "sevgi anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "حُبّ",
-    "example_turkish": "sevgi",
-    "grammar_note": "حُبّ kelimesi ayet içinde 'sevgi' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Hubb — 'muhabbet' ve 'habib' aynı kök.",
+    "example_arabic": "وَالَّذِينَ آمَنُوا أَشَدُّ حُبًّا لِّلَّهِ",
+    "example_turkish": "İman edenlerin Allah'a sevgisi ise çok daha güçlüdür.",
+    "grammar_note": "Mastar; örnekte temyiz olarak mansuptur: 'sevgi bakımından daha güçlü'. Muzaaf kök (ب-ب).",
+    "example_ref": "2:165"
   },
   {
     "id": 299,
@@ -3956,12 +4219,13 @@ export const words: Word[] = [
     "arabic": "بُغْض",
     "transliteration": "buğd",
     "turkish_meaning": "nefret",
-    "root": null,
+    "root": "ب-غ-ض",
     "part_of_speech": "isim",
-    "memory_hint": "nefret anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "بُغْض",
-    "example_turkish": "nefret",
-    "grammar_note": "بُغْض kelimesi ayet içinde 'nefret' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Buğz — 'buğz' (kin); sevginin zıddı.",
+    "example_arabic": "أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاءَ",
+    "example_turkish": "Aranıza düşmanlık ve kin sokmak (ister).",
+    "grammar_note": "Mastar; Kur'an'da bu şekli geçmez, yerine بَغْضَاء (derin kin) kullanılır.",
+    "example_ref": "5:91"
   },
   {
     "id": 300,
@@ -3969,12 +4233,13 @@ export const words: Word[] = [
     "arabic": "عَدْل",
     "transliteration": "adl",
     "turkish_meaning": "adalet",
-    "root": null,
+    "root": "ع-د-ل",
     "part_of_speech": "isim",
-    "memory_hint": "adalet anlamını güçlü bir görsel çağrışımla bağla.",
-    "example_arabic": "عَدْل",
-    "example_turkish": "adalet",
-    "grammar_note": "عَدْل kelimesi ayet içinde 'adalet' anlam alanıyla kullanılır. Kelime türü: isim."
+    "memory_hint": "Adl — 'adalet'; terazinin iki kefesi eşit.",
+    "example_arabic": "وَإِذَا حَكَمْتُم بَيْنَ النَّاسِ أَن تَحْكُمُوا بِالْعَدْلِ",
+    "example_turkish": "İnsanlar arasında hükmettiğinizde adaletle hükmetmenizi (emreder).",
+    "grammar_note": "Mastar; zıddı ظُلْم. بِ harf-i ceriyle 'adaletle' anlamı kurar.",
+    "example_ref": "4:58"
   },
   {
     "id": 301,
@@ -5025,5 +5290,705 @@ export const words: Word[] = [
     "grammar_note": "أَنْزَلَ, إِفْعَال babında مَاضِي; نَزَلَ'nin geçişli (müteaddi) halidir.",
     "frequency": 293,
     "slug": "anzala"
+  },
+  {
+    "id": 372,
+    "level": 2,
+    "arabic": "إِلَه",
+    "transliteration": "ilâh",
+    "turkish_meaning": "ilah / tanrı",
+    "root": "أ-ل-ه",
+    "part_of_speech": "isim",
+    "memory_hint": "İlâh — kelime-i tevhit: 'lâ ilâhe illallah'.",
+    "example_arabic": "لَوْ كَانَ فِيهِمَا آلِهَةٌ إِلَّا اللَّهُ لَفَسَدَتَا",
+    "example_turkish": "Yerde ve gökte Allah'tan başka ilahlar olsaydı ikisi de bozulup giderdi.",
+    "grammar_note": "İsim; çoğulu آلِهَة. لَا إِلَهَ (hiçbir ilah yok) kalıbında cinsi olumsuzlayan لَا ile üstünlü gelir.",
+    "example_ref": "21:22"
+  },
+  {
+    "id": 373,
+    "level": 2,
+    "arabic": "شَيْء",
+    "transliteration": "şey'",
+    "turkish_meaning": "şey / nesne",
+    "root": "ش-ي-أ",
+    "part_of_speech": "isim",
+    "memory_hint": "Şey' — Türkçedeki 'şey' doğrudan buradan.",
+    "example_arabic": "إِنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "example_turkish": "Şüphesiz Allah'ın her şeye gücü yeter.",
+    "grammar_note": "Mastar kökenli isim; çoğulu أَشْيَاء. Kur'an'da en çok كُلّ ile tamlamada geçer: كُلُّ شَيْءٍ.",
+    "example_ref": "2:20"
+  },
+  {
+    "id": 374,
+    "level": 2,
+    "arabic": "سَبِيل",
+    "transliteration": "sebîl",
+    "turkish_meaning": "yol",
+    "root": "س-ب-ل",
+    "part_of_speech": "isim",
+    "memory_hint": "Sebîl — 'sebil' (yol kenarındaki çeşme); 'ibnü's-sebil' (yolcu).",
+    "example_arabic": "وَلَا تَقُولُوا لِمَن يُقْتَلُ فِي سَبِيلِ اللَّهِ أَمْوَاتٌ",
+    "example_turkish": "Allah yolunda öldürülenlere 'ölüler' demeyin.",
+    "grammar_note": "İsim; çoğulu سُبُل. صِرَاط geniş ana yol, سَبِيل ise yol/gidiş tarzıdır; فِي سَبِيلِ اللَّهِ kalıbı çok sık geçer.",
+    "example_ref": "2:154"
+  },
+  {
+    "id": 375,
+    "level": 2,
+    "arabic": "إِنْسَان",
+    "transliteration": "insân",
+    "turkish_meaning": "insan",
+    "root": "أ-ن-س",
+    "part_of_speech": "isim",
+    "memory_hint": "İnsân — 'üns' (yakınlık, ünsiyet) ile aynı kök: sosyal varlık.",
+    "example_arabic": "لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ",
+    "example_turkish": "Andolsun, biz insanı en güzel biçimde yarattık.",
+    "grammar_note": "فِعْلَان vezninde isim; ال ile cins anlamında 'insanoğlu'. Topluluk için نَاس kullanılır.",
+    "example_ref": "95:4"
+  },
+  {
+    "id": 376,
+    "level": 1,
+    "arabic": "أَحَد",
+    "transliteration": "ehad",
+    "turkish_meaning": "bir / tek / kimse",
+    "root": "و-ح-د",
+    "part_of_speech": "isim / sayı",
+    "memory_hint": "Ehad — İhlas'ın ilk ve son ayetinde: Allah 'ehad'dir, O'na 'ehad' denk değildir.",
+    "example_arabic": "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+    "example_turkish": "Hiçbir şey O'na denk değildir.",
+    "grammar_note": "İsim; olumlu cümlede 'tek, eşsiz', olumsuz cümlede 'hiç kimse' anlamı verir. Kökteki و hemzeye dönmüştür.",
+    "example_ref": "112:4"
+  },
+  {
+    "id": 377,
+    "level": 1,
+    "arabic": "ذَلِكَ",
+    "transliteration": "zâlike",
+    "turkish_meaning": "şu / o (uzak işaret)",
+    "root": null,
+    "part_of_speech": "işaret ismi",
+    "memory_hint": "Zâlike — uzağı gösteren parmak: 'şu, o'.",
+    "example_arabic": "ذَلِكَ مَتَاعُ الْحَيَاةِ الدُّنْيَا",
+    "example_turkish": "Bunlar dünya hayatının geçimliğidir.",
+    "grammar_note": "Uzak için işaret ismi, eril tekil; dişili تِلْكَ, çoğulu أُولَئِكَ. Kur'an imlasında elifsiz yazılır.",
+    "example_ref": "3:14"
+  },
+  {
+    "id": 378,
+    "level": 1,
+    "arabic": "هَذَا",
+    "transliteration": "hâzâ",
+    "turkish_meaning": "bu",
+    "root": null,
+    "part_of_speech": "işaret ismi",
+    "memory_hint": "Hâzâ — yakındakini gösterir: 'bu'.",
+    "example_arabic": "هَذَا الَّذِي رُزِقْنَا مِن قَبْلُ",
+    "example_turkish": "Bu, daha önce rızıklandığımız şeydir.",
+    "grammar_note": "Yakın için işaret ismi, eril tekil; dişili هَذِهِ, çoğulu هَؤُلَاءِ. Arkasından ال'lı isim gelirse 'bu ...' olur: هَذَا الْقُرْآنَ.",
+    "example_ref": "2:25"
+  },
+  {
+    "id": 379,
+    "level": 1,
+    "arabic": "الَّذِي",
+    "transliteration": "ellezî",
+    "turkish_meaning": "o ki / ki o",
+    "root": null,
+    "part_of_speech": "ism-i mevsûl",
+    "memory_hint": "Ellezî — 'o ki...' diye cümle açan köprü.",
+    "example_arabic": "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",
+    "example_turkish": "Yaratan Rabbinin adıyla oku!",
+    "grammar_note": "İsm-i mevsûl, eril tekil; dişili الَّتِي, çoğulu الَّذِينَ. Ardından gelen cümle (sıla) onu niteler: الَّذِي خَلَقَ = yaratan.",
+    "example_ref": "96:1"
+  },
+  {
+    "id": 380,
+    "level": 1,
+    "arabic": "غَيْر",
+    "transliteration": "gayr",
+    "turkish_meaning": "başka / -sız / değil",
+    "root": "غ-ي-ر",
+    "part_of_speech": "isim",
+    "memory_hint": "Gayr — 'gayri' (başka); 'gayrimüslim'.",
+    "example_arabic": "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+    "example_turkish": "Gazaba uğramışların ve sapmışların (yoluna) değil.",
+    "grammar_note": "Hep izafetle gelen isim; Türkçe '-sız/-den başka' anlamı katar. Fatiha'da önceki isme sıfat olarak mecrurdur.",
+    "example_ref": "1:7"
+  },
+  {
+    "id": 381,
+    "level": 2,
+    "arabic": "بَعْض",
+    "transliteration": "ba'd",
+    "turkish_meaning": "bazı / bir kısım",
+    "root": "ب-ع-ض",
+    "part_of_speech": "isim",
+    "memory_hint": "Ba'z — 'ba'zı' (bazı) Türkçeye buradan geçti.",
+    "example_arabic": "وَلَا يَغْتَب بَّعْضُكُم بَعْضًا",
+    "example_turkish": "Birbirinizin gıybetini yapmayın.",
+    "grammar_note": "Hep izafetle gelen isim. بَعْضُكُمْ بَعْضًا kalıbı 'birbirinizi' anlamına gelir.",
+    "example_ref": "49:12"
+  },
+  {
+    "id": 382,
+    "level": 2,
+    "arabic": "حَيَاة",
+    "transliteration": "hayât",
+    "turkish_meaning": "hayat",
+    "root": "ح-ي-ي",
+    "part_of_speech": "isim",
+    "memory_hint": "Hayât — Türkçede de 'hayat'; el-Hayy ile aynı kök.",
+    "example_arabic": "وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ",
+    "example_turkish": "Kısasta sizin için hayat vardır.",
+    "grammar_note": "Mastar; Kur'an imlasında حَيَوٰة şeklinde yazılır. Çoğu zaman الدُّنْيَا ile tamlama/sıfat olarak gelir.",
+    "example_ref": "2:179"
+  },
+  {
+    "id": 383,
+    "level": 2,
+    "arabic": "مَوْت",
+    "transliteration": "mevt",
+    "turkish_meaning": "ölüm",
+    "root": "م-و-ت",
+    "part_of_speech": "isim",
+    "memory_hint": "Mevt — 'memat' ve 'mevta' (ölüler) aynı kök.",
+    "example_arabic": "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ",
+    "example_turkish": "Sizi sınamak için ölümü ve hayatı yaratan O'dur.",
+    "grammar_note": "مَاتَ fiilinin mastarı. Örnekte حَيَاة ile karşıt çift olarak geçer ve ölüm önce anılır.",
+    "example_ref": "67:2"
+  },
+  {
+    "id": 384,
+    "level": 2,
+    "arabic": "أَجَل",
+    "transliteration": "ecel",
+    "turkish_meaning": "belirlenmiş süre / ecel",
+    "root": "أ-ج-ل",
+    "part_of_speech": "isim",
+    "memory_hint": "Ecel — Türkçede 'ecel' ölüm anı; Arapçada her şeyin belirlenmiş sonu.",
+    "example_arabic": "وَلِكُلِّ أُمَّةٍ أَجَلٌ",
+    "example_turkish": "Her ümmetin belirlenmiş bir süresi (eceli) vardır.",
+    "grammar_note": "İsim; çoğulu آجَال. أَجَلٌ مُسَمًّى (belirlenmiş süre) Kur'an'ın sık kalıbıdır.",
+    "example_ref": "7:34"
+  },
+  {
+    "id": 385,
+    "level": 2,
+    "arabic": "بَاطِل",
+    "transliteration": "bâtıl",
+    "turkish_meaning": "batıl / boş / asılsız",
+    "root": "ب-ط-ل",
+    "part_of_speech": "isim / sıfat",
+    "memory_hint": "Bâtıl — 'iptal' ve 'butlan' aynı kök; hakkın zıddı.",
+    "example_arabic": "رَبَّنَا مَا خَلَقْتَ هَذَا بَاطِلًا",
+    "example_turkish": "Rabbimiz! Sen bunu boşuna yaratmadın.",
+    "grammar_note": "ism-i fâil kalıbında sıfat/isim; zıddı حَقّ. Örnekte hâl olarak mansuptur.",
+    "example_ref": "3:191"
+  },
+  {
+    "id": 386,
+    "level": 2,
+    "arabic": "ظُلُمَات",
+    "transliteration": "zulumât",
+    "turkish_meaning": "karanlıklar",
+    "root": "ظ-ل-م",
+    "part_of_speech": "isim",
+    "memory_hint": "Zulumât — 'zulmet' (karanlık) çoğulu; zulüm de karanlıktır.",
+    "example_arabic": "يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ",
+    "example_turkish": "Onları karanlıklardan aydınlığa çıkarır.",
+    "grammar_note": "ظُلْمَة'nin dişil çoğulu. Kur'an'da karanlık hep çoğul, nur hep tekil gelir: batılın yolu çok, hakkın yolu tektir.",
+    "example_ref": "2:257"
+  },
+  {
+    "id": 387,
+    "level": 2,
+    "arabic": "قَلِيل",
+    "transliteration": "kalîl",
+    "turkish_meaning": "az",
+    "root": "ق-ل-ل",
+    "part_of_speech": "sıfat",
+    "memory_hint": "Kalîl — 'kıllet' (azlık) ve 'akalliyet' (azınlık) aynı kök.",
+    "example_arabic": "وَقَلِيلٌ مِّنْ عِبَادِيَ الشَّكُورُ",
+    "example_turkish": "Kullarımdan şükredenler azdır.",
+    "grammar_note": "فَعِيل vezninde sıfat; zıddı كَثِير. Örnekte haber öne alınmıştır: 'az olan, şükredendir'.",
+    "example_ref": "34:13"
+  },
+  {
+    "id": 388,
+    "level": 2,
+    "arabic": "كَثِير",
+    "transliteration": "kesîr",
+    "turkish_meaning": "çok",
+    "root": "ك-ث-ر",
+    "part_of_speech": "sıfat",
+    "memory_hint": "Kesîr — 'kesret' (çokluk) ve 'ekseriyet' aynı kök.",
+    "example_arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا",
+    "example_turkish": "Ey iman edenler! Allah'ı çokça anın.",
+    "grammar_note": "فَعِيل vezninde sıfat; örnekte ذِكْرًا'nın sıfatı olarak mansuptur. Kevser (bol hayır) aynı köktendir.",
+    "example_ref": "33:41"
+  },
+  {
+    "id": 389,
+    "level": 2,
+    "arabic": "رَحْمَن",
+    "transliteration": "rahmân",
+    "turkish_meaning": "Rahman (merhameti sınırsız)",
+    "root": "ر-ح-م",
+    "part_of_speech": "sıfat / ilahi isim",
+    "memory_hint": "Rahmân — rahmeti taşan; Besmelenin ilk sıfatı.",
+    "example_arabic": "إِن كُلُّ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ إِلَّا آتِي الرَّحْمَنِ عَبْدًا",
+    "example_turkish": "Göklerde ve yerde olan herkes Rahman'a ancak kul olarak gelecektir.",
+    "grammar_note": "فَعْلَان vezninde mübalağa sıfatı; yalnız Allah için kullanılır. Kur'an imlasında elifsiz yazılır: الرَّحْمَٰن.",
+    "example_ref": "19:93"
+  },
+  {
+    "id": 390,
+    "level": 2,
+    "arabic": "حِسَاب",
+    "transliteration": "hisâb",
+    "turkish_meaning": "hesap",
+    "root": "ح-س-ب",
+    "part_of_speech": "isim",
+    "memory_hint": "Hisâb — Türkçede de 'hesap'; يَوْمُ الْحِسَابِ hesap günü.",
+    "example_arabic": "وَاللَّهُ سَرِيعُ الْحِسَابِ",
+    "example_turkish": "Allah hesabı çabuk görendir.",
+    "grammar_note": "حَاسَبَ fiilinin mastarı; سَرِيعُ الْحِسَابِ kalıbı Kur'an'da sık geçer.",
+    "example_ref": "2:202"
+  },
+  {
+    "id": 391,
+    "level": 2,
+    "arabic": "عَدُوّ",
+    "transliteration": "aduvv",
+    "turkish_meaning": "düşman",
+    "root": "ع-د-و",
+    "part_of_speech": "isim",
+    "memory_hint": "Aduvv — 'adâvet' (düşmanlık) aynı kök: sınırı aşan.",
+    "example_arabic": "إِنَّ الشَّيْطَانَ لَكُمْ عَدُوٌّ فَاتَّخِذُوهُ عَدُوًّا",
+    "example_turkish": "Şeytan sizin düşmanınızdır; siz de onu düşman edinin.",
+    "grammar_note": "فَعُول vezninde isim; tekil ve çoğul için kullanılabilir, çoğulu أَعْدَاء. Kökün anlamı 'sınırı aşmak'.",
+    "example_ref": "35:6"
+  },
+  {
+    "id": 392,
+    "level": 2,
+    "arabic": "وَلِيّ",
+    "transliteration": "veliyy",
+    "turkish_meaning": "dost / koruyucu / veli",
+    "root": "و-ل-ي",
+    "part_of_speech": "isim",
+    "memory_hint": "Veliyy — 'veli' (koruyucu) ve 'velayet'; yakın duran.",
+    "example_arabic": "اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا",
+    "example_turkish": "Allah iman edenlerin dostu ve yardımcısıdır.",
+    "grammar_note": "فَعِيل vezninde isim; çoğulu أَوْلِيَاء. Kökün anlamı 'yakın olmak, ardından gelmek'.",
+    "example_ref": "2:257"
+  },
+  {
+    "id": 393,
+    "level": 2,
+    "arabic": "دَار",
+    "transliteration": "dâr",
+    "turkish_meaning": "yurt / ev",
+    "root": "د-و-ر",
+    "part_of_speech": "isim",
+    "memory_hint": "Dâr — 'Dâru's-selâm' (esenlik yurdu); 'dâire' aynı kök.",
+    "example_arabic": "وَإِنَّ الدَّارَ الْأخِرَةَ لَهِيَ الْحَيَوَانُ",
+    "example_turkish": "Ahiret yurdu ise asıl hayattır.",
+    "grammar_note": "Dişil isim; kökteki و elife dönmüştür. الدَّارُ الْآخِرَةُ 'ahiret yurdu' kalıbında sıfatıyla gelir.",
+    "example_ref": "29:64"
+  },
+  {
+    "id": 394,
+    "level": 2,
+    "arabic": "مِثْل",
+    "transliteration": "misl",
+    "turkish_meaning": "benzer / gibi",
+    "root": "م-ث-ل",
+    "part_of_speech": "isim",
+    "memory_hint": "Misl — 'misli' (katı, benzeri); 'temsil' aynı kök.",
+    "example_arabic": "قُلْ إِنَّمَا أَنَا بَشَرٌ مِّثْلُكُمْ",
+    "example_turkish": "De ki: Ben de ancak sizin gibi bir insanım.",
+    "grammar_note": "Hep izafetle gelen isim; 'gibi, benzeri' anlamı katar. مَثَل (örnek, misal) aynı köktendir.",
+    "example_ref": "18:110"
+  },
+  {
+    "id": 395,
+    "level": 1,
+    "arabic": "إِلَّا",
+    "transliteration": "illâ",
+    "turkish_meaning": "-den başka / ancak",
+    "root": null,
+    "part_of_speech": "istisna edatı",
+    "memory_hint": "İllâ — 'lâ ilâhe illallah'taki 'illâ': hariç tutan kapı.",
+    "example_arabic": "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ",
+    "example_turkish": "Ancak iman edip salih ameller işleyenler (müstesna).",
+    "grammar_note": "İstisna harfi. لَا ... إِلَّا veya مَا ... إِلَّا kalıbı hasr kurar: 'yalnızca, ancak'.",
+    "example_ref": "103:3"
+  },
+  {
+    "id": 396,
+    "level": 1,
+    "arabic": "يَا",
+    "transliteration": "yâ",
+    "turkish_meaning": "ey!",
+    "root": null,
+    "part_of_speech": "nida harfi",
+    "memory_hint": "Yâ — seslenme: 'Yâ Rab!'.",
+    "example_arabic": "يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ",
+    "example_turkish": "Ey huzura ermiş nefis!",
+    "grammar_note": "Nida harfi; seslenilen isim çoğu zaman ötreli gelir. ال'lı isimlere أَيُّهَا (dişil: أَيَّتُهَا) aracılığıyla seslenilir.",
+    "example_ref": "89:27"
+  },
+  {
+    "id": 397,
+    "level": 1,
+    "arabic": "إِذَا",
+    "transliteration": "izâ",
+    "turkish_meaning": "-dığı zaman / ne zaman ki",
+    "root": null,
+    "part_of_speech": "zarf / şart",
+    "memory_hint": "İzâ — geleceğe dair 'olduğu zaman'; kıyamet surelerinin açılış kelimesi.",
+    "example_arabic": "إِذَا السَّمَاءُ انشَقَّتْ",
+    "example_turkish": "Gök yarıldığı zaman.",
+    "grammar_note": "Gelecek zaman için şart anlamlı zarf; mâzî fiil alsa da anlam gelecektir. إِذْ geçmiş içindir.",
+    "example_ref": "84:1"
+  },
+  {
+    "id": 398,
+    "level": 1,
+    "arabic": "إِذْ",
+    "transliteration": "iz",
+    "turkish_meaning": "hani / o zaman ki",
+    "root": null,
+    "part_of_speech": "zarf",
+    "memory_hint": "İz — 'hani, hatırla o zamanı...': kıssaların açılışı.",
+    "example_arabic": "وَإِذْ قَالَ رَبُّكَ لِلْمَلَائِكَةِ إِنِّي جَاعِلٌ فِي الْأَرْضِ خَلِيفَةً",
+    "example_turkish": "Hani Rabbin meleklere 'Ben yeryüzünde bir halife yaratacağım' demişti.",
+    "grammar_note": "Geçmiş zaman zarfı; Kur'an'da çoğu zaman başında takdiri 'hatırla' (اذْكُرْ) fiiliyle kıssa başlatır.",
+    "example_ref": "2:30"
+  },
+  {
+    "id": 399,
+    "level": 1,
+    "arabic": "لَعَلَّ",
+    "transliteration": "lealle",
+    "turkish_meaning": "umulur ki / belki",
+    "root": null,
+    "part_of_speech": "edat",
+    "memory_hint": "Lealle — oruç ayetinin sonu: 'leallekum tettekûn'.",
+    "example_arabic": "لَعَلَّكُمْ تَتَّقُونَ",
+    "example_turkish": "Umulur ki (Allah'a karşı gelmekten) sakınırsınız.",
+    "grammar_note": "إِنَّ'nin kardeşlerinden (terecci); ismini mansup yapar. Allah için kullanıldığında 'ki ... olasınız' amaç anlamı taşır.",
+    "example_ref": "2:183"
+  },
+  {
+    "id": 400,
+    "level": 1,
+    "arabic": "بَلَى",
+    "transliteration": "belâ",
+    "turkish_meaning": "evet, öyle (olumsuz soruya)",
+    "root": null,
+    "part_of_speech": "cevap edatı",
+    "memory_hint": "Belâ — Elest bezminde ruhların cevabı: 'Kâlû belâ'.",
+    "example_arabic": "أَلَسْتُ بِرَبِّكُمْ قَالُوا بَلَى",
+    "example_turkish": "'Ben sizin Rabbiniz değil miyim?' Dediler ki: 'Evet (öylesin)!'",
+    "grammar_note": "Olumsuz soruya olumlu cevap harfi; 'hayır, öyle' anlamında olumsuzluğu kaldırır. Olumlu soruya evet: نَعَمْ.",
+    "example_ref": "7:172"
+  },
+  {
+    "id": 401,
+    "level": 1,
+    "arabic": "كَلَّا",
+    "transliteration": "kellâ",
+    "turkish_meaning": "hayır, asla!",
+    "root": null,
+    "part_of_speech": "edat",
+    "memory_hint": "Kellâ — sert bir 'dur!': yanlış düşünceyi reddeder.",
+    "example_arabic": "كَلَّا سَوْفَ تَعْلَمُونَ",
+    "example_turkish": "Hayır! Yakında bileceksiniz.",
+    "grammar_note": "Red ve azarlama (ردع) harfi; Mekki surelerde sık geçer. Bazen 'gerçekten' anlamında da kullanılır.",
+    "example_ref": "102:3"
+  },
+  {
+    "id": 402,
+    "level": 2,
+    "arabic": "اسْم",
+    "transliteration": "ism",
+    "turkish_meaning": "isim / ad",
+    "root": "س-م-و",
+    "part_of_speech": "isim",
+    "memory_hint": "İsm — Türkçedeki 'isim'; Besmeledeki 'bismi' (adıyla).",
+    "example_arabic": "سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى",
+    "example_turkish": "Yüce Rabbinin adını tesbih et.",
+    "grammar_note": "Başında vasl hemzesi olan isim; çoğulu أَسْمَاء (الْأَسْمَاءُ الْحُسْنَى: en güzel isimler). Besmelede بِسْمِ şeklinde elifsiz yazılır.",
+    "example_ref": "87:1"
+  },
+  {
+    "id": 403,
+    "level": 3,
+    "arabic": "أَتَى",
+    "transliteration": "etâ",
+    "turkish_meaning": "geldi",
+    "root": "أ-ت-ي",
+    "part_of_speech": "fiil",
+    "memory_hint": "Etâ — 'gelmek'; IV. babı 'âtâ' ise 'getirip verdi'.",
+    "example_arabic": "أَتَى أَمْرُ اللَّهِ فَلَا تَسْتَعْجِلُوهُ",
+    "example_turkish": "Allah'ın emri geldi; artık onu acele istemeyin.",
+    "grammar_note": "Mehmûz ve nâkıs fiil; muzari يَأْتِي. بِ ile 'getirdi' olur (أَتَى بِـ). جَاءَ ile eş anlamlıdır.",
+    "example_ref": "16:1"
+  },
+  {
+    "id": 404,
+    "level": 3,
+    "arabic": "آتَى",
+    "transliteration": "âtâ",
+    "turkish_meaning": "verdi",
+    "root": "أ-ت-ي",
+    "part_of_speech": "fiil",
+    "memory_hint": "Âtâ — أَتَى'nın ettirgeni: 'getirip verdi'.",
+    "example_arabic": "فَقَدْ آتَيْنَا آلَ إِبْرَاهِيمَ الْكِتَابَ وَالْحِكْمَةَ",
+    "example_turkish": "İbrahim ailesine kitap ve hikmet verdik.",
+    "grammar_note": "IV. bab (أَفْعَلَ) fiil: أَأْتَى → آتَى. İki nesne alır; emri آتِ (ver), zekât için آتُوا الزَّكَاةَ.",
+    "example_ref": "4:54"
+  },
+  {
+    "id": 405,
+    "level": 3,
+    "arabic": "قَامَ",
+    "transliteration": "kâme",
+    "turkish_meaning": "kalktı / ayakta durdu",
+    "root": "ق-و-م",
+    "part_of_speech": "fiil",
+    "memory_hint": "Kâme — 'kıyam' (namazda ayakta duruş) ve 'kıyamet'.",
+    "example_arabic": "وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ",
+    "example_turkish": "Allah'ın kulu O'na dua etmek için kalktığında...",
+    "grammar_note": "Ecvef fiil (ortası و): قَامَ / يَقُومُ. Emri قُمْ (kalk!) Müddessir ve Müzzemmil surelerinde geçer.",
+    "example_ref": "72:19"
+  },
+  {
+    "id": 406,
+    "level": 3,
+    "arabic": "أَقَامَ",
+    "transliteration": "ekâme",
+    "turkish_meaning": "dosdoğru kıldı / ayakta tuttu",
+    "root": "ق-و-م",
+    "part_of_speech": "fiil",
+    "memory_hint": "Ekâme — 'ikamet' ve 'ikame': bir şeyi ayakta tutmak.",
+    "example_arabic": "الَّذِينَ إِن مَّكَّنَّاهُمْ فِي الْأَرْضِ أَقَامُوا الصَّلَاةَ",
+    "example_turkish": "Onlar ki, kendilerini yeryüzünde iktidar sahibi kılarsak namazı kılarlar.",
+    "grammar_note": "IV. bab ecvef fiil; Kur'an'da namazla birlikte 'hakkıyla kılmak' anlamında kullanılır: أَقِيمُوا الصَّلَاةَ.",
+    "example_ref": "22:41"
+  },
+  {
+    "id": 407,
+    "level": 3,
+    "arabic": "تَابَ",
+    "transliteration": "tâbe",
+    "turkish_meaning": "tövbe etti / döndü",
+    "root": "ت-و-ب",
+    "part_of_speech": "fiil",
+    "memory_hint": "Tâbe — 'tevbe'; kul günahtan döner, Allah affa döner.",
+    "example_arabic": "وَمَن تَابَ وَعَمِلَ صَالِحًا",
+    "example_turkish": "Kim tövbe eder ve salih amel işlerse...",
+    "grammar_note": "Ecvef fiil; kul için إِلَى ile (تَابَ إِلَى اللَّهِ), Allah için عَلَى ile kullanılır (تَابَ عَلَيْهِ: tövbesini kabul etti).",
+    "example_ref": "25:71"
+  },
+  {
+    "id": 408,
+    "level": 3,
+    "arabic": "جَزَى",
+    "transliteration": "cezâ",
+    "turkish_meaning": "karşılık verdi",
+    "root": "ج-ز-ي",
+    "part_of_speech": "fiil",
+    "memory_hint": "Cezâ — 'ceza' Türkçede kötü karşılık; Arapçada iyi ve kötü her karşılık.",
+    "example_arabic": "وَجَزَاهُم بِمَا صَبَرُوا جَنَّةً وَحَرِيرًا",
+    "example_turkish": "Sabretmelerine karşılık onları cennetle ve ipekle ödüllendirdi.",
+    "grammar_note": "Nâkıs fiil; iki nesne alır. Mastarı جَزَاء; iyi karşılık için de kullanılır.",
+    "example_ref": "76:12"
+  },
+  {
+    "id": 409,
+    "level": 3,
+    "arabic": "كَسَبَ",
+    "transliteration": "kesebe",
+    "turkish_meaning": "kazandı / elde etti",
+    "root": "ك-س-ب",
+    "part_of_speech": "fiil",
+    "memory_hint": "Kesebe — 'kesb' (kazanç) ve 'kesbetmek'.",
+    "example_arabic": "كُلُّ نَفْسٍ بِمَا كَسَبَتْ رَهِينَةٌ",
+    "example_turkish": "Her can kazandığına karşılık bir rehindir.",
+    "grammar_note": "I. bab mâzî, 3. tekil dişil (كَسَبَتْ). Kur'an'da çoğu zaman amellerin kazanımı anlamındadır.",
+    "example_ref": "74:38"
+  },
+  {
+    "id": 410,
+    "level": 3,
+    "arabic": "اتَّبَعَ",
+    "transliteration": "ittebea",
+    "turkish_meaning": "uydu / izledi",
+    "root": "ت-ب-ع",
+    "part_of_speech": "fiil",
+    "memory_hint": "İttebea — 'tâbi' (bağlı) ve 'tebaa' aynı kök.",
+    "example_arabic": "قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي",
+    "example_turkish": "De ki: Allah'ı seviyorsanız bana uyun.",
+    "grammar_note": "VIII. bab (افْتَعَلَ) fiil; örnekte emir: اتَّبِعُونِي (bana uyun). I. babı تَبِعَ.",
+    "example_ref": "3:31"
+  },
+  {
+    "id": 411,
+    "level": 3,
+    "arabic": "تَرَكَ",
+    "transliteration": "terake",
+    "turkish_meaning": "bıraktı / terk etti",
+    "root": "ت-ر-ك",
+    "part_of_speech": "fiil",
+    "memory_hint": "Terake — 'terk' ve 'tereke' (miras) aynı kök.",
+    "example_arabic": "كَمْ تَرَكُوا مِن جَنَّاتٍ وَعُيُونٍ",
+    "example_turkish": "Nice bahçeler ve pınarlar bırakıp gittiler.",
+    "grammar_note": "I. bab mâzî, 3. çoğul. كَمْ burada çokluk bildiren haber kemidir: 'nice...'.",
+    "example_ref": "44:25"
+  },
+  {
+    "id": 412,
+    "level": 3,
+    "arabic": "ظَنَّ",
+    "transliteration": "zanne",
+    "turkish_meaning": "sandı / kesin bildi",
+    "root": "ظ-ن-ن",
+    "part_of_speech": "fiil",
+    "memory_hint": "Zanne — 'zan' (sanı); ama Kur'an'da bazen 'kesin bilmek'.",
+    "example_arabic": "الَّذِينَ يَظُنُّونَ أَنَّهُم مُلَاقُو رَبِّهِمْ",
+    "example_turkish": "Onlar Rablerine kavuşacaklarını kesinlikle bilirler.",
+    "grammar_note": "Muzaaf fiil; kalp fiillerindendir ve iki nesne/أَنَّ cümlesi alır. Bağlama göre 'sandı' veya 'kesin bildi' anlamı.",
+    "example_ref": "2:46"
+  },
+  {
+    "id": 413,
+    "level": 3,
+    "arabic": "اتَّخَذَ",
+    "transliteration": "ittehaze",
+    "turkish_meaning": "edindi",
+    "root": "أ-خ-ذ",
+    "part_of_speech": "fiil",
+    "memory_hint": "İttehaze — 'ahz' (alma) kökünden: kendine edinmek.",
+    "example_arabic": "إِنَّ قَوْمِي اتَّخَذُوا هَذَا الْقُرْآنَ مَهْجُورًا",
+    "example_turkish": "Kavmim bu Kur'an'ı terk edilmiş bir şey hâline getirdi.",
+    "grammar_note": "VIII. bab fiil: أَخَذَ'dan; hemze ت'ye dönüşmüştür. İki nesne alır: 'X'i Y edindi'.",
+    "example_ref": "25:30"
+  },
+  {
+    "id": 414,
+    "level": 3,
+    "arabic": "أَحْيَا",
+    "transliteration": "ahyâ",
+    "turkish_meaning": "diriltti / hayat verdi",
+    "root": "ح-ي-ي",
+    "part_of_speech": "fiil",
+    "memory_hint": "Ahyâ — 'ihya' (canlandırma): hayat veren.",
+    "example_arabic": "وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا",
+    "example_turkish": "Kim bir canı kurtarırsa bütün insanları kurtarmış gibidir.",
+    "grammar_note": "IV. bab (أَفْعَلَ) fiil, حَيِيَ'nin ettirgeni. Zıddı أَمَاتَ (öldürdü).",
+    "example_ref": "5:32"
+  },
+  {
+    "id": 415,
+    "level": 3,
+    "arabic": "أَخْرَجَ",
+    "transliteration": "ahrace",
+    "turkish_meaning": "çıkardı",
+    "root": "خ-ر-ج",
+    "part_of_speech": "fiil",
+    "memory_hint": "Ahrace — خَرَجَ'nin ettirgeni: 'ihraç' (dışarı çıkarma).",
+    "example_arabic": "وَالَّذِي أَخْرَجَ الْمَرْعَى",
+    "example_turkish": "Ve otlağı (yerden) çıkaran.",
+    "grammar_note": "IV. bab (أَفْعَلَ) fiil; geçişsiz خَرَجَ'yi geçişli yapar. Edilgeni أُخْرِجَ.",
+    "example_ref": "87:4"
+  },
+  {
+    "id": 416,
+    "level": 3,
+    "arabic": "تَلَا",
+    "transliteration": "telâ",
+    "turkish_meaning": "okudu / ardından geldi",
+    "root": "ت-ل-و",
+    "part_of_speech": "fiil",
+    "memory_hint": "Telâ — 'tilavet' (Kur'an okuma); kök 'ardından gitmek'.",
+    "example_arabic": "الَّذِينَ آتَيْنَاهُمُ الْكِتَابَ يَتْلُونَهُ حَقَّ تِلَاوَتِهِ",
+    "example_turkish": "Kendilerine kitap verdiğimiz kimseler onu hakkıyla okurlar.",
+    "grammar_note": "Nâkıs fiil; muzari يَتْلُو. Kur'an okumak için قَرَأَ yanında bu fiil de kullanılır.",
+    "example_ref": "2:121"
+  },
+  {
+    "id": 417,
+    "level": 3,
+    "arabic": "خَشِيَ",
+    "transliteration": "haşiye",
+    "turkish_meaning": "(saygıyla) korktu",
+    "root": "خ-ش-ي",
+    "part_of_speech": "fiil",
+    "memory_hint": "Haşiye — 'haşyet': bilgiyle gelen saygılı korku.",
+    "example_arabic": "إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ",
+    "example_turkish": "Kulları içinden Allah'a karşı ancak âlimler derin saygı duyar.",
+    "grammar_note": "Nâkıs fiil (فَعِلَ); muzari يَخْشَى. خَافَ genel korku, خَشِيَ tanıyarak duyulan saygılı korkudur.",
+    "example_ref": "35:28"
+  },
+  {
+    "id": 418,
+    "level": 3,
+    "arabic": "جَاهَدَ",
+    "transliteration": "câhede",
+    "turkish_meaning": "cihad etti / çabaladı",
+    "root": "ج-ه-د",
+    "part_of_speech": "fiil",
+    "memory_hint": "Câhede — 'cehd' (çaba) ve 'içtihat' aynı kök.",
+    "example_arabic": "وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا",
+    "example_turkish": "Bizim uğrumuzda çaba gösterenleri elbette yollarımıza ileteceğiz.",
+    "grammar_note": "III. bab (فَاعَلَ) fiil; karşılıklı ve yoğun çaba bildirir. Mastarı جِهَاد ve مُجَاهَدَة.",
+    "example_ref": "29:69"
+  },
+  {
+    "id": 419,
+    "level": 2,
+    "arabic": "أُمَّة",
+    "transliteration": "ümmet",
+    "turkish_meaning": "ümmet / topluluk",
+    "root": "أ-م-م",
+    "part_of_speech": "isim",
+    "memory_hint": "Ümmet — 'ümm' (anne) ile aynı kök: ortak bir kaynağa yönelen topluluk.",
+    "example_arabic": "كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ",
+    "example_turkish": "Siz insanlar için çıkarılmış en hayırlı ümmetsiniz.",
+    "grammar_note": "Dişil isim; çoğulu أُمَم. 'Önder' ve 'süre' anlamlarında da kullanılır.",
+    "example_ref": "3:110"
+  },
+  {
+    "id": 420,
+    "level": 2,
+    "arabic": "ظَالِم",
+    "transliteration": "zâlim",
+    "turkish_meaning": "zalim / haksızlık eden",
+    "root": "ظ-ل-م",
+    "part_of_speech": "sıfat",
+    "memory_hint": "Zâlim — Türkçede de 'zalim'; ظَلَمَ fiilinin faili.",
+    "example_arabic": "وَيَوْمَ يَعَضُّ الظَّالِمُ عَلَى يَدَيْهِ",
+    "example_turkish": "O gün zalim (pişmanlıkla) ellerini ısıracak.",
+    "grammar_note": "ism-i fâil; çoğulu ظَالِمُونَ / ظَالِمِينَ. Örnekte يَعَضُّ fiilinin öznesidir.",
+    "example_ref": "25:27"
+  },
+  {
+    "id": 421,
+    "level": 1,
+    "arabic": "وَاحِد",
+    "transliteration": "vâhid",
+    "turkish_meaning": "bir / tek",
+    "root": "و-ح-د",
+    "part_of_speech": "sayı / sıfat",
+    "memory_hint": "Vâhid — 'vahdet' (birlik) ve 'tevhid' aynı kök.",
+    "example_arabic": "أَنَّمَا إِلَهُكُمْ إِلَهٌ وَاحِدٌ",
+    "example_turkish": "İlahınız ancak tek bir ilahtır.",
+    "grammar_note": "ism-i fâil kalıbında sayı/sıfat; sayılan isimden sonra gelir ve ona uyar (إِلَهٌ وَاحِدٌ). أَحَد ile aynı köktendir.",
+    "example_ref": "18:110"
   }
 ];
