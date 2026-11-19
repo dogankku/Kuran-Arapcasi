@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { supabase, authRedirectUrl, authErrorTr } from "@/lib/supabase";
+import Icon, { Logo } from "@/components/Icon";
 
 export type AuthUser = { id: string; email: string; username: string };
 
@@ -23,7 +24,7 @@ export function PasswordInput({ value, onChange, placeholder, autoComplete }: {
         placeholder={placeholder} autoComplete={autoComplete} className={`${inputCls} pr-12`} />
       <button type="button" onClick={() => setShow(v => !v)} aria-label={show ? "Şifreyi gizle" : "Şifreyi göster"}
         className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-white text-lg">
-        {show ? "🙈" : "👁️"}
+        <Icon name={show ? "gozKapali" : "goz"} size="1.2em" />
       </button>
     </div>
   );
@@ -136,7 +137,7 @@ export default function AuthModal({ onSuccess }: Props) {
          style={{ background: "rgba(10,16,22,0.94)", backdropFilter: "blur(8px)" }}>
       <div className="w-full max-w-md my-auto">
         <div className="text-center mb-7">
-          <div className="text-5xl mb-3">🕌</div>
+          <div className="mb-3 flex justify-center"><Logo size={72} /></div>
           <h1 className="text-3xl font-bold text-white mb-1">Ayet Hafızası</h1>
           <p className="text-stone-400 text-sm">En sık geçen kelimelerle Kur'an'ı anlamaya başla</p>
         </div>
@@ -225,7 +226,7 @@ export default function AuthModal({ onSuccess }: Props) {
         </div>
 
         <p className="text-center text-stone-600 text-xs mt-4">
-          İlerlemen hesabına kaydedilir; her cihazdan kaldığın yerden devam edersin 🌿
+          İlerlemen hesabına kaydedilir; her cihazdan kaldığın yerden devam edersin
         </p>
       </div>
     </div>

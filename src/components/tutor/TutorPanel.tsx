@@ -14,6 +14,7 @@ import { ayahUrlByGlobal, playUrl, wbwUrl } from "@/lib/quranAudio";
 import { speakArabic } from "@/lib/learning";
 import { getCardImage } from "@/data/cardSlugs";
 import { imgSrc } from "@/lib/asset";
+import Icon, { type IconName } from "@/components/Icon";
 
 type Props = {
   words: Word[];
@@ -46,7 +47,7 @@ function AudioBtn({ word, ayah, text, label, big }: {
   return (
     <button type="button" onClick={onClick} title={word || ayah ? "Hafızdan dinle" : "Bilgisayar sesiyle dinle"}
       className={`inline-flex items-center gap-1.5 rounded-full border transition shrink-0 ${playing ? "border-amber-400 text-amber-300 bg-amber-500/10" : "border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10"} ${big ? "px-4 py-2 text-sm" : "px-2.5 py-1 text-xs"}`}>
-      <span aria-hidden>{playing ? "🔊" : "▶"}</span>{label ?? (ayah && !word ? "Ayeti dinle" : "Dinle")}
+      <span aria-hidden><Icon name={playing ? "ses" : "play"} size="0.95em" /></span>{label ?? (ayah && !word ? "Ayeti dinle" : "Dinle")}
     </button>
   );
 }
@@ -62,8 +63,8 @@ function Bar({ pct, color = "bg-emerald-500" }: { pct: number; color?: string })
 function CoachBubble({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex gap-3 items-start">
-      <div className="w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center text-2xl"
-        style={{ background: "linear-gradient(135deg,#065f46,#0f766e)", border: "2px solid rgba(52,211,153,.4)" }} aria-hidden>🧑‍🏫</div>
+      <div className="w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center text-2xl text-amber-200"
+        style={{ background: "linear-gradient(135deg,#065f46,#0f766e)", border: "2px solid rgba(52,211,153,.4)" }} aria-hidden><Icon name="mihrap" size="1.3em" /></div>
       <div className="rounded-2xl rounded-tl-sm px-4 py-3 text-stone-200 text-sm sm:text-base leading-relaxed flex-1"
         style={{ background: "rgba(16,185,129,.08)", border: "1px solid rgba(16,185,129,.25)" }}>{children}</div>
     </div>
@@ -182,7 +183,7 @@ function LessonIntro({ step, words, grammar, sentences, onStart }: {
                     <AudioBtn text={w.arabic} />
                   </div>
                   <div className="text-amber-300 text-sm font-semibold">{w.transliteration} · <span className="text-white">{w.turkish_meaning}</span></div>
-                  <div className="text-stone-400 text-xs mt-1 leading-relaxed">💡 {w.memory_hint}</div>
+                  <div className="text-stone-400 text-xs mt-1 leading-relaxed"><Icon name="kandil" className="text-amber-300" /> {w.memory_hint}</div>
                   <div className="arabic-text text-lg text-emerald-200/90 mt-2" dir="rtl">{w.example_arabic}</div>
                   <div className="text-stone-400 text-xs">{w.example_turkish}{w.example_ref ? ` (${w.example_ref})` : ""}</div>
                 </div>
@@ -205,7 +206,7 @@ function LessonIntro({ step, words, grammar, sentences, onStart }: {
           <div className="text-stone-300">{g.example_turkish}</div>
           <div className="mt-3"><AudioBtn text={g.example_arabic} /></div>
         </div>
-        <div className="mt-3 text-amber-200/85 text-sm">💡 {g.memory_hint}</div>
+        <div className="mt-3 text-amber-200/85 text-sm"><Icon name="kandil" /> {g.memory_hint}</div>
         {startBtn}
       </div>
     );
@@ -295,7 +296,7 @@ function DrillRunner({ drills, onFinish, onAnswer }: {
       </div>
       {picked && (
         <div className={`mt-4 rounded-2xl p-4 text-sm ${ok ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-100" : "bg-red-500/10 border border-red-500/30 text-red-100"}`}>
-          <div className="font-bold mb-1">{ok ? "Doğru! ✓" : `Doğrusu: ${d.answer}`}</div>
+          <div className="font-bold mb-1">{ok ? "Doğru!" : `Doğrusu: ${d.answer}`}</div>
           {d.explain && <div className="opacity-90 leading-relaxed">{d.explain}</div>}
           <button onClick={next} className="duo-btn duo-btn-green w-full mt-3">{i + 1 >= drills.length ? "Bitir" : "Sonraki →"}</button>
         </div>
@@ -355,7 +356,7 @@ function Session({ units, words, grammar, sentences, tutor, setTutor, onWordResu
     const score = totals.total ? totals.correct / totals.total : 1;
     return (
       <div className="duo-card rounded-[1.75rem] p-6 sm:p-8">
-        <div className="text-center text-5xl mb-3">{score >= 0.9 ? "🌟" : score >= 0.7 ? "👏" : "💪"}</div>
+        <div className="text-center text-5xl mb-3"><span className="text-amber-300"><Icon name={score >= 0.9 ? "yildiz8" : score >= 0.7 ? "hilal" : "filiz"} /></span></div>
         <h2 className="text-2xl font-bold text-white text-center mb-1">Bugünkü ders bitti</h2>
         <p className="text-stone-400 text-center mb-5">{totals.correct}/{totals.total} doğru</p>
         <CoachBubble>{coachAfterSession(score, totals.wrong)}</CoachBubble>
@@ -380,7 +381,7 @@ function Session({ units, words, grammar, sentences, tutor, setTutor, onWordResu
       {phase === "drills" && <DrillRunner key={ui} drills={drills} onFinish={onUnitDone} onAnswer={onAnswer} />}
       {phase === "result" && unitResult && (
         <div className="text-center">
-          <div className="text-4xl mb-2">{unitResult.total === 0 || unitResult.correct / unitResult.total >= 0.6 ? "✅" : "🔁"}</div>
+          <div className="text-4xl mb-2"><Icon name={unitResult.total === 0 || unitResult.correct / unitResult.total >= 0.6 ? "onayDaire" : "tekrarOk"} /></div>
           <div className="text-white font-bold text-lg">{unitResult.correct}/{unitResult.total} doğru</div>
           <p className="text-stone-400 text-sm mt-1 mb-5">
             {unitResult.total === 0 || unitResult.correct / unitResult.total >= 0.6
@@ -505,8 +506,8 @@ export default function TutorPanel(props: Props) {
   const planLabel = (it: PlanItem) =>
     it.type === "step" ? `${it.isReview ? "Tekrar: " : ""}${it.step.title}` :
     it.type === "words-review" ? `Kelime tekrarı (${it.wordIds.length} kelime)` : "Eksiklerin üzerinden geçiş";
-  const planIcon = (it: PlanItem) =>
-    it.type === "step" ? (it.step.track === "okuma" ? "📖" : "🧠") : it.type === "words-review" ? "🔁" : "🎯";
+  const planIcon = (it: PlanItem): IconName =>
+    it.type === "step" ? (it.step.track === "okuma" ? "kitap" : "kandil") : it.type === "words-review" ? "tekrarOk" : "yildiz8";
 
   return (
     <div className="space-y-5">
@@ -536,7 +537,7 @@ export default function TutorPanel(props: Props) {
                 <ol className="space-y-1.5">
                   {plan.map((it, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-stone-200">
-                      <span className="w-6 text-center" aria-hidden>{planIcon(it)}</span>{planLabel(it)}
+                      <span className="w-6 text-center" aria-hidden><Icon name={planIcon(it)} /></span>{planLabel(it)}
                     </li>
                   ))}
                 </ol>
@@ -555,7 +556,7 @@ export default function TutorPanel(props: Props) {
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="duo-card rounded-[1.5rem] p-5">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-bold">📖 Okuma yolu</span>
+              <span className="text-white font-bold"><Icon name="kitap" /> Okuma yolu</span>
               <span className="text-emerald-300 text-sm font-bold">%{ok.pct}</span>
             </div>
             <Bar pct={ok.pct} />
@@ -563,8 +564,8 @@ export default function TutorPanel(props: Props) {
           </div>
           <div className="duo-card rounded-[1.5rem] p-5">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-bold">🧠 Anlama yolu</span>
-              <span className="text-amber-300 text-sm font-bold">{understandingUnlocked(tutor) ? `%${an.pct}` : "🔒"}</span>
+              <span className="text-white font-bold"><Icon name="kandil" /> Anlama yolu</span>
+              <span className="text-amber-300 text-sm font-bold">{understandingUnlocked(tutor) ? `%${an.pct}` : <Icon name="kilit" />}</span>
             </div>
             <Bar pct={an.pct} color="bg-amber-500" />
             <div className="text-stone-400 text-xs mt-2">
@@ -577,7 +578,7 @@ export default function TutorPanel(props: Props) {
       {tutor.placementDone && (
         <div className="duo-card rounded-[1.5rem] p-5">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-white font-bold">🎯 Eksiklerin</span>
+            <span className="text-white font-bold"><Icon name="yildiz8" /> Eksiklerin</span>
             {mistakes.length > 0 && (
               <button onClick={() => start([{ kind: "drills", title: "Eksiklerin üzerinden geçelim", drills: drillsForMistakes(mistakes.slice(0, 6).map(m => m.key), words, grammar, sentences) }])}
                 className="text-xs text-emerald-300 border border-emerald-500/40 rounded-full px-3 py-1 hover:bg-emerald-500/10">Hepsini çalış</button>
@@ -604,7 +605,7 @@ export default function TutorPanel(props: Props) {
       {tutor.placementDone && (
         <div className="duo-card rounded-[1.5rem] p-5">
           <button onClick={() => setShowMap(v => !v)} className="w-full flex items-center justify-between text-white font-bold">
-            <span>🗺️ Yol haritası</span><span className="text-stone-400 text-sm">{showMap ? "Gizle ▲" : "Göster ▼"}</span>
+            <span><Icon name="pusula" /> Yol haritası</span><span className="text-stone-400 text-sm">{showMap ? "Gizle ▲" : "Göster ▼"}</span>
           </button>
           {showMap && (
             <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -622,7 +623,7 @@ export default function TutorPanel(props: Props) {
                           <li key={s.id}>
                             <button disabled={locked} onClick={() => start([{ kind: "step", step: s, isReview: done }])}
                               className={`w-full text-left flex items-center gap-2 rounded-xl px-3 py-2 text-sm transition ${isNext ? "bg-emerald-500/15 border border-emerald-500/40 text-white" : done ? "text-stone-300 hover:bg-white/5" : "text-stone-600 cursor-not-allowed"}`}>
-                              <span className="w-5 text-center">{done ? "✅" : isNext ? "▶" : "🔒"}</span>
+                              <span className="w-5 text-center">{done ? <Icon name="onayDaire" /> : isNext ? <Icon name="play" /> : <Icon name="kilit" />}</span>
                               <span className="truncate">{s.title}</span>
                             </button>
                           </li>
