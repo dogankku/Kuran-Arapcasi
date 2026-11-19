@@ -1,5 +1,6 @@
 "use client";
 import { getRank, getNextRank } from "@/data/ranks";
+import Icon from "@/components/Icon";
 
 interface Props {
   learned: number;
@@ -15,7 +16,7 @@ export default function RankBadge({ learned, compact }: Props) {
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold"
             style={{background:`${rank.color}22`, border:`1px solid ${rank.color}55`, color:rank.color}}>
-        <span>{rank.icon}</span>
+        <Icon name={rank.icon} />
         <span>{rank.title}</span>
       </span>
     );
@@ -25,7 +26,7 @@ export default function RankBadge({ learned, compact }: Props) {
     <div className="rounded-2xl p-4 border"
          style={{background:`${rank.color}12`, borderColor:`${rank.color}30`}}>
       <div className="flex items-center gap-3 mb-3">
-        <div className="text-3xl">{rank.icon}</div>
+        <div className="text-3xl"><Icon name={rank.icon} /></div>
         <div>
           <div className="font-bold text-white text-sm">{rank.title}</div>
           <div className="arabic-text text-sm" style={{color:rank.color}}>{rank.arabic}</div>
@@ -40,7 +41,7 @@ export default function RankBadge({ learned, compact }: Props) {
         <>
           <div className="flex justify-between text-xs text-stone-500 mb-1.5">
             <span>{learned} kelime</span>
-            <span>Sonraki: {next.icon} {next.title} ({next.min})</span>
+            <span>Sonraki: <Icon name={next.icon} /> {next.title} ({next.min})</span>
           </div>
           <div className="h-2 rounded-full overflow-hidden" style={{background:"rgba(255,255,255,0.08)"}}>
             <div className="h-full rounded-full transition-all duration-700"
