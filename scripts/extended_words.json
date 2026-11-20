@@ -1121,7 +1121,7 @@
 "tl": "nādā",
 "meaning": "seslenmişti",
 "alts": [
-"du",
+"du'a etmişti",
 "yalvarmıştı"
 ],
 "votes": 3,
@@ -2098,9 +2098,9 @@
 "pron": false,
 "vf": null,
 "tl": "ālāa",
-"meaning": "ni",
+"meaning": "ni'metlerini",
 "alts": [],
-"votes": 34,
+"votes": 33,
 "example_ar": "بَصْۜطَةًۭ ۖ فَٱذْكُرُوٓا۟ ءَالَآءَ ٱللَّهِ لَعَلَّكُمْ",
 "example_tr": "üstünlük güç' hatırlayın ki ni'metlerini allah'ın umulur ki",
 "ref": "7:69"
@@ -2558,7 +2558,7 @@
 "pron": false,
 "vf": "1",
 "tl": "qiṭaʿun",
-"meaning": "kıt",
+"meaning": "kıt'alar",
 "alts": [
 "kesilmesi",
 "parçalarıyla"
@@ -3244,9 +3244,11 @@
 "pron": false,
 "vf": "1",
 "tl": "luʿina",
-"meaning": "la",
-"alts": [],
-"votes": 2,
+"meaning": "la'net edilmiştir",
+"alts": [
+"la'net etmiştir"
+],
+"votes": 1,
 "example_ar": "لُعِنَ ٱلَّذِينَ كَفَرُوا۟",
 "example_tr": "la'net edilmiştir kimselere inkar eden",
 "ref": "5:78"
@@ -3561,8 +3563,8 @@
 "tl": "l-qurūnu",
 "meaning": "nesil",
 "alts": [
-"zu",
-"nice nesiller"
+"nice nesiller",
+"nesiller"
 ],
 "votes": 2,
 "example_ar": "وَقَدْ خَلَتِ ٱلْقُرُونُ مِن قَبْلِى",
@@ -5112,9 +5114,12 @@
 "pron": false,
 "vf": "4",
 "tl": "anʿama",
-"meaning": "ni",
-"alts": [],
-"votes": 4,
+"meaning": "ni'met verdiği",
+"alts": [
+"ni'metlendirdiği",
+"lutfetti"
+],
+"votes": 3,
 "example_ar": "مَعَ ٱلَّذِينَ أَنْعَمَ ٱللَّهُ عَلَيْهِم",
 "example_tr": "beraberdir kimselerle ni'metlendirdiği allah'ın kendilerini",
 "ref": "4:69"
@@ -5541,9 +5546,9 @@
 "pron": false,
 "vf": null,
 "tl": "naʿīmun",
-"meaning": "ni",
+"meaning": "ni'met",
 "alts": [],
-"votes": 13,
+"votes": 9,
 "example_ar": "لَّهُمْ فِيهَا نَعِيمٌۭ مُّقِيمٌ",
 "example_tr": "bulunan içinde nimetler tükenmeyen",
 "ref": "9:21"
@@ -6545,7 +6550,7 @@
 "pron": false,
 "vf": null,
 "tl": "laʿnatu",
-"meaning": "la",
+"meaning": "la'neti",
 "alts": [
 "laneti"
 ],
@@ -7819,6 +7824,7 @@
 "tl": "manaʿa",
 "meaning": "men eden",
 "alts": [
+"men'edildi",
 "alıkoyan şey"
 ],
 "votes": 1,
@@ -8600,12 +8606,12 @@
 "pron": false,
 "vf": null,
 "tl": "mawʿidun",
-"meaning": "va",
+"meaning": "va'dedilen bir zaman",
 "alts": [
 "vade",
 "süre"
 ],
-"votes": 2,
+"votes": 1,
 "example_ar": "بَل لَّهُم مَّوْعِدٌۭ لَّن يَجِدُوا۟",
 "example_tr": "fakat onlar için vardır va'dedilen bir zaman asla bulamayacaklardır",
 "ref": "18:58"
@@ -9715,9 +9721,9 @@
 "pron": false,
 "vf": null,
 "tl": "ṭūri",
-"meaning": "tur",
+"meaning": "tur'un",
 "alts": [],
-"votes": 5,
+"votes": 4,
 "example_ar": "تَخْرُجُ مِن طُورِ سَيْنَآءَ تَنۢبُتُ",
 "example_tr": "çıkan tur-i-dan tur-i biten",
 "ref": "23:20"
@@ -10301,7 +10307,7 @@
 "meaning": "destekçileri",
 "alts": [
 "yardımcısı",
-"şefa"
+"şefa'atçi"
 ],
 "votes": 1,
 "example_ar": "وَلِىٌّۭ وَلَا شَفِيعٌۭ لَّعَلَّهُمْ يَتَّقُونَ",
@@ -11843,12 +11849,12 @@
 "pron": false,
 "vf": "1",
 "tl": "rākiʿūna",
-"meaning": "rüku",
+"meaning": "rüku'a varan",
 "alts": [
 "rüku edenler",
 "eğilerek"
 ],
-"votes": 2,
+"votes": 1,
 "example_ar": "ٱلزَّكَوٰةَ وَهُمْ رَٰكِعُونَ",
 "example_tr": "zekatlarını ve onlar rüku'a varan",
 "ref": "5:55"
@@ -12016,7 +12022,7 @@
 "tl": "qānitūna",
 "meaning": "boyun eğmiştir",
 "alts": [
-"ita",
+"ita'at etmektedirler",
 "ibadet eden"
 ],
 "votes": 1,
@@ -12209,10 +12215,10 @@
 "tl": "l-ṭāghūtu",
 "meaning": "tağut",
 "alts": [
-"tâğût",
+"tâğût'a",
 "tagutdan"
 ],
-"votes": 3,
+"votes": 2,
 "example_ar": "كَفَرُوٓا۟ أَوْلِيَآؤُهُمُ ٱلطَّـٰغُوتُ يُخْرِجُونَهُم مِّنَ",
 "example_tr": "inkar eden dostları da tağuttur (o da) onları çıkarır aydınlıktan",
 "ref": "2:257"
@@ -13068,7 +13074,7 @@
 "tl": "tazakkā",
 "meaning": "arınan",
 "alts": [
-"ma",
+"ma'nen arınıp yücelirse",
 "nefsini arındıran"
 ],
 "votes": 1,
@@ -13215,12 +13221,12 @@
 "pron": false,
 "vf": null,
 "tl": "fur'qānan",
-"meaning": "furkan",
+"meaning": "iyi ile kötüyü ayırdedici bir anlayış",
 "alts": [
-"iyi ile kötüyü ayırdedici bir anlayış",
+"furkan'ı da",
 "ayrılma"
 ],
-"votes": 2,
+"votes": 1,
 "example_ar": "يَجْعَل لَّكُمْ فُرْقَانًۭا وَيُكَفِّرْ عَنكُمْ",
 "example_tr": "o verir size iyi ile kötüyü ayırdedici bir anlayış ve örter sizin",
 "ref": "8:29"
@@ -13663,7 +13669,7 @@
 "pron": false,
 "vf": null,
 "tl": "baʿlan",
-"meaning": "ba",
+"meaning": "ba'l'e",
 "alts": [],
 "votes": 1,
 "example_ar": "أَتَدْعُونَ بَعْلًۭا وَتَذَرُونَ أَحْسَنَ",
@@ -14758,7 +14764,7 @@
 "pron": false,
 "vf": null,
 "tl": "l-ru'yā",
-"meaning": "rü",
+"meaning": "rü'yayı",
 "alts": [
 "rüyayı",
 "rüyasını"
@@ -14825,7 +14831,7 @@
 "yılan",
 "küçük bir yılan"
 ],
-"votes": 3,
+"votes": 2,
 "example_ar": "تَهْتَزُّ كَأَنَّهَا جَآنٌّۭ وَلَّىٰ مُدْبِرًۭا",
 "example_tr": "titreştiğini gibi bir yılan dön(üp kaç)dı arkaya",
 "ref": "27:10"
@@ -14844,7 +14850,7 @@
 "tl": "l-mutakabiru",
 "meaning": "kibirlenenlerin",
 "alts": [
-"mütekebbir",
+"mütekebbir'",
 "kibirlilerin"
 ],
 "votes": 3,
@@ -15458,9 +15464,11 @@
 "pron": false,
 "vf": null,
 "tl": "daʿwatu",
-"meaning": "du",
-"alts": [],
-"votes": 2,
+"meaning": "du'a",
+"alts": [
+"du'aya değer tarafı"
+],
+"votes": 1,
 "example_ar": "لَهُۥ دَعْوَةُ ٱلْحَقِّ ۖ وَٱلَّذِينَ",
 "example_tr": "ancak o'nadır du'a gerçek kimseler ise",
 "ref": "13:14"
@@ -15929,7 +15937,7 @@
 "tl": "l-qaṣaṣu",
 "meaning": "kıssa",
 "alts": [
-"ta",
+"ta'kibederek",
 "bu kıssayı"
 ],
 "votes": 1,
@@ -15951,7 +15959,7 @@
 "tl": "bakat",
 "meaning": "ağlayarak",
 "alts": [
-"mekke",
+"mekke'de",
 "ağlamıyorsunuz"
 ],
 "votes": 2,
@@ -16940,7 +16948,7 @@
 "pron": false,
 "vf": "3",
 "tl": "bāyaʿtum",
-"meaning": "bi",
+"meaning": "bi'at etmektedirler",
 "alts": [],
 "votes": 1,
 "example_ar": "بِبَيْعِكُمُ ٱلَّذِى بَايَعْتُم بِهِۦ ۚ وَذَٰلِكَ",
@@ -20459,7 +20467,7 @@
 "pron": false,
 "vf": null,
 "tl": "shāʿirun",
-"meaning": "şa",
+"meaning": "şa'ir",
 "alts": [],
 "votes": 2,
 "example_ar": "بَلْ هُوَ شَاعِرٌۭ فَلْيَأْتِنَا بِـَٔايَةٍۢ",
@@ -20873,7 +20881,7 @@
 "meaning": "sözleşmiştik",
 "alts": [
 "sözleştik",
-"size va"
+"size va'dettik"
 ],
 "votes": 1,
 "example_ar": "وَإِذْ وَٰعَدْنَا مُوسَىٰٓ أَرْبَعِينَ",
