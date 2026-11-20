@@ -52,6 +52,28 @@ def clean_tr(t):
     return re.sub(r"\s+", " ", tr_lower(t)).strip(" ,.;")
 
 
+COPULA = re.compile(r"(d|t)(ı|i|u|ü)r(lar|ler)?$")
+
+
+def base_tr(t, proper=False):
+    """Sözlük biçimine yaklaştır: 'bir oyundur' -> 'oyun', 'harun'u' -> 'Harun', 'cehennemdir' -> 'cehennem'."""
+    t = re.sub(r"^(ve|bir|hiç|hiçbir)\s+", "", t)
+    no_paren = re.sub(r"\s*\(.*?\)", "", t).strip()
+    if no_paren:
+        t = no_paren
+    if proper or "'" in t:
+        head = t.split("'")[0]
+        if len(head) >= 2:
+            t = head
+    if " " not in t:
+        u = COPULA.sub("", t)
+        if len(u) >= 3:
+            t = u
+    if proper and t:
+        t = t[0].upper().replace("I", "İ") + t[1:] if t[0] != "i" else "İ" + t[1:]
+    return t.strip()
+
+
 def main():
     # 1) Korpus
     toks = collections.OrderedDict()
@@ -91,7 +113,7 @@ def main():
                 I["vf"][vf] += 1
             if "PREF" in f or loc[:2] in SKIP_VERSES:
                 continue
-            pref = 0 if (("PERF" in f and "3MS" in f) or "NOM" in f or tag == "P") else 3
+            pref = 0 if (("PERF" in f and "3MS" in f) or ("NOM" in f and "V" != tag) or tag == "P") else 3
             pref += 1 if any("DET" in g for _, _, g in segs) else 0
             I["any"].append((pref + 10 * (len(stems) - 1), loc))
             if len(stems) == 1:
@@ -133,15 +155,28 @@ def main():
     out = []
     for K in targets:
         I = info[K]
+        (tag, pn, adj, pron), _ = I["pos"].most_common(1)[0]
+
+        def vote(cs):
+            tally = collections.Counter()
+            for _, loc in cs[:300]:
+                e = wbw.get(loc)
+                if not e:
+                    continue
+                t = clean_tr(e.get("tr"))
+                if t and t != clean_tr(e.get("en")):
+                    b = base_tr(t, proper=pn)
+                    if b:
+                        tally[b] += 1
+            return tally
+
         cands = sorted(I["clean"]) or sorted(I["any"])
-        tally = collections.Counter()
-        for _, loc in cands[:300]:
-            e = wbw.get(loc)
-            if not e:
-                continue
-            t = clean_tr(e.get("tr"))
-            if t and t != clean_tr(e.get("en")):
-                tally[t] += 1
+        best_group = [c for c in cands if c[0] == cands[0][0]] if cands else []
+        tally = vote(best_group) if len(best_group) >= 2 else collections.Counter()
+        if not tally:
+            tally = vote(cands)
+        if not tally:
+            tally = vote(sorted(I["any"]))
         top = tally.most_common(3)
         meaning = top[0][0] if top else ""
         alts = [t for t, c in top[1:] if top and c >= 0.3 * top[0][1] and t not in meaning]
@@ -152,10 +187,9 @@ def main():
             win = [wbw.get((s, a, j)) for j in range(max(1, w - 2), w + 3)]
             win = [x for x in win if x]
             ex_ar = " ".join(x["ar"] for x in win)
-            ex_tr = " ".join(clean_tr(x.get("tr")) for x in win)
+            ex_tr = " ".join(clean_tr(x.get("tr")) for x in win if clean_tr(x.get("tr")) != clean_tr(x.get("en")))
             ref = f"{s}:{a}"
             tl = wbw.get(best, {}).get("tl", "")
-        (tag, pn, adj, pron), _ = I["pos"].most_common(1)[0]
         raw = I["raw"].most_common(1)[0][0]
         ar = I["verbform"].most_common(1)[0][0] if tag == "V" and I["verbform"] else display(raw)
         root = I["root"].most_common(1)[0][0] if I["root"] else None
