@@ -362,6 +362,10 @@ export default function DashboardPage() {
                   className="inline-flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-300 hover:bg-amber-500/25 rounded-full px-3 py-1.5 text-xs font-semibold transition">
                   <Icon name="kitap" /> <span>Kuran Oku</span>
                 </Link>
+                <Link href="/kelime-meal"
+                  className="inline-flex items-center gap-1.5 bg-sky-500/15 border border-sky-500/40 text-sky-300 hover:bg-sky-500/25 rounded-full px-3 py-1.5 text-xs font-semibold transition">
+                  <Icon name="ayet" /> <span>Kelime Meal</span>
+                </Link>
                 {/* Kullanıcı bilgisi */}
                 {user && (
                   <div className="ml-auto flex items-center gap-2 flex-wrap">

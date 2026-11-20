@@ -206,7 +206,7 @@ function WordPopup({
 }
 
 // ── Surah sidebar ──────────────────────────────────────────────────────────
-function SurahSidebar({
+export function SurahSidebar({
   selected, onSelect, onClose,
 }: {
   selected: number; onSelect: (n: number) => void; onClose?: () => void;

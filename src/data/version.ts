@@ -1,7 +1,8 @@
-export const APP_VERSION = "1.9.3";
+export const APP_VERSION = "1.10.0";
 export const BUILD_DATE = "2026-11-20";
-export const BUILD_TIME = "15:00";
+export const BUILD_TIME = "16:00";
 export const CHANGELOG = [
+  { version: "1.10.0", date: "2026-11-20", time: "16:00", note: "Yeni modül: Kelime Kelime Meal. Kur'an'ın tamamı sure sure; her kelimenin üstünde Arapçası, altında Türkçe okunuşu, en altta Türkçe anlamı, ayrı renklerde. Hafız sesine göre ok takibi (4 hafız), kelimeye dokununca o kelimeden dinleme, 0.5× hız, otomatik sonraki ayet, okunuş/anlam/meal aç-kapa, yazı boyutu, kalınan yeri hatırlama." },
   { version: "1.9.3", date: "2026-11-20", time: "15:00", note: "Gerçekçi ilerleme: \"Kur'an Anlama Oranı\" yerine \"Kur'an Metin Kapsamı\". Oran artık kaç kelime bildiğinden değil, hangi kelimeleri bildiğinden hesaplanıyor (Quranic Arabic Corpus sayımı; 420 kelimenin tamamı metnin yaklaşık %67'si). Bütün kelimelerin Kur'an'daki geçiş sayıları korpustan yeniden çıkarıldı (\"و\" 40.000 gibi hatalar düzeltildi, eksik 275 kelimeye sayı eklendi); Hoca'daki kelime sırası da buna göre. Bir kelime artık en az 2 farklı günde doğru bilinince \"öğrenildi\" sayılıyor; aynı gün tekrar doğru bilmek tekrar aralığını büyütmüyor." },
   { version: "1.9.2", date: "2026-11-20", time: "14:00", note: "Hoca dersleri artık günlük seriye ve \"Bugün çalışıldı\" sayısına ekleniyor; daha önce bitirilen derslerin günleri de seriye işleniyor. Seri bilgisi her değiştiğinde hesaba kaydediliyor ve başka cihazda açınca hesaptan geri yükleniyor (önceden kelime ilerlemesi boşsa seri buluttan hiç yüklenmiyordu). Gün geçince eski seri/bugün sayısı artık gösterilmiyor." },
   { version: "1.9.1", date: "2026-11-19", time: "20:30", note: "Yeni görünüm: emoji simgeler yerine İslami motifli simge seti (hilal, Kur'an, kubbe, mihrap, kandil, tesbih, rub el hizb yıldızı), yeni logo, tarayıcı sekmesi ve ana ekran ikonu. Rütbeler artık kendi simgeleriyle gösteriliyor." },
