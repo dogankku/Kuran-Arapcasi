@@ -24,6 +24,8 @@ type Props = {
   tutor: TutorState;
   setTutor: (fn: (t: TutorState) => TutorState) => void;
   onWordResult: (wordId: number, result: "known" | "wrong") => void;
+  /** Bir ders başarıyla bittiğinde çağrılır (günlük seri / bugün çalışıldı için). */
+  onLessonComplete?: () => void;
   userName?: string;
 };
 
@@ -311,9 +313,10 @@ type Unit =
   | { kind: "step"; step: Step; isReview?: boolean }
   | { kind: "drills"; title: string; drills: Drill[] };
 
-function Session({ units, words, grammar, sentences, tutor, setTutor, onWordResult, onExit }: {
+function Session({ units, words, grammar, sentences, tutor, setTutor, onWordResult, onLessonComplete, onExit }: {
   units: Unit[]; words: Word[]; grammar: GrammarTopic[]; sentences: SentenceAnalysis[];
-  tutor: TutorState; setTutor: Props["setTutor"]; onWordResult: Props["onWordResult"]; onExit: () => void;
+  tutor: TutorState; setTutor: Props["setTutor"]; onWordResult: Props["onWordResult"];
+  onLessonComplete?: Props["onLessonComplete"]; onExit: () => void;
 }) {
   const [ui, setUi] = useState(0);
   const [phase, setPhase] = useState<"intro" | "drills" | "result">(units[0]?.kind === "step" ? "intro" : "drills");
@@ -340,7 +343,10 @@ function Session({ units, words, grammar, sentences, tutor, setTutor, onWordResu
 
   const onUnitDone = (correct: number, total: number, wrong: Drill[]) => {
     const score = total ? correct / total : 1;
-    if (unit?.kind === "step" && score >= 0.6) setTutor(t => completeStep(t, unit.step.id, score, unit.isReview));
+    if (unit?.kind === "step" && score >= 0.6) {
+      setTutor(t => completeStep(t, unit.step.id, score, unit.isReview));
+      onLessonComplete?.();
+    }
     setTotals(x => ({ correct: x.correct + correct, total: x.total + total, wrong: [...x.wrong, ...wrong.map(w => w.mistakeLabel)] }));
     setUnitResult({ correct, total });
     setPhase("result");
@@ -471,7 +477,7 @@ function Placement({ words, tutor, setTutor, onWordResult, onDone }: {
 // ─── Ana panel ──────────────────────────────────────────────────────────────
 
 export default function TutorPanel(props: Props) {
-  const { words, grammar, sentences, progress, tutor, setTutor, onWordResult, userName } = props;
+  const { words, grammar, sentences, progress, tutor, setTutor, onWordResult, onLessonComplete, userName } = props;
   const path = useMemo(() => buildPath(words, grammar, sentences), [words, grammar, sentences]);
   const [view, setView] = useState<"home" | "placement" | "session">("home");
   const [units, setUnits] = useState<Unit[]>([]);
@@ -500,7 +506,7 @@ export default function TutorPanel(props: Props) {
   }
   if (view === "session") {
     return <Session units={units} words={words} grammar={grammar} sentences={sentences} tutor={tutor} setTutor={setTutor}
-      onWordResult={onWordResult} onExit={() => setView("home")} />;
+      onWordResult={onWordResult} onLessonComplete={onLessonComplete} onExit={() => setView("home")} />;
   }
 
   const planLabel = (it: PlanItem) =>

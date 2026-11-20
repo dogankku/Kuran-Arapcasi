@@ -17,8 +17,8 @@ import {
   STORAGE_KEY, STREAK_KEY, buildQuizOptions, emptyProgress,
   getDailyWords, getLevelDescription, getLevelIcon,
   getLevelShort, getLevelTitle, getMilestone, getNextReviewInfo, getQuizPrompt,
-  getQuranCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
-  speakArabic, updateProgress, updateStreak,
+  getQuranCoverage, topCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
+  speakArabic, updateProgress, updateStreak, reconcileStreak, displayStreak,
 } from "@/lib/learning";
 import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
@@ -105,6 +105,15 @@ export default function DashboardPage() {
       const t = normalizeTutor(remoteTutor);
       setTutorState(t); localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(t));
     }
+    const remoteStreak = data?.streak as StreakData | undefined;
+    if (remoteStreak && typeof remoteStreak.currentStreak === "number") {
+      setStreak(cur => {
+        // Hangisi daha yeni çalışma gününe sahipse onu al
+        const pick = (cur.lastStudyDate ?? "") > (remoteStreak.lastStudyDate ?? "") ? cur : remoteStreak;
+        localStorage.setItem(STREAK_KEY, JSON.stringify(pick));
+        return pick;
+      });
+    }
     const hasRemote = !!data && data.progress && Object.keys(data.progress as object).length > 0;
     if (!hasRemote) {
       // İlk giriş: bu cihazda biriken ilerlemeyi hesaba aktar
@@ -119,14 +128,7 @@ export default function DashboardPage() {
       }
       return;
     }
-    if (data) {
-      if (data.progress) setProgress(data.progress as ProgressMap);
-      if (data.streak) {
-        const s = data.streak as StreakData;
-        setStreak(s);
-        localStorage.setItem(STREAK_KEY, JSON.stringify(s));
-      }
-    }
+    if (data?.progress) setProgress(data.progress as ProgressMap);
   }, []);
 
   const syncProgressToDb = useCallback((userId: string, prog: ProgressMap, str: StreakData) => {
@@ -180,11 +182,11 @@ export default function DashboardPage() {
   // Persist progress locally always
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
 
-  // Sync to DB on progress change
+  // Sync to DB on progress / streak change
   useEffect(() => {
     if (user) syncProgressToDb(user.id, progress, streak);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [progress]);
+  }, [progress, streak]);
 
   // Hoca durumu: yerelde sakla, girişliyse hesaba senkronla
   useEffect(() => {
@@ -194,6 +196,13 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!tutorLoaded.current) return;
     localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(tutor));
+    // Hoca'da bitirilen dersler seriye de sayılsın (önceden kaydedilmemiş günler dahil)
+    const dates = Object.values(tutor.done).map(d => d.at);
+    setStreak(cur => {
+      const next = reconcileStreak(cur, dates);
+      if (next !== cur) localStorage.setItem(STREAK_KEY, JSON.stringify(next));
+      return next;
+    });
     if (user) syncProgressToDb(user.id, progress, streak);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tutor]);
@@ -252,8 +261,8 @@ export default function DashboardPage() {
   }
 
   const learned = Object.values(progress).filter((p) => p.known).length;
-  const coverage = getQuranCoverage(learned);
-  const milestone = getMilestone(learned);
+  const coverage = useMemo(() => getQuranCoverage(words, progress), [progress]);
+  const milestone = useMemo(() => getMilestone(words, progress), [progress]);
   const rank = getRank(learned);
   const nextRank = getNextRank(learned);
   const rankPct = nextRank ? Math.round(((learned - rank.min) / (nextRank.min - rank.min)) * 100) : 100;
@@ -281,6 +290,13 @@ export default function DashboardPage() {
 
   function save(word: Word, type: "known" | "hard" | "wrong") {
     setProgress((cur) => ({ ...cur, [word.id]: updateProgress(cur[word.id] || emptyProgress(), type) }));
+    setStreak(cur => {
+      const updated = updateStreak(cur);
+      localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  }
+  function bumpStreak() {
     setStreak(cur => {
       const updated = updateStreak(cur);
       localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
@@ -346,6 +362,10 @@ export default function DashboardPage() {
                   className="inline-flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-300 hover:bg-amber-500/25 rounded-full px-3 py-1.5 text-xs font-semibold transition">
                   <Icon name="kitap" /> <span>Kuran Oku</span>
                 </Link>
+                <Link href="/kelime-meal"
+                  className="inline-flex items-center gap-1.5 bg-sky-500/15 border border-sky-500/40 text-sky-300 hover:bg-sky-500/25 rounded-full px-3 py-1.5 text-xs font-semibold transition">
+                  <Icon name="ayet" /> <span>Kelime Meal</span>
+                </Link>
                 {/* Kullanıcı bilgisi */}
                 {user && (
                   <div className="ml-auto flex items-center gap-2 flex-wrap">
@@ -374,13 +394,13 @@ export default function DashboardPage() {
                 </div>
               )}
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Kur&apos;an&apos;ı Anlıyorum</h1>
-              <p className="text-stone-300 mt-1 sm:mt-2 text-xs sm:text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an&apos;ın %90&apos;ını anlayabilirsin.</p>
+              <p className="text-stone-300 mt-1 sm:mt-2 text-xs sm:text-sm">En sık geçen kelimeleri öğrenerek Kur&apos;an metnindeki kelimelerin büyük kısmını tanıyabilirsin.</p>
             </div>
             <div className="md:w-72 space-y-3">
               {/* Kur'an anlama oranı */}
               <div>
                 <div className="flex justify-between text-xs sm:text-sm mb-1.5">
-                  <span className="text-stone-400">Kur&apos;an Anlama Oranı</span>
+                  <span className="text-stone-400" title="Bildiğin kelimelerin Kur'an metnindeki geçiş oranı (Quranic Arabic Corpus sayımı). Kelimeyi tanımak, ayeti tam anlamak demek değildir; bunun için gramer ve bağlam da gerekir.">Kur&apos;an Metin Kapsamı</span>
                   <span className="text-emerald-300 font-bold">%{coverage}</span>
                 </div>
                 <div className="duo-progress-track mb-1">
@@ -445,8 +465,8 @@ export default function DashboardPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
             <MiniMetric label="Toplam kelime" value={words.length} icon="kitap" highlight="blue" />
             <MiniMetric label="Öğrenilen" value={learned} icon="onayDaire" highlight="green" />
-            <MiniMetric label="Günlük seri" value={streak.currentStreak} icon="kandil" suffix="gün" highlight="orange" />
-            <MiniMetric label="Bugün çalışıldı" value={streak.todayCount} icon="tesbih" suffix="kez" />
+            <MiniMetric label="Günlük seri" value={displayStreak(streak).currentStreak} icon="kandil" suffix="gün" highlight="orange" />
+            <MiniMetric label="Bugün çalışıldı" value={displayStreak(streak).todayCount} icon="tesbih" suffix="kez" />
           </div>
         </header>
 
@@ -474,7 +494,8 @@ export default function DashboardPage() {
         {panel === "hoca" && (
           <TutorPanel words={words} grammar={grammarTopics} sentences={sentenceAnalyses} progress={progress}
             tutor={tutor} setTutor={setTutor} userName={user?.username}
-            onWordResult={(id, r) => { const w = words.find(x => x.id === id); if (w) save(w, r); }} />
+            onWordResult={(id, r) => { const w = words.find(x => x.id === id); if (w) save(w, r); }}
+            onLessonComplete={bumpStreak} />
         )}
 
         {/* ÖĞRENME YOLU */}
@@ -538,11 +559,11 @@ export default function DashboardPage() {
               <h2 className="text-xl font-bold mb-4">Öğrenme Yol Haritası</h2>
               <div className="space-y-3">
                 {[
-                  { threshold: 10, label: "Temel Başlangıç", desc: "10 kelime → Kur'an'ın %25'i", icon: "◇" },
-                  { threshold: 30, label: "İlk Adım", desc: "30 kelime → Kur'an'ın %50'si", icon: "◈" },
-                  { threshold: 75, label: "Orta Yol", desc: "75 kelime → Kur'an'ın %70'i", icon: "◆" },
-                  { threshold: 150, label: "İleri Seviye", desc: "150 kelime → Kur'an'ın %80'i", icon: "★" },
-                  { threshold: 300, label: "Hedef", desc: "300 kelime → Kur'an'ın %90'ı", icon: "◆" },
+                  { threshold: 10, label: "Temel Başlangıç", desc: `10 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 10)}`, icon: "◇" },
+                  { threshold: 30, label: "İlk Adım", desc: `30 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 30)}`, icon: "◈" },
+                  { threshold: 75, label: "Orta Yol", desc: `75 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 75)}`, icon: "◆" },
+                  { threshold: 150, label: "İleri Seviye", desc: `150 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 150)}`, icon: "★" },
+                  { threshold: 300, label: "Hedef", desc: `300 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 300)}`, icon: "◆" },
                 ].map(({ threshold, label, desc, icon }) => (
                   <div key={threshold} className={`flex items-center gap-4 p-4 rounded-2xl border transition ${learned >= threshold ? "bg-emerald-900/40 border-emerald-400/40" : "bg-black/20 border-stone-700/50"}`}>
                     <div className={`text-2xl ${learned >= threshold ? "text-emerald-300" : "text-stone-600"}`}>{icon}</div>

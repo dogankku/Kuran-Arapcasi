@@ -18,7 +18,7 @@ export const RANKS: Rank[] = [
   { min: 150, title: "Ârif",          arabic: "عارف",           icon: "kandil", color: "#FF6B35", desc: "150 kelime — derin anlayışa ulaşıyorsun." },
   { min: 200, title: "Âlim",          arabic: "عالِم",          icon: "mihrap", color: "#9B59B6", desc: "200 kelime — gerçek bir ilim ehli." },
   { min: 250, title: "Müfessir",      arabic: "مفسِّر",         icon: "cami", color: "#E67E22", desc: "250 kelime — neredeyse tam anlama!" },
-  { min: 300, title: "Kur'an Dostu",  arabic: "صديق القرآن",   icon: "hilal", color: "#FFD700", desc: "300 kelime — Kur'an'ın %90'ını anlıyorsun! Tebrikler!" },
+  { min: 300, title: "Kur'an Dostu",  arabic: "صديق القرآن",   icon: "hilal", color: "#FFD700", desc: "300 kelime — Kur'an metnindeki kelimelerin üçte ikisini tanıyorsun! Tebrikler!" },
 ];
 
 export function getRank(learned: number): Rank {

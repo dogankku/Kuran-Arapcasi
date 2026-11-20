@@ -41,7 +41,7 @@ export const words: Word[] = [
     "example_arabic": "خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökleri ve yeri yarattı.",
     "grammar_note": "Mâzî (geçmiş zaman) fiil, I. bab (فَعَلَ). Muzari: يَخْلُقُ; mastar: خَلْق (yaratma/yaratılış).",
-    "frequency": 254
+    "frequency": 238
   },
   {
     "id": 4,
@@ -55,7 +55,7 @@ export const words: Word[] = [
     "example_arabic": "قَالَ رَبِّي",
     "example_turkish": "Rabbim dedi.",
     "grammar_note": "Ecvef (ortası illetli) fiil: kök ق-و-ل, و harfi elife dönüşmüştür. Muzari: يَقُولُ, emir: قُلْ (de!).",
-    "frequency": 1625
+    "frequency": 1618
   },
   {
     "id": 5,
@@ -69,7 +69,7 @@ export const words: Word[] = [
     "example_arabic": "وَاللَّهُ يَعْلَمُ",
     "example_turkish": "Allah bilir.",
     "grammar_note": "Muzari (geniş/şimdiki zaman) fiil, 3. tekil eril. Mâzîsi عَلِمَ; ي öneki 'o' öznesini gösterir.",
-    "frequency": 382
+    "frequency": 528
   },
   {
     "id": 6,
@@ -83,7 +83,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
     "grammar_note": "IV. bab (أَفْعَلَ) mâzî, 3. çoğul eril: آمَنَ + ـُوا. Sondaki elif yazılır ama okunmaz.",
-    "frequency": 258
+    "frequency": 553
   },
   {
     "id": 7,
@@ -111,7 +111,7 @@ export const words: Word[] = [
     "example_arabic": "السَّمَاءِ",
     "example_turkish": "Göğün.",
     "grammar_note": "Hem eril hem dişil kullanılabilen isim; çoğulu سَمَاوَات. Sondaki hemze kökteki و harfinden dönüşmüştür.",
-    "frequency": 120
+    "frequency": 310
   },
   {
     "id": 9,
@@ -125,7 +125,7 @@ export const words: Word[] = [
     "example_arabic": "اللَّهُ نُورُ السَّمَاوَاتِ",
     "example_turkish": "Allah göklerin nurudur.",
     "grammar_note": "نُور belirsiz haldedir: 'bir ışık/nur'. Kök: ن-و-ر (aydınlatmak). النُّور (belirli) ile farkı: belirsiz formda genel ışık kavramını ifade eder.",
-    "frequency": 49
+    "frequency": 43
   },
   {
     "id": 10,
@@ -139,7 +139,7 @@ export const words: Word[] = [
     "example_arabic": "عِلْمًا",
     "example_turkish": "Bir bilgi olarak.",
     "grammar_note": "Mastar (fiil ismi): عَلِمَ fiilinden. Kur'an'da hem 'bilgi' hem 'bilme' anlamında; عَالِم (bilen) ve عَلِيم aynı köktendir.",
-    "frequency": 105
+    "frequency": 528
   },
   {
     "id": 11,
@@ -153,7 +153,7 @@ export const words: Word[] = [
     "example_arabic": "الْحَمْدُ لِلَّهِ",
     "example_turkish": "Hamd Allah’a mahsustur.",
     "grammar_note": "Mastar; ال ile cins/istiğrak anlamı taşır: 'bütün övgüler'. Cümlede mübtedâ (merfu, ötre) konumundadır.",
-    "frequency": 38
+    "frequency": 43
   },
   {
     "id": 12,
@@ -167,7 +167,7 @@ export const words: Word[] = [
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
     "grammar_note": "رَبّ isminin izafet hâli: tamlanan olduğu için ال almaz ve esre ile okunur (رَبِّ الْعَالَمِينَ).",
-    "frequency": 975
+    "frequency": 977
   },
   {
     "id": 13,
@@ -181,7 +181,7 @@ export const words: Word[] = [
     "example_arabic": "رَبِّ الْعَالَمِينَ",
     "example_turkish": "Âlemlerin Rabbi.",
     "grammar_note": "عَالَم kelimesinin cem‘-i müzekker sâlim (ـِينَ) çoğulu; mecrur/mansup hâlde ـِينَ, merfu hâlde ـُونَ olur.",
-    "frequency": 73
+    "frequency": 91
   },
   {
     "id": 14,
@@ -195,7 +195,7 @@ export const words: Word[] = [
     "example_arabic": "يَوْمِ الدِّينِ",
     "example_turkish": "Din günü.",
     "grammar_note": "Mastar; Fatiha'da يَوْم ile izafet kurar: يَوْمِ الدِّينِ = hesap/ceza günü. Tamlayan olduğu için mecrurdur.",
-    "frequency": 92
+    "frequency": 97
   },
   {
     "id": 15,
@@ -223,7 +223,7 @@ export const words: Word[] = [
     "example_arabic": "صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol.",
     "grammar_note": "X. bab (اسْتَفْعَلَ) ism-i fâili: 'dosdoğru duran'. صِرَاطٍ'ın sıfatıdır; ondan sonra gelir ve ona uyar.",
-    "frequency": 34
+    "frequency": 37
   },
   {
     "id": 17,
@@ -237,7 +237,7 @@ export const words: Word[] = [
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
     "grammar_note": "سَمَاء kelimesinin cem‘-i müennes sâlim (ـَات) çoğulu; mansup hâlde de esre (ـَاتِ) alır.",
-    "frequency": 190
+    "frequency": 310
   },
   {
     "id": 18,
@@ -251,7 +251,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِينَ آمَنُوا",
     "example_turkish": "İman edenler.",
     "grammar_note": "İsm-i mevsûl (ilgi zamiri), eril çoğul: 'o kimseler ki'. Tekili الَّذِي, dişili الَّتِي; ardından gelen cümle (sıla) onu açıklar.",
-    "frequency": 980
+    "frequency": 1468
   },
   {
     "id": 19,
@@ -279,7 +279,7 @@ export const words: Word[] = [
     "example_arabic": "هُدًى لِلْمُتَّقِينَ",
     "example_turkish": "Takva sahipleri için hidayet.",
     "grammar_note": "Mastar; sonu elif-i maksûre ile biter, tenvin üstünde gösterilir (هُدًى). هَدَى (hidayet etti) fiilinin ismidir.",
-    "frequency": 98
+    "frequency": 236
   },
   {
     "id": 21,
@@ -293,7 +293,7 @@ export const words: Word[] = [
     "example_arabic": "رَحْمَةً",
     "example_turkish": "Bir rahmet olarak.",
     "grammar_note": "Mastar, dişil (ة). رَحْمَٰن ve رَحِيم aynı kökten türer; Besmeledeki iki ilahi isim bu kökün iki yoğunluk derecesidir.",
-    "frequency": 79
+    "frequency": 114
   },
   {
     "id": 22,
@@ -307,7 +307,7 @@ export const words: Word[] = [
     "example_arabic": "فِي جَنَّةٍ",
     "example_turkish": "Bir cennette.",
     "grammar_note": "Dişil isim; kökü ج-ن-ن 'örtmek/gizlemek' anlamı taşır: ağaçlarla örtülü bahçe. Çoğulu جَنَّات.",
-    "frequency": 147
+    "frequency": 159
   },
   {
     "id": 23,
@@ -335,7 +335,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّهُ هُوَ السَّمِيعُ",
     "example_turkish": "Şüphesiz O işitendir.",
     "grammar_note": "فَعِيل vezninde sıfat-ı müşebbehe: işitme sıfatı süreklidir. Kur'an'da çoğu kez عَلِيم veya بَصِير ile ikili gelir.",
-    "frequency": 46
+    "frequency": 47
   },
   {
     "id": 25,
@@ -349,7 +349,7 @@ export const words: Word[] = [
     "example_arabic": "بَصِيرٌ",
     "example_turkish": "Görendir.",
     "grammar_note": "فَعِيل vezninde sıfat-ı müşebbehe; ayetlerde genellikle سَمِيع ile birlikte, ayet sonlarında gelir.",
-    "frequency": 42
+    "frequency": 51
   },
   {
     "id": 26,
@@ -363,7 +363,7 @@ export const words: Word[] = [
     "example_arabic": "الْحَقُّ",
     "example_turkish": "Hak / gerçek.",
     "grammar_note": "Mastar ve sıfat olarak kullanılır; zıddı بَاطِل. Şeddeli son harf (قّ) kökün aynı harften iki kez oluştuğunu gösterir.",
-    "frequency": 247
+    "frequency": 267
   },
   {
     "id": 27,
@@ -391,7 +391,7 @@ export const words: Word[] = [
     "example_arabic": "ذِكْرُ اللَّهِ",
     "example_turkish": "Allah’ı anmak.",
     "grammar_note": "Mastar; ذَكَرَ fiilinden. Kur'an'ın isimlerinden biridir (الذِّكْر). Tamlamada tamlanan olarak gelir: ذِكْرُ اللَّهِ.",
-    "frequency": 292
+    "frequency": 196
   },
   {
     "id": 29,
@@ -405,7 +405,7 @@ export const words: Word[] = [
     "example_arabic": "وَاصْبِرْ",
     "example_turkish": "Sabret.",
     "grammar_note": "Mastar; ص-ب-ر kökü 'tutmak/hapsetmek' anlamı taşır. Örnekteki وَاصْبِرْ aynı kökten emir fiilidir.",
-    "frequency": 90
+    "frequency": 73
   },
   {
     "id": 30,
@@ -419,7 +419,7 @@ export const words: Word[] = [
     "example_arabic": "مِنَ الْجِنَّةِ وَالنَّاسِ",
     "example_turkish": "Cinlerden ve insanlardan.",
     "grammar_note": "Harf-i cer: arkasındaki ismi mecrur (esreli) yapar. ال'dan önce مِنَ şeklinde üstünle okunur.",
-    "frequency": 3225
+    "frequency": 4119
   },
   {
     "id": 31,
@@ -433,7 +433,7 @@ export const words: Word[] = [
     "example_arabic": "فِي قُلُوبِهِمْ",
     "example_turkish": "Onların kalplerinde.",
     "grammar_note": "Harf-i cer: yer ve zaman içinde bulunmayı bildirir. Ek zamirle: فِيهِ (onda), فِيهِمْ (onlarda).",
-    "frequency": 1704
+    "frequency": 1701
   },
   {
     "id": 32,
@@ -461,7 +461,7 @@ export const words: Word[] = [
     "example_arabic": "عَلَى صِرَاطٍ مُسْتَقِيمٍ",
     "example_turkish": "Dosdoğru yol üzerinde.",
     "grammar_note": "Harf-i cer: üstünde olma, yükümlülük ve aleyhte olma anlamları. Ek zamirle عَلَيْهِ / عَلَيْكُمْ.",
-    "frequency": 1432
+    "frequency": 1458
   },
   {
     "id": 34,
@@ -475,7 +475,7 @@ export const words: Word[] = [
     "example_arabic": "السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "Gökler ve yer.",
     "grammar_note": "Atıf harfi; tek harftir ve sonraki kelimeye bitişik yazılır. Ayrıca yemin (وَالْعَصْرِ) ve hâl vavı olarak da kullanılır.",
-    "frequency": 40000
+    "frequency": 9594
   },
   {
     "id": 35,
@@ -489,7 +489,7 @@ export const words: Word[] = [
     "example_arabic": "لَا رَيْبَ فِيهِ",
     "example_turkish": "Onda şüphe yoktur.",
     "grammar_note": "Olumsuzluk harfi. لَا + isim: cinsi tamamen olumsuzlar (لَا رَيْبَ = hiç şüphe yok); لَا + muzari: olumsuz/yasak bildirir.",
-    "frequency": 2243
+    "frequency": 1742
   },
   {
     "id": 36,
@@ -503,7 +503,7 @@ export const words: Word[] = [
     "example_arabic": "لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
     "example_turkish": "Göklerde ne var, yerde ne varsa O'nundur.",
     "grammar_note": "Çok işlevli: ism-i mevsûl ('şey ki'), soru ('ne?') ve olumsuzluk ('değil') olabilir. Burada mevsûldür: 'ne varsa'.",
-    "frequency": 2226,
+    "frequency": 2565,
     "example_ref": "2:255"
   },
   {
@@ -518,7 +518,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
     "example_turkish": "De ki: O, Allah'tır, tektir.",
     "grammar_note": "Ayrık zamir, 3. tekil eril, merfu. Cümlenin başında mübtedâ olur; dişili هِيَ, çoğulu هُمْ.",
-    "frequency": 706,
+    "frequency": 481,
     "example_ref": "112:1"
   },
   {
@@ -533,7 +533,7 @@ export const words: Word[] = [
     "example_arabic": "قَالَ هِيَ عَصَايَ",
     "example_turkish": "(Musa) dedi ki: Bu benim asamdır.",
     "grammar_note": "Ayrık zamir, 3. tekil dişil. Arapçada cansız varlıkların da cinsiyeti vardır; عَصَا dişildir, bu yüzden هِيَ.",
-    "frequency": 170,
+    "frequency": 63,
     "example_ref": "20:18"
   },
   {
@@ -548,7 +548,7 @@ export const words: Word[] = [
     "example_arabic": "وَأُولَئِكَ هُمُ الْمُفْلِحُونَ",
     "example_turkish": "İşte kurtuluşa erenler onlardır.",
     "grammar_note": "Ayrık zamir, 3. çoğul eril. Burada fasl zamiri: özne ile haberi ayırıp vurgu katar ('onlar ta kendileri').",
-    "frequency": 1088,
+    "frequency": 914,
     "example_ref": "2:5"
   },
   {
@@ -563,7 +563,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّكَ أَنتَ الْعَلِيمُ الْحَكِيمُ",
     "example_turkish": "Şüphesiz sen her şeyi bilensin, hikmet sahibisin.",
     "grammar_note": "Ayrık zamir, 2. tekil eril; dişili أَنْتِ, çoğulu أَنْتُمْ. Burada ek zamir كَ'yi pekiştirir.",
-    "frequency": 176,
+    "frequency": 81,
     "example_ref": "2:32"
   },
   {
@@ -578,7 +578,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ",
     "example_turkish": "Zikri (Kur'an'ı) şüphesiz biz indirdik.",
     "grammar_note": "Ayrık zamir, 1. çoğul. Kur'an'da Allah için kullanıldığında saygı/azamet çoğuludur; fiil eki ـنَا ile uyumludur.",
-    "frequency": 88,
+    "frequency": 86,
     "example_ref": "15:9"
   },
   {
@@ -593,7 +593,7 @@ export const words: Word[] = [
     "example_arabic": "كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ",
     "example_turkish": "Her can ölümü tadacaktır.",
     "grammar_note": "İsimdir ve hep izafetle gelir: كُلُّ نَفْسٍ (her can), كُلُّ شَيْءٍ (her şey). Belirsiz tamlayanla 'her', belirliyle 'bütün' anlamı verir.",
-    "frequency": 384,
+    "frequency": 360,
     "example_ref": "3:185"
   },
   {
@@ -608,7 +608,7 @@ export const words: Word[] = [
     "example_arabic": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا",
     "example_turkish": "Rabbimiz! Bizi doğru yola ilettikten sonra kalplerimizi eğriltme.",
     "grammar_note": "Zaman/mekân zarfı; tamlanan olarak gelir ve kendisi mansup (üstünlü) okunur. Zıddı قَبْلَ.",
-    "frequency": 176,
+    "frequency": 206,
     "example_ref": "3:8"
   },
   {
@@ -623,7 +623,7 @@ export const words: Word[] = [
     "example_arabic": "قَبْلَ طُلُوعِ الشَّمْسِ وَقَبْلَ الْغُرُوبِ",
     "example_turkish": "Güneşin doğuşundan önce ve batışından önce.",
     "grammar_note": "Zaman zarfı, mansup; arkasındaki isim tamlayan olarak mecrur olur (قَبْلَ طُلُوعِ). Zıddı بَعْدَ.",
-    "frequency": 149,
+    "frequency": 249,
     "example_ref": "50:39"
   },
   {
@@ -638,7 +638,7 @@ export const words: Word[] = [
     "example_arabic": "مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ",
     "example_turkish": "O'nun izni olmadan katında kim şefaat edebilir?",
     "grammar_note": "Mekân/zaman zarfı; 'yanında, katında, -de' anlamı. Ek zamirle عِنْدَهُ (O'nun katında), عِنْدَنَا (bizim katımızda).",
-    "frequency": 248,
+    "frequency": 197,
     "example_ref": "2:255"
   },
   {
@@ -653,7 +653,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
     "example_turkish": "Şüphesiz zorlukla beraber bir kolaylık vardır.",
     "grammar_note": "Birliktelik zarfı, mansup; arkasındaki ismi tamlayan olarak mecrur yapar. Ek zamirle مَعَهُ, مَعَنَا.",
-    "frequency": 179,
+    "frequency": 164,
     "example_ref": "94:6"
   },
   {
@@ -668,7 +668,7 @@ export const words: Word[] = [
     "example_arabic": "يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
     "example_turkish": "Onların önlerindekini ve arkalarındakini bilir.",
     "grammar_note": "Mekân zarfı, mansup. بَيْنَ أَيْدِي deyimi 'önünde/huzurunda' anlamına gelir.",
-    "frequency": 183,
+    "frequency": 302,
     "example_ref": "2:255"
   },
   {
@@ -683,7 +683,7 @@ export const words: Word[] = [
     "example_arabic": "جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ",
     "example_turkish": "Altlarından ırmaklar akan cennetler.",
     "grammar_note": "Mekân zarfı; çoğu zaman مِنْ ile gelir ve o zaman mecrur olur: مِنْ تَحْتِهَا. Zıddı فَوْقَ.",
-    "frequency": 34,
+    "frequency": 51,
     "example_ref": "2:25"
   },
   {
@@ -698,7 +698,7 @@ export const words: Word[] = [
     "example_arabic": "أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ",
     "example_turkish": "Üstlerinde (uçan) kuşlara bakmazlar mı?",
     "grammar_note": "Mekân zarfı, mansup; ek zamirle فَوْقَهُمْ. Mecazi olarak üstünlük de bildirir: فَوْقَ أَيْدِيهِمْ.",
-    "frequency": 23,
+    "frequency": 41,
     "example_ref": "67:19"
   },
   {
@@ -713,7 +713,7 @@ export const words: Word[] = [
     "example_arabic": "بَلْ يُرِيدُ الْإِنسَانُ لِيَفْجُرَ أَمَامَهُ",
     "example_turkish": "Bilakis insan, önündeki günlerde de günaha dalmak ister.",
     "grammar_note": "Mekân zarfı, mansup; Kur'an'da tek yerde geçer. Daha sık kullanılan karşılığı بَيْنَ يَدَيْ (önünde).",
-    "frequency": 5,
+    "frequency": 1,
     "example_ref": "75:5"
   },
   {
@@ -728,7 +728,7 @@ export const words: Word[] = [
     "example_arabic": "لَّا يَأْتِيهِ الْبَاطِلُ مِنْ بَيْنِ يَدَيْهِ وَلَا مِنْ خَلْفِهِ",
     "example_turkish": "Ona batıl ne önünden ne de arkasından gelebilir.",
     "grammar_note": "Mekân zarfı; burada مِنْ ile mecrurdur. Kökü 'arkada kalmak, yerine geçmek' anlamı taşır: خَلِيفَة da buradan.",
-    "frequency": 9,
+    "frequency": 28,
     "example_ref": "41:42"
   },
   {
@@ -743,7 +743,7 @@ export const words: Word[] = [
     "example_arabic": "سَلَامٌ هِيَ حَتَّى مَطْلَعِ الْفَجْرِ",
     "example_turkish": "O gece, tan yerinin ağarmasına kadar esenliktir.",
     "grammar_note": "Harf-i cer olarak ismi mecrur yapar (حَتَّى مَطْلَعِ); fiilden önce 'ta ki' anlamında muzariyi mansup kılar.",
-    "frequency": 244,
+    "frequency": 142,
     "example_ref": "97:5"
   },
   {
@@ -758,7 +758,7 @@ export const words: Word[] = [
     "example_arabic": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ",
     "example_turkish": "Sonra, hayır! Yakında bileceksiniz.",
     "grammar_note": "Atıf harfi; sıra ve aradaki zaman aralığını bildirir. فَ hemen ardından, ثُمَّ biraz sonra demektir.",
-    "frequency": 337,
+    "frequency": 342,
     "example_ref": "102:4"
   },
   {
@@ -773,7 +773,7 @@ export const words: Word[] = [
     "example_arabic": "فَكَانَ قَابَ قَوْسَيْنِ أَوْ أَدْنَى",
     "example_turkish": "(Aradaki mesafe) iki yay kadar, hatta daha da yakın oldu.",
     "grammar_note": "Atıf harfi; seçenek ve şüphe bildirir. Bir şıkkı ekleyerek ilerler: 'ya da hatta'.",
-    "frequency": 303,
+    "frequency": 280,
     "example_ref": "53:9"
   },
   {
@@ -788,7 +788,7 @@ export const words: Word[] = [
     "example_arabic": "بَلْ تُؤْثِرُونَ الْحَيَاةَ الدُّنْيَا",
     "example_turkish": "Bilakis siz dünya hayatını tercih ediyorsunuz.",
     "grammar_note": "İdrâb (yön değiştirme) harfi: önceki ifadeyi düzeltir veya ondan daha önemlisine geçer.",
-    "frequency": 113,
+    "frequency": 127,
     "example_ref": "87:16"
   },
   {
@@ -803,7 +803,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
     "example_turkish": "Şüphesiz Allah sabredenlerle beraberdir.",
     "grammar_note": "Te'kid harfi: ismini mansup, haberini merfu yapar (اللَّهَ üstünlü). 'إنّ ve kardeşleri' grubunun başıdır.",
-    "frequency": 1729,
+    "frequency": 2385,
     "example_ref": "2:153"
   },
   {
@@ -818,7 +818,7 @@ export const words: Word[] = [
     "example_arabic": "أَلَمْ تَعْلَمْ أَنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
     "example_turkish": "Allah'ın her şeye gücü yettiğini bilmez misin?",
     "grammar_note": "إِنَّ gibi ismini mansup yapar, ancak cümle ortasında gelir ve cümleyi mastara çevirir: 'Allah'ın kadir olduğunu'.",
-    "frequency": 411,
+    "frequency": 978,
     "example_ref": "2:106"
   },
   {
@@ -833,7 +833,7 @@ export const words: Word[] = [
     "example_arabic": "كَأَنَّهُمْ جَرَادٌ مُّنتَشِرٌ",
     "example_turkish": "Sanki onlar her yana yayılmış çekirgelerdir.",
     "grammar_note": "إِنَّ'nin kardeşlerinden; teşbih bildirir. İsmini mansup yapar, ek zamirle: كَأَنَّهُمْ.",
-    "frequency": 15,
+    "frequency": 40,
     "example_ref": "54:7"
   },
   {
@@ -848,7 +848,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَكِنَّ أَكْثَرَ النَّاسِ لَا يَشْكُرُونَ",
     "example_turkish": "Fakat insanların çoğu şükretmez.",
     "grammar_note": "İstidrak harfi; إِنَّ'nin kardeşidir ve ismini mansup yapar (أَكْثَرَ). Şeddesiz لَكِنْ ise amel etmez.",
-    "frequency": 30,
+    "frequency": 130,
     "example_ref": "2:243"
   },
   {
@@ -863,7 +863,7 @@ export const words: Word[] = [
     "example_arabic": "لَيْسَ كَمِثْلِهِ شَيْءٌ",
     "example_turkish": "O'nun benzeri hiçbir şey yoktur.",
     "grammar_note": "Câmid (çekimi eksik) nakıs fiil; كَانَ'nın kardeşlerindendir: ismini merfu, haberini mansup yapar. Sadece mâzî kalıbı vardır.",
-    "frequency": 71,
+    "frequency": 89,
     "example_ref": "42:11"
   },
   {
@@ -893,7 +893,7 @@ export const words: Word[] = [
     "example_arabic": "أَن يَقُولَ لَهُ كُن فَيَكُونُ",
     "example_turkish": "Ona sadece 'Ol!' der, o da hemen oluverir.",
     "grammar_note": "كَانَ fiilinin muzarisi; burada tam fiil olarak 'var olur' anlamındadır. Emri كُنْ (ol!).",
-    "frequency": 280,
+    "frequency": 1358,
     "example_ref": "36:82"
   },
   {
@@ -908,7 +908,7 @@ export const words: Word[] = [
     "example_arabic": "قَدْ أَفْلَحَ الْمُؤْمِنُونَ",
     "example_turkish": "Müminler gerçekten kurtuluşa ermiştir.",
     "grammar_note": "Tahkik harfi: mâzîden önce kesinlik ve yakın geçmiş, muzariden önce 'bazen/olabilir' anlamı katar.",
-    "frequency": 408,
+    "frequency": 410,
     "example_ref": "23:1"
   },
   {
@@ -923,7 +923,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى",
     "example_turkish": "Rabbin sana verecek, sen de hoşnut olacaksın.",
     "grammar_note": "İstikbal harfi: muzariyi geleceğe yönlendirir. سَ yakın, سَوْفَ daha uzak gelecek için kullanılır.",
-    "frequency": 74,
+    "frequency": 42,
     "example_ref": "93:5"
   },
   {
@@ -938,7 +938,7 @@ export const words: Word[] = [
     "example_arabic": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
     "example_turkish": "Doğurmamış ve doğurulmamıştır.",
     "grammar_note": "Cezm harfi: muzariyi meczum (cezimli) yapar ve geçmiş zaman olumsuzu verir. يَلِدُ → لَمْ يَلِدْ.",
-    "frequency": 634,
+    "frequency": 352,
     "example_ref": "112:3"
   },
   {
@@ -953,7 +953,7 @@ export const words: Word[] = [
     "example_arabic": "لَن تَنَالُوا الْبِرَّ حَتَّى تُنفِقُوا مِمَّا تُحِبُّونَ",
     "example_turkish": "Sevdiğiniz şeylerden harcamadıkça iyiliğe asla erişemezsiniz.",
     "grammar_note": "Nasb harfi: muzariyi mansup yapar ve geleceği kesin olumsuzlar. Çoğulda ن düşer: تَنَالُونَ → لَنْ تَنَالُوا.",
-    "frequency": 77,
+    "frequency": 108,
     "example_ref": "3:92"
   },
   {
@@ -968,7 +968,7 @@ export const words: Word[] = [
     "example_arabic": "لَوْ أَنزَلْنَا هَذَا الْقُرْآنَ عَلَى جَبَلٍ",
     "example_turkish": "Eğer biz bu Kur'an'ı bir dağa indirseydik...",
     "grammar_note": "Şart harfi; gerçekleşmemiş/varsayımsal şartlar için kullanılır ve genellikle mâzî fiil alır.",
-    "frequency": 114,
+    "frequency": 202,
     "example_ref": "59:21"
   },
   {
@@ -983,7 +983,7 @@ export const words: Word[] = [
     "example_arabic": "إِن تَنصُرُوا اللَّهَ يَنصُرْكُمْ",
     "example_turkish": "Eğer siz Allah'(ın dinin)e yardım ederseniz, O da size yardım eder.",
     "grammar_note": "Şart edatı: şart ve cevap fiillerini meczum yapar (تَنْصُرُوا / يَنْصُرْكُمْ). Şeddeli إِنَّ ile karıştırma.",
-    "frequency": 667,
+    "frequency": 2385,
     "example_ref": "47:7"
   },
   {
@@ -998,7 +998,7 @@ export const words: Word[] = [
     "example_arabic": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
     "example_turkish": "Kim zerre ağırlığınca bir iyilik yaparsa onu görür.",
     "grammar_note": "Akıllılar için kullanılan isim: soru ('kim?'), mevsûl ('kim ki') veya şart olabilir. Burada şarttır, fiilleri meczum yapar.",
-    "frequency": 710,
+    "frequency": 4119,
     "example_ref": "99:7"
   },
   {
@@ -1013,7 +1013,7 @@ export const words: Word[] = [
     "example_arabic": "مَتَى نَصْرُ اللَّهِ",
     "example_turkish": "Allah'ın yardımı ne zaman?",
     "grammar_note": "Zaman soru ismi; cümlenin başında gelir. Şart edatı olarak da 'ne zaman ... ise' anlamı verir.",
-    "frequency": 17,
+    "frequency": 9,
     "example_ref": "2:214"
   },
   {
@@ -1028,7 +1028,7 @@ export const words: Word[] = [
     "example_arabic": "فَأَيْنَ تَذْهَبُونَ",
     "example_turkish": "Peki nereye gidiyorsunuz?",
     "grammar_note": "Mekân soru ismi; mebnidir (hep üstünle biter). Önündeki فَ önceki söze bağlayarak 'peki' anlamı katar.",
-    "frequency": 26,
+    "frequency": 19,
     "example_ref": "81:26"
   },
   {
@@ -1043,7 +1043,7 @@ export const words: Word[] = [
     "example_arabic": "أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ",
     "example_turkish": "Deveye bakmazlar mı, nasıl yaratılmış?",
     "grammar_note": "Hâl soran soru ismi, mebnidir. Kur'an'da çoğu zaman düşünmeye çağıran ünlem-soru olarak gelir.",
-    "frequency": 95,
+    "frequency": 83,
     "example_ref": "88:17"
   },
   {
@@ -1058,7 +1058,7 @@ export const words: Word[] = [
     "example_arabic": "لِمَ تَقُولُونَ مَا لَا تَفْعَلُونَ",
     "example_turkish": "Yapmayacağınız şeyi niçin söylüyorsunuz?",
     "grammar_note": "لِ harf-i ceri ile مَا soru isminin birleşimi; ceri alan مَا'nın elifi düşer: لِمَا → لِمَ. Kur'an'da 'niçin' için bu kullanılır.",
-    "frequency": 4,
+    "frequency": 352,
     "example_ref": "61:2"
   },
   {
@@ -1073,7 +1073,7 @@ export const words: Word[] = [
     "example_arabic": "هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ",
     "example_turkish": "Her şeyi kuşatacak olanın haberi sana geldi mi?",
     "grammar_note": "Evet/hayır sorusu harfidir; cümlenin başına gelir ve yapısını değiştirmez. أَ soru hemzesi de aynı işi görür.",
-    "frequency": 222,
+    "frequency": 93,
     "example_ref": "88:1"
   },
   {
@@ -1088,7 +1088,7 @@ export const words: Word[] = [
     "example_arabic": "فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ",
     "example_turkish": "Öyleyse Rabbinizin hangi nimetlerini yalanlıyorsunuz?",
     "grammar_note": "Soru ismi; hep izafetle gelir (أَيِّ آلَاءِ). Önündeki بِ harf-i ceri yüzünden mecrurdur.",
-    "frequency": 88,
+    "frequency": 215,
     "example_ref": "55:13"
   },
   {
@@ -1103,6 +1103,7 @@ export const words: Word[] = [
     "example_arabic": "ذَلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ",
     "example_turkish": "İşte o Kitap; onda hiç şüphe yoktur.",
     "grammar_note": "كِتَاب isminin ال ile belirli hâli. Kur'an'da çoğunlukla Kur'an'ı veya önceki ilahi kitapları kasteder; ehl-i kitap deyimi buradan.",
+    "frequency": 260,
     "example_ref": "2:2"
   },
   {
@@ -1117,6 +1118,7 @@ export const words: Word[] = [
     "example_arabic": "كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ",
     "example_turkish": "(Bu,) sana indirdiğimiz mübarek bir kitaptır.",
     "grammar_note": "فِعَال vezninde isim; tenvinli hâli belirsizdir ('bir kitap'). Çoğulu كُتُب; كَتَبَ (yazdı) fiilinden türer.",
+    "frequency": 260,
     "example_ref": "38:29"
   },
   {
@@ -1131,6 +1133,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ هَذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ",
     "example_turkish": "Şüphesiz bu Kur'an en doğru olana iletir.",
     "grammar_note": "فُعْلَان vezninde mastar: 'okuma' → 'çokça okunan kitap'. قَرَأَ fiilinden türer.",
+    "frequency": 70,
     "example_ref": "17:9"
   },
   {
@@ -1145,6 +1148,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ",
     "example_turkish": "Muhammed ancak bir elçidir.",
     "grammar_note": "فَعُول vezninde isim: 'gönderilmiş'. Çoğulu رُسُل. أَرْسَلَ (gönderdi) fiiliyle aynı köktendir.",
+    "frequency": 332,
     "example_ref": "3:144"
   },
   {
@@ -1159,6 +1163,7 @@ export const words: Word[] = [
     "example_arabic": "يَا أَيُّهَا النَّبِيُّ حَسْبُكَ اللَّهُ",
     "example_turkish": "Ey Peygamber! Allah sana yeter.",
     "grammar_note": "فَعِيل vezninde isim; çoğulu أَنْبِيَاء ve نَبِيُّون. Kökü ن-ب-أ (haber) ile ilişkilendirilir.",
+    "frequency": 75,
     "example_ref": "8:64"
   },
   {
@@ -1173,6 +1178,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا أَقُولُ لَكُمْ إِنِّي مَلَكٌ",
     "example_turkish": "Size 'Ben bir meleğim' de demiyorum.",
     "grammar_note": "İsim; çoğulu مَلَائِكَة. Harekesi farklı olan مَلِك (hükümdar) ve مُلْك (mülk) ile karıştırılmamalı.",
+    "frequency": 152,
     "example_ref": "6:50"
   },
   {
@@ -1187,6 +1193,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تَتَّبِعُوا خُطُوَاتِ الشَّيْطَانِ",
     "example_turkish": "Şeytanın adımlarına uymayın.",
     "grammar_note": "فَيْعَال vezninde isim; çoğulu شَيَاطِين. ال ile cins anlamında 'şeytan' kavramını bildirir.",
+    "frequency": 88,
     "example_ref": "2:168"
   },
   {
@@ -1201,6 +1208,7 @@ export const words: Word[] = [
     "example_arabic": "فَسَجَدُوا إِلَّا إِبْلِيسَ أَبَى وَاسْتَكْبَرَ",
     "example_turkish": "İblis hariç hepsi secde etti; o diretti ve büyüklendi.",
     "grammar_note": "Özel isim; gayr-i munsarif olduğu için tenvin almaz ve mecrur hâlde de üstünle okunur. Kökeninin yabancı olduğu da söylenir.",
+    "frequency": 11,
     "example_ref": "2:34"
   },
   {
@@ -1215,6 +1223,7 @@ export const words: Word[] = [
     "example_arabic": "وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا",
     "example_turkish": "Ve Âdem'e bütün isimleri öğretti.",
     "grammar_note": "Özel isim; gayr-i munsarif, tenvin almaz. Burada عَلَّمَ fiilinin birinci nesnesi olarak mansuptur.",
+    "frequency": 25,
     "example_ref": "2:31"
   },
   {
@@ -1229,6 +1238,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَلَّمَ اللَّهُ مُوسَى تَكْلِيمًا",
     "example_turkish": "Allah Musa ile gerçekten konuştu.",
     "grammar_note": "Özel isim; sonu elif-i maksûre olduğundan hâl ekleri görünmez (takdiri i'rab). Kur'an'da en çok anılan peygamberdir.",
+    "frequency": 136,
     "example_ref": "4:164"
   },
   {
@@ -1243,6 +1253,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ مَثَلَ عِيسَى عِندَ اللَّهِ كَمَثَلِ آدَمَ",
     "example_turkish": "Allah katında İsa'nın durumu, Âdem'in durumu gibidir.",
     "grammar_note": "Özel isim; Kur'an'da genellikle ابْنُ مَرْيَمَ (Meryem oğlu) ile anılır. Sonu elif-i maksûre olduğu için i'rab takdiridir.",
+    "frequency": 25,
     "example_ref": "3:59"
   },
   {
@@ -1257,6 +1268,7 @@ export const words: Word[] = [
     "example_arabic": "وَاتَّخَذَ اللَّهُ إِبْرَاهِيمَ خَلِيلًا",
     "example_turkish": "Allah İbrahim'i dost edindi.",
     "grammar_note": "Yabancı kökenli özel isim; gayr-i munsarif. Burada اتَّخَذَ fiilinin nesnesi olarak mansuptur.",
+    "frequency": 69,
     "example_ref": "4:125"
   },
   {
@@ -1271,6 +1283,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا أَرْسَلْنَا نُوحًا إِلَى قَوْمِهِ",
     "example_turkish": "Biz Nuh'u kavmine gönderdik.",
     "grammar_note": "Üç harfli ve ortası sakin yabancı isim olduğu için tenvin alabilir (نُوحًا). Kur'an'da adını taşıyan bir sure vardır.",
+    "frequency": 43,
     "example_ref": "71:1"
   },
   {
@@ -1285,6 +1298,7 @@ export const words: Word[] = [
     "example_arabic": "مُّحَمَّدٌ رَّسُولُ اللَّهِ",
     "example_turkish": "Muhammed, Allah'ın elçisidir.",
     "grammar_note": "II. bab (فَعَّلَ) ism-i mef'ûlü: 'defalarca övülmüş'. Özel isim olarak tenvin alır (مُحَمَّدٌ).",
+    "frequency": 4,
     "example_ref": "48:29"
   },
   {
@@ -1299,6 +1313,7 @@ export const words: Word[] = [
     "example_arabic": "إِذْ قَالَ يُوسُفُ لِأَبِيهِ",
     "example_turkish": "Hani Yusuf babasına demişti ki...",
     "grammar_note": "Yabancı kökenli özel isim, gayr-i munsarif. Burada قَالَ fiilinin öznesi olarak merfudur.",
+    "frequency": 27,
     "example_ref": "12:4"
   },
   {
@@ -1313,6 +1328,7 @@ export const words: Word[] = [
     "example_arabic": "يَا مَرْيَمُ إِنَّ اللَّهَ اصْطَفَاكِ",
     "example_turkish": "Ey Meryem! Şüphesiz Allah seni seçti.",
     "grammar_note": "Özel isim; nida (يَا) ile ötreli gelir: يَا مَرْيَمُ. Ek zamir كِ dişil 'seni' anlamındadır.",
+    "frequency": 34,
     "example_ref": "3:42"
   },
   {
@@ -1327,6 +1343,7 @@ export const words: Word[] = [
     "example_arabic": "اذْهَبْ إِلَى فِرْعَوْنَ إِنَّهُ طَغَى",
     "example_turkish": "Firavun'a git; çünkü o azdı.",
     "grammar_note": "Yabancı kökenli unvan/özel isim; gayr-i munsarif olduğundan إِلَى'dan sonra da üstünle okunur.",
+    "frequency": 74,
     "example_ref": "20:24"
   },
   {
@@ -1341,6 +1358,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا بِأَنفُسِهِمْ",
     "example_turkish": "Bir toplum kendini değiştirmedikçe Allah onların durumunu değiştirmez.",
     "grammar_note": "Topluluk ismi; çoğulu أَقْوَام. Ek zamirle قَوْمِهِ (onun kavmi) şeklinde peygamber kıssalarında sık geçer.",
+    "frequency": 383,
     "example_ref": "13:11"
   },
   {
@@ -1355,6 +1373,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ يَا أَهْلَ الْكِتَابِ",
     "example_turkish": "De ki: Ey Kitap ehli!",
     "grammar_note": "İsim; hep izafetle gelir: أَهْلُ الْكِتَابِ (kitap ehli), أَهْلُ الْبَيْتِ (ev halkı). Nida ile mansup: يَا أَهْلَ.",
+    "frequency": 131,
     "example_ref": "3:64"
   },
   {
@@ -1369,6 +1388,7 @@ export const words: Word[] = [
     "example_arabic": "يَا بَنِي آدَمَ خُذُوا زِينَتَكُمْ",
     "example_turkish": "Ey Âdemoğulları! (Mescide giderken) süslerinizi alın.",
     "grammar_note": "ابْن kelimesinin cem'-i müzekker sâlim çoğulu; merfu بَنُو, mansup/mecrur بَنِي. İzafette sondaki ن düşer.",
+    "frequency": 63,
     "example_ref": "7:31"
   },
   {
@@ -1383,6 +1403,7 @@ export const words: Word[] = [
     "example_arabic": "ذَلِكَ عِيسَى ابْنُ مَرْيَمَ",
     "example_turkish": "İşte Meryem oğlu İsa budur.",
     "grammar_note": "İsim; başındaki hemze vasl hemzesidir, ortada okunmaz. Çoğulu أَبْنَاء ve بَنُون.",
+    "frequency": 63,
     "example_ref": "19:34"
   },
   {
@@ -1397,6 +1418,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَرْيَمَ ابْنَتَ عِمْرَانَ",
     "example_turkish": "Ve İmran kızı Meryem'i (örnek verdi).",
     "grammar_note": "İsim; çoğulu بَنَات. Kur'an'da vasl hemzeli ابْنَة şekli de geçer (ابْنَتَ عِمْرَانَ).",
+    "frequency": 17,
     "example_ref": "66:12"
   },
   {
@@ -1411,6 +1433,7 @@ export const words: Word[] = [
     "example_arabic": "إِذْ قَالَ لِأَبِيهِ يَا أَبَتِ",
     "example_turkish": "Hani (İbrahim) babasına 'Babacığım!' demişti.",
     "grammar_note": "Esmâ-i hamse'dendir: izafette hâl harfle gösterilir (أَبُوهُ / أَبَاهُ / أَبِيهِ). يَا أَبَتِ sevgi dolu hitaptır.",
+    "frequency": 47,
     "example_ref": "19:42"
   },
   {
@@ -1425,6 +1448,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَوْحَيْنَا إِلَى أُمِّ مُوسَى",
     "example_turkish": "Musa'nın annesine vahyettik.",
     "grammar_note": "İsim; çoğulu أُمَّهَات. Mecazen 'asıl, kaynak' anlamı da taşır; أُمَّة (ümmet) aynı köktendir.",
+    "frequency": 172,
     "example_ref": "28:7"
   },
   {
@@ -1439,6 +1463,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ",
     "example_turkish": "Müminler ancak kardeştir.",
     "grammar_note": "Esmâ-i hamse'den; çoğulları إِخْوَة (soy kardeşi) ve إِخْوَان (din/dava kardeşi).",
+    "frequency": 75,
     "example_ref": "49:10"
   },
   {
@@ -1453,6 +1478,7 @@ export const words: Word[] = [
     "example_arabic": "اسْكُنْ أَنتَ وَزَوْجُكَ الْجَنَّةَ",
     "example_turkish": "Sen ve eşin cennete yerleşin.",
     "grammar_note": "İsim; hem erkek hem kadın için 'eş' anlamında kullanılır. Çoğulu أَزْوَاج; 'çift/tür' anlamı da vardır.",
+    "frequency": 76,
     "example_ref": "2:35"
   },
   {
@@ -1467,6 +1493,7 @@ export const words: Word[] = [
     "example_arabic": "مَا كَانَ لِلَّهِ أَن يَتَّخِذَ مِن وَلَدٍ",
     "example_turkish": "Allah'ın çocuk edinmesi olacak şey değildir.",
     "grammar_note": "İsim; tekil ve çoğul için kullanılabilir, çoğulu أَوْلَاد. وَلَدَ (doğurdu) fiilinden türer.",
+    "frequency": 65,
     "example_ref": "19:35"
   },
   {
@@ -1481,6 +1508,7 @@ export const words: Word[] = [
     "example_arabic": "وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَى",
     "example_turkish": "Şehrin en uzak ucundan bir adam koşarak geldi.",
     "grammar_note": "İsim; çoğulu رِجَال. Burada جَاءَ fiilinin öznesi olarak merfu ve tenvinlidir (belirsiz: 'bir adam').",
+    "frequency": 45,
     "example_ref": "36:20"
   },
   {
@@ -1495,6 +1523,7 @@ export const words: Word[] = [
     "example_arabic": "وَضَرَبَ اللَّهُ مَثَلًا لِّلَّذِينَ آمَنُوا امْرَأَتَ فِرْعَوْنَ",
     "example_turkish": "Allah, iman edenlere Firavun'un karısını örnek gösterdi.",
     "grammar_note": "Dişil isim; başında vasl hemzesi vardır. Kur'an'da izafette ة uzun ت ile yazılır: امْرَأَتَ فِرْعَوْنَ.",
+    "frequency": 26,
     "example_ref": "66:11"
   },
   {
@@ -1509,6 +1538,7 @@ export const words: Word[] = [
     "example_arabic": "وَآتُوا النِّسَاءَ صَدُقَاتِهِنَّ نِحْلَةً",
     "example_turkish": "Kadınlara mehirlerini gönül hoşluğuyla verin.",
     "grammar_note": "امْرَأَة'nın kendi kökünden olmayan çoğuludur (cem'-i mükesser gibi). Burada nesne olarak mansuptur.",
+    "frequency": 59,
     "example_ref": "4:4"
   },
   {
@@ -1523,6 +1553,7 @@ export const words: Word[] = [
     "example_arabic": "مَالِكِ يَوْمِ الدِّينِ",
     "example_turkish": "Din gününün sahibi.",
     "grammar_note": "İsim; çoğulu أَيَّام. Kur'an'da çoğu kez kıyamet gününü anlatan tamlamalarda tamlanan olarak gelir.",
+    "frequency": 475,
     "example_ref": "1:4"
   },
   {
@@ -1537,6 +1568,7 @@ export const words: Word[] = [
     "example_arabic": "وَاللَّيْلِ إِذَا يَغْشَى",
     "example_turkish": "Örttüğü zaman geceye andolsun.",
     "grammar_note": "İsim; başındaki وَ yemin vavıdır ve ismi mecrur yapar. Tekil 'bir gece' için لَيْلَة (Kadir gecesi: لَيْلَةُ الْقَدْرِ).",
+    "frequency": 84,
     "example_ref": "92:1"
   },
   {
@@ -1551,6 +1583,7 @@ export const words: Word[] = [
     "example_arabic": "وَالنَّهَارِ إِذَا تَجَلَّى",
     "example_turkish": "Açılıp ağardığı zaman gündüze andolsun.",
     "grammar_note": "İsim; Kur'an'da çoğu zaman اللَّيْل ile çift olarak gelir. Burada da yemin vavıyla mecrurdur.",
+    "frequency": 57,
     "example_ref": "92:2"
   },
   {
@@ -1565,6 +1598,7 @@ export const words: Word[] = [
     "example_arabic": "شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ",
     "example_turkish": "Ramazan ayı, Kur'an'ın indirildiği aydır.",
     "grammar_note": "İsim; çoğulu أَشْهُر ve شُهُور. Gökteki ay ise قَمَر'dır; شَهْر takvim ayıdır.",
+    "frequency": 21,
     "example_ref": "2:185"
   },
   {
@@ -1579,6 +1613,7 @@ export const words: Word[] = [
     "example_arabic": "أَلْفَ سَنَةٍ مِّمَّا تَعُدُّونَ",
     "example_turkish": "Sizin saydıklarınızdan bin yıl.",
     "grammar_note": "Dişil isim; çoğulu سِنُون / سَنَوَات. Sayı ile temyiz olarak mecrur gelir: أَلْفَ سَنَةٍ.",
+    "frequency": 24,
     "example_ref": "32:5"
   },
   {
@@ -1593,6 +1628,7 @@ export const words: Word[] = [
     "example_arabic": "اقْتَرَبَتِ السَّاعَةُ وَانشَقَّ الْقَمَرُ",
     "example_turkish": "Kıyamet saati yaklaştı ve ay yarıldı.",
     "grammar_note": "Dişil isim; ال ile 'o bilinen saat' yani kıyamet. Zaman ölçüsü anlamında 'bir an/süre' de olur.",
+    "frequency": 48,
     "example_ref": "54:1"
   },
   {
@@ -1607,6 +1643,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا مَتَاعُ الْغُرُورِ",
     "example_turkish": "Dünya hayatı aldatıcı bir geçimlikten başka bir şey değildir.",
     "grammar_note": "أَدْنَى'nın dişil üstünlük (ism-i tafdil) şeklidir: 'en yakın (hayat)'. Çoğu zaman الْحَيَاة'nın sıfatıdır.",
+    "frequency": 115,
     "example_ref": "57:20"
   },
   {
@@ -1621,6 +1658,7 @@ export const words: Word[] = [
     "example_arabic": "وَالْأخِرَةُ خَيْرٌ وَأَبْقَى",
     "example_turkish": "Ahiret ise daha hayırlı ve daha kalıcıdır.",
     "grammar_note": "ism-i fâil dişili: 'sonraki (hayat/yurt)'. Burada mübtedâdır; haberi خَيْرٌ.",
+    "frequency": 225,
     "example_ref": "87:17"
   },
   {
@@ -1635,6 +1673,7 @@ export const words: Word[] = [
     "example_arabic": "لَا أُقْسِمُ بِيَوْمِ الْقِيَامَةِ",
     "example_turkish": "Kıyamet gününe yemin ederim.",
     "grammar_note": "قَامَ fiilinden mastar; يَوْم ile izafetle gelir: يَوْمُ الْقِيَامَةِ. Kökteki و ي'ye dönüşmüştür.",
+    "frequency": 70,
     "example_ref": "75:1"
   },
   {
@@ -1649,6 +1688,7 @@ export const words: Word[] = [
     "example_arabic": "لَتَرَوُنَّ الْجَحِيمَ",
     "example_turkish": "Cehennemi mutlaka göreceksiniz.",
     "grammar_note": "فَعِيل vezninde isim; cehennemin isimlerindendir. Burada nesne olarak mansuptur.",
+    "frequency": 26,
     "example_ref": "102:6"
   },
   {
@@ -1663,6 +1703,7 @@ export const words: Word[] = [
     "example_arabic": "كَانَتْ لَهُمْ جَنَّاتُ الْفِرْدَوْسِ نُزُلًا",
     "example_turkish": "Firdevs cennetleri onlar için bir konak olacaktır.",
     "grammar_note": "Yabancı (Farsça kökenli) isim, Arapça kökü yoktur. Cennetin en yüksek derecesini anlatır.",
+    "frequency": 2,
     "example_ref": "18:107"
   },
   {
@@ -1677,6 +1718,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا",
     "example_turkish": "Yeryüzünde rızkı Allah'a ait olmayan hiçbir canlı yoktur.",
     "grammar_note": "Mastar/isim; رَزَقَ fiilinden. Hem yiyecek hem her türlü nimet anlamında geniş kullanılır.",
+    "frequency": 116,
     "example_ref": "11:6"
   },
   {
@@ -1691,6 +1733,7 @@ export const words: Word[] = [
     "example_arabic": "الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا",
     "example_turkish": "Mal ve oğullar dünya hayatının süsüdür.",
     "grammar_note": "İsim; kökteki و elife dönüşmüştür. Çoğulu أَمْوَال; Kur'an'da sık sık أَنْفُس (canlar) ile birlikte geçer.",
+    "frequency": 86,
     "example_ref": "18:46"
   },
   {
@@ -1705,6 +1748,7 @@ export const words: Word[] = [
     "example_arabic": "فَلْيَعْبُدُوا رَبَّ هَذَا الْبَيْتِ",
     "example_turkish": "Bu evin (Kâbe'nin) Rabbine kulluk etsinler.",
     "grammar_note": "İsim; çoğulu بُيُوت. ال ile Kur'an'da çoğu kez Kâbe'yi kasteder (الْبَيْتُ الْحَرَامُ).",
+    "frequency": 69,
     "example_ref": "106:3"
   },
   {
@@ -1719,6 +1763,7 @@ export const words: Word[] = [
     "example_arabic": "لَا أُقْسِمُ بِهَذَا الْبَلَدِ",
     "example_turkish": "Bu şehre yemin ederim.",
     "grammar_note": "İsim; çoğulu بِلَاد. Burada Mekke'yi kasteder; işaret ismi هَذَا ile belirlenmiştir.",
+    "frequency": 14,
     "example_ref": "90:1"
   },
   {
@@ -1733,6 +1778,7 @@ export const words: Word[] = [
     "example_arabic": "وَضَرَبَ اللَّهُ مَثَلًا قَرْيَةً كَانَتْ آمِنَةً مُّطْمَئِنَّةً",
     "example_turkish": "Allah, güven ve huzur içindeki bir şehri örnek verdi.",
     "grammar_note": "Dişil isim; çoğulu قُرَى. Kur'an'da sadece köy değil, büyük şehirler için de kullanılır (أُمُّ الْقُرَى = Mekke).",
+    "frequency": 57,
     "example_ref": "16:112"
   },
   {
@@ -1747,6 +1793,7 @@ export const words: Word[] = [
     "example_arabic": "مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى",
     "example_turkish": "Mescid-i Haram'dan Mescid-i Aksa'ya.",
     "grammar_note": "مَفْعِل vezninde ism-i mekân: سَجَدَ (secde etti) fiilinden 'secde yeri'. Çoğulu مَسَاجِد.",
+    "frequency": 28,
     "example_ref": "17:1"
   },
   {
@@ -1761,6 +1808,7 @@ export const words: Word[] = [
     "example_arabic": "جَعَلَ اللَّهُ الْكَعْبَةَ الْبَيْتَ الْحَرَامَ قِيَامًا لِّلنَّاسِ",
     "example_turkish": "Allah, Kâbe'yi, o saygın evi insanlar için bir dayanak kıldı.",
     "grammar_note": "Dişil özel isim; Kur'an'da iki yerde adıyla geçer. Burada جَعَلَ fiilinin nesnesi olarak mansuptur.",
+    "frequency": 2,
     "example_ref": "5:97"
   },
   {
@@ -1775,6 +1823,7 @@ export const words: Word[] = [
     "example_arabic": "هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا",
     "example_turkish": "Yeryüzünü size boyun eğdiren O'dur.",
     "grammar_note": "Dişil isim; Kur'an'da neredeyse hep ال ile gelir. جَعَلَ fiilinin birinci nesnesi olduğu için mansuptur.",
+    "frequency": 461,
     "example_ref": "67:15"
   },
   {
@@ -1789,6 +1838,7 @@ export const words: Word[] = [
     "example_arabic": "قُل لَّوْ كَانَ الْبَحْرُ مِدَادًا لِّكَلِمَاتِ رَبِّي",
     "example_turkish": "De ki: Rabbimin sözleri(ni yazmak) için deniz mürekkep olsaydı...",
     "grammar_note": "İsim; çoğulu بِحَار ve أَبْحُر. Burada كَانَ fiilinin ismi olarak merfudur.",
+    "frequency": 41,
     "example_ref": "18:109"
   },
   {
@@ -1803,6 +1853,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الْمُتَّقِينَ فِي جَنَّاتٍ وَنَهَرٍ",
     "example_turkish": "Takva sahipleri cennetlerde ve ırmaklar başındadır.",
     "grammar_note": "İsim; نَهْر şeklinde de okunur. Çoğulu أَنْهَار ve cennet tasvirlerinde çok geçer. نَهَار (gündüz) ile aynı köktendir.",
+    "frequency": 54,
     "example_ref": "54:54"
   },
   {
@@ -1817,6 +1868,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَكِنِ انظُرْ إِلَى الْجَبَلِ",
     "example_turkish": "Fakat dağa bak.",
     "grammar_note": "İsim; çoğulu جِبَال. إِلَى harf-i ceriyle mecrurdur.",
+    "frequency": 39,
     "example_ref": "7:143"
   },
   {
@@ -1831,6 +1883,7 @@ export const words: Word[] = [
     "example_arabic": "وَالنَّجْمُ وَالشَّجَرُ يَسْجُدَانِ",
     "example_turkish": "Bitkiler ve ağaçlar secde eder.",
     "grammar_note": "Cins ismi: 'ağaçlar'; tek bir ağaç için شَجَرَة. Fiil ikil (يَسْجُدَانِ) çünkü iki özne var.",
+    "frequency": 8,
     "example_ref": "55:6"
   },
   {
@@ -1845,6 +1898,7 @@ export const words: Word[] = [
     "example_arabic": "انظُرُوا إِلَى ثَمَرِهِ إِذَا أَثْمَرَ وَيَنْعِهِ",
     "example_turkish": "Meyve verdiğinde meyvesine ve olgunlaşmasına bakın.",
     "grammar_note": "Cins ismi; tekili ثَمَرَة, çoğulu ثَمَرَات. Aynı kökten أَثْمَرَ (meyve verdi) IV. bab fiildir.",
+    "frequency": 5,
     "example_ref": "6:99"
   },
   {
@@ -1859,6 +1913,7 @@ export const words: Word[] = [
     "example_arabic": "وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ",
     "example_turkish": "Her canlı şeyi sudan meydana getirdik.",
     "grammar_note": "İsim; kökteki ه hemzeye dönüşmüştür (çoğulu مِيَاه aslını gösterir). Harf-i cerle mecrur: مِنَ الْمَاءِ.",
+    "frequency": 63,
     "example_ref": "21:30"
   },
   {
@@ -1873,6 +1928,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَمَّا عَادٌ فَأُهْلِكُوا بِرِيحٍ صَرْصَرٍ عَاتِيَةٍ",
     "example_turkish": "Âd kavmi ise dondurucu, azgın bir rüzgârla helak edildi.",
     "grammar_note": "Dişil isim; çoğulu رِيَاح. Kur'an'da tekil رِيح genellikle azap, çoğul رِيَاح rahmet rüzgârı için kullanılır.",
+    "frequency": 29,
     "example_ref": "69:6"
   },
   {
@@ -1887,6 +1943,7 @@ export const words: Word[] = [
     "example_arabic": "وَالسَّحَابِ الْمُسَخَّرِ بَيْنَ السَّمَاءِ وَالْأَرْضِ",
     "example_turkish": "Gökle yer arasında emre amade bulutlarda (ibretler vardır).",
     "grammar_note": "Cins ismi: 'bulutlar'; sıfatı الْمُسَخَّر (boyun eğdirilmiş) ona uyar.",
+    "frequency": 9,
     "example_ref": "2:164"
   },
   {
@@ -1901,6 +1958,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَمْطَرْنَا عَلَيْهِم مَّطَرًا",
     "example_turkish": "Üzerlerine (taştan) bir yağmur yağdırdık.",
     "grammar_note": "İsim; aynı kökten أَمْطَرَ (yağdırdı). Burada mef'ûl-i mutlak gibi pekiştirme için gelmiştir.",
+    "frequency": 7,
     "example_ref": "26:173"
   },
   {
@@ -1915,6 +1973,7 @@ export const words: Word[] = [
     "example_arabic": "وَالشَّمْسِ وَضُحَاهَا",
     "example_turkish": "Güneşe ve onun aydınlığına andolsun.",
     "grammar_note": "Dişil isim; ال'ın lamı okunmaz (eş-şems) çünkü ش güneş harfidir. Yemin vavıyla mecrurdur.",
+    "frequency": 33,
     "example_ref": "91:1"
   },
   {
@@ -1929,6 +1988,7 @@ export const words: Word[] = [
     "example_arabic": "وَالْقَمَرِ إِذَا تَلَاهَا",
     "example_turkish": "Onu izlediği zaman aya andolsun.",
     "grammar_note": "Eril isim; ال'ın lamı okunur (el-kamer) çünkü ق ay harfidir. Güneş/ay harfleri ayrımı buradan.",
+    "frequency": 27,
     "example_ref": "91:2"
   },
   {
@@ -1943,6 +2003,7 @@ export const words: Word[] = [
     "example_arabic": "وَالنَّجْمِ إِذَا هَوَى",
     "example_turkish": "Battığı zaman yıldıza andolsun.",
     "grammar_note": "İsim; çoğulu نُجُوم. 'Bölüm bölüm inme' anlamı da vardır; Kur'an'ın 'necm necm' indirilmesi buradan.",
+    "frequency": 13,
     "example_ref": "53:1"
   },
   {
@@ -1957,6 +2018,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ",
     "example_turkish": "Üzerlerine sürü sürü kuşlar gönderdi.",
     "grammar_note": "Cins ismi: 'kuşlar'; tekili طَائِر. Burada nesne olarak mansup ve tenvinlidir.",
+    "frequency": 19,
     "example_ref": "105:3"
   },
   {
@@ -1971,6 +2033,7 @@ export const words: Word[] = [
     "example_arabic": "وَاللَّهُ خَلَقَ كُلَّ دَابَّةٍ مِّن مَّاءٍ",
     "example_turkish": "Allah her canlıyı sudan yarattı.",
     "grammar_note": "ism-i fâil dişili: 'yürüyen, kımıldayan'. Çoğulu دَوَابّ; insan dahil bütün canlıları kapsar.",
+    "frequency": 18,
     "example_ref": "24:45"
   },
   {
@@ -1985,6 +2048,7 @@ export const words: Word[] = [
     "example_arabic": "وَالْأَنْعَامَ خَلَقَهَا لَكُمْ",
     "example_turkish": "Hayvanları da sizin için yarattı.",
     "grammar_note": "Çoğul isim (tekili نَعَم): deve, sığır, koyun, keçi. 6. surenin adıdır.",
+    "frequency": 56,
     "example_ref": "16:5"
   },
   {
@@ -1999,6 +2063,7 @@ export const words: Word[] = [
     "example_arabic": "لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ",
     "example_turkish": "Kadir gecesi bin aydan daha hayırlıdır.",
     "grammar_note": "Hem isim ('iyilik') hem tafdil ('daha hayırlı') olarak kullanılır; tafdilde مِنْ ile gelir.",
+    "frequency": 178,
     "example_ref": "97:3"
   },
   {
@@ -2013,6 +2078,7 @@ export const words: Word[] = [
     "example_arabic": "مِن شَرِّ مَا خَلَقَ",
     "example_turkish": "Yarattığı şeylerin şerrinden.",
     "grammar_note": "İsim; şeddeli ر kökün iki aynı harften oluştuğunu gösterir. Burada مِنْ ile mecrur ve tamlanandır.",
+    "frequency": 34,
     "example_ref": "113:2"
   },
   {
@@ -2027,6 +2093,7 @@ export const words: Word[] = [
     "example_arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْأخِرَةِ حَسَنَةً",
     "example_turkish": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver.",
     "grammar_note": "Dişil sıfat/isim: 'güzel şey, iyilik'. Çoğulu حَسَنَات; zıddı سَيِّئَة.",
+    "frequency": 31,
     "example_ref": "2:201"
   },
   {
@@ -2041,6 +2108,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُ",
     "example_turkish": "İyilik ile kötülük bir olmaz.",
     "grammar_note": "Dişil isim; çoğulu سَيِّئَات. Kökteki و ي'ye dönüşüp şeddelenmiştir.",
+    "frequency": 58,
     "example_ref": "41:34"
   },
   {
@@ -2055,6 +2123,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ",
     "example_turkish": "Günah ve düşmanlık üzerine yardımlaşmayın.",
     "grammar_note": "İsim; çoğu zaman 'kul hakkı ve sınırı aşma' anlamı taşıyan عُدْوَان ile birlikte gelir.",
+    "frequency": 35,
     "example_ref": "5:2"
   },
   {
@@ -2069,6 +2138,7 @@ export const words: Word[] = [
     "example_arabic": "غَافِرِ الذَّنْبِ وَقَابِلِ التَّوْبِ",
     "example_turkish": "Günahı bağışlayan, tövbeyi kabul eden.",
     "grammar_note": "İsim; çoğulu ذُنُوب. Burada غَافِر (bağışlayan) ile izafet kurar.",
+    "frequency": 37,
     "example_ref": "40:3"
   },
   {
@@ -2083,6 +2153,7 @@ export const words: Word[] = [
     "example_arabic": "تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا",
     "example_turkish": "Allah'a içten bir tövbeyle dönün.",
     "grammar_note": "Mastar; تَابَ fiilinden. Burada تُوبُوا fiilinin mef'ûl-i mutlakıdır (pekiştirme).",
+    "frequency": 7,
     "example_ref": "66:8"
   },
   {
@@ -2097,6 +2168,7 @@ export const words: Word[] = [
     "example_arabic": "وَسَارِعُوا إِلَى مَغْفِرَةٍ مِّن رَّبِّكُمْ",
     "example_turkish": "Rabbinizden bir bağışlanmaya koşun.",
     "grammar_note": "مَفْعِلَة vezninde mastar; kökün anlamı 'örtmek'. Çoğu zaman أَجْر veya رَحْمَة ile birlikte geçer.",
+    "frequency": 28,
     "example_ref": "3:133"
   },
   {
@@ -2111,6 +2183,7 @@ export const words: Word[] = [
     "example_arabic": "خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ",
     "example_turkish": "Affı tut, iyiliği emret.",
     "grammar_note": "Mastar; Allah'ın isimlerinden الْعَفُوّ aynı köktendir. Kökün aslı 'silip yok etmek'.",
+    "frequency": 7,
     "example_ref": "7:199"
   },
   {
@@ -2125,6 +2198,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَهُمْ عَذَابٌ عَظِيمٌ",
     "example_turkish": "Onlar için büyük bir azap vardır.",
     "grammar_note": "İsim/mastar; sıfatıyla birlikte sık gelir: عَذَابٌ عَظِيمٌ / أَلِيمٌ. Aynı kökten عَذَّبَ (azap etti).",
+    "frequency": 322,
     "example_ref": "2:7"
   },
   {
@@ -2139,6 +2213,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ",
     "example_turkish": "Allah iyilik yapanların ecrini zayi etmez.",
     "grammar_note": "İsim; çoğulu أُجُور. Burada يُضِيعُ fiilinin nesnesi olarak mansup ve tamlanandır.",
+    "frequency": 105,
     "example_ref": "9:120"
   },
   {
@@ -2153,6 +2228,7 @@ export const words: Word[] = [
     "example_arabic": "ذَلِكَ فَضْلُ اللَّهِ يُؤْتِيهِ مَن يَشَاءُ",
     "example_turkish": "Bu, Allah'ın lütfudur; onu dilediğine verir.",
     "grammar_note": "İsim; 'üstünlük, ihsan' anlamı. Aynı kökten فَضَّلَ (üstün kıldı) ve أَفْضَل (daha üstün).",
+    "frequency": 101,
     "example_ref": "62:4"
   },
   {
@@ -2167,6 +2243,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِن تَعُدُّوا نِعْمَةَ اللَّهِ لَا تُحْصُوهَا",
     "example_turkish": "Allah'ın nimetini saymaya kalksanız sayamazsınız.",
     "grammar_note": "Dişil isim; çoğulu نِعَم ve أَنْعُم. Kur'an imlasında bazı yerlerde ت ile yazılır (نِعْمَتَ).",
+    "frequency": 52,
     "example_ref": "14:34"
   },
   {
@@ -2181,6 +2258,7 @@ export const words: Word[] = [
     "example_arabic": "اعْمَلُوا آلَ دَاوُدَ شُكْرًا",
     "example_turkish": "Ey Davud ailesi! Şükretmek için çalışın.",
     "grammar_note": "Mastar; burada 'şükür olarak/şükür için' anlamında mef'ûlün leh (sebep) olarak mansuptur.",
+    "frequency": 47,
     "example_ref": "34:13"
   },
   {
@@ -2195,6 +2273,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَرَّهَ إِلَيْكُمُ الْكُفْرَ وَالْفُسُوقَ وَالْعِصْيَانَ",
     "example_turkish": "İnkârı, yoldan çıkmayı ve isyanı size çirkin gösterdi.",
     "grammar_note": "Mastar; كَفَرَ fiilinden. Hem 'inkâr' hem 'nankörlük' (nimeti örtme) anlamı vardır.",
+    "frequency": 340,
     "example_ref": "49:7"
   },
   {
@@ -2209,6 +2288,7 @@ export const words: Word[] = [
     "example_arabic": "حَبَّبَ إِلَيْكُمُ الْإِيمَانَ وَزَيَّنَهُ فِي قُلُوبِكُمْ",
     "example_turkish": "İmanı size sevdirdi ve onu kalplerinizde süsledi.",
     "grammar_note": "IV. bab (أَفْعَلَ) mastarı: آمَنَ → إِيمَان. Kökün anlamı 'güven'.",
+    "frequency": 45,
     "example_ref": "49:7"
   },
   {
@@ -2223,6 +2303,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الدِّينَ عِندَ اللَّهِ الْإِسْلَامُ",
     "example_turkish": "Allah katında din İslam'dır.",
     "grammar_note": "IV. bab mastarı: أَسْلَمَ → إِسْلَام. Burada إِنَّ'nin haberi olarak merfudur.",
+    "frequency": 8,
     "example_ref": "3:19"
   },
   {
@@ -2237,6 +2318,7 @@ export const words: Word[] = [
     "example_arabic": "وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَى",
     "example_turkish": "Azık edinin; azığın en hayırlısı takvadır.",
     "grammar_note": "Mastar; kökün و harfi ت'ye dönüşmüştür (وَقْوَى → تَقْوَى). اتَّقَى fiili ve مُتَّقِي aynı köktendir.",
+    "frequency": 17,
     "example_ref": "2:197"
   },
   {
@@ -2251,6 +2333,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ",
     "example_turkish": "Namaz hayasızlıktan ve kötülükten alıkoyar.",
     "grammar_note": "Dişil isim; Kur'an imlasında صَلَوٰة şeklinde و ile yazılır. Çoğulu صَلَوَات.",
+    "frequency": 83,
     "example_ref": "29:45"
   },
   {
@@ -2265,6 +2348,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ",
     "example_turkish": "Namazı kılın, zekâtı verin.",
     "grammar_note": "Dişil isim; Kur'an imlasında زَكَوٰة şeklinde yazılır. Çoğu zaman صَلَاة ile birlikte gelir.",
+    "frequency": 32,
     "example_ref": "2:43"
   },
   {
@@ -2279,6 +2363,7 @@ export const words: Word[] = [
     "example_arabic": "إِنِّي نَذَرْتُ لِلرَّحْمَنِ صَوْمًا",
     "example_turkish": "Ben Rahman'a (konuşmama) orucu adadım.",
     "grammar_note": "Mastar; Kur'an'da ibadet olan oruç için daha çok صِيَام kullanılır. Burada 'susma orucu' anlamındadır.",
+    "frequency": 1,
     "example_ref": "19:26"
   },
   {
@@ -2293,6 +2378,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ",
     "example_turkish": "Haccı ve umreyi Allah için tamamlayın.",
     "grammar_note": "Mastar; حِجّ şeklinde de okunur (3:97). Burada أَتِمُّوا fiilinin nesnesi olarak mansuptur.",
+    "frequency": 11,
     "example_ref": "2:196"
   },
   {
@@ -2307,6 +2393,7 @@ export const words: Word[] = [
     "example_arabic": "رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
     "example_turkish": "Rabbimiz! Duamı kabul et.",
     "grammar_note": "Mastar; دَعَا fiilinden. Sondaki esre, düşmüş 'benim' zamirini (ي) gösterir: دُعَائِي → دُعَاءِ.",
+    "frequency": 22,
     "example_ref": "14:40"
   },
   {
@@ -2321,6 +2408,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا",
     "example_turkish": "Rabbine ibadette hiç kimseyi ortak koşmasın.",
     "grammar_note": "Mastar; عَبَدَ fiilinden. بِ harf-i ceriyle mecrur ve رَبِّهِ ile tamlamadır.",
+    "frequency": 9,
     "example_ref": "18:110"
   },
   {
@@ -2335,6 +2423,7 @@ export const words: Word[] = [
     "example_arabic": "سُبْحَانَ الَّذِي أَسْرَى بِعَبْدِهِ لَيْلًا",
     "example_turkish": "Kulunu bir gece yürüten (Allah) her türlü eksiklikten uzaktır.",
     "grammar_note": "İsim; çoğulları عِبَاد (Allah'ın kulları) ve عَبِيد (köleler). Peygamber için en şerefli sıfat olarak kullanılır.",
+    "frequency": 254,
     "example_ref": "17:1"
   },
   {
@@ -2349,6 +2438,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
     "example_turkish": "De ki: İnsanların Rabbine sığınırım.",
     "grammar_note": "İsim; mutlak olarak ال ile sadece Allah için kullanılır. Burada بِ ile mecrur ve النَّاس ile tamlamadır.",
+    "frequency": 977,
     "example_ref": "114:1"
   },
   {
@@ -2363,6 +2453,7 @@ export const words: Word[] = [
     "example_arabic": "مَلِكِ النَّاسِ",
     "example_turkish": "İnsanların hükümdarı.",
     "grammar_note": "فَعِل vezninde sıfat: 'hükümdar'. مَالِك (sahip) ve مُلْك (hükümranlık) ile aynı köktendir.",
+    "frequency": 152,
     "example_ref": "114:2"
   },
   {
@@ -2377,6 +2468,7 @@ export const words: Word[] = [
     "example_arabic": "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ",
     "example_turkish": "Hükümranlık elinde olan (Allah) yücedir.",
     "grammar_note": "Mastar/isim: 'hükümranlık, egemenlik'. 67. sure (Mülk) bu kelimeyle adlandırılmıştır.",
+    "frequency": 152,
     "example_ref": "67:1"
   },
   {
@@ -2391,6 +2483,7 @@ export const words: Word[] = [
     "example_arabic": "إِنِ الْحُكْمُ إِلَّا لِلَّهِ",
     "example_turkish": "Hüküm ancak Allah'ındır.",
     "grammar_note": "Mastar; buradaki إِنْ olumsuzluk harfidir ve إِلَّا ile hasr (sadece) anlamı kurar.",
+    "frequency": 78,
     "example_ref": "6:57"
   },
   {
@@ -2405,6 +2498,7 @@ export const words: Word[] = [
     "example_arabic": "وَهُوَ الْعَزِيزُ الْحَكِيمُ",
     "example_turkish": "O mutlak güç ve hikmet sahibidir.",
     "grammar_note": "فَعِيل vezninde sıfat; Kur'an'da çoğunlukla عَزِيز veya عَلِيم ile birlikte, ayet sonlarında gelir.",
+    "frequency": 97,
     "example_ref": "59:1"
   },
   {
@@ -2419,6 +2513,7 @@ export const words: Word[] = [
     "example_arabic": "وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
     "example_turkish": "O her şeyi bilendir.",
     "grammar_note": "فَعِيل vezninde mübalağalı sıfat. بِ harf-i ceri bildiği şeyi gösterir: بِكُلِّ شَيْءٍ.",
+    "frequency": 163,
     "example_ref": "2:29"
   },
   {
@@ -2433,6 +2528,7 @@ export const words: Word[] = [
     "example_arabic": "نَبِّئْ عِبَادِي أَنِّي أَنَا الْغَفُورُ الرَّحِيمُ",
     "example_turkish": "Kullarıma haber ver: Ben çok bağışlayanım, çok merhametliyim.",
     "grammar_note": "فَعُول vezninde mübalağa sıfatı; Kur'an'da çoğunlukla رَحِيم ile ikili gelir.",
+    "frequency": 91,
     "example_ref": "15:49"
   },
   {
@@ -2447,6 +2543,7 @@ export const words: Word[] = [
     "example_arabic": "الرَّحْمَنِ الرَّحِيمِ",
     "example_turkish": "Rahman'dır, Rahim'dir.",
     "grammar_note": "فَعِيل vezninde sıfat. Rahman merhametin genişliğini, Rahim sürekliliğini anlatır.",
+    "frequency": 116,
     "example_ref": "1:3"
   },
   {
@@ -2461,6 +2558,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ عَزِيزٌ غَفُورٌ",
     "example_turkish": "Şüphesiz Allah mutlak güç sahibidir, çok bağışlayandır.",
     "grammar_note": "فَعِيل vezninde sıfat; إِنَّ'nin haberi olarak merfudur. Türkçedeki 'aziz' (değerli) anlamı buradan.",
+    "frequency": 101,
     "example_ref": "35:28"
   },
   {
@@ -2475,6 +2573,7 @@ export const words: Word[] = [
     "example_arabic": "يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ",
     "example_turkish": "Ey insan! Cömert Rabbine karşı seni ne aldattı?",
     "grammar_note": "فَعِيل vezninde sıfat; burada رَبِّكَ'nin sıfatı olarak ona uyar (mecrur).",
+    "frequency": 30,
     "example_ref": "82:6"
   },
   {
@@ -2489,6 +2588,7 @@ export const words: Word[] = [
     "example_arabic": "وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
     "example_turkish": "O'nun her şeye gücü yeter.",
     "grammar_note": "فَعِيل vezninde sıfat; عَلَى ile birlikte gelir: عَلَى كُلِّ شَيْءٍ قَدِيرٌ (Kur'an'ın sık kalıbı).",
+    "frequency": 45,
     "example_ref": "67:1"
   },
   {
@@ -2503,6 +2603,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ لَقَوِيٌّ عَزِيزٌ",
     "example_turkish": "Şüphesiz Allah çok güçlüdür, mutlak üstündür.",
     "grammar_note": "فَعِيل vezninde sıfat; başındaki لَ te'kid lamıdır (mutlaka güçlü).",
+    "frequency": 11,
     "example_ref": "22:74"
   },
   {
@@ -2517,6 +2618,7 @@ export const words: Word[] = [
     "example_arabic": "عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ",
     "example_turkish": "Görüleni de görülmeyeni de bilendir; çok büyüktür, yücedir.",
     "grammar_note": "فَعِيل vezninde sıfat; ism-i tafdili أَكْبَر (daha/en büyük).",
+    "frequency": 40,
     "example_ref": "13:9"
   },
   {
@@ -2531,6 +2633,7 @@ export const words: Word[] = [
     "example_arabic": "وَهُوَ الْعَلِيُّ الْعَظِيمُ",
     "example_turkish": "O çok yücedir, çok büyüktür.",
     "grammar_note": "فَعِيل vezninde sıfat; Âyetü'l-Kürsî'nin son kelimesidir.",
+    "frequency": 107,
     "example_ref": "2:255"
   },
   {
@@ -2545,6 +2648,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",
     "example_turkish": "Kullarım sana beni sorduğunda (bilsinler ki) ben çok yakınım.",
     "grammar_note": "فَعِيل vezninde sıfat; zıddı بَعِيد. إِنَّ'nin haberi olarak merfudur.",
+    "frequency": 26,
     "example_ref": "2:186"
   },
   {
@@ -2559,6 +2663,7 @@ export const words: Word[] = [
     "example_arabic": "ذَلِكَ رَجْعٌ بَعِيدٌ",
     "example_turkish": "Bu, (akla) uzak bir dönüş!",
     "grammar_note": "فَعِيل vezninde sıfat; رَجْعٌ'ün sıfatıdır ve ona uyar.",
+    "frequency": 25,
     "example_ref": "50:3"
   },
   {
@@ -2573,6 +2678,7 @@ export const words: Word[] = [
     "example_arabic": "فَلْيَعْمَلْ عَمَلًا صَالِحًا",
     "example_turkish": "Salih (iyi) bir amel işlesin.",
     "grammar_note": "ism-i fâil; Kur'an'da en çok عَمَل ile tamlama/sıfat olarak gelir (عَمَلًا صَالِحًا).",
+    "frequency": 74,
     "example_ref": "18:110"
   },
   {
@@ -2587,6 +2693,7 @@ export const words: Word[] = [
     "example_arabic": "كَلِمَةً طَيِّبَةً كَشَجَرَةٍ طَيِّبَةٍ",
     "example_turkish": "Güzel bir söz, güzel bir ağaç gibidir.",
     "grammar_note": "فَيْعِل vezninde sıfat; burada dişil (طَيِّبَة) ve her iki isimle uyumludur. Zıddı خَبِيث.",
+    "frequency": 16,
     "example_ref": "14:24"
   },
   {
@@ -2601,6 +2708,7 @@ export const words: Word[] = [
     "example_arabic": "قُل لَّا يَسْتَوِي الْخَبِيثُ وَالطَّيِّبُ",
     "example_turkish": "De ki: Kötü ile temiz bir olmaz.",
     "grammar_note": "فَعِيل vezninde sıfat; burada isim gibi kullanılmıştır. Zıddı طَيِّب.",
+    "frequency": 9,
     "example_ref": "5:100"
   },
   {
@@ -2615,6 +2723,7 @@ export const words: Word[] = [
     "example_arabic": "بَلْ هُمْ فِي لَبْسٍ مِّنْ خَلْقٍ جَدِيدٍ",
     "example_turkish": "Hayır, onlar yeni bir yaratılıştan şüphe içindeler.",
     "grammar_note": "فَعِيل vezninde sıfat; خَلْقٍ'in sıfatı olarak mecrurdur. Kur'an'da çoğunlukla ahirette yeniden yaratılış için.",
+    "frequency": 8,
     "example_ref": "50:15"
   },
   {
@@ -2629,6 +2738,7 @@ export const words: Word[] = [
     "example_arabic": "حَتَّى عَادَ كَالْعُرْجُونِ الْقَدِيمِ",
     "example_turkish": "Sonunda (ay) kurumuş eski hurma dalı gibi olur.",
     "grammar_note": "فَعِيل vezninde sıfat; الْعُرْجُون'un sıfatıdır. Kur'an'da 'eski' anlamında az sayıda geçer.",
+    "frequency": 3,
     "example_ref": "36:39"
   },
   {
@@ -2643,6 +2753,7 @@ export const words: Word[] = [
     "example_arabic": "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
     "example_turkish": "Allah, O'ndan başka ilah yoktur; diridir, her şeyi ayakta tutandır.",
     "grammar_note": "Sıfat-ı müşebbehe; kökün son iki harfi aynı olduğu için şeddelidir. Zıddı مَيِّت.",
+    "frequency": 35,
     "example_ref": "2:255"
   },
   {
@@ -2657,6 +2768,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّكَ مَيِّتٌ وَإِنَّهُم مَّيِّتُونَ",
     "example_turkish": "Sen de öleceksin, onlar da ölecekler.",
     "grammar_note": "فَيْعِل vezninde sıfat; çoğulu مَيِّتُونَ ve أَمْوَات. Şeddesiz مَيْت 'ölmüş', şeddeli مَيِّت 'ölecek/ölü'.",
+    "frequency": 43,
     "example_ref": "39:30"
   },
   {
@@ -2671,6 +2783,7 @@ export const words: Word[] = [
     "example_arabic": "حَتَّى يَتَبَيَّنَ لَكُمُ الْخَيْطُ الْأَبْيَضُ",
     "example_turkish": "Beyaz iplik size seçilinceye kadar.",
     "grammar_note": "أَفْعَل vezninde renk sıfatı; dişili بَيْضَاء, çoğulu بِيض. Renk sıfatları gayr-i munsariftir.",
+    "frequency": 8,
     "example_ref": "2:187"
   },
   {
@@ -2685,6 +2798,7 @@ export const words: Word[] = [
     "example_arabic": "مِنَ الْخَيْطِ الْأَسْوَدِ مِنَ الْفَجْرِ",
     "example_turkish": "Fecir vaktinde siyah iplikten (ayırt edilinceye kadar).",
     "grammar_note": "أَفْعَل vezninde renk sıfatı; dişili سَوْدَاء, çoğulu سُود. Burada الْخَيْط'in sıfatıdır.",
+    "frequency": 1,
     "example_ref": "2:187"
   },
   {
@@ -2699,6 +2813,7 @@ export const words: Word[] = [
     "example_arabic": "وَمِنَ الْجِبَالِ جُدَدٌ بِيضٌ وَحُمْرٌ",
     "example_turkish": "Dağlardan da beyaz ve kırmızı yollar (katmanlar) vardır.",
     "grammar_note": "أَفْعَل vezninde renk sıfatı; çoğulu حُمْر (örnekte bu çoğul geçer), dişili حَمْرَاء.",
+    "frequency": 1,
     "example_ref": "35:27"
   },
   {
@@ -2713,6 +2828,7 @@ export const words: Word[] = [
     "example_arabic": "وَقُلْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ",
     "example_turkish": "De ki: Hak geldi, batıl yok oldu.",
     "grammar_note": "Ecvef ve mehmûz fiil (orta harf ي, son harf hemze). Muzari: يَجِيءُ. بِ ile geçişli olunca 'getirdi' anlamı verir (جَاءَ بِـ).",
+    "frequency": 278,
     "example_ref": "17:81"
   },
   {
@@ -2727,6 +2843,7 @@ export const words: Word[] = [
     "example_arabic": "ذَهَبَ اللَّهُ بِنُورِهِمْ",
     "example_turkish": "Allah onların ışığını giderdi.",
     "grammar_note": "I. bab mâzî. بِ harf-i ceriyle 'götürdü/giderdi' anlamı kazanır. Muzari: يَذْهَبُ.",
+    "frequency": 43,
     "example_ref": "2:17"
   },
   {
@@ -2741,6 +2858,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَمَّا رَجَعَ مُوسَى إِلَى قَوْمِهِ غَضْبَانَ أَسِفًا",
     "example_turkish": "Musa kavmine öfkeli ve üzgün olarak döndüğünde...",
     "grammar_note": "I. bab mâzî; إِلَى ile dönülen yeri alır. Mastarı رُجُوع, ism-i fâili رَاجِع.",
+    "frequency": 82,
     "example_ref": "7:150"
   },
   {
@@ -2755,6 +2873,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَن دَخَلَهُ كَانَ آمِنًا",
     "example_turkish": "Oraya (Harem'e) giren güvende olur.",
     "grammar_note": "I. bab mâzî; burada şart cümlesinde. Girilen yer doğrudan nesne olur: دَخَلَهُ (oraya girdi).",
+    "frequency": 78,
     "example_ref": "3:97"
   },
   {
@@ -2769,6 +2888,7 @@ export const words: Word[] = [
     "example_arabic": "فَخَرَجَ مِنْهَا خَائِفًا يَتَرَقَّبُ",
     "example_turkish": "Korku içinde, etrafı gözeterek oradan çıktı.",
     "grammar_note": "I. bab mâzî; مِنْ ile çıkılan yeri alır. خَائِفًا hâl (durum) bildirir. IV. babı أَخْرَجَ (çıkardı).",
+    "frequency": 55,
     "example_ref": "28:21"
   },
   {
@@ -2783,6 +2903,7 @@ export const words: Word[] = [
     "example_arabic": "نَزَلَ بِهِ الرُّوحُ الْأَمِينُ",
     "example_turkish": "Onu güvenilir Ruh (Cebrail) indirdi.",
     "grammar_note": "I. bab mâzî, geçişsiz: 'indi'. بِ ile 'indirdi' olur. Geçişli bablar: أَنْزَلَ ve نَزَّلَ.",
+    "frequency": 76,
     "example_ref": "26:193"
   },
   {
@@ -2797,6 +2918,7 @@ export const words: Word[] = [
     "example_arabic": "اللَّهُ الَّذِي رَفَعَ السَّمَاوَاتِ بِغَيْرِ عَمَدٍ تَرَوْنَهَا",
     "example_turkish": "Gökleri gördüğünüz direkler olmadan yükselten Allah'tır.",
     "grammar_note": "I. bab mâzî; doğrudan nesne alır (السَّمَاوَاتِ). Gramerde 'merfu' (ötreli) terimi de bu kökten.",
+    "frequency": 22,
     "example_ref": "13:2"
   },
   {
@@ -2811,6 +2933,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِذْ أَخَذَ اللَّهُ مِيثَاقَ النَّبِيِّينَ",
     "example_turkish": "Hani Allah peygamberlerden söz almıştı.",
     "grammar_note": "Mehmûzu'l-fâ fiil (ilk harf hemze). Emri خُذْ (al!) düzensizdir. VIII. babı اتَّخَذَ (edindi).",
+    "frequency": 133,
     "example_ref": "3:81"
   },
   {
@@ -2825,6 +2948,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
     "example_turkish": "Şüphesiz biz sana Kevser'i verdik.",
     "grammar_note": "IV. bab (أَفْعَلَ) mâzî; iki nesne alır: كَ (seni) ve الْكَوْثَرَ. Muzari: يُعْطِي.",
+    "frequency": 8,
     "example_ref": "108:1"
   },
   {
@@ -2839,6 +2963,7 @@ export const words: Word[] = [
     "example_arabic": "وَجَعَلْنَا اللَّيْلَ لِبَاسًا",
     "example_turkish": "Geceyi bir örtü kıldık.",
     "grammar_note": "I. bab mâzî; 'kıldı' anlamında iki nesne alır (اللَّيْلَ / لِبَاسًا). Kur'an'da en sık fiillerdendir.",
+    "frequency": 340,
     "example_ref": "78:10"
   },
   {
@@ -2853,6 +2978,7 @@ export const words: Word[] = [
     "example_arabic": "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ",
     "example_turkish": "Rabbinin fil sahiplerine ne yaptığını görmedin mi?",
     "grammar_note": "I. bab mâzî; Arap gramerindeki vezin sistemi (فَعَلَ، فَاعِل، مَفْعُول) bu kök üzerine kurulur.",
+    "frequency": 89,
     "example_ref": "105:1"
   },
   {
@@ -2867,6 +2993,7 @@ export const words: Word[] = [
     "example_arabic": "مَنْ عَمِلَ صَالِحًا مِّن ذَكَرٍ أَوْ أُنثَى وَهُوَ مُؤْمِنٌ",
     "example_turkish": "Erkek olsun kadın olsun, mümin olarak kim salih amel işlerse...",
     "grammar_note": "I. bab mâzî (فَعِلَ); muzari يَعْمَلُ. Kur'an'da çoğu zaman صَالِحًا / الصَّالِحَاتِ ile birlikte gelir.",
+    "frequency": 347,
     "example_ref": "16:97"
   },
   {
@@ -2881,6 +3008,7 @@ export const words: Word[] = [
     "example_arabic": "كَتَبَ رَبُّكُمْ عَلَى نَفْسِهِ الرَّحْمَةَ",
     "example_turkish": "Rabbiniz merhameti kendi üzerine yazdı.",
     "grammar_note": "I. bab mâzî; عَلَى ile 'farz kıldı' anlamı da verir (كُتِبَ عَلَيْكُمُ الصِّيَامُ).",
+    "frequency": 49,
     "example_ref": "6:54"
   },
   {
@@ -2895,6 +3023,7 @@ export const words: Word[] = [
     "example_arabic": "فَإِذَا قَرَأْتَ الْقُرْآنَ",
     "example_turkish": "Kur'an okuyacağın zaman...",
     "grammar_note": "Mehmûzu'l-lâm fiil (son harf hemze). Burada 2. tekil mâzî (قَرَأْتَ); إِذَا ile gelecek anlamı kazanır.",
+    "frequency": 16,
     "example_ref": "16:98"
   },
   {
@@ -2909,6 +3038,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا",
     "example_turkish": "Biz hayranlık verici bir Kur'an dinledik.",
     "grammar_note": "I. bab mâzî (فَعِلَ), 1. çoğul: سَمِعْنَا. Muzari: يَسْمَعُ; sıfatı سَمِيع.",
+    "frequency": 100,
     "example_ref": "72:1"
   },
   {
@@ -2923,6 +3053,7 @@ export const words: Word[] = [
     "example_arabic": "مَا كَذَبَ الْفُؤَادُ مَا رَأَى",
     "example_turkish": "Kalp, gördüğünü yalanlamadı.",
     "grammar_note": "Mehmûz ve nâkıs fiil. Muzarisinde hemze düşer: يَرَى. Hem gözle görmek hem 'görüş sahibi olmak' anlamı.",
+    "frequency": 273,
     "example_ref": "53:11"
   },
   {
@@ -2937,6 +3068,7 @@ export const words: Word[] = [
     "example_arabic": "ثُمَّ نَظَرَ",
     "example_turkish": "Sonra (etrafına) baktı.",
     "grammar_note": "I. bab mâzî; إِلَى ile bakılan şeyi alır. رَأَى görmektir, نَظَرَ bakmaktır.",
+    "frequency": 88,
     "example_ref": "74:21"
   },
   {
@@ -2951,6 +3083,7 @@ export const words: Word[] = [
     "example_arabic": "فَلَمَّا جَاءَهُم مَّا عَرَفُوا كَفَرُوا بِهِ",
     "example_turkish": "Tanıdıkları şey kendilerine gelince onu inkâr ettiler.",
     "grammar_note": "I. bab mâzî, 3. çoğul: عَرَفُوا. عَلِمَ bilmek, عَرَفَ tanımak/farkına varmaktır.",
+    "frequency": 24,
     "example_ref": "2:89"
   },
   {
@@ -2965,6 +3098,7 @@ export const words: Word[] = [
     "example_arabic": "وَذَكَرَ اسْمَ رَبِّهِ فَصَلَّى",
     "example_turkish": "Rabbinin adını anıp namaz kılan (kurtuluşa erer).",
     "grammar_note": "I. bab mâzî; doğrudan nesne alır (اسْمَ). II. babı ذَكَّرَ 'hatırlattı, öğüt verdi'.",
+    "frequency": 196,
     "example_ref": "87:15"
   },
   {
@@ -2979,6 +3113,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَقَدْ عَهِدْنَا إِلَى آدَمَ مِن قَبْلُ فَنَسِيَ",
     "example_turkish": "Andolsun, daha önce Âdem'e ahid vermiştik; ama o unuttu.",
     "grammar_note": "I. bab mâzî (فَعِلَ), nâkıs (son harf ي). Muzari: يَنْسَى.",
+    "frequency": 37,
     "example_ref": "20:115"
   },
   {
@@ -2993,6 +3128,7 @@ export const words: Word[] = [
     "example_arabic": "هُنَالِكَ دَعَا زَكَرِيَّا رَبَّهُ",
     "example_turkish": "Orada Zekeriya Rabbine dua etti.",
     "grammar_note": "Nâkıs fiil (son harf و elife dönmüş). Muzari: يَدْعُو. Hem 'dua etti' hem 'çağırdı' anlamı.",
+    "frequency": 170,
     "example_ref": "3:38"
   },
   {
@@ -3007,6 +3143,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ",
     "example_turkish": "Ben de sizin taptıklarınıza tapacak değilim.",
     "grammar_note": "I. bab mâzî, 2. çoğul: عَبَدْتُمْ. ism-i fâili عَابِد, Fatiha'daki muzari نَعْبُدُ.",
+    "frequency": 254,
     "example_ref": "109:4"
   },
   {
@@ -3021,6 +3158,7 @@ export const words: Word[] = [
     "example_arabic": "فَسَجَدَ الْمَلَائِكَةُ كُلُّهُمْ أَجْمَعُونَ",
     "example_turkish": "Meleklerin hepsi topluca secde etti.",
     "grammar_note": "I. bab mâzî; fiil öznenin önünde geldiği için çoğul özneye rağmen tekil kalır (سَجَدَ الْمَلَائِكَةُ).",
+    "frequency": 35,
     "example_ref": "15:30"
   },
   {
@@ -3035,6 +3173,7 @@ export const words: Word[] = [
     "example_arabic": "وَارْكَعُوا مَعَ الرَّاكِعِينَ",
     "example_turkish": "Rükû edenlerle birlikte rükû edin.",
     "grammar_note": "Örnekte emir fiil (ارْكَعُوا) ve ism-i fâil çoğulu (الرَّاكِعِينَ) aynı kökten yan yana gelir.",
+    "frequency": 5,
     "example_ref": "2:43"
   },
   {
@@ -3049,6 +3188,7 @@ export const words: Word[] = [
     "example_arabic": "فَلَا صَدَّقَ وَلَا صَلَّى",
     "example_turkish": "O ne doğruladı ne de namaz kıldı.",
     "grammar_note": "II. bab (فَعَّلَ) mâzî, nâkıs. لَا burada mâzîyi olumsuzlar (nadir ve vurgulu kullanım).",
+    "frequency": 13,
     "example_ref": "75:31"
   },
   {
@@ -3063,6 +3203,7 @@ export const words: Word[] = [
     "example_arabic": "فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ",
     "example_turkish": "Sizden kim bu aya ulaşırsa onu oruçla geçirsin.",
     "grammar_note": "Ecvef fiil (ortası و): صَامَ / يَصُومُ. Örnekteki فَلْيَصُمْهُ emir lamıyla meczum muzaridir; و düşmüştür.",
+    "frequency": 2,
     "example_ref": "2:185"
   },
   {
@@ -3077,6 +3218,7 @@ export const words: Word[] = [
     "example_arabic": "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
     "example_turkish": "Andolsun, şükrederseniz size (nimetimi) artırırım.",
     "grammar_note": "I. bab mâzî, 2. çoğul. لَئِنْ yemin + şart; cevabı te'kid nunuyla gelir (لَأَزِيدَنَّكُمْ).",
+    "frequency": 47,
     "example_ref": "14:7"
   },
   {
@@ -3091,6 +3233,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الَّذِينَ كَفَرُوا سَوَاءٌ عَلَيْهِمْ",
     "example_turkish": "İnkâr edenler için (uyarsan da uyarmasan da) birdir.",
     "grammar_note": "I. bab mâzî, 3. çoğul (كَفَرُوا); الَّذِينَ'nin sılası olarak gelir. ism-i fâili كَافِر.",
+    "frequency": 340,
     "example_ref": "2:6"
   },
   {
@@ -3105,6 +3248,7 @@ export const words: Word[] = [
     "example_arabic": "آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ",
     "example_turkish": "Peygamber, Rabbinden kendisine indirilene iman etti.",
     "grammar_note": "IV. bab (أَفْعَلَ) mâzî: أَأْمَنَ → آمَنَ. بِ harf-i ceriyle iman edilen şeyi alır.",
+    "frequency": 553,
     "example_ref": "2:285"
   },
   {
@@ -3119,6 +3263,7 @@ export const words: Word[] = [
     "example_arabic": "فَأَمَّا مَنْ أَعْطَى وَاتَّقَى",
     "example_turkish": "Kim verir ve (Allah'tan) sakınırsa...",
     "grammar_note": "VIII. bab (افْتَعَلَ) mâzî; kökteki و ت'ye dönüşüp şeddelenmiştir (اوْتَقَى → اتَّقَى).",
+    "frequency": 166,
     "example_ref": "92:5"
   },
   {
@@ -3133,6 +3278,7 @@ export const words: Word[] = [
     "example_arabic": "فَغَفَرَ لَهُ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ",
     "example_turkish": "(Allah) onu bağışladı; çünkü O çok bağışlayan, çok merhametlidir.",
     "grammar_note": "I. bab mâzî; bağışlanan kişi لِ ile gelir (غَفَرَ لَهُ). X. babı اسْتَغْفَرَ (bağışlanma diledi).",
+    "frequency": 65,
     "example_ref": "28:16"
   },
   {
@@ -3147,6 +3293,7 @@ export const words: Word[] = [
     "example_arabic": "لَا عَاصِمَ الْيَوْمَ مِنْ أَمْرِ اللَّهِ إِلَّا مَن رَّحِمَ",
     "example_turkish": "Bugün Allah'ın emrinden, O'nun merhamet ettiği kimse dışında, koruyacak yoktur.",
     "grammar_note": "I. bab mâzî (فَعِلَ); muzari يَرْحَمُ. رَحْمَة, رَحِيم, رَحْمَٰن hep bu kökten.",
+    "frequency": 29,
     "example_ref": "11:43"
   },
   {
@@ -3161,6 +3308,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا كَانَ اللَّهُ لِيُعَذِّبَهُمْ وَأَنتَ فِيهِمْ",
     "example_turkish": "Sen onların arasındayken Allah onlara azap edecek değildir.",
     "grammar_note": "II. bab (فَعَّلَ) fiil; örnekte لِ (cuhûd lamı) ile mansup muzari: لِيُعَذِّبَهُمْ.",
+    "frequency": 43,
     "example_ref": "8:33"
   },
   {
@@ -3175,6 +3323,7 @@ export const words: Word[] = [
     "example_arabic": "وَوَجَدَكَ ضَالًّا فَهَدَى",
     "example_turkish": "Seni yolunu arar bulup doğru yola iletti.",
     "grammar_note": "Nâkıs fiil (son harf ي elife dönmüş). Muzari يَهْدِي, emir اهْدِ (Fatiha: اهْدِنَا).",
+    "frequency": 236,
     "example_ref": "93:7"
   },
   {
@@ -3189,6 +3338,7 @@ export const words: Word[] = [
     "example_arabic": "مَا ضَلَّ صَاحِبُكُمْ وَمَا غَوَى",
     "example_turkish": "Arkadaşınız (Muhammed) sapmadı ve azmadı.",
     "grammar_note": "Muzaaf fiil (son iki harf aynı): ضَلَلَ → ضَلَّ. مَا burada mâzîyi olumsuzlar.",
+    "frequency": 53,
     "example_ref": "53:2"
   },
   {
@@ -3203,6 +3353,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَضَلَّ فِرْعَوْنُ قَوْمَهُ وَمَا هَدَى",
     "example_turkish": "Firavun kavmini saptırdı, doğru yola iletmedi.",
     "grammar_note": "IV. bab (أَفْعَلَ) mâzî, muzaaf; geçişsiz ضَلَّ fiilini geçişli yapar.",
+    "frequency": 73,
     "example_ref": "20:79"
   },
   {
@@ -3217,6 +3368,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَقَدْ نَصَرَكُمُ اللَّهُ بِبَدْرٍ وَأَنتُمْ أَذِلَّةٌ",
     "example_turkish": "Andolsun, siz güçsüzken Allah size Bedir'de yardım etti.",
     "grammar_note": "I. bab mâzî; yardım edilen doğrudan nesne olur (نَصَرَكُمُ). Mastarı نَصْر, ism-i fâili نَاصِر.",
+    "frequency": 81,
     "example_ref": "3:123"
   },
   {
@@ -3231,6 +3383,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا فَتَحْنَا لَكَ فَتْحًا مُّبِينًا",
     "example_turkish": "Biz sana apaçık bir fetih verdik.",
     "grammar_note": "I. bab mâzî, 1. çoğul; ardından aynı kökten mastar (فَتْحًا) mef'ûl-i mutlak olarak pekiştirme yapar.",
+    "frequency": 28,
     "example_ref": "48:1"
   },
   {
@@ -3245,6 +3398,7 @@ export const words: Word[] = [
     "example_arabic": "وَغَلَّقَتِ الْأَبْوَابَ وَقَالَتْ هَيْتَ لَكَ",
     "example_turkish": "Kapıları sıkıca kapattı ve 'Haydi gel!' dedi.",
     "grammar_note": "II. bab (فَعَّلَ) mâzî, 3. tekil dişil (ـَتْ); şedde işin yoğunluğunu ve kapıların çokluğunu bildirir.",
+    "frequency": 1,
     "example_ref": "12:23"
   },
   {
@@ -3259,6 +3413,7 @@ export const words: Word[] = [
     "example_arabic": "مَن قَتَلَ نَفْسًا بِغَيْرِ نَفْسٍ",
     "example_turkish": "Kim bir cana kıyarsa (karşılığı olmaksızın)...",
     "grammar_note": "I. bab mâzî; burada şart fiili. Edilgeni قُتِلَ (öldürüldü).",
+    "frequency": 97,
     "example_ref": "5:32"
   },
   {
@@ -3273,6 +3428,7 @@ export const words: Word[] = [
     "example_arabic": "أَفَإِنْ مَّاتَ أَوْ قُتِلَ",
     "example_turkish": "O ölür veya öldürülürse...",
     "grammar_note": "Ecvef fiil (ortası و): مَاتَ / يَمُوتُ. Örnekte edilgen قُتِلَ ile karşılaştırılır.",
+    "frequency": 39,
     "example_ref": "3:144"
   },
   {
@@ -3287,6 +3443,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَحْيَى مَنْ حَيَّ عَنْ بَيِّنَةٍ",
     "example_turkish": "Yaşayan da apaçık bir delille yaşasın.",
     "grammar_note": "Lefîf fiil: حَيِيَ şeklinde de, idğamla حَيَّ şeklinde de gelir. Muzari يَحْيَا; IV. babı أَحْيَا (diriltti).",
+    "frequency": 35,
     "example_ref": "8:42"
   },
   {
@@ -3301,6 +3458,7 @@ export const words: Word[] = [
     "example_arabic": "هُوَ الَّذِي بَعَثَ فِي الْأُمِّيِّينَ رَسُولًا مِّنْهُمْ",
     "example_turkish": "Ümmîler arasından kendilerine bir elçi gönderen O'dur.",
     "grammar_note": "I. bab mâzî; iki anlamı vardır: 'gönderdi' ve 'diriltti' (يَوْمَ يُبْعَثُونَ).",
+    "frequency": 56,
     "example_ref": "62:2"
   },
   {
@@ -3315,6 +3473,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ",
     "example_turkish": "Mal toplayıp onu sayıp duran.",
     "grammar_note": "I. bab mâzî; الَّذِي'nin sılası. Cuma (يَوْمُ الْجُمُعَة) 'toplanma günü' demektir.",
+    "frequency": 35,
     "example_ref": "104:2"
   },
   {
@@ -3329,6 +3488,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الَّذِينَ فَرَّقُوا دِينَهُمْ وَكَانُوا شِيَعًا",
     "example_turkish": "Dinlerini parça parça edip gruplara ayrılanlar...",
     "grammar_note": "II. bab (فَعَّلَ) mâzî, 3. çoğul; şedde ayırmanın çokluğunu bildirir.",
+    "frequency": 16,
     "example_ref": "6:159"
   },
   {
@@ -3343,6 +3503,7 @@ export const words: Word[] = [
     "example_arabic": "وَحَمَلَهَا الْإِنسَانُ",
     "example_turkish": "Onu (emaneti) insan yüklendi.",
     "grammar_note": "I. bab mâzî; ek zamir هَا (onu) emanete döner. Mastarı حَمْل.",
+    "frequency": 56,
     "example_ref": "33:72"
   },
   {
@@ -3357,6 +3518,7 @@ export const words: Word[] = [
     "example_arabic": "وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ",
     "example_turkish": "Göğü yükseltti ve dengeyi (mizanı) koydu.",
     "grammar_note": "Misal fiil (ilk harf و). Muzaride و düşer: يَضَعُ. Örnekte رَفَعَ'nın zıddı olarak gelir.",
+    "frequency": 21,
     "example_ref": "55:7"
   },
   {
@@ -3371,6 +3533,7 @@ export const words: Word[] = [
     "example_arabic": "فَأَكَلَهُ الذِّئْبُ",
     "example_turkish": "Onu kurt yedi.",
     "grammar_note": "Mehmûzu'l-fâ fiil; emri düzensiz: كُلْ (ye!). Kur'an'da 'haksız yere yemek' mecazı da sık geçer.",
+    "frequency": 104,
     "example_ref": "12:17"
   },
   {
@@ -3385,6 +3548,7 @@ export const words: Word[] = [
     "example_arabic": "فَشَرِبُوا مِنْهُ إِلَّا قَلِيلًا مِّنْهُمْ",
     "example_turkish": "İçlerinden pek azı hariç ondan içtiler.",
     "grammar_note": "I. bab mâzî (فَعِلَ), 3. çoğul. Emri اشْرَبْ; 'yiyin için' = كُلُوا وَاشْرَبُوا.",
+    "frequency": 19,
     "example_ref": "2:249"
   },
   {
@@ -3399,6 +3563,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَبِثُوا فِي كَهْفِهِمْ ثَلَاثَ مِائَةٍ سِنِينَ",
     "example_turkish": "Mağaralarında üç yüz yıl kaldılar.",
     "grammar_note": "I. bab mâzî (فَعِلَ); süre bildiren zaman zarfıyla birlikte gelir.",
+    "frequency": 30,
     "example_ref": "18:25"
   },
   {
@@ -3413,6 +3578,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تَمْشِ فِي الْأَرْضِ مَرَحًا",
     "example_turkish": "Yeryüzünde böbürlenerek yürüme.",
     "grammar_note": "Nâkıs fiil; yasak (nehiy) lâ'sıyla muzari meczum olur ve son harf düşer: تَمْشِي → لَا تَمْشِ.",
+    "frequency": 1,
     "example_ref": "31:18"
   },
   {
@@ -3427,6 +3593,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَى",
     "example_turkish": "İnsan için ancak çalıştığı vardır.",
     "grammar_note": "Nâkıs fiil (son harf ي elife dönmüş). Mastarı سَعْي. Örnek, sorumluluk ilkesinin temel ayetidir.",
+    "frequency": 30,
     "example_ref": "53:39"
   },
   {
@@ -3441,6 +3608,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِ",
     "example_turkish": "Kim Rabbinin huzurunda duracağından korkarsa...",
     "grammar_note": "Ecvef fiil (ortası و): خَافَ / يَخَافُ. Korkulan şey doğrudan nesne olur.",
+    "frequency": 83,
     "example_ref": "79:40"
   },
   {
@@ -3455,6 +3623,7 @@ export const words: Word[] = [
     "example_arabic": "فَمَن كَانَ يَرْجُو لِقَاءَ رَبِّهِ",
     "example_turkish": "Kim Rabbine kavuşmayı umuyorsa...",
     "grammar_note": "Nâkıs fiil (son harf و). Muzari يَرْجُو; örnekte كَانَ ile 'umar durur' anlamı kazanır.",
+    "frequency": 22,
     "example_ref": "18:110"
   },
   {
@@ -3469,6 +3638,7 @@ export const words: Word[] = [
     "example_arabic": "لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا",
     "example_turkish": "Üzülme, Allah bizimle beraberdir.",
     "grammar_note": "I. bab (فَعِلَ) fiil; örnekte yasak لَا ile meczum muzari: لَا تَحْزَنْ.",
+    "frequency": 5,
     "example_ref": "9:40"
   },
   {
@@ -3483,6 +3653,7 @@ export const words: Word[] = [
     "example_arabic": "فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِن فَضْلِهِ",
     "example_turkish": "Allah'ın lütfundan kendilerine verdiklerine sevinerek.",
     "grammar_note": "I. bab (فَعِلَ) fiil; örnekteki فَرِحِينَ sıfat-ı müşebbehe çoğuludur ve hâl bildirir.",
+    "frequency": 22,
     "example_ref": "3:170"
   },
   {
@@ -3497,6 +3668,7 @@ export const words: Word[] = [
     "example_arabic": "رِجَالٌ صَدَقُوا مَا عَاهَدُوا اللَّهَ عَلَيْهِ",
     "example_turkish": "Allah'a verdikleri söze sadık kalan adamlar.",
     "grammar_note": "I. bab mâzî; 'sözünü tuttu, doğru çıktı'. II. babı صَدَّقَ (doğruladı).",
+    "frequency": 39,
     "example_ref": "33:23"
   },
   {
@@ -3511,6 +3683,7 @@ export const words: Word[] = [
     "example_arabic": "انظُرْ كَيْفَ كَذَبُوا عَلَى أَنفُسِهِمْ",
     "example_turkish": "Bak, kendi aleyhlerine nasıl yalan söylediler.",
     "grammar_note": "I. bab mâzî: 'yalan söyledi'. II. babı كَذَّبَ 'yalanladı' anlamındadır; ikisini karıştırma.",
+    "frequency": 220,
     "example_ref": "6:24"
   },
   {
@@ -3525,6 +3698,7 @@ export const words: Word[] = [
     "example_arabic": "قَالَا رَبَّنَا ظَلَمْنَا أَنفُسَنَا",
     "example_turkish": "Dediler ki: Rabbimiz! Biz kendimize zulmettik.",
     "grammar_note": "I. bab mâzî, 1. çoğul; kökün aslı 'bir şeyi yerinin dışına koymak'. Âdem ile Havva'nın duası.",
+    "frequency": 130,
     "example_ref": "7:23"
   },
   {
@@ -3539,6 +3713,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ",
     "example_turkish": "Seni yaratan, düzenleyen ve dengeli kılan.",
     "grammar_note": "I. bab mâzî; 'adaletli davrandı' ve 'dengeli kıldı' anlamları vardır. Örnekte ikincisi geçer.",
+    "frequency": 28,
     "example_ref": "82:7"
   },
   {
@@ -3553,6 +3728,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ",
     "example_turkish": "Şüphesiz Allah adaleti ve iyiliği emreder.",
     "grammar_note": "Mehmûzu'l-fâ fiil; emredilen şey بِ ile gelir (يَأْمُرُ بِالْعَدْلِ). Emri düzensiz: مُرْ.",
+    "frequency": 244,
     "example_ref": "16:90"
   },
   {
@@ -3567,6 +3743,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ وَالْبَغْيِ",
     "example_turkish": "Hayasızlığı, kötülüğü ve azgınlığı yasaklar.",
     "grammar_note": "Nâkıs fiil; yasaklanan şey عَنْ ile gelir. Örnek, أَمَرَ ile aynı ayette karşıt olarak geçer.",
+    "frequency": 34,
     "example_ref": "16:90"
   },
   {
@@ -3581,6 +3758,7 @@ export const words: Word[] = [
     "example_arabic": "سَأَلَ سَائِلٌ بِعَذَابٍ وَاقِعٍ",
     "example_turkish": "Bir soran, gerçekleşecek bir azabı sordu.",
     "grammar_note": "Mehmûzu'l-ayn fiil (orta harf hemze). Örnekte fiil ve ism-i fâili yan yana: سَأَلَ سَائِلٌ.",
+    "frequency": 106,
     "example_ref": "70:1"
   },
   {
@@ -3595,6 +3773,7 @@ export const words: Word[] = [
     "example_arabic": "أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
     "example_turkish": "Dua edenin duasına, bana dua ettiğinde karşılık veririm.",
     "grammar_note": "IV. bab ecvef fiil; örnekte 1. tekil muzari أُجِيبُ. X. babı اسْتَجَابَ (duaya icabet etti).",
+    "frequency": 8,
     "example_ref": "2:186"
   },
   {
@@ -3609,6 +3788,7 @@ export const words: Word[] = [
     "example_arabic": "وَعَدَ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَعَمِلُوا الصَّالِحَاتِ",
     "example_turkish": "Allah içinizden iman edip salih ameller işleyenlere vaat etti.",
     "grammar_note": "Misal fiil (ilk harf و); muzaride و düşer: يَعِدُ. Mastarları وَعْد (vaat) ve وَعِيد (tehdit).",
+    "frequency": 119,
     "example_ref": "24:55"
   },
   {
@@ -3623,6 +3803,7 @@ export const words: Word[] = [
     "example_arabic": "اللَّهُ نَزَّلَ أَحْسَنَ الْحَدِيثِ",
     "example_turkish": "Allah sözün en güzelini indirdi.",
     "grammar_note": "فَعِيل vezninde isim; çoğulu أَحَادِيث. Kur'an'da 'söz, haber, kıssa' anlamında.",
+    "frequency": 28,
     "example_ref": "39:23"
   },
   {
@@ -3637,6 +3818,7 @@ export const words: Word[] = [
     "example_arabic": "قَوْلٌ مَّعْرُوفٌ وَمَغْفِرَةٌ خَيْرٌ مِّن صَدَقَةٍ يَتْبَعُهَا أَذًى",
     "example_turkish": "Güzel bir söz ve bağışlama, ardından eziyet gelen sadakadan daha hayırlıdır.",
     "grammar_note": "قَالَ fiilinin mastarı; sıfatıyla gelir: قَوْلٌ مَعْرُوفٌ. Çoğulu أَقْوَال.",
+    "frequency": 92,
     "example_ref": "2:263"
   },
   {
@@ -3651,6 +3833,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَلِمَةُ اللَّهِ هِيَ الْعُلْيَا",
     "example_turkish": "Allah'ın sözü ise en yücedir.",
     "grammar_note": "Dişil isim; çoğulu كَلِمَات. Burada mübtedâ; هِيَ fasl zamiri vurgu katar.",
+    "frequency": 42,
     "example_ref": "9:40"
   },
   {
@@ -3665,6 +3848,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا أَرْسَلْنَا مِن رَّسُولٍ إِلَّا بِلِسَانِ قَوْمِهِ",
     "example_turkish": "Her elçiyi yalnızca kendi kavminin diliyle gönderdik.",
     "grammar_note": "İsim; hem organ hem 'konuşulan dil' anlamında. Çoğulu أَلْسِنَة.",
+    "frequency": 25,
     "example_ref": "14:4"
   },
   {
@@ -3679,6 +3863,7 @@ export const words: Word[] = [
     "example_arabic": "إِلَّا مَنْ أَتَى اللَّهَ بِقَلْبٍ سَلِيمٍ",
     "example_turkish": "Ancak Allah'a temiz bir kalple gelen (fayda bulur).",
     "grammar_note": "İsim; kökü 'çevirmek, döndürmek'. Çoğulu قُلُوب; sıfatı سَلِيمٍ ona uyar.",
+    "frequency": 138,
     "example_ref": "26:89"
   },
   {
@@ -3693,6 +3878,7 @@ export const words: Word[] = [
     "example_arabic": "فِيهَا عَيْنٌ جَارِيَةٌ",
     "example_turkish": "Orada akan bir pınar vardır.",
     "grammar_note": "Dişil isim; çoğulları أَعْيُن (gözler) ve عُيُون (pınarlar/gözler).",
+    "frequency": 61,
     "example_ref": "88:12"
   },
   {
@@ -3707,6 +3893,7 @@ export const words: Word[] = [
     "example_arabic": "وَالْأُذُنَ بِالْأُذُنِ",
     "example_turkish": "Kulağa kulak (kısas).",
     "grammar_note": "Dişil isim; çoğulu آذَان. Örnekte بِ 'karşılığında' anlamındadır.",
+    "frequency": 44,
     "example_ref": "5:45"
   },
   {
@@ -3721,6 +3908,7 @@ export const words: Word[] = [
     "example_arabic": "يَدُ اللَّهِ فَوْقَ أَيْدِيهِمْ",
     "example_turkish": "Allah'ın eli onların ellerinin üstündedir.",
     "grammar_note": "Dişil isim; aslı يَدْيٌ, son harf düşmüştür. Çoğulu أَيْدِي; mecazen 'güç, kudret'.",
+    "frequency": 120,
     "example_ref": "48:10"
   },
   {
@@ -3735,6 +3923,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَبْقَى وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ",
     "example_turkish": "Celal ve ikram sahibi Rabbinin yüzü (zâtı) baki kalır.",
     "grammar_note": "İsim; çoğulu وُجُوه. Hem 'yüz' hem 'yön/rıza' anlamında kullanılır.",
+    "frequency": 74,
     "example_ref": "55:27"
   },
   {
@@ -3749,6 +3938,7 @@ export const words: Word[] = [
     "example_arabic": "وَاشْتَعَلَ الرَّأْسُ شَيْبًا",
     "example_turkish": "Saçım ağarıp tutuştu (başım ak düştü).",
     "grammar_note": "İsim; çoğulu رُؤُوس. Örnekte şeybâ temyizdir: 'ağarmak bakımından tutuştu'.",
+    "frequency": 18,
     "example_ref": "19:4"
   },
   {
@@ -3763,6 +3953,7 @@ export const words: Word[] = [
     "example_arabic": "وَنَفْسٍ وَمَا سَوَّاهَا",
     "example_turkish": "Nefse ve onu düzenleyene andolsun.",
     "grammar_note": "Dişil isim; çoğulları أَنْفُس ve نُفُوس. 'Kendisi' anlamında zamir gibi de kullanılır.",
+    "frequency": 295,
     "example_ref": "91:7"
   },
   {
@@ -3777,6 +3968,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَسْأَلُونَكَ عَنِ الرُّوحِ قُلِ الرُّوحُ مِنْ أَمْرِ رَبِّي",
     "example_turkish": "Sana ruhu soruyorlar. De ki: Ruh Rabbimin emrindendir.",
     "grammar_note": "İsim; çoğulu أَرْوَاح. Kur'an'da Cebrail için de kullanılır (الرُّوحُ الْأَمِينُ).",
+    "frequency": 24,
     "example_ref": "17:85"
   },
   {
@@ -3791,6 +3983,7 @@ export const words: Word[] = [
     "example_arabic": "فَأَخْرَجَ لَهُمْ عِجْلًا جَسَدًا لَّهُ خُوَارٌ",
     "example_turkish": "Onlar için böğüren bir buzağı heykeli çıkardı.",
     "grammar_note": "İsim; Kur'an'da genellikle ruhsuz, cansız beden anlamında geçer. Çoğulu أَجْسَاد.",
+    "frequency": 4,
     "example_ref": "20:88"
   },
   {
@@ -3805,6 +3998,7 @@ export const words: Word[] = [
     "example_arabic": "حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ",
     "example_turkish": "Leş ve kan size haram kılındı.",
     "grammar_note": "İki harfli görünen isim; aslı دَمَوٌ'dur, son harf düşmüştür. Çoğulu دِمَاء.",
+    "frequency": 10,
     "example_ref": "5:3"
   },
   {
@@ -3819,6 +4013,7 @@ export const words: Word[] = [
     "example_arabic": "وَيُطْعِمُونَ الطَّعَامَ عَلَى حُبِّهِ مِسْكِينًا",
     "example_turkish": "Yemeği, ona olan sevgilerine rağmen yoksula yedirirler.",
     "grammar_note": "İsim; örnekte aynı kökten IV. bab fiil يُطْعِمُونَ ile birlikte geçer.",
+    "frequency": 24,
     "example_ref": "76:8"
   },
   {
@@ -3833,6 +4028,7 @@ export const words: Word[] = [
     "example_arabic": "وَسَقَاهُمْ رَبُّهُمْ شَرَابًا طَهُورًا",
     "example_turkish": "Rableri onlara tertemiz bir içecek içirir.",
     "grammar_note": "فَعَال vezninde isim; شَرِبَ fiilinden. Türkçedeki 'şarap' anlamıyla sınırlı değildir.",
+    "frequency": 11,
     "example_ref": "76:21"
   },
   {
@@ -3847,6 +4043,7 @@ export const words: Word[] = [
     "example_arabic": "وَلِبَاسُ التَّقْوَى ذَلِكَ خَيْرٌ",
     "example_turkish": "Takva elbisesi ise, işte o daha hayırlıdır.",
     "grammar_note": "فِعَال vezninde isim; mecazen 'örtü' anlamı da taşır (geceyi örtü kıldık).",
+    "frequency": 10,
     "example_ref": "7:26"
   },
   {
@@ -3861,6 +4058,7 @@ export const words: Word[] = [
     "example_arabic": "وَادْخُلُوا الْبَابَ سُجَّدًا",
     "example_turkish": "Kapıdan eğilerek girin.",
     "grammar_note": "İsim; kökteki و elife dönüşmüştür. Çoğulu أَبْوَاب.",
+    "frequency": 27,
     "example_ref": "2:58"
   },
   {
@@ -3875,6 +4073,7 @@ export const words: Word[] = [
     "example_arabic": "وَعِندَهُ مَفَاتِحُ الْغَيْبِ",
     "example_turkish": "Gaybın anahtarları O'nun katındadır.",
     "grammar_note": "مِفْعَال vezninde alet ismi. Kur'an'da tekili geçmez; çoğulları مَفَاتِح ve مَقَالِيد kullanılır.",
+    "frequency": 3,
     "example_ref": "6:59"
   },
   {
@@ -3889,6 +4088,7 @@ export const words: Word[] = [
     "example_arabic": "الرَّحْمَنُ عَلَى الْعَرْشِ اسْتَوَى",
     "example_turkish": "Rahman, Arş'a hükmetti.",
     "grammar_note": "İsim; Allah'ın hükümranlığını ifade eden kavramlardandır. Çoğulu عُرُوش.",
+    "frequency": 29,
     "example_ref": "20:5"
   },
   {
@@ -3903,6 +4103,7 @@ export const words: Word[] = [
     "example_arabic": "وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ",
     "example_turkish": "O'nun kürsüsü gökleri ve yeri kuşatmıştır.",
     "grammar_note": "Nisbe ي'si ile biten isim; Âyetü'l-Kürsî adını bu kelimeden alır.",
+    "frequency": 2,
     "example_ref": "2:255"
   },
   {
@@ -3917,6 +4118,7 @@ export const words: Word[] = [
     "example_arabic": "فِي لَوْحٍ مَّحْفُوظٍ",
     "example_turkish": "Korunmuş bir levhadadır.",
     "grammar_note": "İsim; çoğulu أَلْوَاح (Musa'nın levhaları). Sıfatı مَحْفُوظٍ ona uyar.",
+    "frequency": 5,
     "example_ref": "85:22"
   },
   {
@@ -3931,6 +4133,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي عَلَّمَ بِالْقَلَمِ",
     "example_turkish": "O ki kalemle öğretti.",
     "grammar_note": "İsim; çoğulu أَقْلَام. بِ harf-i ceri burada araç bildirir: 'kalemle'.",
+    "frequency": 4,
     "example_ref": "96:4"
   },
   {
@@ -3945,6 +4148,7 @@ export const words: Word[] = [
     "example_arabic": "رَسُولٌ مِّنَ اللَّهِ يَتْلُو صُحُفًا مُّطَهَّرَةً",
     "example_turkish": "Allah tarafından, tertemiz sayfalar okuyan bir elçi.",
     "grammar_note": "Dişil isim; Kur'an'da çoğulu صُحُف geçer (Musa ve İbrahim'in sahifeleri).",
+    "frequency": 8,
     "example_ref": "98:2"
   },
   {
@@ -3959,6 +4163,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ هَاتُوا بُرْهَانَكُمْ إِن كُنتُمْ صَادِقِينَ",
     "example_turkish": "De ki: Doğru söylüyorsanız delilinizi getirin.",
     "grammar_note": "فُعْلَان vezninde isim; çoğulu بَرَاهِين. Burada هَاتُوا fiilinin nesnesidir.",
+    "frequency": 8,
     "example_ref": "2:111"
   },
   {
@@ -3973,6 +4178,7 @@ export const words: Word[] = [
     "example_arabic": "حَتَّى تَأْتِيَهُمُ الْبَيِّنَةُ",
     "example_turkish": "Kendilerine apaçık delil gelinceye kadar.",
     "grammar_note": "فَيْعِلَة vezninde dişil sıfat; isim gibi 'apaçık delil' anlamında kullanılır. 98. surenin adıdır.",
+    "frequency": 71,
     "example_ref": "98:1"
   },
   {
@@ -3987,6 +4193,7 @@ export const words: Word[] = [
     "example_arabic": "لَا تَنفُذُونَ إِلَّا بِسُلْطَانٍ",
     "example_turkish": "Ancak bir güçle (yetkiyle) geçebilirsiniz.",
     "grammar_note": "فُعْلَان vezninde isim; Kur'an'da 'delil, yetki, güç' anlamlarında kullanılır.",
+    "frequency": 37,
     "example_ref": "55:33"
   },
   {
@@ -4001,6 +4208,7 @@ export const words: Word[] = [
     "example_arabic": "بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ",
     "example_turkish": "Rablerinin izniyle her iş için (inerler).",
     "grammar_note": "Mastar/isim; iki çoğulu anlamı ayırır: أَوَامِر (emirler), أُمُور (işler).",
+    "frequency": 244,
     "example_ref": "97:4"
   },
   {
@@ -4015,6 +4223,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ",
     "example_turkish": "İyiliği emreder ve kötülükten alıkoyarlar.",
     "grammar_note": "Mastar; Kur'an'da mastar olarak geçmez, fiil şekilleri (يَنْهَوْنَ, نَهَى) kullanılır.",
+    "frequency": 34,
     "example_ref": "3:104"
   },
   {
@@ -4029,6 +4238,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ وَعْدَ اللَّهِ حَقٌّ",
     "example_turkish": "Şüphesiz Allah'ın vaadi gerçektir.",
     "grammar_note": "وَعَدَ fiilinin mastarı; iyi şeyler için kullanılır. Kötülükle tehdit ise وَعِيد.",
+    "frequency": 119,
     "example_ref": "31:33"
   },
   {
@@ -4043,6 +4253,7 @@ export const words: Word[] = [
     "example_arabic": "فَذَكِّرْ بِالْقُرْآنِ مَن يَخَافُ وَعِيدِ",
     "example_turkish": "Benim tehdidimden korkanlara Kur'an ile öğüt ver.",
     "grammar_note": "فَعِيل vezninde mastar; sondaki esre düşmüş 'benim' zamirini (ي) gösterir: وَعِيدِي → وَعِيدِ.",
+    "frequency": 6,
     "example_ref": "50:45"
   },
   {
@@ -4057,6 +4268,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَوْفُوا بِالْعَهْدِ",
     "example_turkish": "Verdiğiniz sözü yerine getirin.",
     "grammar_note": "İsim; çoğulu عُهُود. أَوْفَى بِـ kalıbıyla 'sözü yerine getirmek' anlamı kurar.",
+    "frequency": 35,
     "example_ref": "17:34"
   },
   {
@@ -4071,6 +4283,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَخَذْنَا مِنْهُم مِّيثَاقًا غَلِيظًا",
     "example_turkish": "Onlardan sağlam bir söz aldık.",
     "grammar_note": "مِفْعَال vezninde isim; kökteki و ي'ye dönmüştür. أَخَذَ fiiliyle 'söz almak' kalıbı kurar.",
+    "frequency": 25,
     "example_ref": "4:154"
   },
   {
@@ -4085,6 +4298,7 @@ export const words: Word[] = [
     "example_arabic": "وَاعْلَمُوا أَنَّمَا أَمْوَالُكُمْ وَأَوْلَادُكُمْ فِتْنَةٌ",
     "example_turkish": "Bilin ki mallarınız ve evlatlarınız bir imtihandır.",
     "grammar_note": "Dişil isim; kökün aslı altını ateşte sınamak. Kur'an'da çoğunlukla 'imtihan' anlamındadır.",
+    "frequency": 34,
     "example_ref": "8:28"
   },
   {
@@ -4099,6 +4313,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ هَذَا لَهُوَ الْبَلَاءُ الْمُبِينُ",
     "example_turkish": "Bu gerçekten apaçık bir imtihandır.",
     "grammar_note": "Mastar; kökteki و hemzeye dönmüştür. İyilikle de kötülükle de sınamayı kapsar.",
+    "frequency": 6,
     "example_ref": "37:106"
   },
   {
@@ -4113,6 +4328,7 @@ export const words: Word[] = [
     "example_arabic": "نَصْرٌ مِّنَ اللَّهِ وَفَتْحٌ قَرِيبٌ",
     "example_turkish": "Allah'tan bir yardım ve yakın bir fetih.",
     "grammar_note": "Mastar; نَصَرَ fiilinden. Kur'an'da çoğu kez فَتْح ile birlikte gelir.",
+    "frequency": 81,
     "example_ref": "61:13"
   },
   {
@@ -4127,6 +4343,7 @@ export const words: Word[] = [
     "example_arabic": "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
     "example_turkish": "Allah'ın yardımı ve fetih geldiğinde.",
     "grammar_note": "Mastar; فَتَحَ fiilinden. 48. sure (Fetih) bu kelimeyle adlandırılmıştır.",
+    "frequency": 28,
     "example_ref": "110:1"
   },
   {
@@ -4141,6 +4358,7 @@ export const words: Word[] = [
     "example_arabic": "سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ",
     "example_turkish": "Çok merhametli bir Rab'den sözlü bir selam vardır.",
     "grammar_note": "Mastar/isim; Allah'ın isimlerinden السَّلَام. Burada mübtedâ olarak tenvinlidir.",
+    "frequency": 42,
     "example_ref": "36:58"
   },
   {
@@ -4155,6 +4373,7 @@ export const words: Word[] = [
     "example_arabic": "أُولَئِكَ لَهُمُ الْأَمْنُ وَهُم مُّهْتَدُونَ",
     "example_turkish": "İşte güven onlarındır; doğru yolda olanlar da onlardır.",
     "grammar_note": "Mastar; zıddı خَوْف. Haberi öne alınmış: لَهُمُ الْأَمْنُ (güven yalnız onlarındır).",
+    "frequency": 25,
     "example_ref": "6:82"
   },
   {
@@ -4169,6 +4388,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ",
     "example_turkish": "Onları açlıktan doyuran ve korkudan emin kılan (Rab).",
     "grammar_note": "Mastar; خَافَ fiilinden. Örnekte أَمْن kökünden fiille karşıt olarak geçer.",
+    "frequency": 26,
     "example_ref": "106:4"
   },
   {
@@ -4183,6 +4403,7 @@ export const words: Word[] = [
     "example_arabic": "وَابْيَضَّتْ عَيْنَاهُ مِنَ الْحُزْنِ",
     "example_turkish": "Üzüntüden gözlerine ak düştü.",
     "grammar_note": "Mastar; حَزَن şekli de vardır. مِنْ burada sebep bildirir: 'üzüntüden dolayı'.",
+    "frequency": 5,
     "example_ref": "12:84"
   },
   {
@@ -4197,6 +4418,7 @@ export const words: Word[] = [
     "example_arabic": "لَا تَفْرَحْ إِنَّ اللَّهَ لَا يُحِبُّ الْفَرِحِينَ",
     "example_turkish": "Şımarma; Allah şımaranları sevmez.",
     "grammar_note": "Mastar; Kur'an'da fiil ve sıfat şekilleri geçer. Bağlama göre 'sevinç' veya 'şımarıklık' anlamı taşır.",
+    "frequency": 22,
     "example_ref": "28:76"
   },
   {
@@ -4211,6 +4433,7 @@ export const words: Word[] = [
     "example_arabic": "وَالَّذِينَ آمَنُوا أَشَدُّ حُبًّا لِّلَّهِ",
     "example_turkish": "İman edenlerin Allah'a sevgisi ise çok daha güçlüdür.",
     "grammar_note": "Mastar; örnekte temyiz olarak mansuptur: 'sevgi bakımından daha güçlü'. Muzaaf kök (ب-ب).",
+    "frequency": 16,
     "example_ref": "2:165"
   },
   {
@@ -4225,6 +4448,7 @@ export const words: Word[] = [
     "example_arabic": "أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاءَ",
     "example_turkish": "Aranıza düşmanlık ve kin sokmak (ister).",
     "grammar_note": "Mastar; Kur'an'da bu şekli geçmez, yerine بَغْضَاء (derin kin) kullanılır.",
+    "frequency": 5,
     "example_ref": "5:91"
   },
   {
@@ -4239,6 +4463,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِذَا حَكَمْتُم بَيْنَ النَّاسِ أَن تَحْكُمُوا بِالْعَدْلِ",
     "example_turkish": "İnsanlar arasında hükmettiğinizde adaletle hükmetmenizi (emreder).",
     "grammar_note": "Mastar; zıddı ظُلْم. بِ harf-i ceriyle 'adaletle' anlamı kurar.",
+    "frequency": 28,
     "example_ref": "4:58"
   },
   {
@@ -4268,7 +4493,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَقِيمُوا الصَّلَاةَ",
     "example_turkish": "Namazı dosdoğru kılın.",
     "grammar_note": "صَلَّى fiilinin مَاضِي (geçmiş zaman) formudur.",
-    "frequency": 83,
+    "frequency": 13,
     "slug": "salla"
   },
   {
@@ -4283,7 +4508,7 @@ export const words: Word[] = [
     "example_arabic": "لِلَّذِينَ اتَّقَوْا",
     "example_turkish": "Takva sahipleri için.",
     "grammar_note": "اتَّقَى مَاضِي formundadır; vav harfi ت'ye dönüşerek iftial babına girmiştir.",
-    "frequency": 258,
+    "frequency": 166,
     "slug": "ittaqa"
   },
   {
@@ -4298,7 +4523,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا الضَّالِّينَ",
     "example_turkish": "Sapıtmışların yoluna değil.",
     "grammar_note": "ضَلَّ مَاضِي formundadır; çift harfli fiil (مُضَاعَف).",
-    "frequency": 191,
+    "frequency": 53,
     "slug": "dalla"
   },
   {
@@ -4313,7 +4538,7 @@ export const words: Word[] = [
     "example_arabic": "وَالْمُؤْمِنُونَ كُلٌّ آمَنَ",
     "example_turkish": "Müminler, hepsi iman etti.",
     "grammar_note": "مُؤْمِن, آمَنَ fiilinden ism-i fail; emin (güvenilir) ile aynı köktür.",
-    "frequency": 230,
+    "frequency": 202,
     "slug": "mumin"
   },
   {
@@ -4328,7 +4553,7 @@ export const words: Word[] = [
     "example_arabic": "لَا يُحِبُّ الْكَافِرِينَ",
     "example_turkish": "Allah inkârcıları sevmez.",
     "grammar_note": "كَافِر, كَفَرَ fiilinden ism-i fail; örtmek anlamını taşır.",
-    "frequency": 525,
+    "frequency": 156,
     "slug": "kafir"
   },
   {
@@ -4343,7 +4568,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَنَا أَوَّلُ الْمُسْلِمِينَ",
     "example_turkish": "Ben Müslümanların ilkiyim.",
     "grammar_note": "مُسْلِم, أَسْلَمَ fiilinden ism-i fail; سَلَامَة (esenlik) ile aynı köktür.",
-    "frequency": 75,
+    "frequency": 39,
     "slug": "muslim"
   },
   {
@@ -4358,7 +4583,7 @@ export const words: Word[] = [
     "example_arabic": "يَا عِبَادِيَ",
     "example_turkish": "Ey kullarım.",
     "grammar_note": "عِبَاد, عَبْد'in çoğuludur; عِبَادَة (ibadet) ile aynı köktür.",
-    "frequency": 140,
+    "frequency": 254,
     "slug": "ibad"
   },
   {
@@ -4373,7 +4598,7 @@ export const words: Word[] = [
     "example_arabic": "ثُمَّ اسْتَوَى",
     "example_turkish": "Sonra (arşa) yöneldi.",
     "grammar_note": "ثُمَّ, 'اrdindan' anlamıyla tertip ifade eder; 'و' ve 'ف'dan farklı olarak zaman aralığı içerir.",
-    "frequency": 340,
+    "frequency": 342,
     "slug": "thumma"
   },
   {
@@ -4388,7 +4613,7 @@ export const words: Word[] = [
     "example_arabic": "حَتَّى مَطْلَعِ الْفَجْرِ",
     "example_turkish": "Fecrin doğuşuna kadar.",
     "grammar_note": "حَتَّى, gaye ve nihayet bildiren bir harftir; 'ğâye' anlamı taşır.",
-    "frequency": 298,
+    "frequency": 142,
     "slug": "hatta"
   },
   {
@@ -4403,7 +4628,7 @@ export const words: Word[] = [
     "example_arabic": "رِزْقًا طَيِّبًا",
     "example_turkish": "Güzel bir rızık.",
     "grammar_note": "طَيِّب, خَبِيث'in zıddıdır; doğal temizliği, güzelliği ve helâlliği ifade eder.",
-    "frequency": 47,
+    "frequency": 16,
     "slug": "tayyib"
   },
   {
@@ -4418,7 +4643,7 @@ export const words: Word[] = [
     "example_arabic": "وَيُحْيِي الْمَيِّتَ",
     "example_turkish": "Ölüyü diriltir.",
     "grammar_note": "مَيِّت, حَيّ'nin zıddıdır; مَوْت kökünden ism-i sıfattır.",
-    "frequency": 57,
+    "frequency": 43,
     "slug": "mayyit"
   },
   {
@@ -4433,7 +4658,7 @@ export const words: Word[] = [
     "example_arabic": "الْمَلِكُ الْقُدُّوسُ",
     "example_turkish": "El-Melik el-Kuddûs.",
     "grammar_note": "قُدُّوس, مُبَالَغَة kalıbında mübalağalı ism-i sıfattır; çok kutsal anlamı verir.",
-    "frequency": 5,
+    "frequency": 2,
     "slug": "quddus"
   },
   {
@@ -4448,7 +4673,7 @@ export const words: Word[] = [
     "example_arabic": "حَتَّى تَأْتِيَهُمُ الْبَيِّنَةُ",
     "example_turkish": "Kendilerine apaçık delil gelinceye kadar.",
     "grammar_note": "بَيِّنَة, بَانَ fiilinden müştak; بُرْهَان'dan daha güçlü açıklık içerir.",
-    "frequency": 20,
+    "frequency": 71,
     "slug": "bayyinah"
   },
   {
@@ -4463,7 +4688,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ لَا يَغْفِرُ أَنْ يُشْرَكَ بِهِ",
     "example_turkish": "Allah kendisine şirk koşulmasını bağışlamaz.",
     "grammar_note": "مُشْرِك, أَشْرَكَ fiilinden ism-i fail; şirk (ortak koşma) kavramıyla doğrudan bağlantılıdır.",
-    "frequency": 163,
+    "frequency": 44,
     "slug": "mushrik"
   },
   {
@@ -4478,7 +4703,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الْمُنَافِقِينَ فِي الدَّرْكِ الْأَسْفَلِ",
     "example_turkish": "Münafıklar cehennemin en alt tabakasındadır.",
     "grammar_note": "مُنَافِق, نَافَقَ fiilinden ism-i fail; gizli geçit (نَفَق) anlamından türemiştir.",
-    "frequency": 37,
+    "frequency": 27,
     "slug": "munafiq"
   },
   {
@@ -4493,7 +4718,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الْمُجْرِمِينَ فِي عَذَابِ جَهَنَّمَ",
     "example_turkish": "Günahkârlar cehennem azabındadır.",
     "grammar_note": "مُجْرِم, أَجْرَمَ fiilinden ism-i fail; جُرْم (suç, cürüm) kökünden gelir.",
-    "frequency": 68,
+    "frequency": 52,
     "slug": "mujrim"
   },
   {
@@ -4508,7 +4733,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ يُحِبُّ الْمُتَّقِينَ",
     "example_turkish": "Allah takva sahiplerini sever.",
     "grammar_note": "مُتَّقِي, اتَّقَى fiilinden ism-i fail; وِقَايَة (koruma) kökündendir.",
-    "frequency": 52,
+    "frequency": 49,
     "slug": "muttaqi"
   },
   {
@@ -4523,7 +4748,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ",
     "example_turkish": "Allah iyilik edenleri sever.",
     "grammar_note": "مُحْسِن, أَحْسَنَ fiilinden ism-i fail; إِحْسَان (mükemmellik, iyilik) kavramıyla bağlantılıdır.",
-    "frequency": 34,
+    "frequency": 38,
     "slug": "muhsin"
   },
   {
@@ -4538,7 +4763,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا أَرْسَلْنَاكَ إِلَّا بَشِيرًا وَنَذِيرًا",
     "example_turkish": "Seni ancak müjdeleyici ve uyarıcı olarak gönderdik.",
     "grammar_note": "بَشِير, بَشَّرَ kökünden mübalağa kalıbı; نَذِير'in karşıtı ve tamamlayıcısıdır.",
-    "frequency": 27,
+    "frequency": 9,
     "slug": "bashir"
   },
   {
@@ -4553,7 +4778,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا أَرْسَلْنَاكَ شَاهِدًا وَمُبَشِّرًا وَنَذِيرًا",
     "example_turkish": "Seni tanık, müjdeleyici ve uyarıcı olarak gönderdik.",
     "grammar_note": "نَذِير, نَذَرَ kökünden; نَذْر (adak) ile de ilişkilidir; uyarma ve korkutma anlamı taşır.",
-    "frequency": 43,
+    "frequency": 58,
     "slug": "nadhir"
   },
   {
@@ -4598,7 +4823,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُون",
     "example_turkish": "Zikri biz indirdik; onu koruyacak olan da biziz.",
     "grammar_note": "حَفِظَ مَاضِي formundadır; حَافِظ (koruyucu) ve حِفْظ (ezberleme) aynı köktedir.",
-    "frequency": 44,
+    "frequency": 10,
     "slug": "hafaza"
   },
   {
@@ -4613,7 +4838,7 @@ export const words: Word[] = [
     "example_arabic": "أَرْسَلْنَاكَ رَحْمَةً لِلْعَالَمِينَ",
     "example_turkish": "Seni âlemlere rahmet olarak gönderdik.",
     "grammar_note": "أَرْسَلَ, إِفْعَال babında مَاضِي; رَسُول ve رِسَالَة ile aynı köktendir.",
-    "frequency": 168,
+    "frequency": 130,
     "slug": "arsala"
   },
   {
@@ -4628,7 +4853,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا يَنْطِقُ عَنِ الْهَوَى إِنْ هُوَ إِلَّا وَحْيٌ يُوحَى",
     "example_turkish": "O hevesinden konuşmaz; o ancak indirilen bir vahiydir.",
     "grammar_note": "وَحْي, أَوْحَى fiilinin mastarıdır; ilahi iletişimin en doğrudan biçimidir.",
-    "frequency": 78,
+    "frequency": 6,
     "slug": "wahy"
   },
   {
@@ -4643,7 +4868,7 @@ export const words: Word[] = [
     "example_arabic": "تَنْزِيلُ الْكِتَابِ مِنَ اللَّهِ",
     "example_turkish": "Kitabın Allah tarafından indirilmesi.",
     "grammar_note": "تَنْزِيل, نَزَلَ'nin تَفْعِيل masdarı; أَنْزَلَ'den daha kademeli bir indirişi ifade eder.",
-    "frequency": 23,
+    "frequency": 15,
     "slug": "tanzil"
   },
   {
@@ -4658,7 +4883,7 @@ export const words: Word[] = [
     "example_arabic": "فَأْتُوا بِسُورَةٍ مِثْلِهِ",
     "example_turkish": "Onun gibi bir sure getirin.",
     "grammar_note": "سُورَة, çoğulu سُوَر; سُور (sur/duvar) ile aynı kök; her sure bir duvarla çevrili alan gibidir.",
-    "frequency": 9,
+    "frequency": 10,
     "slug": "surah"
   },
   {
@@ -4673,7 +4898,7 @@ export const words: Word[] = [
     "example_arabic": "آيَاتٌ مُحْكَمَاتٌ",
     "example_turkish": "Anlamı açık ve kesin ayetler.",
     "grammar_note": "مُحْكَم, أَحْكَمَ fiilinden ism-i meful; مُتَشَابِه'nin zıddı ve Kur'an'ın temel ayet türüdür.",
-    "frequency": 3,
+    "frequency": 2,
     "slug": "muhkam"
   },
   {
@@ -4688,7 +4913,7 @@ export const words: Word[] = [
     "example_arabic": "وَأُخَرُ مُتَشَابِهَاتٌ",
     "example_turkish": "Diğerleri ise anlamları kapalı ayetlerdir.",
     "grammar_note": "مُتَشَابِه, تَشَابَهَ fiilinden ism-i fail; مُحْكَم'in zıddıdır.",
-    "frequency": 2,
+    "frequency": 6,
     "slug": "mutashabih"
   },
   {
@@ -4703,7 +4928,7 @@ export const words: Word[] = [
     "example_arabic": "كُلُوا مِمَّا فِي الْأَرْضِ حَلَالًا طَيِّبًا",
     "example_turkish": "Yeryüzündeki helal ve temiz şeylerden yiyin.",
     "grammar_note": "حَلَال, حَرَام'ın karşıtı; حَلَّ (çözmek) kökünden — yasağın çözüldüğü alan.",
-    "frequency": 8,
+    "frequency": 6,
     "slug": "halal"
   },
   {
@@ -4718,7 +4943,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّمَا حَرَّمَ عَلَيْكُمُ الْمَيْتَةَ",
     "example_turkish": "Yalnızca leşi size haram kıldı.",
     "grammar_note": "حَرَام, حَرَّمَ fiilinden; حُرْمَة (dokunulmazlık) ile aynı kökten gelir.",
-    "frequency": 83,
+    "frequency": 33,
     "slug": "haram"
   },
   {
@@ -4733,7 +4958,6 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ",
     "example_turkish": "Allah tövbe edenleri ve temizlenenleri sever.",
     "grammar_note": "طَهَارَة, طَهُرَ fiilinin masdarıdır; نَجَاسَة (pislik) kavramının karşıtıdır.",
-    "frequency": 12,
     "slug": "taharah"
   },
   {
@@ -4763,7 +4987,7 @@ export const words: Word[] = [
     "example_arabic": "عَالِمُ الْغَيْبِ وَالشَّهَادَة",
     "example_turkish": "Gaybı ve şehadeti (görüneni) bilen.",
     "grammar_note": "شَهَادَة, شَهِدَ fiilinin masdarı; غَيْب ile zıt anlamlı; hem tanıklık hem görünen alem.",
-    "frequency": 24,
+    "frequency": 26,
     "slug": "shahadah"
   },
   {
@@ -4778,7 +5002,7 @@ export const words: Word[] = [
     "example_arabic": "وَخَلَقَ كُلَّ شَيْءٍ فَقَدَّرَهُ تَقْدِيرًا",
     "example_turkish": "Her şeyi yarattı ve ona ölçü koydu.",
     "grammar_note": "قَدَر, قَدَرَ/قَدَّرَ kökünden; قَدِير (güçlü) ile aynı köktendir.",
-    "frequency": 132,
+    "frequency": 59,
     "slug": "qadar"
   },
   {
@@ -4793,7 +5017,6 @@ export const words: Word[] = [
     "example_arabic": "وَقَضَى رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ",
     "example_turkish": "Rabbin yalnızca kendisine ibadet etmenizi emretti.",
     "grammar_note": "قَضَاء, قَضَى fiilinin masdarı; قَدَر ile birlikte 'kaza ve kader' inanç terimini oluşturur.",
-    "frequency": 72,
     "slug": "qadaa"
   },
   {
@@ -4808,7 +5031,7 @@ export const words: Word[] = [
     "example_arabic": "مَالِكِ يَوْمِ الدِّينِ",
     "example_turkish": "Din/hesap gününün sahibi.",
     "grammar_note": "مَالِك, مَلَكَ fiilinden ism-i fail; مُلْك (hükümranlık) ve مَلِك (kral) ile aynı köktendir.",
-    "frequency": 14,
+    "frequency": 4,
     "slug": "malik"
   },
   {
@@ -4823,7 +5046,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَفَى بِاللَّهِ وَكِيلًا",
     "example_turkish": "Vekil olarak Allah yeter.",
     "grammar_note": "وَكِيل, وَكَّلَ fiilinden; تَوَكَّلَ (tevekkül etmek) ile aynı köktendir.",
-    "frequency": 14,
+    "frequency": 24,
     "slug": "wakil"
   },
   {
@@ -4838,7 +5061,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَفَى بِاللَّهِ شَهِيدًا",
     "example_turkish": "Şahit olarak Allah yeter.",
     "grammar_note": "شَهِيد, شَهَادَة ile aynı kökte; hem 'tanık' hem 'şehit' anlamı taşır.",
-    "frequency": 50,
+    "frequency": 56,
     "slug": "shahid"
   },
   {
@@ -4853,7 +5076,7 @@ export const words: Word[] = [
     "example_arabic": "وَبَشِّرِ الصَّابِرِينَ",
     "example_turkish": "Sabredenleri müjdele.",
     "grammar_note": "بَشَّرَ, تَفْعِيل babında; بَشِير (müjdeleyici) ve بُشْرَى (müjde) ile aynı köktendir.",
-    "frequency": 73,
+    "frequency": 78,
     "slug": "bashshara"
   },
   {
@@ -4868,7 +5091,7 @@ export const words: Word[] = [
     "example_arabic": "لِتُنْذِرَ قَوْمًا مَا أُنْذِرَ آبَاؤُهُمْ",
     "example_turkish": "Atalarına uyarı gelmemiş bir kavmi uyarman için.",
     "grammar_note": "أَنْذَرَ, إِفْعَال babında; نَذِير (uyarıcı) ile aynı köktendir.",
-    "frequency": 69,
+    "frequency": 44,
     "slug": "andhara"
   },
   {
@@ -4883,7 +5106,7 @@ export const words: Word[] = [
     "example_arabic": "وَرَزَقَكُم مِنَ الطَّيِّبَاتِ",
     "example_turkish": "Sizi güzel şeylerle rızıklandırdı.",
     "grammar_note": "رَزَقَ مَاضِي formundadır; رِزْق (rızık) ve الرَّزَّاق (çok rızık veren) aynı köktendir.",
-    "frequency": 123,
+    "frequency": 116,
     "slug": "razaqa"
   },
   {
@@ -4898,7 +5121,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ كَانَ عَلَى كُلِّ شَيْءٍ حَسِيبًا",
     "example_turkish": "Allah her şeyin hesabını tutandır.",
     "grammar_note": "حَاسَبَ, مُفَاعَلَة babında; حِسَاب (hesap) ve حَسِيب (hesap soran) ile aynı köktendir.",
-    "frequency": 31,
+    "frequency": 5,
     "slug": "hasaba"
   },
   {
@@ -4913,7 +5136,7 @@ export const words: Word[] = [
     "example_arabic": "فَقَدَّرَ فَهَدَى",
     "example_turkish": "Ölçüp biçti ve hidayet etti.",
     "grammar_note": "قَدَرَ مَاضِي formundadır; قَدَر (kader) ve قَدِير (güçlü) ile aynı köktendir.",
-    "frequency": 132,
+    "frequency": 59,
     "slug": "qadara"
   },
   {
@@ -4928,7 +5151,7 @@ export const words: Word[] = [
     "example_arabic": "فَقَضَاهُنَّ سَبْعَ سَمَاوَات",
     "example_turkish": "Onları yedi gök olarak tamamladı.",
     "grammar_note": "قَضَى مَاضِي formundadır; قَضَاء (kaza/hüküm) aynı kökün masdarıdır.",
-    "frequency": 72,
+    "frequency": 59,
     "slug": "qada"
   },
   {
@@ -4943,7 +5166,7 @@ export const words: Word[] = [
     "example_arabic": "وَاللَّهُ يَحْكُمُ لَا مُعَقِّبَ لِحُكْمِهِ",
     "example_turkish": "Allah hükmeder; hükmünü geri çevirecek yoktur.",
     "grammar_note": "حَكَمَ مَاضِي formundadır; حُكْم (hüküm), حَكِيم (hakim) ile aynı köktendir.",
-    "frequency": 210,
+    "frequency": 78,
     "slug": "hakama"
   },
   {
@@ -4958,7 +5181,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي أَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ",
     "example_turkish": "Yarattığı her şeyi güzel yaratan.",
     "grammar_note": "أَحْسَنَ, إِفْعَال babında; حَسَنَة (sevap) ve مُحْسِن (iyilik yapan) ile aynı köktendir.",
-    "frequency": 54,
+    "frequency": 57,
     "slug": "ahsana"
   },
   {
@@ -4973,7 +5196,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِنْ أَسَأْتُمْ فَلَهَا",
     "example_turkish": "Kötülük yaparsanız o da kendinizedir.",
     "grammar_note": "أَسَاءَ, إِفْعَال babında; سَيِّئَة (günah/kötülük) aynı köktendir.",
-    "frequency": 18,
+    "frequency": 5,
     "slug": "asaa"
   },
   {
@@ -4988,7 +5211,7 @@ export const words: Word[] = [
     "example_arabic": "يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْض",
     "example_turkish": "Göklerde ve yerde olanlar O'nu tesbih eder.",
     "grammar_note": "سَبَّحَ, تَفْعِيل babında; سُبْحَانَ ve تَسْبِيح aynı köktendir.",
-    "frequency": 92,
+    "frequency": 44,
     "slug": "sabbaha"
   },
   {
@@ -5003,7 +5226,7 @@ export const words: Word[] = [
     "example_arabic": "وَقُلِ الْحَمْدُ لِلَّهِ",
     "example_turkish": "De ki: Hamd Allah'a mahsustur.",
     "grammar_note": "حَمِدَ مَاضِي formundadır; الْحَمْد (hamd) ve مُحَمَّد (övülmüş) ile aynı köktendir.",
-    "frequency": 38,
+    "frequency": 43,
     "slug": "hamida"
   },
   {
@@ -5018,7 +5241,7 @@ export const words: Word[] = [
     "example_arabic": "وَكَبِّرْهُ تَكْبِيرًا",
     "example_turkish": "Onu tam anlamıyla yücelt.",
     "grammar_note": "كَبَّرَ, تَفْعِيل babında; الله أَكْبَر (Allah en büyüktür) ifadesinin fiilidir.",
-    "frequency": 22,
+    "frequency": 20,
     "slug": "kabbara"
   },
   {
@@ -5033,7 +5256,7 @@ export const words: Word[] = [
     "example_arabic": "وَعَلَى اللَّهِ فَتَوَكَّلُوا",
     "example_turkish": "Yalnızca Allah'a tevekkül edin.",
     "grammar_note": "تَوَكَّلَ, تَفَعُّل babında; وَكِيل (vekil/güvenilen) ile aynı köktendir.",
-    "frequency": 59,
+    "frequency": 40,
     "slug": "tawakkala"
   },
   {
@@ -5048,7 +5271,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَن يُسْلِمْ وَجْهَهُ إِلَى اللَّهِ",
     "example_turkish": "Kim yüzünü Allah'a teslim ederse.",
     "grammar_note": "أَسْلَمَ, إِفْعَال babında; إِسْلَام ve مُسْلِم aynı kökten gelir.",
-    "frequency": 75,
+    "frequency": 22,
     "slug": "aslama"
   },
   {
@@ -5063,7 +5286,7 @@ export const words: Word[] = [
     "example_arabic": "مَن يُطِعِ الرَّسُولَ فَقَدْ أَطَاعَ اللَّهَ",
     "example_turkish": "Kim Peygamber'e itaat ederse Allah'a itaat etmiş olur.",
     "grammar_note": "أَطَاعَ, إِفْعَال babında; طَاعَة (itaat) ve مُطِيع (itaat eden) ile aynı köktendir.",
-    "frequency": 76,
+    "frequency": 72,
     "slug": "ataa"
   },
   {
@@ -5078,7 +5301,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَن يَعْصِ اللَّهَ وَرَسُولَهُ",
     "example_turkish": "Kim Allah'a ve Resul'üne isyan ederse.",
     "grammar_note": "عَصَى مَاضِي formundadır; مَعْصِيَة (günah/isyan) aynı köktendir.",
-    "frequency": 60,
+    "frequency": 4,
     "slug": "asa"
   },
   {
@@ -5093,7 +5316,7 @@ export const words: Word[] = [
     "example_arabic": "وَصَدَّقَ بِالْحُسْنَى",
     "example_turkish": "Güzelliği (cenneti) tasdik etti.",
     "grammar_note": "صَدَّقَ, تَفْعِيل babında; صِدْق (doğruluk) ve صَدَقَة (sadaka) ile aynı köktendir.",
-    "frequency": 36,
+    "frequency": 39,
     "slug": "saddaqa"
   },
   {
@@ -5108,7 +5331,7 @@ export const words: Word[] = [
     "example_arabic": "كَذَّبَتْ قَوْمُ نُوحٍ الْمُرْسَلِينَ",
     "example_turkish": "Nuh'un kavmi peygamberleri yalanladı.",
     "grammar_note": "كَذَّبَ, تَفْعِيل babında; كَذِب (yalan) ile aynı köktendir.",
-    "frequency": 117,
+    "frequency": 220,
     "slug": "kadhdhaba"
   },
   {
@@ -5123,7 +5346,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَا تَشَاءُونَ إِلَّا أَنْ يَشَاءَ اللَّهُ",
     "example_turkish": "Allah dilemedikçe siz dileyemezsiniz.",
     "grammar_note": "شَاءَ مَاضِي formundadır; مَشِيئَة (irade/dilek) aynı köktendir.",
-    "frequency": 234,
+    "frequency": 236,
     "slug": "shaa"
   },
   {
@@ -5153,7 +5376,7 @@ export const words: Word[] = [
     "example_arabic": "إِنْ أُرِيدُ إِلَّا الْإِصْلَاحَ",
     "example_turkish": "Ben yalnızca ıslah etmek istiyorum.",
     "grammar_note": "أَصْلَحَ, إِفْعَال babında; صَالِح (salih/iyi) ve إِصْلَاح (ıslah) aynı köktendir.",
-    "frequency": 57,
+    "frequency": 28,
     "slug": "aslaha"
   },
   {
@@ -5168,7 +5391,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تُفْسِدُوا فِي الْأَرْض",
     "example_turkish": "Yeryüzünde bozgunculuk yapmayın.",
     "grammar_note": "أَفْسَدَ, إِفْعَال babında; فَسَاد (fesat/bozgunculuk) aynı köktendir.",
-    "frequency": 50,
+    "frequency": 15,
     "slug": "afsada"
   },
   {
@@ -5183,7 +5406,7 @@ export const words: Word[] = [
     "example_arabic": "اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ",
     "example_turkish": "Rabbinizden bağışlanma dileyin, sonra O'na tövbe edin.",
     "grammar_note": "اسْتَغْفَرَ, اسْتِفْعَال babında; غَفَرَ ve مَغْفِرَة ile aynı köktendir.",
-    "frequency": 34,
+    "frequency": 40,
     "slug": "istaghfara"
   },
   {
@@ -5198,7 +5421,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَنفِقُوا مِمَّا رَزَقْنَاكُم",
     "example_turkish": "Size rızık olarak verdiklerimizden harcayın.",
     "grammar_note": "أَنْفَقَ, إِفْعَال babında; إِنْفَاق ve نَفَقَة (nafaka) aynı köktendir.",
-    "frequency": 90,
+    "frequency": 68,
     "slug": "anfaqa"
   },
   {
@@ -5213,7 +5436,7 @@ export const words: Word[] = [
     "example_arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَكُونُوا مَعَ الصَّادِقِينَ",
     "example_turkish": "Ey iman edenler! Allah'tan korkun ve doğrularla birlikte olun.",
     "grammar_note": "صِدْق, صَدَّقَ ve صَادِق ile aynı köktedir; كَذِب'in zıddıdır.",
-    "frequency": 57,
+    "frequency": 39,
     "slug": "sidq"
   },
   {
@@ -5228,7 +5451,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ لَا يَهْدِي مَنْ هُوَ كَاذِب",
     "example_turkish": "Allah yalancıyı doğru yola iletmez.",
     "grammar_note": "كَذِب, كَذَّبَ fiilinin masdarı; كَاذِب (yalancı) ile aynı köktendir.",
-    "frequency": 49,
+    "frequency": 220,
     "slug": "kadhib"
   },
   {
@@ -5258,7 +5481,7 @@ export const words: Word[] = [
     "example_arabic": "ادْعُ إِلَى سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَة",
     "example_turkish": "Rabbinin yoluna hikmet ve güzel öğütle davet et.",
     "grammar_note": "مَوْعِظَة, وَعَظَ fiilinin masdarıdır; hem anlayışa hem kalbe hitap eder.",
-    "frequency": 25,
+    "frequency": 9,
     "slug": "mawiza"
   },
   {
@@ -5273,7 +5496,7 @@ export const words: Word[] = [
     "example_arabic": "وَنَضَعُ الْمَوَازِينَ الْقِسْطَ لِيَوْمِ الْقِيَامَة",
     "example_turkish": "Kıyamet günü için adalet terazilerini kuracağız.",
     "grammar_note": "مِيزَان, وَزَنَ fiilinden; مِفْعَال kalıbı; وَزْن (ağırlık/ölçü) ile aynı köktendir.",
-    "frequency": 23,
+    "frequency": 16,
     "slug": "mizan"
   },
   {
@@ -5288,7 +5511,7 @@ export const words: Word[] = [
     "example_arabic": "أَنْزَلَ اللَّهُ مِنَ السَّمَاءِ مَاءً",
     "example_turkish": "Allah gökten su indirdi.",
     "grammar_note": "أَنْزَلَ, إِفْعَال babında مَاضِي; نَزَلَ'nin geçişli (müteaddi) halidir.",
-    "frequency": 293,
+    "frequency": 183,
     "slug": "anzala"
   },
   {
@@ -5303,6 +5526,7 @@ export const words: Word[] = [
     "example_arabic": "لَوْ كَانَ فِيهِمَا آلِهَةٌ إِلَّا اللَّهُ لَفَسَدَتَا",
     "example_turkish": "Yerde ve gökte Allah'tan başka ilahlar olsaydı ikisi de bozulup giderdi.",
     "grammar_note": "İsim; çoğulu آلِهَة. لَا إِلَهَ (hiçbir ilah yok) kalıbında cinsi olumsuzlayan لَا ile üstünlü gelir.",
+    "frequency": 147,
     "example_ref": "21:22"
   },
   {
@@ -5317,6 +5541,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
     "example_turkish": "Şüphesiz Allah'ın her şeye gücü yeter.",
     "grammar_note": "Mastar kökenli isim; çoğulu أَشْيَاء. Kur'an'da en çok كُلّ ile tamlamada geçer: كُلُّ شَيْءٍ.",
+    "frequency": 283,
     "example_ref": "2:20"
   },
   {
@@ -5331,6 +5556,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا تَقُولُوا لِمَن يُقْتَلُ فِي سَبِيلِ اللَّهِ أَمْوَاتٌ",
     "example_turkish": "Allah yolunda öldürülenlere 'ölüler' demeyin.",
     "grammar_note": "İsim; çoğulu سُبُل. صِرَاط geniş ana yol, سَبِيل ise yol/gidiş tarzıdır; فِي سَبِيلِ اللَّهِ kalıbı çok sık geçer.",
+    "frequency": 176,
     "example_ref": "2:154"
   },
   {
@@ -5345,6 +5571,7 @@ export const words: Word[] = [
     "example_arabic": "لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ",
     "example_turkish": "Andolsun, biz insanı en güzel biçimde yarattık.",
     "grammar_note": "فِعْلَان vezninde isim; ال ile cins anlamında 'insanoğlu'. Topluluk için نَاس kullanılır.",
+    "frequency": 71,
     "example_ref": "95:4"
   },
   {
@@ -5359,6 +5586,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
     "example_turkish": "Hiçbir şey O'na denk değildir.",
     "grammar_note": "İsim; olumlu cümlede 'tek, eşsiz', olumsuz cümlede 'hiç kimse' anlamı verir. Kökteki و hemzeye dönmüştür.",
+    "frequency": 74,
     "example_ref": "112:4"
   },
   {
@@ -5373,6 +5601,7 @@ export const words: Word[] = [
     "example_arabic": "ذَلِكَ مَتَاعُ الْحَيَاةِ الدُّنْيَا",
     "example_turkish": "Bunlar dünya hayatının geçimliğidir.",
     "grammar_note": "Uzak için işaret ismi, eril tekil; dişili تِلْكَ, çoğulu أُولَئِكَ. Kur'an imlasında elifsiz yazılır.",
+    "frequency": 1058,
     "example_ref": "3:14"
   },
   {
@@ -5387,6 +5616,7 @@ export const words: Word[] = [
     "example_arabic": "هَذَا الَّذِي رُزِقْنَا مِن قَبْلُ",
     "example_turkish": "Bu, daha önce rızıklandığımız şeydir.",
     "grammar_note": "Yakın için işaret ismi, eril tekil; dişili هَذِهِ, çoğulu هَؤُلَاءِ. Arkasından ال'lı isim gelirse 'bu ...' olur: هَذَا الْقُرْآنَ.",
+    "frequency": 1058,
     "example_ref": "2:25"
   },
   {
@@ -5401,6 +5631,7 @@ export const words: Word[] = [
     "example_arabic": "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",
     "example_turkish": "Yaratan Rabbinin adıyla oku!",
     "grammar_note": "İsm-i mevsûl, eril tekil; dişili الَّتِي, çoğulu الَّذِينَ. Ardından gelen cümle (sıla) onu niteler: الَّذِي خَلَقَ = yaratan.",
+    "frequency": 1468,
     "example_ref": "96:1"
   },
   {
@@ -5415,6 +5646,7 @@ export const words: Word[] = [
     "example_arabic": "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
     "example_turkish": "Gazaba uğramışların ve sapmışların (yoluna) değil.",
     "grammar_note": "Hep izafetle gelen isim; Türkçe '-sız/-den başka' anlamı katar. Fatiha'da önceki isme sıfat olarak mecrurdur.",
+    "frequency": 147,
     "example_ref": "1:7"
   },
   {
@@ -5429,6 +5661,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَا يَغْتَب بَّعْضُكُم بَعْضًا",
     "example_turkish": "Birbirinizin gıybetini yapmayın.",
     "grammar_note": "Hep izafetle gelen isim. بَعْضُكُمْ بَعْضًا kalıbı 'birbirinizi' anlamına gelir.",
+    "frequency": 157,
     "example_ref": "49:12"
   },
   {
@@ -5443,6 +5676,7 @@ export const words: Word[] = [
     "example_arabic": "وَلَكُمْ فِي الْقِصَاصِ حَيَاةٌ",
     "example_turkish": "Kısasta sizin için hayat vardır.",
     "grammar_note": "Mastar; Kur'an imlasında حَيَوٰة şeklinde yazılır. Çoğu zaman الدُّنْيَا ile tamlama/sıfat olarak gelir.",
+    "frequency": 76,
     "example_ref": "2:179"
   },
   {
@@ -5457,6 +5691,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ",
     "example_turkish": "Sizi sınamak için ölümü ve hayatı yaratan O'dur.",
     "grammar_note": "مَاتَ fiilinin mastarı. Örnekte حَيَاة ile karşıt çift olarak geçer ve ölüm önce anılır.",
+    "frequency": 50,
     "example_ref": "67:2"
   },
   {
@@ -5471,6 +5706,7 @@ export const words: Word[] = [
     "example_arabic": "وَلِكُلِّ أُمَّةٍ أَجَلٌ",
     "example_turkish": "Her ümmetin belirlenmiş bir süresi (eceli) vardır.",
     "grammar_note": "İsim; çoğulu آجَال. أَجَلٌ مُسَمًّى (belirlenmiş süre) Kur'an'ın sık kalıbıdır.",
+    "frequency": 55,
     "example_ref": "7:34"
   },
   {
@@ -5485,6 +5721,7 @@ export const words: Word[] = [
     "example_arabic": "رَبَّنَا مَا خَلَقْتَ هَذَا بَاطِلًا",
     "example_turkish": "Rabbimiz! Sen bunu boşuna yaratmadın.",
     "grammar_note": "ism-i fâil kalıbında sıfat/isim; zıddı حَقّ. Örnekte hâl olarak mansuptur.",
+    "frequency": 26,
     "example_ref": "3:191"
   },
   {
@@ -5499,6 +5736,7 @@ export const words: Word[] = [
     "example_arabic": "يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ",
     "example_turkish": "Onları karanlıklardan aydınlığa çıkarır.",
     "grammar_note": "ظُلْمَة'nin dişil çoğulu. Kur'an'da karanlık hep çoğul, nur hep tekil gelir: batılın yolu çok, hakkın yolu tektir.",
+    "frequency": 23,
     "example_ref": "2:257"
   },
   {
@@ -5513,6 +5751,7 @@ export const words: Word[] = [
     "example_arabic": "وَقَلِيلٌ مِّنْ عِبَادِيَ الشَّكُورُ",
     "example_turkish": "Kullarımdan şükredenler azdır.",
     "grammar_note": "فَعِيل vezninde sıfat; zıddı كَثِير. Örnekte haber öne alınmıştır: 'az olan, şükredendir'.",
+    "frequency": 70,
     "example_ref": "34:13"
   },
   {
@@ -5527,6 +5766,7 @@ export const words: Word[] = [
     "example_arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا",
     "example_turkish": "Ey iman edenler! Allah'ı çokça anın.",
     "grammar_note": "فَعِيل vezninde sıfat; örnekte ذِكْرًا'nın sıfatı olarak mansuptur. Kevser (bol hayır) aynı köktendir.",
+    "frequency": 63,
     "example_ref": "33:41"
   },
   {
@@ -5541,6 +5781,7 @@ export const words: Word[] = [
     "example_arabic": "إِن كُلُّ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ إِلَّا آتِي الرَّحْمَنِ عَبْدًا",
     "example_turkish": "Göklerde ve yerde olan herkes Rahman'a ancak kul olarak gelecektir.",
     "grammar_note": "فَعْلَان vezninde mübalağa sıfatı; yalnız Allah için kullanılır. Kur'an imlasında elifsiz yazılır: الرَّحْمَٰن.",
+    "frequency": 57,
     "example_ref": "19:93"
   },
   {
@@ -5555,6 +5796,7 @@ export const words: Word[] = [
     "example_arabic": "وَاللَّهُ سَرِيعُ الْحِسَابِ",
     "example_turkish": "Allah hesabı çabuk görendir.",
     "grammar_note": "حَاسَبَ fiilinin mastarı; سَرِيعُ الْحِسَابِ kalıbı Kur'an'da sık geçer.",
+    "frequency": 39,
     "example_ref": "2:202"
   },
   {
@@ -5569,6 +5811,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ الشَّيْطَانَ لَكُمْ عَدُوٌّ فَاتَّخِذُوهُ عَدُوًّا",
     "example_turkish": "Şeytan sizin düşmanınızdır; siz de onu düşman edinin.",
     "grammar_note": "فَعُول vezninde isim; tekil ve çoğul için kullanılabilir, çoğulu أَعْدَاء. Kökün anlamı 'sınırı aşmak'.",
+    "frequency": 52,
     "example_ref": "35:6"
   },
   {
@@ -5583,6 +5826,7 @@ export const words: Word[] = [
     "example_arabic": "اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا",
     "example_turkish": "Allah iman edenlerin dostu ve yardımcısıdır.",
     "grammar_note": "فَعِيل vezninde isim; çoğulu أَوْلِيَاء. Kökün anlamı 'yakın olmak, ardından gelmek'.",
+    "frequency": 116,
     "example_ref": "2:257"
   },
   {
@@ -5597,6 +5841,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِنَّ الدَّارَ الْأخِرَةَ لَهِيَ الْحَيَوَانُ",
     "example_turkish": "Ahiret yurdu ise asıl hayattır.",
     "grammar_note": "Dişil isim; kökteki و elife dönmüştür. الدَّارُ الْآخِرَةُ 'ahiret yurdu' kalıbında sıfatıyla gelir.",
+    "frequency": 48,
     "example_ref": "29:64"
   },
   {
@@ -5611,6 +5856,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ إِنَّمَا أَنَا بَشَرٌ مِّثْلُكُمْ",
     "example_turkish": "De ki: Ben de ancak sizin gibi bir insanım.",
     "grammar_note": "Hep izafetle gelen isim; 'gibi, benzeri' anlamı katar. مَثَل (örnek, misal) aynı köktendir.",
+    "frequency": 163,
     "example_ref": "18:110"
   },
   {
@@ -5625,6 +5871,7 @@ export const words: Word[] = [
     "example_arabic": "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ",
     "example_turkish": "Ancak iman edip salih ameller işleyenler (müstesna).",
     "grammar_note": "İstisna harfi. لَا ... إِلَّا veya مَا ... إِلَّا kalıbı hasr kurar: 'yalnızca, ancak'.",
+    "frequency": 659,
     "example_ref": "103:3"
   },
   {
@@ -5639,6 +5886,7 @@ export const words: Word[] = [
     "example_arabic": "يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ",
     "example_turkish": "Ey huzura ermiş nefis!",
     "grammar_note": "Nida harfi; seslenilen isim çoğu zaman ötreli gelir. ال'lı isimlere أَيُّهَا (dişil: أَيَّتُهَا) aracılığıyla seslenilir.",
+    "frequency": 439,
     "example_ref": "89:27"
   },
   {
@@ -5653,6 +5901,7 @@ export const words: Word[] = [
     "example_arabic": "إِذَا السَّمَاءُ انشَقَّتْ",
     "example_turkish": "Gök yarıldığı zaman.",
     "grammar_note": "Gelecek zaman için şart anlamlı zarf; mâzî fiil alsa da anlam gelecektir. إِذْ geçmiş içindir.",
+    "frequency": 454,
     "example_ref": "84:1"
   },
   {
@@ -5667,6 +5916,7 @@ export const words: Word[] = [
     "example_arabic": "وَإِذْ قَالَ رَبُّكَ لِلْمَلَائِكَةِ إِنِّي جَاعِلٌ فِي الْأَرْضِ خَلِيفَةً",
     "example_turkish": "Hani Rabbin meleklere 'Ben yeryüzünde bir halife yaratacağım' demişti.",
     "grammar_note": "Geçmiş zaman zarfı; Kur'an'da çoğu zaman başında takdiri 'hatırla' (اذْكُرْ) fiiliyle kıssa başlatır.",
+    "frequency": 309,
     "example_ref": "2:30"
   },
   {
@@ -5681,6 +5931,7 @@ export const words: Word[] = [
     "example_arabic": "لَعَلَّكُمْ تَتَّقُونَ",
     "example_turkish": "Umulur ki (Allah'a karşı gelmekten) sakınırsınız.",
     "grammar_note": "إِنَّ'nin kardeşlerinden (terecci); ismini mansup yapar. Allah için kullanıldığında 'ki ... olasınız' amaç anlamı taşır.",
+    "frequency": 129,
     "example_ref": "2:183"
   },
   {
@@ -5695,6 +5946,7 @@ export const words: Word[] = [
     "example_arabic": "أَلَسْتُ بِرَبِّكُمْ قَالُوا بَلَى",
     "example_turkish": "'Ben sizin Rabbiniz değil miyim?' Dediler ki: 'Evet (öylesin)!'",
     "grammar_note": "Olumsuz soruya olumlu cevap harfi; 'hayır, öyle' anlamında olumsuzluğu kaldırır. Olumlu soruya evet: نَعَمْ.",
+    "frequency": 22,
     "example_ref": "7:172"
   },
   {
@@ -5709,6 +5961,7 @@ export const words: Word[] = [
     "example_arabic": "كَلَّا سَوْفَ تَعْلَمُونَ",
     "example_turkish": "Hayır! Yakında bileceksiniz.",
     "grammar_note": "Red ve azarlama (ردع) harfi; Mekki surelerde sık geçer. Bazen 'gerçekten' anlamında da kullanılır.",
+    "frequency": 34,
     "example_ref": "102:3"
   },
   {
@@ -5723,6 +5976,7 @@ export const words: Word[] = [
     "example_arabic": "سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى",
     "example_turkish": "Yüce Rabbinin adını tesbih et.",
     "grammar_note": "Başında vasl hemzesi olan isim; çoğulu أَسْمَاء (الْأَسْمَاءُ الْحُسْنَى: en güzel isimler). Besmelede بِسْمِ şeklinde elifsiz yazılır.",
+    "frequency": 39,
     "example_ref": "87:1"
   },
   {
@@ -5737,6 +5991,7 @@ export const words: Word[] = [
     "example_arabic": "أَتَى أَمْرُ اللَّهِ فَلَا تَسْتَعْجِلُوهُ",
     "example_turkish": "Allah'ın emri geldi; artık onu acele istemeyin.",
     "grammar_note": "Mehmûz ve nâkıs fiil; muzari يَأْتِي. بِ ile 'getirdi' olur (أَتَى بِـ). جَاءَ ile eş anlamlıdır.",
+    "frequency": 264,
     "example_ref": "16:1"
   },
   {
@@ -5751,6 +6006,7 @@ export const words: Word[] = [
     "example_arabic": "فَقَدْ آتَيْنَا آلَ إِبْرَاهِيمَ الْكِتَابَ وَالْحِكْمَةَ",
     "example_turkish": "İbrahim ailesine kitap ve hikmet verdik.",
     "grammar_note": "IV. bab (أَفْعَلَ) fiil: أَأْتَى → آتَى. İki nesne alır; emri آتِ (ver), zekât için آتُوا الزَّكَاةَ.",
+    "frequency": 280,
     "example_ref": "4:54"
   },
   {
@@ -5765,6 +6021,7 @@ export const words: Word[] = [
     "example_arabic": "وَأَنَّهُ لَمَّا قَامَ عَبْدُ اللَّهِ يَدْعُوهُ",
     "example_turkish": "Allah'ın kulu O'na dua etmek için kalktığında...",
     "grammar_note": "Ecvef fiil (ortası و): قَامَ / يَقُومُ. Emri قُمْ (kalk!) Müddessir ve Müzzemmil surelerinde geçer.",
+    "frequency": 33,
     "example_ref": "72:19"
   },
   {
@@ -5779,6 +6036,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِينَ إِن مَّكَّنَّاهُمْ فِي الْأَرْضِ أَقَامُوا الصَّلَاةَ",
     "example_turkish": "Onlar ki, kendilerini yeryüzünde iktidar sahibi kılarsak namazı kılarlar.",
     "grammar_note": "IV. bab ecvef fiil; Kur'an'da namazla birlikte 'hakkıyla kılmak' anlamında kullanılır: أَقِيمُوا الصَّلَاةَ.",
+    "frequency": 54,
     "example_ref": "22:41"
   },
   {
@@ -5793,6 +6051,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَن تَابَ وَعَمِلَ صَالِحًا",
     "example_turkish": "Kim tövbe eder ve salih amel işlerse...",
     "grammar_note": "Ecvef fiil; kul için إِلَى ile (تَابَ إِلَى اللَّهِ), Allah için عَلَى ile kullanılır (تَابَ عَلَيْهِ: tövbesini kabul etti).",
+    "frequency": 63,
     "example_ref": "25:71"
   },
   {
@@ -5807,6 +6066,7 @@ export const words: Word[] = [
     "example_arabic": "وَجَزَاهُم بِمَا صَبَرُوا جَنَّةً وَحَرِيرًا",
     "example_turkish": "Sabretmelerine karşılık onları cennetle ve ipekle ödüllendirdi.",
     "grammar_note": "Nâkıs fiil; iki nesne alır. Mastarı جَزَاء; iyi karşılık için de kullanılır.",
+    "frequency": 73,
     "example_ref": "76:12"
   },
   {
@@ -5821,6 +6081,7 @@ export const words: Word[] = [
     "example_arabic": "كُلُّ نَفْسٍ بِمَا كَسَبَتْ رَهِينَةٌ",
     "example_turkish": "Her can kazandığına karşılık bir rehindir.",
     "grammar_note": "I. bab mâzî, 3. tekil dişil (كَسَبَتْ). Kur'an'da çoğu zaman amellerin kazanımı anlamındadır.",
+    "frequency": 62,
     "example_ref": "74:38"
   },
   {
@@ -5835,6 +6096,7 @@ export const words: Word[] = [
     "example_arabic": "قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي",
     "example_turkish": "De ki: Allah'ı seviyorsanız bana uyun.",
     "grammar_note": "VIII. bab (افْتَعَلَ) fiil; örnekte emir: اتَّبِعُونِي (bana uyun). I. babı تَبِعَ.",
+    "frequency": 136,
     "example_ref": "3:31"
   },
   {
@@ -5849,6 +6111,7 @@ export const words: Word[] = [
     "example_arabic": "كَمْ تَرَكُوا مِن جَنَّاتٍ وَعُيُونٍ",
     "example_turkish": "Nice bahçeler ve pınarlar bırakıp gittiler.",
     "grammar_note": "I. bab mâzî, 3. çoğul. كَمْ burada çokluk bildiren haber kemidir: 'nice...'.",
+    "frequency": 40,
     "example_ref": "44:25"
   },
   {
@@ -5863,6 +6126,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِينَ يَظُنُّونَ أَنَّهُم مُلَاقُو رَبِّهِمْ",
     "example_turkish": "Onlar Rablerine kavuşacaklarını kesinlikle bilirler.",
     "grammar_note": "Muzaaf fiil; kalp fiillerindendir ve iki nesne/أَنَّ cümlesi alır. Bağlama göre 'sandı' veya 'kesin bildi' anlamı.",
+    "frequency": 68,
     "example_ref": "2:46"
   },
   {
@@ -5877,6 +6141,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّ قَوْمِي اتَّخَذُوا هَذَا الْقُرْآنَ مَهْجُورًا",
     "example_turkish": "Kavmim bu Kur'an'ı terk edilmiş bir şey hâline getirdi.",
     "grammar_note": "VIII. bab fiil: أَخَذَ'dan; hemze ت'ye dönüşmüştür. İki nesne alır: 'X'i Y edindi'.",
+    "frequency": 124,
     "example_ref": "25:30"
   },
   {
@@ -5891,6 +6156,7 @@ export const words: Word[] = [
     "example_arabic": "وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا",
     "example_turkish": "Kim bir canı kurtarırsa bütün insanları kurtarmış gibidir.",
     "grammar_note": "IV. bab (أَفْعَلَ) fiil, حَيِيَ'nin ettirgeni. Zıddı أَمَاتَ (öldürdü).",
+    "frequency": 51,
     "example_ref": "5:32"
   },
   {
@@ -5905,6 +6171,7 @@ export const words: Word[] = [
     "example_arabic": "وَالَّذِي أَخْرَجَ الْمَرْعَى",
     "example_turkish": "Ve otlağı (yerden) çıkaran.",
     "grammar_note": "IV. bab (أَفْعَلَ) fiil; geçişsiz خَرَجَ'yi geçişli yapar. Edilgeni أُخْرِجَ.",
+    "frequency": 99,
     "example_ref": "87:4"
   },
   {
@@ -5919,6 +6186,7 @@ export const words: Word[] = [
     "example_arabic": "الَّذِينَ آتَيْنَاهُمُ الْكِتَابَ يَتْلُونَهُ حَقَّ تِلَاوَتِهِ",
     "example_turkish": "Kendilerine kitap verdiğimiz kimseler onu hakkıyla okurlar.",
     "grammar_note": "Nâkıs fiil; muzari يَتْلُو. Kur'an okumak için قَرَأَ yanında bu fiil de kullanılır.",
+    "frequency": 61,
     "example_ref": "2:121"
   },
   {
@@ -5933,6 +6201,7 @@ export const words: Word[] = [
     "example_arabic": "إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ",
     "example_turkish": "Kulları içinden Allah'a karşı ancak âlimler derin saygı duyar.",
     "grammar_note": "Nâkıs fiil (فَعِلَ); muzari يَخْشَى. خَافَ genel korku, خَشِيَ tanıyarak duyulan saygılı korkudur.",
+    "frequency": 40,
     "example_ref": "35:28"
   },
   {
@@ -5947,6 +6216,7 @@ export const words: Word[] = [
     "example_arabic": "وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا",
     "example_turkish": "Bizim uğrumuzda çaba gösterenleri elbette yollarımıza ileteceğiz.",
     "grammar_note": "III. bab (فَاعَلَ) fiil; karşılıklı ve yoğun çaba bildirir. Mastarı جِهَاد ve مُجَاهَدَة.",
+    "frequency": 27,
     "example_ref": "29:69"
   },
   {
@@ -5961,6 +6231,7 @@ export const words: Word[] = [
     "example_arabic": "كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ",
     "example_turkish": "Siz insanlar için çıkarılmış en hayırlı ümmetsiniz.",
     "grammar_note": "Dişil isim; çoğulu أُمَم. 'Önder' ve 'süre' anlamlarında da kullanılır.",
+    "frequency": 67,
     "example_ref": "3:110"
   },
   {
@@ -5975,6 +6246,7 @@ export const words: Word[] = [
     "example_arabic": "وَيَوْمَ يَعَضُّ الظَّالِمُ عَلَى يَدَيْهِ",
     "example_turkish": "O gün zalim (pişmanlıkla) ellerini ısıracak.",
     "grammar_note": "ism-i fâil; çoğulu ظَالِمُونَ / ظَالِمِينَ. Örnekte يَعَضُّ fiilinin öznesidir.",
+    "frequency": 129,
     "example_ref": "25:27"
   },
   {
@@ -5989,6 +6261,7 @@ export const words: Word[] = [
     "example_arabic": "أَنَّمَا إِلَهُكُمْ إِلَهٌ وَاحِدٌ",
     "example_turkish": "İlahınız ancak tek bir ilahtır.",
     "grammar_note": "ism-i fâil kalıbında sayı/sıfat; sayılan isimden sonra gelir ve ona uyar (إِلَهٌ وَاحِدٌ). أَحَد ile aynı köktendir.",
+    "frequency": 30,
     "example_ref": "18:110"
   }
 ];

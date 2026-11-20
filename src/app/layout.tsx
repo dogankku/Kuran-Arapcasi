@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ayet Hafızası",
-  description: "Kur'an Arapçası Öğrenme Sistemi – 300 kelimeyle Kur'an'ın %90'ını anla",
+  description: "Kur'an Arapçası Öğrenme Sistemi – Kur'an'ın en sık 420 kelimesi, kökler ve gramer",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Ayet Hafızası" },
 };
 
