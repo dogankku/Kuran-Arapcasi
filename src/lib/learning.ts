@@ -118,7 +118,7 @@ export function coverageOf(words: Word[], isKnown: (w: Word) => boolean): number
   let sum = 0;
   for (const w of words) {
     if (!isKnown(w)) continue;
-    const lemma = WORD_LEMMA[w.id] ?? `id:${w.id}`;
+    const lemma = w.lemma ?? WORD_LEMMA[w.id] ?? `id:${w.id}`;
     if (seen.has(lemma)) continue;
     seen.add(lemma);
     sum += w.frequency ?? 0;
@@ -138,7 +138,7 @@ export function topCoverage(words: Word[], n: number): number {
   return Math.round(coverageOf(words, w => top.has(w.id)));
 }
 
-const MILESTONES = [10, 20, 30, 50, 75, 100, 150, 200, 300, 420];
+const MILESTONES = [10, 20, 30, 50, 75, 100, 150, 200, 300, 420, 550, 700, 850, 1000, 1200, 1450];
 
 export function getMilestone(words: Word[], progress: ProgressMap): { current: number; next: number; label: string } {
   const known = (w: Word) => !!progress[w.id]?.known;
@@ -243,9 +243,11 @@ export function getNextReviewInfo(p: WordProgress): string {
 }
 
 export function getStageProgress(words: Word[], progress: ProgressMap) {
-  const stage1Words = words.filter(w => w.level === 1);
-  const stage2Words = words.filter(w => w.level === 2);
-  const stage3Words = words.filter(w => w.level === 3);
+  // Kademe kilitleri yalnız çekirdek kelimelerle hesaplanır (ek kelimeler sonradan gelir)
+  const core = words.filter(w => !w.extended);
+  const stage1Words = core.filter(w => w.level === 1);
+  const stage2Words = core.filter(w => w.level === 2);
+  const stage3Words = core.filter(w => w.level === 3);
 
   const learned1 = stage1Words.filter(w => progress[w.id]?.known).length;
   const learned2 = stage2Words.filter(w => progress[w.id]?.known).length;

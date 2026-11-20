@@ -1,6 +1,8 @@
 import type { Word } from './types';
+import { extendedWords } from './wordsExtended';
 
-export const words: Word[] = [
+/** Elle hazırlanmış çekirdek 420 kelime (hafıza ipuçları, görseller). */
+export const coreWords: Word[] = [
   {
     "id": 1,
     "level": 2,
@@ -6265,3 +6267,6 @@ export const words: Word[] = [
     "example_ref": "18:110"
   }
 ];
+
+/** Çekirdek + ek kelimeler (Kur'an metninin %95'i). */
+export const words: Word[] = [...coreWords, ...extendedWords];

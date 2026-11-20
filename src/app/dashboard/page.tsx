@@ -563,7 +563,9 @@ export default function DashboardPage() {
                   { threshold: 30, label: "İlk Adım", desc: `30 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 30)}`, icon: "◈" },
                   { threshold: 75, label: "Orta Yol", desc: `75 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 75)}`, icon: "◆" },
                   { threshold: 150, label: "İleri Seviye", desc: `150 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 150)}`, icon: "★" },
-                  { threshold: 300, label: "Hedef", desc: `300 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 300)}`, icon: "◆" },
+                  { threshold: 300, label: "Çekirdek", desc: `300 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 300)}`, icon: "◆" },
+                  { threshold: 700, label: "Okuyucu", desc: `700 kelime → Kur'an metninin yaklaşık %${topCoverage(words, 700)}`, icon: "✦" },
+                  { threshold: words.length, label: "Hedef", desc: `${words.length} kelime → Kur'an metninin yaklaşık %${topCoverage(words, words.length)}`, icon: "☪" },
                 ].map(({ threshold, label, desc, icon }) => (
                   <div key={threshold} className={`flex items-center gap-4 p-4 rounded-2xl border transition ${learned >= threshold ? "bg-emerald-900/40 border-emerald-400/40" : "bg-black/20 border-stone-700/50"}`}>
                     <div className={`text-2xl ${learned >= threshold ? "text-emerald-300" : "text-stone-600"}`}>{icon}</div>
@@ -638,6 +640,7 @@ export default function DashboardPage() {
                   {activeWord.root && <span className="bg-amber-500/10 border border-amber-400/20 text-amber-300/80 px-2.5 py-1 rounded-full">Kök: {activeWord.root}</span>}
                   <span className="bg-emerald-500/10 border border-emerald-400/20 text-emerald-200 px-2.5 py-1 rounded-full">{activeWord.part_of_speech}</span>
                   {(activeWord as any).frequency && <span className="text-amber-400/50">Kur&apos;an&apos;da {(activeWord as any).frequency.toLocaleString()}×</span>}
+                  {activeWord.extended && <span className="text-sky-400/60" title="Bu kelimenin anlamı Quran.com kelime kelime mealinde en sık geçen karşılıktan otomatik çıkarıldı; örnek ayetle birlikte değerlendir.">ek kelime · otomatik anlam</span>}
                   <span className="text-stone-600">{activeProgress.known ? "Öğrenildi" : activeProgress.hard ? "⟳ Tekrar" : "◌ Yeni"}</span>
                 </div>
 

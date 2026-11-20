@@ -70,8 +70,12 @@ const UNIT_LABEL: Record<string, string> = {
 };
 
 export function wordLearningOrder(words: Word[]): Word[] {
-  // Önce kademe (edatlar → isimler → fiiller), kademe içinde Kur'an'da geçiş sıklığı.
-  return [...words].sort((a, b) => (a.level - b.level) || ((b.frequency ?? 100) - (a.frequency ?? 100)) || (a.id - b.id));
+  // Önce çekirdek 420 kelime: kademe (edatlar → isimler → fiiller), kademe içinde Kur'an'da geçiş sıklığı.
+  // Sonra ek kelimeler: tür ayrımı yapmadan yalnız sıklığa göre (en çok kapsam kazandıran önce).
+  return [...words].sort((a, b) =>
+    (Number(!!a.extended) - Number(!!b.extended)) ||
+    (a.extended ? 0 : a.level - b.level) ||
+    ((b.frequency ?? 100) - (a.frequency ?? 100)) || (a.id - b.id));
 }
 
 export function buildPath(words: Word[], grammar: GrammarTopic[], sentences: SentenceAnalysis[]): Step[] {

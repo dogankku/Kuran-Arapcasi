@@ -32,7 +32,7 @@ interface WbwVerse { n: number; words: WbwWord[]; meal: string }
 /** Akademik transliterasyonu (al-ḥamdu) Türkçe okunuşa (el-hamdu) yaklaştırır. */
 export function toTurkishReading(s: string): string {
   if (!s) return "";
-  let t = s.toLowerCase();
+  let t = s.replace(/'/g, "").toLowerCase(); // Quran.com'da ' hece ayıracı; ayın ʿ ile gelir
   const pairs: [RegExp, string][] = [
     [/sh/g, "ş"], [/kh/g, "h"], [/gh/g, "ğ"], [/th/g, "s"], [/dh/g, "z"],
     [/ḥ/g, "h"], [/ṣ/g, "s"], [/ḍ/g, "d"], [/ṭ/g, "t"], [/ẓ/g, "z"], [/ḏ/g, "z"], [/ṯ/g, "s"],

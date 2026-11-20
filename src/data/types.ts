@@ -1,6 +1,6 @@
 export type Level = 1 | 2 | 3;
 export type QuizMode = "meaning" | "reverse" | "role" | "root";
-export type Word = { id:number; level:Level; arabic:string; transliteration:string; turkish_meaning:string; root:string|null; part_of_speech:string; memory_hint:string; example_arabic:string; example_turkish:string; grammar_note:string; frequency?:number; slug?:string; example_ref?:string; };
+export type Word = { id:number; level:Level; arabic:string; transliteration:string; turkish_meaning:string; root:string|null; part_of_speech:string; memory_hint:string; example_arabic:string; example_turkish:string; grammar_note:string; frequency?:number; slug?:string; example_ref?:string; /** Kur'an lemması (kapsam hesabında aynı lemma bir kez sayılır) */ lemma?:string; /** %95 kapsam için eklenen ek kelime */ extended?:boolean; };
 export type WordProgress = {
   known: boolean;
   hard: boolean;
