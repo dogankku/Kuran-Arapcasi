@@ -18,7 +18,7 @@ import {
   getDailyWords, getLevelDescription, getLevelIcon,
   getLevelShort, getLevelTitle, getMilestone, getNextReviewInfo, getQuizPrompt,
   getQuranCoverage, getReviewWords, getStageProgress, getStreak, searchWords,
-  speakArabic, updateProgress, updateStreak,
+  speakArabic, updateProgress, updateStreak, reconcileStreak, displayStreak,
 } from "@/lib/learning";
 import { supabase, isConfigured } from "@/lib/supabase";
 import { getRank, getNextRank, RANKS } from "@/data/ranks";
@@ -105,6 +105,15 @@ export default function DashboardPage() {
       const t = normalizeTutor(remoteTutor);
       setTutorState(t); localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(t));
     }
+    const remoteStreak = data?.streak as StreakData | undefined;
+    if (remoteStreak && typeof remoteStreak.currentStreak === "number") {
+      setStreak(cur => {
+        // Hangisi daha yeni çalışma gününe sahipse onu al
+        const pick = (cur.lastStudyDate ?? "") > (remoteStreak.lastStudyDate ?? "") ? cur : remoteStreak;
+        localStorage.setItem(STREAK_KEY, JSON.stringify(pick));
+        return pick;
+      });
+    }
     const hasRemote = !!data && data.progress && Object.keys(data.progress as object).length > 0;
     if (!hasRemote) {
       // İlk giriş: bu cihazda biriken ilerlemeyi hesaba aktar
@@ -119,14 +128,7 @@ export default function DashboardPage() {
       }
       return;
     }
-    if (data) {
-      if (data.progress) setProgress(data.progress as ProgressMap);
-      if (data.streak) {
-        const s = data.streak as StreakData;
-        setStreak(s);
-        localStorage.setItem(STREAK_KEY, JSON.stringify(s));
-      }
-    }
+    if (data?.progress) setProgress(data.progress as ProgressMap);
   }, []);
 
   const syncProgressToDb = useCallback((userId: string, prog: ProgressMap, str: StreakData) => {
@@ -180,11 +182,11 @@ export default function DashboardPage() {
   // Persist progress locally always
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress]);
 
-  // Sync to DB on progress change
+  // Sync to DB on progress / streak change
   useEffect(() => {
     if (user) syncProgressToDb(user.id, progress, streak);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [progress]);
+  }, [progress, streak]);
 
   // Hoca durumu: yerelde sakla, girişliyse hesaba senkronla
   useEffect(() => {
@@ -194,6 +196,13 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!tutorLoaded.current) return;
     localStorage.setItem(TUTOR_STORAGE_KEY, JSON.stringify(tutor));
+    // Hoca'da bitirilen dersler seriye de sayılsın (önceden kaydedilmemiş günler dahil)
+    const dates = Object.values(tutor.done).map(d => d.at);
+    setStreak(cur => {
+      const next = reconcileStreak(cur, dates);
+      if (next !== cur) localStorage.setItem(STREAK_KEY, JSON.stringify(next));
+      return next;
+    });
     if (user) syncProgressToDb(user.id, progress, streak);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tutor]);
@@ -281,6 +290,13 @@ export default function DashboardPage() {
 
   function save(word: Word, type: "known" | "hard" | "wrong") {
     setProgress((cur) => ({ ...cur, [word.id]: updateProgress(cur[word.id] || emptyProgress(), type) }));
+    setStreak(cur => {
+      const updated = updateStreak(cur);
+      localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  }
+  function bumpStreak() {
     setStreak(cur => {
       const updated = updateStreak(cur);
       localStorage.setItem(STREAK_KEY, JSON.stringify(updated));
@@ -445,8 +461,8 @@ export default function DashboardPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
             <MiniMetric label="Toplam kelime" value={words.length} icon="kitap" highlight="blue" />
             <MiniMetric label="Öğrenilen" value={learned} icon="onayDaire" highlight="green" />
-            <MiniMetric label="Günlük seri" value={streak.currentStreak} icon="kandil" suffix="gün" highlight="orange" />
-            <MiniMetric label="Bugün çalışıldı" value={streak.todayCount} icon="tesbih" suffix="kez" />
+            <MiniMetric label="Günlük seri" value={displayStreak(streak).currentStreak} icon="kandil" suffix="gün" highlight="orange" />
+            <MiniMetric label="Bugün çalışıldı" value={displayStreak(streak).todayCount} icon="tesbih" suffix="kez" />
           </div>
         </header>
 
@@ -474,7 +490,8 @@ export default function DashboardPage() {
         {panel === "hoca" && (
           <TutorPanel words={words} grammar={grammarTopics} sentences={sentenceAnalyses} progress={progress}
             tutor={tutor} setTutor={setTutor} userName={user?.username}
-            onWordResult={(id, r) => { const w = words.find(x => x.id === id); if (w) save(w, r); }} />
+            onWordResult={(id, r) => { const w = words.find(x => x.id === id); if (w) save(w, r); }}
+            onLessonComplete={bumpStreak} />
         )}
 
         {/* ÖĞRENME YOLU */}

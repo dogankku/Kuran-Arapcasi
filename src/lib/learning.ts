@@ -165,6 +165,53 @@ export function getStreak(): StreakData {
   return { currentStreak: 0, longestStreak: 0, lastStudyDate: null, todayCount: 0 };
 }
 
+const dayKey = (d: Date) => d.toISOString().split("T")[0];
+const prevDay = (key: string) => dayKey(new Date(new Date(key + "T00:00:00Z").getTime() - 86400000));
+
+/**
+ * Hoca'da bitirilen derslerin tarihlerinden seriyi tamamlar.
+ * Seri kaydında olmayan (daha yeni) çalışma günleri varsa seriyi ve bugünkü sayıyı onlara göre günceller.
+ * Seri zaten güncelse aynen döner, bu yüzden tekrar tekrar çağrılabilir.
+ */
+export function reconcileStreak(streak: StreakData, lessonDates: string[]): StreakData {
+  const counts = new Map<string, number>();
+  for (const at of lessonDates) {
+    const t = Date.parse(at);
+    if (isNaN(t)) continue;
+    const k = dayKey(new Date(t));
+    counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  if (!counts.size) return streak;
+  const latest = [...counts.keys()].sort().pop()!;
+  if (streak.lastStudyDate && latest <= streak.lastStudyDate) return streak;
+  let chain = 0;
+  let d: string = latest;
+  while (true) {
+    if (d === streak.lastStudyDate) { chain += streak.currentStreak; break; }
+    if (!counts.has(d)) break;
+    chain++;
+    d = prevDay(d);
+  }
+  return {
+    currentStreak: chain,
+    longestStreak: Math.max(chain, streak.longestStreak),
+    lastStudyDate: latest,
+    todayCount: counts.get(latest) ?? 0,
+  };
+}
+
+/** Ekranda gösterilecek seri: bugün/dün çalışılmadıysa seri 0, bugün çalışılmadıysa bugünkü sayı 0. */
+export function displayStreak(streak: StreakData): StreakData {
+  const today = dayKey(new Date());
+  const yesterday = prevDay(today);
+  const last = streak.lastStudyDate;
+  return {
+    ...streak,
+    currentStreak: last === today || last === yesterday ? streak.currentStreak : 0,
+    todayCount: last === today ? streak.todayCount : 0,
+  };
+}
+
 export function getNextReviewInfo(p: WordProgress): string {
   if (!p.nextReviewAt) return "Bugün";
   const diff = Math.ceil((new Date(p.nextReviewAt).getTime() - Date.now()) / 86400000);

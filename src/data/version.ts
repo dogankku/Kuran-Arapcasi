@@ -1,7 +1,8 @@
-export const APP_VERSION = "1.9.1";
-export const BUILD_DATE = "2026-11-19";
-export const BUILD_TIME = "20:30";
+export const APP_VERSION = "1.9.2";
+export const BUILD_DATE = "2026-11-20";
+export const BUILD_TIME = "14:00";
 export const CHANGELOG = [
+  { version: "1.9.2", date: "2026-11-20", time: "14:00", note: "Hoca dersleri artık günlük seriye ve \"Bugün çalışıldı\" sayısına ekleniyor; daha önce bitirilen derslerin günleri de seriye işleniyor. Seri bilgisi her değiştiğinde hesaba kaydediliyor ve başka cihazda açınca hesaptan geri yükleniyor (önceden kelime ilerlemesi boşsa seri buluttan hiç yüklenmiyordu). Gün geçince eski seri/bugün sayısı artık gösterilmiyor." },
   { version: "1.9.1", date: "2026-11-19", time: "20:30", note: "Yeni görünüm: emoji simgeler yerine İslami motifli simge seti (hilal, Kur'an, kubbe, mihrap, kandil, tesbih, rub el hizb yıldızı), yeni logo, tarayıcı sekmesi ve ana ekran ikonu. Rütbeler artık kendi simgeleriyle gösteriliyor." },
   { version: "1.9.0", date: "2026-11-19", time: "15:00", note: "Yeni: Hoca. Seviye testiyle bildiklerini atlayıp eksik olduğun yerden başlayan, kişisel günlük plan (10/25/60 dk) kuran uygulama içi Kur'an hocası. İki yol: Okuma (28 harf, harekeler, sükun, med, şedde, tenvin, el- takısı, tecvid kuralları, Fatiha ve 11 kısa surede ayet ayet pratik) ve Anlama (420 kelime sırayla, araya gramer ve ayet analizleri). Yanlışlar eksik listesine düşer ve tekrar edilir; biten dersler aralıklı tekrar takvimine girer. Örnekler hafız sesiyle (kelime kelime tilavet + Husarî). Kelime seslerinin hiç çalmamasına yol açan adres hatası düzeltildi. Hoca ilerlemesi hesaba kaydedilir." },
   { version: "1.8.0", date: "2026-11-19", time: "13:00", note: "Büyük güncelleme: tüm kart görselleri yeniden kesildi (kaymış/yanlış kelimeye ait kırpmalar düzeltildi, dosya adı karışıklıkları giderildi, slug etiketleri kaldırıldı), eksik 140 kelime için tipografik kart üretildi; 420 kelimenin tamamı görselli. Tek görsel klasörü: public/cards/*.webp. 270 kelimeye gerçek hafıza ipucu, gramer notu, kök ve doğrulanmış ayet örneği (sure:ayet) eklendi. 50 yeni sık kelime (إِلَه، شَيْء، سَبِيل، إِنْسَان، الَّذِي، إِلَّا، يَا، آتَى، أَقَامَ...). Gramer 15→32 konu, ayet analizi 15→30. لِمَاذَا→لِمَ, أَغْلَقَ→غَلَّقَ düzeltmeleri." },
