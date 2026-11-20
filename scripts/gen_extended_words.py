@@ -61,7 +61,7 @@ def base_tr(t, proper=False):
     no_paren = re.sub(r"\s*\(.*?\)", "", t).strip()
     if no_paren:
         t = no_paren
-    if proper or "'" in t:
+    if proper:
         head = t.split("'")[0]
         if len(head) >= 2:
             t = head
