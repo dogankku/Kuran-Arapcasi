@@ -13,6 +13,8 @@ export type WordProgress = {
   interval: number;
   easeFactor: number;
   repetitions: number;
+  /** Doğru cevap verilen farklı günler (YYYY-AA-GG, en fazla son 5). "Öğrenildi" için en az 2 farklı gün gerekir. */
+  correctDays?: string[];
 };
 export type ProgressMap = Record<number, WordProgress>;
 export type GrammarTopic = { id:number; level:Level; title:string; description:string; example_arabic:string; example_turkish:string; memory_hint:string; };

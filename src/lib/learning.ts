@@ -1,5 +1,6 @@
 import type { Level, ProgressMap, QuizMode, StreakData, Word, WordProgress } from "@/data/types";
 import { getWordAudioUrl } from "@/lib/quranAudio";
+import { QURAN_TOTAL_SEGMENTS, WORD_LEMMA } from "@/data/quranFreq";
 
 export const STORAGE_KEY = "ayet-hafizasi-clean-v1";
 
@@ -38,7 +39,21 @@ export function emptyProgress(): WordProgress {
     interval: 1, easeFactor: 2.5, repetitions: 0,
   };
 }
+/** Bir kelimenin "öğrenildi" sayılması için doğru cevap verilmiş farklı gün sayısı. */
+export const KNOWN_MIN_DAYS = 2;
+
 export function updateProgress(old: WordProgress, type: "known" | "hard" | "wrong"): WordProgress {
+  const today = new Date().toISOString().split("T")[0];
+  // Eski kayıtlar: daha önce "öğrenildi" sayılmış kelime, yeni kuralla düşmesin
+  let correctDays = old.correctDays ?? (old.known && old.lastStudiedAt ? [old.lastStudiedAt.split("T")[0]] : []);
+  const alreadyCorrectToday = type === "known" && correctDays.includes(today);
+  if (alreadyCorrectToday) {
+    // Aynı gün tekrar doğru bilmek kısa süreli hafızadır: aralığı büyütme, sadece sayacı artır
+    return { ...old, correctDays, correctCount: old.correctCount + 1, lastAnswer: type, lastStudiedAt: new Date().toISOString() };
+  }
+  if (type === "known") correctDays = [...correctDays, today].slice(-5);
+  else if (type === "wrong") correctDays = [];
+
   let interval = old.interval ?? 1;
   let easeFactor = old.easeFactor ?? 2.5;
   let repetitions = old.repetitions ?? 0;
@@ -63,11 +78,11 @@ export function updateProgress(old: WordProgress, type: "known" | "hard" | "wron
   }
 
   const nextReviewAt = new Date(Date.now() + interval * 86400000).toISOString();
-  const known = type === "known" ? correctCount >= 2 : (type === "hard" || type === "wrong") ? false : old.known;
+  const known = type === "known" ? correctDays.length >= KNOWN_MIN_DAYS : false;
   const hard = type === "wrong" || type === "hard" ? true : correctCount >= 3 ? false : old.hard;
 
   return {
-    ...old, known, hard, correctCount, hardCount, wrongCount,
+    ...old, known, hard, correctCount, hardCount, wrongCount, correctDays,
     lastAnswer: type, lastStudiedAt: new Date().toISOString(),
     nextReviewAt, interval, easeFactor, repetitions,
   };
@@ -94,39 +109,46 @@ export function getLevelIcon(level:Level){ if(level===1)return "◇"; if(level==
 export function buildQuizOptions(words:Word[],activeWord:Word,mode:QuizMode){ const getAnswer=(w:Word)=>mode==="meaning"?w.turkish_meaning:mode==="reverse"?w.arabic:mode==="role"?w.part_of_speech:(w.root||"kök yok"); const correct=getAnswer(activeWord); const wrong=words.filter(w=>w.id!==activeWord.id).map(getAnswer).filter(x=>x!==correct).filter((x,i,a)=>a.indexOf(x)===i).sort(()=>Math.random()-.5).slice(0,3); return [...wrong,correct].sort(()=>Math.random()-.5); }
 export function getQuizPrompt(activeWord:Word,mode:QuizMode){ if(mode==="meaning")return{title:"Arapça kelimenin Türkçe anlamını seç.",question:activeWord.arabic,answer:activeWord.turkish_meaning,questionIsArabic:true}; if(mode==="reverse")return{title:"Türkçe anlamın Arapça karşılığını seç.",question:activeWord.turkish_meaning,answer:activeWord.arabic,questionIsArabic:false}; if(mode==="role")return{title:"Kelimenin görevini seç.",question:activeWord.arabic,answer:activeWord.part_of_speech,questionIsArabic:true}; return{title:"Kelimenin kökünü seç.",question:activeWord.arabic,answer:activeWord.root||"kök yok",questionIsArabic:true}; }
 
-export function getQuranCoverage(learnedCount: number): number {
-  // Yaklaşık Quran kelime kapsama yüzdesi (frequency ağırlıklı)
-  if (learnedCount >= 300) return 90;
-  if (learnedCount >= 200) return 85;
-  if (learnedCount >= 150) return 80;
-  if (learnedCount >= 100) return 75;
-  if (learnedCount >= 75) return 70;
-  if (learnedCount >= 50) return 62;
-  if (learnedCount >= 30) return 50;
-  if (learnedCount >= 20) return 40;
-  if (learnedCount >= 10) return 25;
-  return Math.round(learnedCount * 2.5);
+/**
+ * Kur'an metin kapsamı (%): bilinen kelimelerin lemmalarının Kur'an'daki toplam geçişi / Kur'an'ın toplam kelime+edat sayısı.
+ * Aynı lemmaya bağlı kelimeler bir kez sayılır. Bu "anlama" değil, metinde tanıdığın kelimelerin oranıdır.
+ */
+export function coverageOf(words: Word[], isKnown: (w: Word) => boolean): number {
+  const seen = new Set<string>();
+  let sum = 0;
+  for (const w of words) {
+    if (!isKnown(w)) continue;
+    const lemma = WORD_LEMMA[w.id] ?? `id:${w.id}`;
+    if (seen.has(lemma)) continue;
+    seen.add(lemma);
+    sum += w.frequency ?? 0;
+  }
+  return (sum / QURAN_TOTAL_SEGMENTS) * 100;
 }
 
-export function getMilestone(learnedCount: number): { current: number; next: number; label: string } {
-  const milestones = [
-    { threshold: 10, label: "%25 Kur'an" },
-    { threshold: 20, label: "%40 Kur'an" },
-    { threshold: 30, label: "%50 Kur'an" },
-    { threshold: 50, label: "%62 Kur'an" },
-    { threshold: 75, label: "%70 Kur'an" },
-    { threshold: 100, label: "%75 Kur'an" },
-    { threshold: 150, label: "%80 Kur'an" },
-    { threshold: 200, label: "%85 Kur'an" },
-    { threshold: 300, label: "%90 Kur'an" },
-  ];
-  const passed = milestones.filter(m => learnedCount >= m.threshold);
-  const next = milestones.find(m => learnedCount < m.threshold) || milestones[milestones.length - 1];
-  return {
-    current: passed.length > 0 ? passed[passed.length - 1].threshold : 0,
-    next: next.threshold,
-    label: next.label,
-  };
+const byFrequency = (a: Word, b: Word) => (b.frequency ?? 0) - (a.frequency ?? 0);
+
+export function getQuranCoverage(words: Word[], progress: ProgressMap): number {
+  return Math.round(coverageOf(words, w => !!progress[w.id]?.known));
+}
+
+/** En sık n kelimeyi bilen birinin metin kapsamı (%). */
+export function topCoverage(words: Word[], n: number): number {
+  const top = new Set([...words].sort(byFrequency).slice(0, n).map(w => w.id));
+  return Math.round(coverageOf(words, w => top.has(w.id)));
+}
+
+const MILESTONES = [10, 20, 30, 50, 75, 100, 150, 200, 300, 420];
+
+export function getMilestone(words: Word[], progress: ProgressMap): { current: number; next: number; label: string } {
+  const known = (w: Word) => !!progress[w.id]?.known;
+  const learnedCount = words.filter(known).length;
+  const next = MILESTONES.find(t => learnedCount < t) ?? words.length;
+  const current = [...MILESTONES].reverse().find(t => learnedCount >= t) ?? 0;
+  // Sıradaki hedefe kadar en sık bilinmeyen kelimeler de öğrenilirse kapsam ne olur?
+  const upcoming = new Set(words.filter(w => !known(w)).sort(byFrequency).slice(0, Math.max(0, next - learnedCount)).map(w => w.id));
+  const pct = Math.round(coverageOf(words, w => known(w) || upcoming.has(w.id)));
+  return { current, next, label: `%${pct} metin` };
 }
 
 export function getDailyWords(words: Word[], progress: ProgressMap, count = 5): Word[] {
